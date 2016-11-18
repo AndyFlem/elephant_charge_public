@@ -1,0 +1,135 @@
+/*
+ * ...boilerplate application.css.scss comments
+ *= require_tree .
+ *= require_self
+ */
+
+
+
+$font-size-root:14px;
+
+$brand-primary: #df5409; //#cebc63;
+$brand-inverse: #cebc63;
+
+
+@import "bootstrap";
+
+.navbar{
+  padding-left: 7px;
+  padding-top:3px;
+  padding-bottom:3px;
+  margin-left: 10px;
+  margin-right:10px;
+  margin-bottom:15px;
+  margin-top:5px;
+}
+.navbar-brand{
+  font-size: 2rem;
+}
+.tagline{
+  font-style: italic;
+  font-size: 0.9rem;
+  position:absolute;
+  left:58px;
+  top:40px;
+  color: white;
+}
+.footer{
+  font-size: 0.9rem;
+  color: white;
+}
+
+.image-container img {
+  margin:auto;
+  display:block;
+  max-width: 100%;
+}
+
+.card-block {
+  padding:10px;
+}
+
+.head-banner{
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  overflow: hidden;
+  height:240px;
+  width:100%;
+  z-index: -1;
+}
+.head-banner img {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: -9999px;
+  bottom: -9999px;
+  margin: auto 0;
+  width: 100%;
+}
+.head{
+  margin-top:10px;
+  margin-bottom:140px;
+  height:90px;
+  background: rgba(0, 0, 0, 0.5);
+}
+.head-text{
+  color: white;
+  margin-left: 10px;
+  padding-top: 5px;
+  font-size: 4rem;
+  line-height: 4.3rem;
+  font-weight: bold;
+}
+.head-logo {
+  float:left;
+  margin-left: 10px;
+}
+.head-logo img {
+
+}
+.head-tagline{
+  margin-left: 12px;
+  font-style: italic;
+  font-size: 0.97rem;
+  color: white;
+}
+.head-nav{
+
+  background-color: #55595c;
+  padding-left: 30px;
+  margin-top:10px;
+  margin-bottom: 30px;
+  line-height: 2.5rem;
+}
+.head-nav-link{
+  padding-left: 20px;
+  padding-right: 20px;
+  color: white;
+
+  font-size:1.2rem;
+}
+.active{
+  color:$brand-primary;
+  font-weight: bold;
+}
+.head-message {
+  color:white;
+  margin-right:10px;
+  margin-top:10px;
+  font-weight: bold;
+}
+
+.wsite-social-item {
+  float:right;
+  margin-left: 5px;
+  margin-right: 5px;
+  padding-left: 0px;
+  padding-right: 0px;
+  font-size: 1.1em;
+  display: inline-block;
+  margin: 0 8px 10px;
+  color: white;
+}
