@@ -1,7 +1,13 @@
+<div class="col-sm-8">
+  Elephant Charge will take place 13- 15 October.
+  <p>
+    The Elephant Charge is an extreme annual 4x4 which challenges teams of cars and motorbikes to complete a grueling course through the Zambian bush.
 
-Elephant Charge will take place 13- 15 October.
-<p>
-  The Elephant Charge is an extreme annual 4x4 which challenges teams of cars and motorbikes to complete a grueling course through the Zambian bush.
-
-  The event is held at a different location each year.  In 2017 the
-</p>
+    The event is held at a different location each year.  In 2017 the
+  </p>
+</div>
+<div class="col-sm-4">
+  <% @sponsors.each do |s| %>
+    <%= image_tag image_url(s.logo(:thumb)) %>
+  <% end %>
+</div>

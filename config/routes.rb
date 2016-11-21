@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   get 'charges', to: 'charges#index'
   get 'sponsors', to: 'sponsors#index'
   get 'beneficiaries', to: 'beneficiaries#index'
+  get 'cars', to: 'cars#index'
 
   #charge by year
   get ':id', constraints: {id: /\d{4}/}, to: 'charges#show'
@@ -30,5 +31,7 @@ Rails.application.routes.draw do
   get 'sponsors/:id', to: 'sponsors#show'
   get 'sponsor/:id', to: 'sponsors#show'
 
+  get 'cars/:id', to: 'cars#show'
+  get 'car/:id', to: 'cars#show'
 end
 
