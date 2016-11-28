@@ -31,6 +31,25 @@ $(function () {
     $('[data-toggle="tooltip"]').tooltip()
 })
 
-$('#image-modal').on('shown.bs.modal', function() {
-    alert('hay ho')
+
+showModal=function (el) {
+    var $image = $('#modalImageElement');
+    $image.attr("src", "assets/clear.gif");
+
+    $('#imageModal').modal();
+    var $downloadingImage = $("<img>");
+    $downloadingImage.load(function(){
+        $('#modalTitle').text($(el).data('description'))
+        $image.attr("src", $(this).attr("src"));
+    });
+    $downloadingImage.attr("src", $(el).data('image'));
+}
+
+$('#imageModal').on('show.bs.modal', function (e) {
+    // do something...
+    console.log(e)
+})
+$('#imageModal').on('shown.bs.modal', function (e) {
+    // do something...
+    console.log(e)
 })

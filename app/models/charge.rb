@@ -12,6 +12,9 @@ class Charge < ApplicationRecord
   has_many :photos, as: :photoable
   belongs_to :best_guard, foreign_key: 'best_guard_id', class_name: 'Guard'
   belongs_to :shafted_entry, foreign_key: 'shafted_entry_id', class_name: 'Entry'
+  belongs_to :tsetse1_leg, foreign_key: 'tsetse1_id', class_name: 'Leg'
+  belongs_to :tsetse2_leg, foreign_key: 'tsetse2_id', class_name: 'Leg'
+
   has_many :grants
   has_many :beneficiaries, through: :grants
 

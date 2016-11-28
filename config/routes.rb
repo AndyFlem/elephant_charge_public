@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   get 'cars', to: 'cars#index'
 
   #charge by year
-  get ':id', constraints: {id: /\d{4}/}, to: 'charges#show'
+  get ':id', constraints: {id: /\d{4}/}, to: 'charges#show', as: :charge
 
   #team by name (ref)
   get ':id', to: 'teams#show'

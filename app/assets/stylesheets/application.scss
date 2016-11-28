@@ -1,44 +1,126 @@
+$font-size-root:13px;
+
+$brand-primary: #df5409; //#cebc63;
+$brand-inverse: #cebc63;
+
 /*
  * ...boilerplate application.css.scss comments
  *= require_tree .
  *= require_self
  */
 
-
-
-$font-size-root:14px;
-
-$brand-primary: #df5409; //#cebc63;
-$brand-inverse: #cebc63;
-
-
 @import "bootstrap";
 
-.navbar{
-  padding-left: 7px;
-  padding-top:3px;
-  padding-bottom:3px;
-  margin-left: 10px;
-  margin-right:10px;
-  margin-bottom:15px;
-  margin-top:5px;
+.navbar {
+  background-color: #444444;
+  margin-bottom: 20px;
 }
-.navbar-brand{
-  font-size: 2rem;
+
+.brand{
+  color: $brand-primary;
+  float: left;
+  font-size: 1.6em;
+  padding-left: 5px;
+  padding-top: 0px;
+  font-weight: bold;
+  line-height: 1.2em;
+}
+.head-logo
+{
+  float:left;
+}
+
+.head-navbar{
+  text-align: right;
+  line-height: 15px;
+  padding-right: 10px;
+}
+.navbar-nav .nav-item + .nav-item {
+  margin-left: 2rem;
+}
+@include media-breakpoint-up(md) {
+  .head-navbar  {
+    position: absolute;
+    bottom:0px;
+    right:0px;
+    padding-right: 20px;
+    text-align: left;
+    //line-height: 21px;
+  }
+}
+.navbar-dark .navbar-nav .nav-link {
+  font-size: 1.2em;
+  color:rgba(255, 255, 255, 0.8);
+}
+.navbar-dark .navbar-nav .nav-link:hover {
+ color:rgba(255, 255, 255, 0.95);
+}
+
+.navbar-dark .navbar-nav .nav-link.active {
+  color:$brand-primary;
 }
 .tagline{
-  font-style: italic;
-  font-size: 0.9rem;
-  position:absolute;
-  left:58px;
-  top:40px;
   color: white;
+  font-size: 0.9em;
+  padding-left: 5px;
+  line-height: 1em;
 }
+.tagline-sm{
+  color: white;
+  font-size:0.6em;
+
+}
+
+
+.result-card .card-header{
+  padding: 5px;
+  padding-left: 10px;
+  padding-right: 10px;
+  font-size: 1em;
+}
+
+.result-card .card-header h5{
+  font-size: 1em;
+  font-weight: bold;
+}
+
+.result-card .card-block {
+  position: relative;
+}
+
+.result-card .card-block ul {
+  padding-left: 20px;
+}
+
+.collapse-toggler {
+  position: absolute;
+  right: 15px;
+}
+
 .footer{
   font-size: 0.9rem;
   color: white;
 }
-
+.contact{
+  width: 170px;
+  float: left;
+  margin-left: 20px;
+  margin-bottom: 10px;
+}
+.contact-head{
+  padding-bottom: 2px;
+  border-bottom-color: #EEEEEE;
+  border-bottom-width: 1px;
+  border-bottom-style: solid;
+}
+.contact-item a{
+  color:white;
+}
+.copyright{
+  padding-top:10px;
+  float:left;
+  width:100%;
+}
 .image-container img {
   margin:auto;
   display:block;
@@ -49,87 +131,23 @@ $brand-inverse: #cebc63;
   padding:10px;
 }
 
-.head-banner{
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  overflow: hidden;
-  height:240px;
-  width:100%;
-  z-index: -1;
+.modal-dialog {
+  max-width: 800px;
 }
-.head-banner img {
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: -9999px;
-  bottom: -9999px;
-  margin: auto 0;
-  width: 100%;
-}
-.head{
-  margin-top:10px;
-  margin-bottom:140px;
-  height:90px;
-  background: rgba(0, 0, 0, 0.5);
-}
-.head-text{
-  color: white;
-  margin-left: 10px;
-  padding-top: 5px;
-  font-size: 4rem;
-  line-height: 4.3rem;
-  font-weight: bold;
-}
-.head-logo {
-  float:left;
-  margin-left: 10px;
-}
-.head-logo img {
 
+.beneficiary-header {
+  padding:3px;
 }
-.head-tagline{
-  margin-left: 12px;
-  font-style: italic;
-  font-size: 0.97rem;
-  color: white;
+.beneficiary-label {
+  font-size: 0.8rem;
+  text-align: center;
 }
-.head-nav{
 
-  background-color: #55595c;
-  padding-left: 30px;
-  margin-top:10px;
-  margin-bottom: 30px;
-  line-height: 2.5rem;
+.beneficiary-logo img {
+  display:block;
+  margin:auto;
+  max-width: 100%;
 }
-.head-nav-link{
-  padding-left: 20px;
-  padding-right: 20px;
-  color: white;
-
-  font-size:1.2rem;
-}
-.active{
+.teamname{
   color:$brand-primary;
-  font-weight: bold;
-}
-.head-message {
-  color:white;
-  margin-right:10px;
-  margin-top:10px;
-  font-weight: bold;
-}
-
-.wsite-social-item {
-  float:right;
-  margin-left: 5px;
-  margin-right: 5px;
-  padding-left: 0px;
-  padding-right: 0px;
-  font-size: 1.1em;
-  display: inline-block;
-  margin: 0 8px 10px;
-  color: white;
 }

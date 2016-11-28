@@ -1,6 +1,6 @@
 class TeamsController < ApplicationController
   def index
-    @teams = Team.order("RANDOM()")
+    @teams = Team.order("tier DESC,RANDOM()")
   end
 
   def show
@@ -9,6 +9,7 @@ class TeamsController < ApplicationController
       render 'teamnotfound'
     else
       @entries=@team.entries
+      @best_leg=@team.best_leg
     end
   end
 

@@ -21,4 +21,8 @@ class Car < ApplicationRecord
     end
     des
   end
+
+  def self.makes
+    Car.select(:make).distinct(true)
+  end
 end

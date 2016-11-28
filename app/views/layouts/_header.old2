@@ -1,0 +1,42 @@
+<div class="head-banner">
+  <%
+    if current_controller=='teams' and Rails.application.routes.recognize_path(request.env['PATH_INFO'])[:action]=='show'
+      id=Rails.application.routes.recognize_path(request.env['PATH_INFO'])[:id]
+      team=Team.where(ref: id).first
+      pht=team.photo_random_landscape
+      img=pht[:url_original]
+      style="margin-left:400px;max-width:1000px;"
+    else
+      img=image_url('banners/b' + (rand(20)+1).to_s + '.jpg')
+      style="margin:auto;"
+    end
+  %>
+  <img style="<%= style%>" src="<%= img%>"/>
+</div>
+<div class="head">
+  <div class ="head-logo"><img src="<%= image_url('eclogo.png')%>"/></div>
+
+  <div>
+  <div class="head-text">Elephant Charge</div>
+  <div class="head-tagline">Dust,sweat & gears</div>
+  </div>
+  <div>
+
+    <div class="head-message">4X4 FOR WILDLIFE CONSERVATION IN ZAMBIA</div>
+  </div>
+</div>
+<nav class="head-nav">
+  <a class="head-nav-link <%= current_controller=='application' ? 'active' : '' %>" href="/">About</a>
+  <a class="head-nav-link <%= current_controller=='teams' ? 'active' : '' %>" href="/teams">Teams</a>
+  <a class="head-nav-link <%= current_controller=='beneficiaries' ? 'active' : '' %>" href="/beneficiaries">Beneficiaries</a>
+  <a class="head-nav-link <%= current_controller=='charges' ? 'active' : '' %>" href="/charges">Charges</a>
+  <a class="head-nav-link <%= current_controller=='cars' ? 'active' : '' %>" href="/cars">Cars</a>
+  <a class="head-nav-link <%= current_controller=='info' ? 'active' : '' %>" href="#">Info</a>
+  <a class="head-nav-link <%= current_controller=='contact' ? 'active' : '' %>" href="#">Contact</a>
+
+
+
+  <a class="wsite-social-item wsite-social-instagram" href="//instagram.com/elephant.charge.zambia" target="_blank"><span class="wsite-social-item-inner"></span></a>
+  <a class="wsite-social-item wsite-social-twitter" href="//twitter.com/elephantcharge1" target="_blank"><span class="wsite-social-item-inner"></span></a>
+  <a class="wsite-social-item wsite-social-facebook" href="//facebook.com/ElephantCharge" target="_blank"><span class="wsite-social-item-inner"></span></a>
+</nav>

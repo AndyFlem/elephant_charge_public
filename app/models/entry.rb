@@ -33,6 +33,34 @@ class Entry < ApplicationRecord
   #dist_net;
   #dist_best
 
+  def result_summary
+    res=[]
+    if self.position_net_distance and self.position_net_distance<=3
+      res<<format_position(self.position_net_distance) + ' place for the shortest net distance.'
+    end
+    if self.position_distance<=3
+      res<<format_position(self.position_distance) + ' place for the shortest overall distance.'
+    end
+    if self.position_gauntlet and self.position_gauntlet<=3
+      res<<format_position(self.position_gauntlet) + ' place for the shortest distance on the gauntlet.'
+    end
+    if self.position_tsetse1 and self.position_tsetse1<=3
+      res<<format_position(self.position_tsetse1) + ' place for the shortest distance on tsetse line 1.'
+    end
+    if self.position_tsetse2 and self.position_tsetse2<=3
+      res<<format_position(self.position_tsetse2) + ' place for the shortest distance on tsetse line 2.'
+    end
+    res
+  end
+
+  def description
+    txt=self.team.long_name + ' '
+    unless self.name==self.team.name
+      txt+=' entered as ' + self.name + ' '
+    end
+    txt+='in the ' + self.charge.name
+  end
+
   def start_time
     unless self.checkins.nil? or self.checkins.count==0
       self.checkins.order(:checkin_number).first.checkin_timestamp
@@ -55,20 +83,6 @@ class Entry < ApplicationRecord
     type << 'Bikes' if self.is_bikes
     type << '' if type.count==0
     type.join(', ')
-  end
-
-
-
-  def result
-    if self.result_state_ref=='PROCESSED'
-      if self.result_guards==self.charge.guards_expected+1
-        'Complete'
-      else
-        'DNF ' + self.result_guards.to_s
-      end
-    else
-      'Unknown'
-    end
   end
 
   protected

@@ -1,30 +1,54 @@
-<div class="head-banner">
-  <img style="transform: none;" src="<%= image_url('banners/b' + (rand(20)+1).to_s + '.jpg')%>"/>
-</div>
-<div class="head">
-  <div class ="head-logo"><img src="<%= image_url('eclogo.png')%>"/></div>
+<nav class="navbar navbar-dark">
 
-  <div style="float:left;">
-  <div class="head-text">Elephant Charge</div>
-  <div class="head-tagline">Dust,sweat & gears</div>
+  <!-- Larger  -->
+  <div class="hidden-sm-down float-xs-left ">
+    <table>
+      <tr>
+        <td><%= image_tag('eclogo-lg.png') %></td>
+      </tr>
+      <tr>
+        <td><div class="tagline">Dust, sweat & gears</div></td>
+      </tr>
+    </table>
+
+
   </div>
-  <div style="float:right;">
 
-    <div class="head-message">4X4 FOR WILDLIFE CONSERVATION IN ZAMBIA</div>
+
+  <!-- Smaller  -->
+  <div class="hidden-md-up ">
+    <div class="head-logo"><%= image_tag('eclogo-sm.png') %></div>
+    <div class="brand">Elephant<br/>Charge
+      <div class="tagline-sm">Dust, sweat & gears</div>
+    </div>
   </div>
-</div>
-<nav class="head-nav">
-  <a class="head-nav-link <%= current_controller=='application' ? 'active' : '' %>" href="/">About</a>
-  <a class="head-nav-link <%= current_controller=='teams' ? 'active' : '' %>" href="/teams">Teams</a>
-  <a class="head-nav-link <%= current_controller=='beneficiaries' ? 'active' : '' %>" href="/beneficiaries">Beneficiaries</a>
-  <a class="head-nav-link <%= current_controller=='charges' ? 'active' : '' %>" href="/charges">Charges</a>
-  <a class="head-nav-link <%= current_controller=='cars' ? 'active' : '' %>" href="/charges">Cars</a>
-  <a class="head-nav-link <%= current_controller=='info' ? 'active' : '' %>" href="#">Info</a>
-  <a class="head-nav-link <%= current_controller=='contact' ? 'active' : '' %>" href="#">Contact</a>
+  <button class="navbar-toggler hidden-md-up float-xs-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"></button>
 
+  <!-- Common  -->
+  <div class="collapse navbar-toggleable-sm head-navbar float-xs-right" id="navbarResponsive">
+    <ul class="nav navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link <%= current_controller=='application' ? 'active' : '' %>" href="/">About</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link <%= current_controller=='teams' ? 'active' : '' %>" href="/teams">Teams</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link <%= current_controller=='beneficiaries' ? 'active' : '' %>" href="/beneficiaries">Conservation</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link <%= current_controller=='charges' ? 'active' : '' %>" href="/charges">Charges</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link <%= current_controller=='cars' ? 'active' : '' %>" href="/cars">Cars</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link <%= current_controller=='info' ? 'active' : '' %>" href="#">Info</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link <%= current_controller=='contact' ? 'active' : '' %>" href="#">Contact</a>
+      </li>
+    </ul>
 
-
-  <a class="wsite-social-item wsite-social-instagram" href="//instagram.com/elephant.charge.zambia" target="_blank"><span class="wsite-social-item-inner"></span></a>
-  <a class="wsite-social-item wsite-social-twitter" href="//twitter.com/elephantcharge1" target="_blank"><span class="wsite-social-item-inner"></span></a>
-  <a class="wsite-social-item wsite-social-facebook" href="//facebook.com/ElephantCharge" target="_blank"><span class="wsite-social-item-inner"></span></a>
+  </div>
 </nav>

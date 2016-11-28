@@ -1,0 +1,10 @@
+
+the <%= entry_leg.leg.charge.name %> when they charged from
+<em><%= entry_leg.checkin1.name %></em> to
+<em><%= entry_leg.checkin2.name %></em> in
+<%= number_with_precision(entry_leg.distance_m/1000.0, precision: 2, delimiter: ',') %>km,
+
+<b><%= number_with_precision(entry_leg.excess, precision: 0, delimiter: ',')%>m</b> or
+<%= number_with_precision(entry_leg.multiple, precision: 2, delimiter: ',') %> times over the straight line distance of
+<%= number_with_precision(entry_leg.leg.distance_m/1000.0, precision: 2, delimiter: ',') %>km.
+They were <b><%= format_position(entry_leg.position) %></b> place out of <%=entry_leg.leg.entries.count %> teams on this leg.

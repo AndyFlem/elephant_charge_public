@@ -1,0 +1,18 @@
+<p>
+  A total of <b>$<%= number_with_precision(charge.raised_dollars, precision: 0, delimiter: ',') %></b> was raised for
+  <b><%= charge.grants.count %> conservation organisations</b> by
+  <b><%= charge.entries.count %> teams</b> including
+  <b>$<%= number_with_precision(charge.entries.order(position_raised: :asc)[0].raised_dollars, precision: 0, delimiter: ',') %></b> raised by
+  <span class="teamname"><%= charge.entries.order(position_raised: :asc)[0].team.long_name %></span> and
+  <b>$<%= number_with_precision(charge.entries.order(position_raised: :asc)[1].raised_dollars, precision: 0, delimiter: ',') %></b> raised by
+  <span class="teamname"><%= charge.entries.order(position_raised: :asc)[1].team.long_name %></span>.
+  The shortest net distance was <b><%= number_with_precision(charge.entries.where('dist_net IS NOT NULL').order(position_net_distance: :asc)[0].dist_net/1000.0, precision: 2, delimiter: ',') %>km</b> by
+  <span class="teamname"><%= charge.entries.where('dist_net IS NOT NULL').order(position_net_distance: :asc)[0].team.long_name %></span>.
+</p>
+<p>
+  <b><%= charge.entries.where(result_description: 'Complete').count.to_s %> teams</b> completed the course with
+  <span class="teamname"><%= charge.entries.order(position_distance: :asc).first.team.long_name %></span>
+  finishing in the shortest distance of
+  <b><%= number_with_precision(charge.entries.order(position_distance: :asc).first.dist_competition/1000.0, precision: 2, delimiter: ',') %>km</b>.
+  The shortest possible straight line distance for completing the course was <b><%= number_with_precision(charge.entries.where(result_description: "Complete").minimum(:dist_best)/1000.0, precision: 2, delimiter: ',') %>km</b>.
+</p>
