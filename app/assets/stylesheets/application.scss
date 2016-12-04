@@ -1,15 +1,16 @@
-$font-size-root:13px;
 
+$font-size-root:13px;
 $brand-primary: #df5409; //#cebc63;
 $brand-inverse: #cebc63;
 
-/*
- * ...boilerplate application.css.scss comments
- *= require_tree .
- *= require_self
- */
 
 @import "bootstrap";
+
+@import "beneficiaries";
+@import "charges";
+@import "teams";
+@import "entries";
+@import "leaflet";
 
 .navbar {
   background-color: #444444;
@@ -68,34 +69,20 @@ $brand-inverse: #cebc63;
 .tagline-sm{
   color: white;
   font-size:0.6em;
-
-}
-
-
-.result-card .card-header{
-  padding: 5px;
-  padding-left: 10px;
-  padding-right: 10px;
-  font-size: 1em;
-}
-
-.result-card .card-header h5{
-  font-size: 1em;
-  font-weight: bold;
-}
-
-.result-card .card-block {
-  position: relative;
-}
-
-.result-card .card-block ul {
-  padding-left: 20px;
 }
 
 .collapse-toggler {
   position: absolute;
   right: 15px;
+  bottom:10px;
 }
+
+.map_tooltip{
+  padding: 1px;
+  font-size: 0.675rem;
+  font-weight: bold;
+}
+
 
 .footer{
   font-size: 0.9rem;
@@ -135,19 +122,11 @@ $brand-inverse: #cebc63;
   max-width: 800px;
 }
 
-.beneficiary-header {
-  padding:3px;
-}
-.beneficiary-label {
-  font-size: 0.8rem;
-  text-align: center;
-}
 
-.beneficiary-logo img {
-  display:block;
-  margin:auto;
-  max-width: 100%;
-}
-.teamname{
-  color:$brand-primary;
+.high-column{
+  background-color: $brand-primary;
+  color: white;
+  font-weight: bold;
+  border-radius: 6px;
+  margin-right: 3px;
 }

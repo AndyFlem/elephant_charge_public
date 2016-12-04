@@ -22,6 +22,51 @@ class Charge < ApplicationRecord
                     styles: { medium: "300x300", thumb: "100x100" },
                     default_url: "/images/:style/missing.png"
 
+
+  def long_name
+    self.name + (self.location=='' ? '' : ' - ' + self.location)
+  end
+
+  def self.awards ref
+    case ref
+      when :net_distance
+        "<i>Country Choice Trophy</i> - ".html_safe
+      when :raised
+        "<i>Sausage Tree Trophy</i> - ".html_safe
+      when :distance
+        "<i>Castle Fleming Trophy</i> - ".html_safe
+      when :gauntlet
+        "<i>Bowden Trophy</i> - ".html_safe
+      when :tsetse1
+        "<i>Sanctuary Trophy</i> - ".html_safe
+      when :tsetse2
+        "<i>Khal Amazi Trophy</i> - ".html_safe
+      when :ladies
+        "<i>Silky Cup</i> - ".html_safe
+      when :bikes
+        "<i>Dean Cup</i> - ".html_safe
+      when :spirit
+        "<i>Rhino Charge Trophy</i> - ".html_safe
+      else
+        ''.html_safe
+    end
+  end
+
+
+  def map_center_latitude
+    if map_center.nil?
+      nil
+    else
+      map_center.y
+    end
+  end
+  def map_center_longitude
+    if map_center.nil?
+      nil
+    else
+      map_center.x
+    end
+  end
   
   def raised_dollars
     sm=0

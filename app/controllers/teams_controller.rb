@@ -4,15 +4,13 @@ class TeamsController < ApplicationController
   end
 
   def show
-    @team=Team.where(ref: params[:id]).first
+    @team=Team.find_by_ref(params[:ref])
     if @team.nil?
       render 'teamnotfound'
     else
-      @entries=@team.entries
+      @entries=@team.entries.joins(:charge).order('charges.charge_date desc')
       @best_leg=@team.best_leg
     end
   end
-
-  private
 
 end

@@ -1,6 +1,4 @@
 class Entry < ApplicationRecord
-  include FriendlyId
-  friendly_id :car_no, use: :finders
 
   has_one :entry_geom
   belongs_to :charge, touch: true
@@ -14,43 +12,45 @@ class Entry < ApplicationRecord
   has_many :entry_legs
   has_many :photos, as: :photoable
 
-  has_attached_file :badge,
-                    styles: { medium: "200x200", thumb: "100x100" },
-                    default_url: "/images/:style/missing.png"
-  validates_attachment_content_type :badge, content_type: /\Aimage\/.*\z/
-
-  #dist_penalty_gauntlet;
-  #dist_penalty_nongauntlet;
-  #dist_nongauntlet;
-  #dist_gauntlet;
-  #dist_withpentalty_gauntlet;
-  #dist_withpentalty_nongauntlet;
-  #dist_multiplied_gauntlet;
-  #dist_real;
-  #dist_competition;
-  #dist_tsetse1;
-  #dist_tsetse2;
-  #dist_net;
-  #dist_best
 
   def result_summary
     res=[]
+    if self.charge.spirit_entry_id==self.id
+      res<<[0,(Charge.awards(:spirit) + ' Spirit of the Charge'.html_safe)]
+    end
+    if self.charge.shafted_entry_id==self.id
+      res<<[0.1,('Properly Shafted Award'.html_safe)]
+    end
     if self.position_net_distance and self.position_net_distance<=3
-      res<<format_position(self.position_net_distance) + ' place for the shortest net distance.'
+      res<<[self.position_net_distance,((self.position_net_distance ==1 ? Charge.awards(:net_distance) : '') +
+          format_position(self.position_net_distance) + ' place for the shortest net distance').html_safe]
+    end
+
+    if self.position_raised and self.position_raised<=3
+      res<<[self.position_raised+0.1,((self.position_raised==1 ? Charge.awards(:raised) : '') +
+          format_position(self.position_raised) + ' place for money raised for conservation').html_safe]
     end
     if self.position_distance<=3
-      res<<format_position(self.position_distance) + ' place for the shortest overall distance.'
+      res<<[self.position_distance+0.2,((self.position_distance==1 ? Charge.awards(:distance) : '') +
+          format_position(self.position_distance) + ' place for the shortest overall distance').html_safe]
     end
     if self.position_gauntlet and self.position_gauntlet<=3
-      res<<format_position(self.position_gauntlet) + ' place for the shortest distance on the gauntlet.'
+      res<<[self.position_gauntlet+0.3,((self.position_gauntlet ==1 ? Charge.awards(:gauntlet) : '') +
+          format_position(self.position_gauntlet) + ' place for the shortest distance on the gauntlet').html_safe]
     end
     if self.position_tsetse1 and self.position_tsetse1<=3
-      res<<format_position(self.position_tsetse1) + ' place for the shortest distance on tsetse line 1.'
+      res<<[self.position_tsetse1+0.4,((self.position_tsetse1==1 ? Charge.awards(:tsetse1) : '') +
+          format_position(self.position_tsetse1) + ' place for the shortest distance on tsetse line 1').html_safe]
     end
     if self.position_tsetse2 and self.position_tsetse2<=3
-      res<<format_position(self.position_tsetse2) + ' place for the shortest distance on tsetse line 2.'
+      res<<[self.position_tsetse2+0.5,((self.position_tsetse2==1 ? Charge.awards(:tsetse2) : '') +
+          format_position(self.position_tsetse2) + ' place for the shortest distance on tsetse line 2').html_safe]
     end
-    res
+    if self.position_ladies and self.position_ladies<=3
+      res<<[self.position_ladies+0.6,((self.position_ladies==1 ? Charge.awards(:ladies) : '') +
+          format_position(self.position_ladies) + ' place for the shortest distance by a ladies team').html_safe]
+    end
+    res.sort{|x,y| x[0]<=> y[0]}.collect{|p| p[1]}
   end
 
   def description
@@ -59,6 +59,17 @@ class Entry < ApplicationRecord
       txt+=' entered as ' + self.name + ' '
     end
     txt+='in the ' + self.charge.name
+  end
+
+  def photo_random_landscape()
+    pht=self.photos.order("RANDOM()").limit(1).first
+    if pht
+      entry=pht.photoable
+      ret={url_original: pht.photo.url(:original),url_medium: pht.photo.url(:medium), description: entry.description}
+    else
+      ret={url_medium: '/assets/thumb/ec_logo_col.png', description: ''}
+    end
+    ret
   end
 
   def start_time

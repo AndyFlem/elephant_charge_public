@@ -2,10 +2,23 @@ class ChargesController < ApplicationController
 
   def index
     @charges=Charge.all.order(ref: :desc)
+
+    respond_to do |format|
+      format.html # index.html.erb
+      format.json {
+        render json: @charges.collect {|p| {
+            :id=>p.id,
+            :name =>p.name,
+            :ref=>p.ref,
+            :lat=>p.map_center_latitude,
+            :lon=>p.map_center_longitude
+        } }
+      }
+    end
   end
 
   def show
-    @charge=Charge.where(ref: params[:id]).first
+    @charge=Charge.find_by_ref(params[:id])
     if @charge.nil?
       render 'chargenotfound'
     else

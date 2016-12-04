@@ -2,13 +2,14 @@ class Car < ApplicationRecord
   has_many :entries
   has_many :charges, through: :entries
   has_many :teams, through: :entries
+  has_many :photos, -> {where is_car: true} , through: :entries
 
   validates :name, presence: true
 
   def description
     des=''
     if !self.colour.nil? and self.colour!=""
-      des+=self.colour.capitalize + ' '
+      des+=self.colour.downcase + ' '
     end
     if !self.year.nil? and self.year!=""
       des+=self.year.to_s + ' '
@@ -25,4 +26,5 @@ class Car < ApplicationRecord
   def self.makes
     Car.select(:make).distinct(true)
   end
+
 end

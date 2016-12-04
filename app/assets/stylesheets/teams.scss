@@ -1,0 +1,25 @@
+
+.result-card .card-header{
+  padding: 5px;
+  padding-left: 10px;
+  padding-right: 10px;
+  font-size: 1em;
+}
+
+.result-card .card-header h5{
+  font-size: 1em;
+  font-weight: bold;
+}
+
+.result-card .card-block {
+  position: relative;
+}
+
+.result-card .card-block ul {
+  padding-left: 20px;
+}
+
+
+.teamname{
+  color:$brand-primary;
+}

@@ -12,6 +12,7 @@ module ElephantCharge
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
     config.autoload_paths += %W(#{config.root}/lib)
+    #config.autoload_paths += %W(#{config.root}/app/decorators)
     config.active_record.time_zone_aware_types = [:datetime, :time]
     config.assets.precompile += %w(vendor/assets/images/*)
     config.active_record.schema_format = :sql

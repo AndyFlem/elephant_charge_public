@@ -1,3 +1,11 @@
+<%
+  if obj.class==Beneficiary
+    beneficiary=obj
+  else
+    beneficiary=obj.beneficiary
+  end
+%>
+
 <div class="card">
   <div class="card-header beneficiary-header">
     <div class="beneficiary-label"><%= beneficiary.name %></div>
@@ -5,4 +13,9 @@
   <div class="card-block beneficiary-logo">
     <%= image_tag beneficiary.logo(:thumb)%>
   </div>
+  <% if obj.class==Grant %>
+    <div class="card-header beneficiary-header">
+      <div class="beneficiary-label">$<%=  number_with_precision(obj.grant_dollars, precision: 0, delimiter: ',') %></div>
+    </div>
+  <% end %>
 </div>

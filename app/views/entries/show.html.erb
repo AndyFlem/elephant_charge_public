@@ -1,0 +1,56 @@
+
+<!-- photos -->
+
+
+<!-- downloads -->
+
+<!-- sponsors -->
+
+<!-- beneficiaries -->
+
+<!-- CAR -->
+<div class="col-lg-8">
+
+<%= @entry.car.description %>
+<%= image_tag @photo.photo(:medium) %>
+</div>
+<!-- awards and result summary -->
+
+
+<!-- LEGS -->
+<div class="col-lg-8">
+<table class="table">
+  <% @entry_legs.each_with_index do |el,i| %>
+    <tr>
+      <td><%= bold {small_caps {'leg'}} %> <%= i+1 %></td>
+      <td class="high-column">
+        <i><%= el.guard_from.name %></i> <%= small_caps {'to'} %> <i><%= el.guard_to.name %></i>
+
+      </td>
+      <td>
+        <%= format_position(el.position) %> <%= small_caps {'of'} %> <%= el.leg.entries.count %>
+      </td>
+      <td>
+        <%= bold {format_meters(el.distance_m)}  %> <%= small_caps {'in'} %> <%= format_seconds(el.elapsed_s) %>
+        <%= small_caps {'at'} %> <%= number_with_precision(el.speed,precision:1) %>kmh
+      </td>
+      <td>
+        <%= number_with_precision(el.multiple,precision:2) %><%= small_caps {'x leg of'}%> <%= format_meters(el.leg.distance_m)  %>
+      </td>
+    </tr>
+  <% end %>
+</table>
+</div>
+
+
+<!-- map -->
+<div class="col-lg-4">
+  <div class="card">
+    <div class="card-block">
+      <div id='map-entry'
+           data-center-lat="<%= @charge.map_center_latitude %>"
+           data-center-lon="<%= @charge.map_center_longitude %>"
+           data-scale="<%= @charge.map_scale %>"></div>
+    </div>
+  </div>
+</div>

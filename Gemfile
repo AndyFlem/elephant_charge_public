@@ -1,6 +1,8 @@
 source 'https://rubygems.org'
 
-gem 'bcrypt', '3.1.11'
+
+#gem 'activemodel-serializers-xml', git: 'https://github.com/rails/activemodel-serializers-xml'
+#gem 'draper'
 
 gem "paperclip", "~> 5.0.0"
 
