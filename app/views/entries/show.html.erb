@@ -1,4 +1,18 @@
+<%= render 'photos/photomodal' %>
 
+<div class="col-md-8">
+  <div class="card">
+    <div class="card-header">
+      <h3><a href="<%= team_path(@team)%>">Car <%= @entry.car_no%> - <%= @team.long_name %></a> - <a href="<%= charge_path(@charge)%>"><%= @charge.name %></a></h3>
+    </div>
+    <div class="card-block">
+      <%= @entry.car.description %>
+      <a onclick="showModal(this)" data-image="<%= image_url(@photo.photo(:original))%>" data-description="<%= @photo.caption%>">
+        <%= image_tag @photo.photo(:medium) %>
+      </a>
+    </div>
+  </div>
+</div>
 <!-- photos -->
 
 
@@ -9,11 +23,7 @@
 <!-- beneficiaries -->
 
 <!-- CAR -->
-<div class="col-lg-8">
 
-<%= @entry.car.description %>
-<%= image_tag @photo.photo(:medium) %>
-</div>
 <!-- awards and result summary -->
 
 
@@ -24,8 +34,9 @@
     <tr>
       <td><%= bold {small_caps {'leg'}} %> <%= i+1 %></td>
       <td class="high-column">
-        <i><%= el.guard_from.name %></i> <%= small_caps {'to'} %> <i><%= el.guard_to.name %></i>
-
+        <a href="javascript:void(0)" class="map-selector" data-entry-leg-id="<%= el.id%>">
+          <i><%= el.guard_from.name %></i> <%= small_caps {'to'} %> <i><%= el.guard_to.name %></i>
+        </a>
       </td>
       <td>
         <%= format_position(el.position) %> <%= small_caps {'of'} %> <%= el.leg.entries.count %>
@@ -50,7 +61,12 @@
       <div id='map-entry'
            data-center-lat="<%= @charge.map_center_latitude %>"
            data-center-lon="<%= @charge.map_center_longitude %>"
-           data-scale="<%= @charge.map_scale %>"></div>
+           data-scale="<%= @charge.map_scale %>"
+           data-charge="<%= @charge.ref %>"
+           data-entry="<%= @entry.id %>"
+      >
+
+      </div>
     </div>
   </div>
 </div>

@@ -1,5 +1,16 @@
 class EntriesController < ApplicationController
 
+  def json_index
+    charge=Charge.find_by_ref(params[:id])
+    @entries=charge.entries.order(:car_no)
+    render json: @entries
+  end
+
+  def json_show
+    @entry=Entry.find(params[:entry_id])
+    render json: @entry
+  end
+
   def show
     @charge=Charge.find_by_ref(params[:id])
     if @charge.nil?
@@ -16,7 +27,7 @@ class EntriesController < ApplicationController
           @photo=@entry.car.photos.order("RANDOM()").first
         end
         @entry_legs=@entry.entry_legs.joins(:leg).order(:leg_number)
-      end
+       end
     end
   end
 end

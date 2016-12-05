@@ -17,6 +17,7 @@ module ElephantCharge
     config.assets.precompile += %w(vendor/assets/images/*)
     config.active_record.schema_format = :sql
     config.time_zone = 'Africa/Harare'
+
   end
 end
 

@@ -13,7 +13,7 @@ class Team < ApplicationRecord
   end
 
   def long_name
-    unless self.prefix.nil? or self.prefix==""
+    unless self.prefix.blank?
       self.prefix + ' ' + self.name
     else
       self.name

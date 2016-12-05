@@ -9,14 +9,15 @@ def bold
 end
 
 def entry_path(entry)
-  entry.charge.ref + '/' + entry.team.ref
+  '/' + entry.charge.ref + '/' + entry.team.ref
 end
 def charge_path(charge)
-  charge.ref
+  '/' + charge.ref
 end
 def team_path(team)
-  team.ref
+  '/' + team.ref
 end
+
 
 def format_meters(m)
   if m>1000

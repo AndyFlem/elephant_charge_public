@@ -124,9 +124,12 @@ $brand-inverse: #cebc63;
 
 
 .high-column{
-  background-color: $brand-primary;
+  background-color: #55595c;
   color: white;
   font-weight: bold;
   border-radius: 6px;
   margin-right: 3px;
+}
+.high-column a {
+  color: white;
 }

@@ -9,6 +9,12 @@ Rails.application.routes.draw do
   get 'beneficiaries', to: 'beneficiaries#index'
   get 'cars', to: 'cars#index'
 
+  #JSON STUFF
+  get ':id/guards',constraints: {id: /\d{4}/}, to: 'guards#json_index'
+  get ':id/entries',constraints: {id: /\d{4}/}, to: 'entries#json_index'
+  get 'entry/:entry_id',to: 'entries#json_show'
+  get 'entry_legs/:entry_id', to: 'entry_legs#json_index'
+
   #charge by year
   get ':id', constraints: {id: /\d{4}/}, to: 'charges#show'
 
@@ -37,5 +43,7 @@ Rails.application.routes.draw do
   #cars by id
   get 'cars/:id', to: 'cars#show'
   get 'car/:id', to: 'cars#show'
+
+
 end
 

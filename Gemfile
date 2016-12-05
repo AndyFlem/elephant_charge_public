@@ -4,6 +4,10 @@ source 'https://rubygems.org'
 #gem 'activemodel-serializers-xml', git: 'https://github.com/rails/activemodel-serializers-xml'
 #gem 'draper'
 
+gem 'rgeo-geojson'
+
+gem 'active_model_serializers', '~> 0.10.0'
+
 gem "paperclip", "~> 5.0.0"
 
 gem 'friendly_id', :git => 'git://github.com/norman/friendly_id.git'

@@ -20,7 +20,7 @@
   <% @entries.each do |entry| %>
     <div class="card">
       <div class="card-header">
-        <h5><%= entry.charge.long_name %></h5>
+        <h5><a href="<%= entry_path(entry) %>"><%= entry.charge.long_name %></a></h5>
         <b><%= entry.charge.entries.count %></b> entires and <b><%= entry.charge.entries.where(result_description: 'Complete').count%></b> finishers
       </div>
       <div class="card-block">

@@ -14,7 +14,7 @@
           <div class="card-block">
             <%= render :layout => '/application/collapselist', :locals => {:show => 3, :list_id => 'net_distance', :items => @entries_net} do |item| %>
                 <%= format_position(item.position_net_distance) %>
-                <span class="teamname"><%= item.team.long_name %></span> in
+                <a href="<%= entry_path(item) %>" class="teamname"><%= item.team.long_name %></a> in
                 <b><%= number_with_precision(item.dist_net/1000.0, precision: 2, delimiter: ',') %>km</b>
             <% end %>
           </div>
@@ -28,7 +28,7 @@
           <div class="card-block">
             <%= render :layout => '/application/collapselist', :locals => {:show => 3, :list_id => 'raised', :items => @entries_raised} do |item| %>
                 <%= format_position(item.position_raised) %>
-                <span class="teamname"><%= item.team.long_name %></span> with
+                <a href="<%= entry_path(item) %>" class="teamname"><%= item.team.long_name %></a> with
                 <b>$<%= number_with_precision(item.raised_dollars, precision: 0, delimiter: ',') %></b>
             <% end %>
           </div>
@@ -42,7 +42,7 @@
           <div class="card-block">
             <%= render :layout => '/application/collapselist', :locals => {:show => 3, :list_id => 'distance', :items => @entries_dist} do |item| %>
                 <%= format_position(item.position_distance) %>
-                <span class="teamname"><%= item.team.long_name %></span>
+                <a href="<%= entry_path(item) %>" class="teamname"><%= item.team.long_name %></a>
                 <% if item.result_description=='Complete' %>
                     completed in
                     <b><%= number_with_precision(item.dist_competition/1000.0, precision: 2, delimiter: ',') %>km</b>
@@ -61,7 +61,7 @@
           <div class="card-block">
             <%= render :layout => '/application/collapselist', :locals => {:show => 3, :list_id => 'gauntlet', :items => @entries_gaunt} do |item| %>
                 <%= format_position(item.position_gauntlet) %>
-                <span class="teamname"><%= item.team.long_name %></span> in
+                <a href="<%= entry_path(item) %>" class="teamname"><%= item.team.long_name %></a> in
                 <b><%= number_with_precision(item.dist_gauntlet/1000.0, precision: 2, delimiter: ',') %>km</b>
             <% end %>
           </div>
@@ -75,7 +75,7 @@
           <div class="card-block">
             <%= render :layout => '/application/collapselist', :locals => {:show => 3, :list_id => 'tsetse1', :items => @entries_tsetse1} do |item| %>
                 <%= format_position(item.position_tsetse1) %>
-                <span class="teamname"><%= item.team.long_name %></span> in
+                <a href="<%= entry_path(item) %>" class="teamname"><%= item.team.long_name %></a> in
                 <b><%= number_with_precision(item.dist_tsetse1/1000.0, precision: 2, delimiter: ',') %>km</b>
             <% end %>
           </div>
@@ -89,7 +89,7 @@
           <div class="card-block">
             <%= render :layout => '/application/collapselist', :locals => {:show => 3, :list_id => 'tsetse2', :items => @entries_tsetse2} do |item| %>
                 <%= format_position(item.position_tsetse2) %>
-                <span class="teamname"><%= item.team.long_name %></span> in
+                <a href="<%= entry_path(item) %>" class="teamname"><%= item.team.long_name %></a> in
                 <b><%= number_with_precision(item.dist_tsetse2/1000.0, precision: 2, delimiter: ',') %>km</b>
             <% end %>
           </div>
@@ -104,7 +104,7 @@
               <div class="card-block">
                 <%= render :layout => '/application/collapselist', :locals => {:show => 3, :list_id => 'ladies', :items => @entries_ladies} do |item,i| %>
                     <%= format_position(i+1) %>
-                    <span class="teamname"><%= item.team.long_name %></span>
+                    <a href="<%= entry_path(item) %>" class="teamname"><%= item.team.long_name %></a>
                     <% if item.result_description=='Complete' %>
                         completed in
                         <b><%= number_with_precision(item.dist_competition/1000.0, precision: 2, delimiter: ',') %>
@@ -126,7 +126,7 @@
               <div class="card-block">
                 <%= render :layout => '/application/collapselist', :locals => {:show => 3, :list_id => 'bikes', :items => @entries_bikes} do |item,i| %>
                     <%= format_position(i+1) %>
-                    <span class="teamname"><%= item.team.long_name %></span>
+                    <a href="<%= entry_path(item) %>" class="teamname"><%= item.team.long_name %></a>
                     <% if item.result_description=='Complete' %>
                         completed in
                         <b><%= number_with_precision(item.dist_competition/1000.0, precision: 2, delimiter: ',') %>
@@ -148,7 +148,7 @@
               <div class="card-block">
                 <%= render :layout => '/application/collapselist', :locals => {:show => 3, :list_id => 'bikes', :items => @entries_net_bikes} do |item,i| %>
                     <%= format_position(i+1) %>
-                    <span class="teamname"><%= item.team.long_name %></span> in
+                    <a href="<%= entry_path(item) %>" class="teamname"><%= item.team.long_name %></a> in
                     <b><%= number_with_precision(item.dist_net/1000.0, precision: 2, delimiter: ',') %>km</b>
                 <% end %>
               </div>
@@ -164,7 +164,7 @@
               <div class="card-block">
                 <%= render :layout => '/application/collapselist', :locals => {:show => 3, :list_id => 'newcomer', :items => @entries_newcomer} do |item,i| %>
                     <%= format_position(i+1) %>
-                    <span class="teamname"><%= item.team.long_name %></span>
+                    <a href="<%= entry_path(item) %>" class="teamname"><%= item.team.long_name %></a>
                     <% if item.result_description=='Complete' %>
                         completed in
                         <b><%= number_with_precision(item.dist_competition/1000.0, precision: 2, delimiter: ',') %>
@@ -196,7 +196,7 @@
                 <h5><br/>Properly Shafted Award</h5>
               </div>
               <div class="card-block">
-                <p><span class="teamname"><%= @charge.shafted_entry.team.long_name %></span>
+                <p><a href="<%= entry_path(@charge.shafted_entry) %>" class="teamname"><%= @charge.shafted_entry.team.long_name %></a>
                   - <%= @charge.shafted_description %></p>
               </div>
             </div>

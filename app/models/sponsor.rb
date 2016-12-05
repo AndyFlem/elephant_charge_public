@@ -9,4 +9,6 @@ class Sponsor < ApplicationRecord
   validates_attachment_content_type :logo, content_type: /\Aimage\/.*\z/
 
 
+
+
 end
