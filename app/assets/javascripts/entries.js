@@ -20,7 +20,7 @@ $( document ).ready(function() {
             popupAnchor: [-3, -76]
         });
 
-        var orangeLine={"color": "#ff7800", "weight": 2, "opacity": 1};
+        var orangeLine={"color": "#ff7800", "weight": 3, "opacity": 1};
         var redLine={"color": "red", "weight": 2, "opacity": 1};
         var blackLine={"color": "black", "weight": 2, "opacity": 1};
 

@@ -4,7 +4,10 @@ class ChargesController < ApplicationController
     @charges=Charge.all.order(ref: :desc)
 
     respond_to do |format|
-      format.html # index.html.erb
+      format.html {
+
+
+      }# index.html.erb
       format.json {
         render json: @charges.collect {|p| {
             :id=>p.id,
@@ -38,6 +41,9 @@ class ChargesController < ApplicationController
       @finishers=@charge.entries.where(result_description: 'Complete').count
       @grants=@charge.grants.order("RANDOM()")
       @shortest=@charge.entries.where(result_description: "Complete").minimum(:dist_best)
+
+
+
     end
   end
 

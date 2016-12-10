@@ -1,18 +1,45 @@
-<p>
-  A total of <b>$<%= number_with_precision(charge.raised_dollars, precision: 0, delimiter: ',') %></b> was raised for
-  <b><%= charge.grants.count %> conservation organisations</b> by
-  <b><%= charge.entries.count %> teams</b> including
-  <b>$<%= number_with_precision(charge.entries.order(position_raised: :asc)[0].raised_dollars, precision: 0, delimiter: ',') %></b> raised by
-  <span class="teamname"><%= charge.entries.order(position_raised: :asc)[0].team.long_name %></span> and
-  <b>$<%= number_with_precision(charge.entries.order(position_raised: :asc)[1].raised_dollars, precision: 0, delimiter: ',') %></b> raised by
-  <span class="teamname"><%= charge.entries.order(position_raised: :asc)[1].team.long_name %></span>.
-  The shortest net distance was <b><%= number_with_precision(charge.entries.where('dist_net IS NOT NULL').order(position_net_distance: :asc)[0].dist_net/1000.0, precision: 2, delimiter: ',') %>km</b> by
-  <span class="teamname"><%= charge.entries.where('dist_net IS NOT NULL').order(position_net_distance: :asc)[0].team.long_name %></span>.
-</p>
-<p>
-  <b><%= charge.entries.where(result_description: 'Complete').count.to_s %> teams</b> completed the course with
-  <span class="teamname"><%= charge.entries.order(position_distance: :asc).first.team.long_name %></span>
-  finishing in the shortest distance of
-  <b><%= number_with_precision(charge.entries.order(position_distance: :asc).first.dist_competition/1000.0, precision: 2, delimiter: ',') %>km</b>.
-  The shortest possible straight line distance for completing the course was <b><%= number_with_precision(charge.entries.where(result_description: "Complete").minimum(:dist_best)/1000.0, precision: 2, delimiter: ',') %>km</b>.
-</p>
+<%
+  @raised1=charge.entries.order(position_raised: :asc)[0]
+  @raised2=charge.entries.order(position_raised: :asc)[1]
+  @shortnet=charge.entries.where('dist_net IS NOT NULL').order(position_net_distance: :asc)[0]
+  @short=charge.entries.order(position_distance: :asc).first
+  @name_sponsors=charge.charge_sponsors.naming
+  @centwidth=(100-(15*@name_sponsors.count)).to_s + "%"
+
+%>
+
+
+  <% if @name_sponsors.count>0 %>
+      <div style="float:left;width:15%">
+        <%= image_tag(@name_sponsors[0].sponsor.logo(:thumb)) %>
+      </div>
+  <% end %>
+  <div style="display: inline-block;width:<%= @centwidth %>">
+    <p>
+      A total of <b>$<%= number_with_precision(charge.raised_dollars, precision: 0, delimiter: ',') %></b> was raised
+      for
+      <b><%= charge.grants.count %> conservation organisations</b> by
+      <b><%= charge.entries.count %> teams</b> including
+      <b>$<%= number_with_precision(@raised1.raised_dollars, precision: 0, delimiter: ',') %></b> raised by
+      <a href="<%= entry_path(@raised1) %>" class="teamname"><%= @raised1.team.long_name %></a> and
+      <b>$<%= number_with_precision(@raised2.raised_dollars, precision: 0, delimiter: ',') %></b> raised by
+      <a href="<%= entry_path(@raised2) %>" class="teamname"><%= @raised2.team.long_name %></a>.
+      The shortest net distance was
+      <b><%= number_with_precision(@shortnet.dist_net/1000.0, precision: 2, delimiter: ',') %>km</b> by
+      <a href="<%= entry_path(@shortnet) %>" class="teamname"><%= @shortnet.team.long_name %></a>.
+    </p>
+    <p>
+      <b><%= charge.entries.where(result_description: 'Complete').count.to_s %> teams</b> completed the course with
+      <a href="<%= entry_path(@short) %>" class="teamname"><%= @short.team.long_name %></a>
+      finishing in the shortest distance of
+      <b><%= number_with_precision(@short.dist_competition/1000.0, precision: 2, delimiter: ',') %>km</b>.
+      The shortest possible straight line distance for completing the course was
+      <b><%= number_with_precision(charge.entries.where(result_description: "Complete").minimum(:dist_best)/1000.0, precision: 2, delimiter: ',') %>
+        km</b>.
+    </p>
+  </div>
+  <% if @name_sponsors.count>1 %>
+      <div style="float:right;width:15%">
+        <%= image_tag(@name_sponsors[1].sponsor.logo(:thumb)) %>
+      </div>
+  <% end %>

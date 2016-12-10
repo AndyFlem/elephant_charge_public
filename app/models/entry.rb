@@ -62,14 +62,14 @@ class Entry < ApplicationRecord
   end
 
   def photo_random_landscape()
-    pht=self.photos.order("RANDOM()").limit(1).first
-    if pht
-      entry=pht.photoable
-      ret={url_original: pht.photo.url(:original),url_medium: pht.photo.url(:medium), description: entry.description}
-    else
-      ret={url_medium: '/assets/thumb/ec_logo_col.png', description: ''}
-    end
-    ret
+    self.photos.order("RANDOM()").limit(1).first
+    #if pht
+    #  entry=pht.photoable
+    #  ret={url_original: pht.photo.url(:original),url_medium: pht.photo.url(:medium), description: entry.description}
+    #else
+    #  ret={url_medium: '/assets/thumb/ec_logo_col.png', description: ''}
+    #end
+    #ret
   end
 
   def start_time
