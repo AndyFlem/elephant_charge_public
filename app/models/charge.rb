@@ -3,7 +3,7 @@ class Charge < ApplicationRecord
   friendly_id :ref, use: :finders
 
   has_many :guards
-  has_many :guard_sponsors, through: :guards
+  has_many :sponsors, through: :guards
   has_many :entries
   has_many :teams, through: :entries
   has_many :charge_help_points
@@ -32,23 +32,23 @@ class Charge < ApplicationRecord
   def self.awards ref
     case ref
       when :net_distance
-        "<i>Country Choice Trophy</i> - ".html_safe
+        "<i>Country Choice Trophy</i>".html_safe
       when :raised
-        "<i>Sausage Tree Trophy</i> - ".html_safe
+        "<i>Sausage Tree Trophy</i>".html_safe
       when :distance
-        "<i>Castle Fleming Trophy</i> - ".html_safe
+        "<i>Castle Fleming Trophy</i>".html_safe
       when :gauntlet
-        "<i>Bowden Trophy</i> - ".html_safe
+        "<i>Bowden Trophy</i>".html_safe
       when :tsetse1
-        "<i>Sanctuary Trophy</i> - ".html_safe
+        "<i>Sanctuary Trophy</i>".html_safe
       when :tsetse2
-        "<i>Khal Amazi Trophy</i> - ".html_safe
+        "<i>Khal Amazi Trophy</i>".html_safe
       when :ladies
-        "<i>Silky Cup</i> - ".html_safe
+        "<i>Silky Cup</i>".html_safe
       when :bikes
-        "<i>Dean Cup</i> - ".html_safe
+        "<i>Dean Cup</i>".html_safe
       when :spirit
-        "<i>Rhino Charge Trophy</i> - ".html_safe
+        "<i>Rhino Charge Trophy</i>".html_safe
       else
         ''.html_safe
     end

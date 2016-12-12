@@ -46,9 +46,17 @@ def format_hours(hrs)
 end
 
 def format_position(pos)
-  ret='<b>1<sup>st</sup></b>'.html_safe if pos==1
-  ret='<b>2<sup>nd</sup></b>'.html_safe if pos==2
-  ret='<b>3<sup>rd</sup></b>'.html_safe if pos==3
+  ret=format_position2(pos)
+  if pos<4
+    ret='<b>' + ret + '</b>'
+  end
+  ret.html_safe
+end
+
+def format_position2(pos)
+  ret='1<sup>st</sup>'.html_safe if pos==1
+  ret='2<sup>nd</sup>'.html_safe if pos==2
+  ret='3<sup>rd</sup>'.html_safe if pos==3
   ret=(pos.to_s + '<sup>th</sup>').html_safe if pos>3
   ret
 end

@@ -10,6 +10,7 @@ class TeamsController < ApplicationController
     else
       @entries=@team.entries.joins(:charge).order('charges.charge_date desc')
       @best_leg=@team.best_leg
+      @honours=@team.honours
     end
   end
 

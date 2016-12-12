@@ -45,15 +45,48 @@ $( document ).ready(function() {
         })
 
         var tracks={};
+        var legs={};
         $.getJSON('http://' + window.location.host + '/entry_legs/' + map_entry_div.data("entry"), function (data) {
+            //console.dir(data)
             for (i=0; i<data.length;i++){
+                legs[data[i].entry_leg_id]=data[i];
                 L.geoJSON(data[i].line,{style:blackLine,
                     onEachFeature: function (feature, layer) {
                         tracks[data[i].entry_leg_id]=layer;
                     }
                 }).addTo(map_entry);
             }
+
         });
+
+        var ctx = $("#chartElevation");
+        var chartInstance = new Chart(ctx, {
+            type: 'line',
+            data: {
+                datasets: [{
+                    data: [],
+                    backgroundColor: "rgba(223,84,9,.2)",
+                    borderColor: "rgba(223,84,9,1)",
+                    pointRadius:0
+                }]
+            },
+            options: {
+                scales: {
+                    xAxes: [{
+                        type: 'linear',
+                        position: 'bottom',
+                        ticks:{fontSize:10},
+                        scaleLabel:{display:true,labelString:'',fontSize:12}
+                    }],
+                    yAxes:[{
+                        ticks:{fontSize:10,min:ctx.data('min-elev'),max:ctx.data('max-elev')},
+                        scaleLabel:{display:true,labelString:'Elevation m',fontSize:10}
+                    }]
+                },
+                legend:{display:false}
+            }
+        });
+
 
         $(".map-selector").each(function(){
             $(this).hover(function(){
@@ -65,8 +98,23 @@ $( document ).ready(function() {
 
             })
             $(this).click(function(){
+                $(".high-column").each(function(){
+                    $(this).css("background-color", "#f5f5f5")
+                    $(this).children("a").css("color", "#df5409")
+                })
+                $(this).parent().css( "background-color", "#df5409" );
+                $(this).css( "color", "white" );
                 layer=tracks[$(this).data('entry-leg-id')]
                 map_entry .fitBounds(layer.getBounds(), {padding: [20,20]});
+
+                leg=legs[$(this).data('entry-leg-id')]
+                data=leg.elevations.map(function(e){
+                    return {x:e[1],y:e[2]};
+                });
+                //console.dir(data)
+                chartInstance.data.datasets[0].data=data
+                chartInstance.options.scales.xAxes[0].scaleLabel.labelString=leg.checkin1.guard.sponsor.display_name + ' to ' + leg.checkin2.guard.sponsor.display_name
+                chartInstance.update();
             })
         })
     }

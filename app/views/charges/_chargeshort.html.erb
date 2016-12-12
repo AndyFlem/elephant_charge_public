@@ -6,12 +6,17 @@
   @name_sponsors=charge.charge_sponsors.naming
   @centwidth=(100-(15*@name_sponsors.count)).to_s + "%"
 
+  @major_sponsors=charge.charge_sponsors.major.order("RANDOM()").limit(6)
+  @cp_sponsors=charge.sponsors.order("RANDOM()")
 %>
+
+
+<div>
 
 
   <% if @name_sponsors.count>0 %>
       <div style="float:left;width:15%">
-        <%= image_tag(@name_sponsors[0].sponsor.logo(:thumb)) %>
+        <img style="max-width:100%;" src="<%= image_url(@name_sponsors[0].sponsor.logo(:thumb)) %>"></img>
       </div>
   <% end %>
   <div style="display: inline-block;width:<%= @centwidth %>">
@@ -40,6 +45,19 @@
   </div>
   <% if @name_sponsors.count>1 %>
       <div style="float:right;width:15%">
-        <%= image_tag(@name_sponsors[1].sponsor.logo(:thumb)) %>
+        <img style="max-width:100%;" src="<%= image_url(@name_sponsors[1].sponsor.logo(:thumb)) %>"></img>
       </div>
   <% end %>
+</div>
+<div style="font-size: 0px">
+  <%
+    width=100.0/@cp_sponsors.count
+    @cp_sponsors.each do |sp|
+  %>
+      <div style="width:<%= width%>%;display:inline-block;padding:5px;">
+        <img  style="max-width: 100%" src="<%= image_url(sp.logo(:thumb)) %>"></img>
+      </div>
+
+
+  <% end %>
+</div>

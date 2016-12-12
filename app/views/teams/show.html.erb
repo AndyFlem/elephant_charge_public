@@ -14,6 +14,15 @@
       <p>
         The team's best leg was <%= render 'entry_legs/description', entry_leg: @best_leg %>
       </p>
+      <% if @honours %>
+      <p>
+        <ul style="color:#df5409;">
+          <% @honours.each do |h| %>
+            <li><%= h.html_safe %></li>
+          <% end %>
+        </ul>
+      </p>
+      <% end %>
     </div>
   </div>
 
@@ -32,7 +41,7 @@
           <% else %>
             completed <b><%= entry.result_guards %></b> checkpoint<%= entry.result_guards>1 ? 's' : '' %>
           <% end %>
-          and were placed <b><%= format_position(entry.position_distance) %></b> overall.
+          and were placed <b><%= format_position(entry.position_distance.nil? ? entry.position_bikes  : entry.position_distance) %></b> overall.
 
 
 

@@ -27,6 +27,9 @@ class EntriesController < ApplicationController
           @photo=@entry.car.photos.order("RANDOM()").first
         end
         @entry_legs=@entry.entry_legs.joins(:leg).order(:leg_number)
+        @min_elev=@charge.elevation_min/100*100
+        @max_elev=(@charge.elevation_max/100*100)+100
+        @results=@entry.result_summary(1000)
        end
     end
   end
