@@ -1,7 +1,7 @@
 class BeneficiariesController < ApplicationController
 
   def index
-
+    @ben=Beneficiary.all.order("RANDOM()")
   end
 
   def show

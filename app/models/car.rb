@@ -3,28 +3,25 @@ class Car < ApplicationRecord
   has_many :charges, through: :entries
   has_many :teams, through: :entries
   has_many :photos, -> {where is_car: true} , through: :entries
+  belongs_to :make
 
   validates :name, presence: true
 
   def description
     des=''
-    if !self.colour.nil? and self.colour!=""
+    if !self.colour.blank?
       des+=self.colour.downcase + ' '
     end
-    if !self.year.nil? and self.year!=""
+    if !self.year.blank?
       des+=self.year.to_s + ' '
     end
-    if !self.make.nil? and self.make!=""
-      des+=self.make.capitalize + ' '
+    if !self.make.blank?
+      des+=self.make.name + ' '
     end
-    if !self.car_model.nil? and self.car_model!=""
+    if !self.car_model.blank?
       des+=self.car_model + ' '
     end
     des
-  end
-
-  def self.makes
-    Car.select(:make).distinct(true)
   end
 
 end

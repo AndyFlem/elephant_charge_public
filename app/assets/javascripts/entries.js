@@ -24,7 +24,7 @@ $( document ).ready(function() {
         var redLine={"color": "red", "weight": 2, "opacity": 1};
         var blackLine={"color": "black", "weight": 2, "opacity": 1};
 
-        $.getJSON('http://' + window.location.host + '/' + map_entry_div.data("charge") + '/guards', function (data) {
+        $.getJSON('http://' + window.location.host + '/' + map_entry_div.data("charge") + '/guards',{format: 'json'}, function (data) {
             for (i=0; i<data.length;i++){
 
                 if(data[i].lat && data[i].lon) {
@@ -46,7 +46,7 @@ $( document ).ready(function() {
 
         var tracks={};
         var legs={};
-        $.getJSON('http://' + window.location.host + '/entry_legs/' + map_entry_div.data("entry"), function (data) {
+        $.getJSON('http://' + window.location.host + '/entry_legs/' + map_entry_div.data("entry"),{format: 'json'}, function (data) {
             //console.dir(data)
             for (i=0; i<data.length;i++){
                 legs[data[i].entry_leg_id]=data[i];

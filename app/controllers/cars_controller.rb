@@ -1,7 +1,7 @@
 class CarsController < ApplicationController
 
   def index
-    @makes=Car.makes
+    @makes=Make.all.order('RANDOM()')
   end
 
   def show

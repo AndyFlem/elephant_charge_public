@@ -17,7 +17,9 @@ end
 def team_path(team)
   '/' + team.ref
 end
-
+def beneficiary_path(beneficiary)
+  '/beneficiary/' + beneficiary.short_name
+end
 
 def format_meters(m)
   if m>1000

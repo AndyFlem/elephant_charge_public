@@ -1,0 +1,37 @@
+
+<div class="row">
+  <% @ben.each_with_index do |ben,i| %>
+      <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 ">
+        <div class="card">
+          <div class="card-header">
+            <a href="<%= beneficiary_path(ben)%>"><h5 style="display:inline-block;"><%= ben.name %></h5></a>
+            <div style="float:right;display: block;">
+              <% unless ben.facebook.blank? %>
+                  <a data-toggle="tooltip" data-placement="top" title="Facebook Page" target="_blank" href="<%= ben.facebook %>"><img style="margin-left:10px;" src="<%= image_url('icons/grey/facebook')%>"></a>
+              <% end %>
+              <% unless ben.website.blank? %>
+                  <a data-toggle="tooltip" data-placement="top" title="Website" target="_blank" href="<%= ben.website %>"><img style="margin-left:10px;" src="<%= image_url('icons/grey/link')%>"></a>
+              <% end %>
+            </div>
+          </div>
+          <div class="card-block" >
+            <div class="col-lg-3">
+              <div class="image-container">
+                <%= image_tag ben.logo(:thumb),:class=>'rounded' %>
+              </div>
+            </div>
+            <div class="col-lg-9">
+              <p>
+                <%= ben.description %>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <% if (i+1)%2==0 %>
+          </div>
+          <div class="clearfix hidden-sm-up"></div>
+          <div class="row">
+      <% end %>
+  <% end %>
+  </div>

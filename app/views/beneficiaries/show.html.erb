@@ -1,7 +1,12 @@
-
-
-
-<div id="fb-page" class="fb-page" data-href="<%= @ben.facebook %>" data-tabs="timeline" data-width="400" data-height="600" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true">
-  <blockquote cite="<%= @ben.facebook %>" class="fb-xfbml-parse-ignore">
-    <a target="_blank" href="<%= @ben.facebook %>"><%= @ben.name %></a></blockquote>
+<div class="row">
+  <div class="col-lg-8 ">
+      <img src="<%= image_url('maps/' + @ben.geography)%>"/>
+  </div>
+  <div class="col-lg-4 ">
+    <div id="fb-page" class="fb-page" data-href="<%= @ben.facebook %>" data-tabs="timeline" data-width="400" data-height="600" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true">
+      <blockquote cite="<%= @ben.facebook %>" class="fb-xfbml-parse-ignore">
+        <a target="_blank" href="<%= @ben.facebook %>"><%= @ben.name %></a></blockquote>
+    </div>
+  </div>
 </div>
+

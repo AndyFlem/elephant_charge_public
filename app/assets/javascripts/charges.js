@@ -19,7 +19,7 @@ $( document ).ready(function() {
             popupAnchor: [-3, -76]
         });
 
-        $.getJSON(window.location.pathname, function (data) {
+        $.getJSON(window.location.pathname,{format: 'json'}, function (data) {
             for (i=0; i<data.length;i++){
                 console.dir(data[i])
                 if(data[i].lat && data[i].lon) {

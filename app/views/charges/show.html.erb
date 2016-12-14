@@ -1,7 +1,12 @@
 <div class="col-lg-8">
   <div class="card">
     <div class="card-header">
-      <h3><%= @charge.long_name %></h3>
+      <h4  style="display:inline-block;"><%= @charge.long_name %></h4>
+      <div style="float:right;display: block;">
+        <a data-toggle="tooltip" data-placement="top" title="Download Google Earth Tracks"  href="<%= '/system/charges/kml/elephant_charge_' + @charge.ref + '.kml'  %>"><img style="margin-left:10px;" src="<%= image_url('icons/grey/googleearth')%>"></a>
+        <a data-toggle="tooltip" data-placement="top" title="Download Detailed Results" href="<%= '/system/charges/xlsx/ElephantCharge_' + @charge.ref + '.xlsx'  %>"><img style="margin-left:10px;" src="<%= image_url('icons/grey/excel')%>"></a>
+        <a data-toggle="tooltip" data-placement="top" title="Download The Charge Map" target="_blank" href="<%= @charge.map(:original) %>"><img style="margin-left:10px;" src="<%= image_url('icons/grey/map')%>"></a>
+      </div>
     </div>
     <div class="card-block">
       <%= render :partial => '/charges/chargeshort', :locals => {:charge => @charge}  %>
