@@ -88,5 +88,4 @@ production:
   <<: *default
   database: elephant_charge_production
   username: elephant_charge
-  password: extramild20
-  host: 10.0.2.4
+  password: <%= ENV['ELEPHANTCHARGE_DATABASE_PASSWORD'] %>
