@@ -12,7 +12,7 @@
 //
 //= require jquery
 //= require tether
-//= require bootstrap
+//= require bootstrap-sprockets
 //= require jquery_ujs
 
 //= require leaflet
@@ -37,7 +37,9 @@ $( document ).ready(function() {
 $(function () {
     $('[data-toggle="tooltip"]').tooltip()
 })
-
+$(function () {
+    $('[data-toggle="popover"]').popover()
+})
 
 showModal=function (el) {
     var $image = $('#modalImageElement');

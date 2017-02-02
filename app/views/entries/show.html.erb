@@ -8,12 +8,12 @@
       <h3><a href="<%= team_path(@team)%>">Car <%= @entry.car_no%> - <%= @team.long_name %></a> - <a href="<%= charge_path(@charge)%>"><%= @charge.name %></a></h3>
     </div>
     <div class="card-block">
-      <div class="col-lg-4">
+      <div class="col-md-4">
         <a onclick="showModal(this)" data-image="<%= image_url(@photo.photo(:original))%>" data-description="<%= @photo.caption%>">
           <%= image_tag @photo.photo(:medium) %>
         </a>
       </div>
-      <div class="col-lg-8">
+      <div class="col-md-8">
         Entered their <%= bold{ format_position2(@entry.team.charges.count)} %> charge in a <%= @entry.car.description %> and completed
         <%= @entry.result_description=='Complete' ? ' all ' : '' %><%= @entry.result_guards %> checkpoints in a competition distance of
         <%= bold{number_with_precision(@entry.dist_competition/1000.0,precision:2) +'km'}%> raising
@@ -29,7 +29,7 @@
     </div>
   </div>
 
-<table class="table">
+<table class="table table-sm">
   <% @entry_legs.each_with_index do |el,i| %>
     <tr>
 
@@ -56,23 +56,25 @@
 
 <!-- map -->
 <div class="col-lg-4">
-  <div class="card">
-    <div class="card-block">
-      <div id='map-entry'
-           data-center-lat="<%= @charge.map_center_latitude %>"
-           data-center-lon="<%= @charge.map_center_longitude %>"
-           data-scale="<%= @charge.map_scale %>"
-           data-charge="<%= @charge.ref %>"
-           data-entry="<%= @entry.id %>"
-      >
-
+  <div class="col-xs-12 col-sm-12 col-md-6 col-lg-12">
+    <div class="card">
+      <div class="card-block">
+        <div id='map-entry'
+             data-center-lat="<%= @charge.map_center_latitude %>"
+             data-center-lon="<%= @charge.map_center_longitude %>"
+             data-scale="<%= @charge.map_scale %>"
+             data-charge="<%= @charge.ref %>"
+             data-entry="<%= @entry.id %>"
+        >
+        </div>
       </div>
     </div>
   </div>
-
-  <div class="card">
-    <div class="card-block">
+  <div class="col-xs-12 col-sm-12 col-md-6 col-lg-12">
+    <div class="card">
+      <div class="card-block">
         <canvas id="chartElevation" width="400" height="200" data-min-elev="<%=@min_elev%>" data-max-elev="<%=@max_elev%>"></canvas>
       </div>
     </div>
+  </div>
 </div>

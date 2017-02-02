@@ -2,6 +2,7 @@ class EntryLegSerializer < ActiveModel::Serializer
   attribute :id, key: :entry_leg_id
   attributes :distance_m,:elapsed_s,:leg_number,:line,:elevations
 
+  has_one :entry
   has_one :leg
   has_one :checkin1,serializer: CheckinSerializer
   has_one :checkin2,serializer: CheckinSerializer

@@ -21,8 +21,8 @@ $( document ).ready(function() {
         });
 
         var orangeLine={"color": "#ff7800", "weight": 3, "opacity": 1};
-        var redLine={"color": "red", "weight": 2, "opacity": 1};
-        var blackLine={"color": "black", "weight": 2, "opacity": 1};
+        var yellowLine={"color": "yellow", "weight": 2, "opacity": 1};
+        var blackLine={"color": "white", "weight": 1, "opacity": 1};
 
         $.getJSON('http://' + window.location.host + '/' + map_entry_div.data("charge") + '/guards',{format: 'json'}, function (data) {
             for (i=0; i<data.length;i++){
@@ -46,17 +46,17 @@ $( document ).ready(function() {
 
         var tracks={};
         var legs={};
+        var entry_legs={};
         $.getJSON('http://' + window.location.host + '/entry_legs/' + map_entry_div.data("entry"),{format: 'json'}, function (data) {
             //console.dir(data)
             for (i=0; i<data.length;i++){
                 legs[data[i].entry_leg_id]=data[i];
-                L.geoJSON(data[i].line,{style:blackLine,
+                L.geoJSON(data[i].line,{style:yellowLine,
                     onEachFeature: function (feature, layer) {
                         tracks[data[i].entry_leg_id]=layer;
                     }
                 }).addTo(map_entry);
             }
-
         });
 
         var ctx = $("#chartElevation");
@@ -91,12 +91,13 @@ $( document ).ready(function() {
         $(".map-selector").each(function(){
             $(this).hover(function(){
                 for (var key in tracks) {
-                    if (tracks.hasOwnProperty(key)) {tracks[key].setStyle(blackLine);}
+                    if (tracks.hasOwnProperty(key)) {tracks[key].setStyle(yellowLine);}
                 }
                 layer=tracks[$(this).data('entry-leg-id')]
                 layer.setStyle(orangeLine);
 
             })
+
             $(this).click(function(){
                 $(".high-column").each(function(){
                     $(this).css("background-color", "#f5f5f5")
@@ -108,6 +109,7 @@ $( document ).ready(function() {
                 map_entry .fitBounds(layer.getBounds(), {padding: [20,20]});
 
                 leg=legs[$(this).data('entry-leg-id')]
+
                 data=leg.elevations.map(function(e){
                     return {x:e[1],y:e[2]};
                 });
@@ -115,6 +117,33 @@ $( document ).ready(function() {
                 chartInstance.data.datasets[0].data=data
                 chartInstance.options.scales.xAxes[0].scaleLabel.labelString=leg.checkin1.guard.sponsor.display_name + ' to ' + leg.checkin2.guard.sponsor.display_name
                 chartInstance.update();
+
+                $.getJSON('http://' + window.location.host + '/leg/' + leg.leg.leg_id,{format: 'json'}, function (data) {
+                    for (var key in entry_legs) {
+                        if (entry_legs.hasOwnProperty(key)) {
+                            map_entry.removeLayer(entry_legs[key]);
+                        }
+                    }
+
+                    for (i=0; i<data.length;i++){
+                        if (data[i].entry.entry_id!=map_entry_div.data("entry")) {
+                            L.geoJSON(data[i].line,{style:blackLine,
+                                onEachFeature: function (feature, layer) {
+                                    entry_legs[data[i].entry.entry_id]=layer
+                                }
+                            }).addTo(map_entry);
+                        }else{
+                            a_no=i
+                        }
+                    }
+                    L.geoJSON(data[a_no].line,{style:orangeLine,
+                        onEachFeature: function (feature, layer) {
+                            entry_legs[data[a_no].entry.entry_id]=layer
+                        }
+                    }).addTo(map_entry);
+
+                });
+
             })
         })
     }

@@ -1,8 +1,6 @@
-
 $font-size-root:13px;
 $brand-primary: #df5409; //#cebc63;
 $brand-inverse: #cebc63;
-
 
 @import "bootstrap";
 
@@ -11,9 +9,6 @@ $brand-inverse: #cebc63;
 @import "teams";
 @import "entries";
 @import "leaflet";
-
-
-
 
 @include media-breakpoint-up(md) {
     .container {

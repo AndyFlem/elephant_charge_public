@@ -14,6 +14,7 @@ Rails.application.routes.draw do
   get ':id/entries',constraints: {id: /\d{4}/}, to: 'entries#json_index'
   get 'entry/:entry_id',to: 'entries#json_show'
   get 'entry_legs/:entry_id', to: 'entry_legs#json_index'
+  get 'leg/:leg_id',to: 'legs#json_show'
 
   #charge by year
   get ':id', constraints: {id: /\d{4}/}, to: 'charges#show'

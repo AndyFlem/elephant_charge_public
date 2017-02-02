@@ -6,4 +6,5 @@ class EntryLegsController < ApplicationController
     render json: @entry_legs,include:['checkin1.guard.sponsor','checkin2.guard.sponsor','leg']
   end
 
+
 end

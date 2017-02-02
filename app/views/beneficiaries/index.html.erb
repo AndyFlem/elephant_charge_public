@@ -5,7 +5,7 @@
         <div class="card">
           <div class="card-header">
             <a href="<%= beneficiary_path(ben)%>"><h5 style="display:inline-block;"><%= ben.name %></h5></a>
-            <div style="float:right;display: block;">
+            <div class="ben-links">
               <% unless ben.facebook.blank? %>
                   <a data-toggle="tooltip" data-placement="top" title="Facebook Page" target="_blank" href="<%= ben.facebook %>"><img style="margin-left:10px;" src="<%= image_url('icons/grey/facebook')%>"></a>
               <% end %>
@@ -22,7 +22,11 @@
             </div>
             <div class="col-lg-9">
               <p>
-                <%= ben.description %>
+                <%= bold{ ben.name }%> <%= ben.description %>
+              </p>
+              <p>
+                <%= bold{ ben.name }%> has been provided <%= bold {ben.grants.count.to_s} %> grant<%= ben.grants.count>1 ? 's':''%> by the Elephant Charge totalling
+                <%= bold{ '$' + number_with_precision(ben.grant_dollars, precision: 0, delimiter: ',') }%>.
               </p>
             </div>
           </div>

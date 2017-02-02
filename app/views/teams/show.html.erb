@@ -59,7 +59,7 @@
             unless @photo.nil?
           %>
           <a onclick="showModal(this)" data-image="<%= image_url(@photo.photo(:original))%>" data-description="<%= @photo.caption%>">
-            <%= image_tag @photo.photo(:medium) %>
+            <img style="max-width:100%" src="<%= image_path @photo.photo(:medium) %>"/>
           </a>
           <% end %>
         </div>

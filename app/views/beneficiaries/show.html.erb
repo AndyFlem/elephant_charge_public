@@ -1,12 +1,46 @@
 <div class="row">
   <div class="col-lg-8 ">
-      <img src="<%= image_url('maps/' + @ben.geography)%>"/>
-  </div>
-  <div class="col-lg-4 ">
-    <div id="fb-page" class="fb-page" data-href="<%= @ben.facebook %>" data-tabs="timeline" data-width="400" data-height="600" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true">
-      <blockquote cite="<%= @ben.facebook %>" class="fb-xfbml-parse-ignore">
-        <a target="_blank" href="<%= @ben.facebook %>"><%= @ben.name %></a></blockquote>
+    <div class="card">
+      <div class="card-header">
+        <h3  style="display:inline-block;"><%= @ben.name %></h3>
+        <div class="ben-links">
+          <% unless @ben.facebook.blank? %>
+              <a data-toggle="tooltip" data-placement="top" title="Facebook Page" target="_blank" href="<%= @ben.facebook %>"><img style="margin-left:10px;" src="<%= image_url('icons/grey/facebook')%>"></a>
+          <% end %>
+          <% unless @ben.website.blank? %>
+              <a data-toggle="tooltip" data-placement="top" title="Website" target="_blank" href="<%= @ben.website %>"><img style="margin-left:10px;" src="<%= image_url('icons/grey/link')%>"></a>
+          <% end %>
+        </div>
+      </div>
+      <div class="card-block">
+        <div class="col-lg-4 ben-map">
+          <div class="ben-map-img"><img style="width:100%;" src="<%= image_url('maps/' + @ben.geography)%>"/></div>
+          <div class="ben-map-text"><%=@ben.geography_description%></div>
+        </div>
+        <div class="col-lg-8 ">
+          <p>
+          <img style="float:right;" src="<%= @ben.logo(:thumb)%>"/>
+          <%= bold{ @ben.name }%> <%= @ben.description %>
+          </p>
+          <p>
+            <%= bold{ @ben.name }%> has been provided <%= bold {@grants.count.to_s} %> grant<%= @grants.count>1 ? 's':''%> by the Elephant Charge totalling
+            <%= bold{ '$' + number_with_precision(@ben.grant_dollars, precision: 0, delimiter: ',') }%>.
+          <ul>
+            <% @grants.each do |grant| %>
+              <li><%= bold{ '$' + number_with_precision(grant.grant_dollars, precision: 0, delimiter: ',') }%> -
+                <a href="<%= charge_path(grant.charge)%>"><%= grant.charge.long_name%></li></a>
+            <% end %>
+          </ul>
+          </p>
+        </div>
+
+      </div>
     </div>
-  </div>
+    </div>
+    <div class="col-lg-4 ">
+      <div id="fb-page" class="fb-page" data-href="<%= @ben.facebook %>" data-tabs="timeline" data-width="400" data-height="600" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true">
+      </div>
+    </div>
 </div>
+
 

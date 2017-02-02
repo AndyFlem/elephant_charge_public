@@ -18,3 +18,6 @@
 
 #Ignore images
 /public/system/*
+
+/config/secrets.yml
+/config/database.yml

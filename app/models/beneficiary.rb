@@ -6,4 +6,8 @@ class Beneficiary < ApplicationRecord
                     styles: { medium: "200x200", thumb: "100x100" },
                     default_url: "/assets/:style/ec_logo_grey.png"
   validates_attachment_content_type :logo, content_type: /\Aimage\/.*\z/
+
+  def grant_dollars
+    self.grants.inject(0){|sum,x| sum + (x.grant_dollars.nil? ? 0:x.grant_dollars) }
+  end
 end

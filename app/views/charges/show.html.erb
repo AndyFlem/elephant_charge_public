@@ -17,7 +17,7 @@
       <div class="col-lg-6">
         <div class="card result-card">
           <div class="card-header">
-            <h5><i>Country Choice Trophy</i><br/>Shortest Net Distance</h5>
+            <h5><a data-toggle="popover" data-placement="top" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus."> <i>Country Choice Trophy</i><br/>Shortest Net Distance</a></h5>
           </div>
           <div class="card-block">
             <%= render :layout => '/application/collapselist', :locals => {:show => 3, :list_id => 'net_distance', :items => @entries_net} do |item| %>
@@ -221,12 +221,12 @@
       organisations and projects:
     </div>
     <div class="card-block" style="padding-left:0px;padding-right:0px;">
-      <div class="col-lg-6">
+      <div class="col-xs-6">
         <% @grants.each_with_index do |b, i| %>
           <%= render 'beneficiaries/beneficiarythumb', obj: b %>
           <% if (i+1)==@grants.count/2 %>
             </div>
-            <div class="col-lg-6">
+            <div class="col-xs-6">
           <%end%>
         <% end %>
       </div>
