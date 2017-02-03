@@ -1,5 +1,9 @@
 source 'https://rubygems.org'
 
+git_source(:github) do |repo_name|
+  repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?("/")
+  "https://github.com/#{repo_name}.git"
+end
 
 #gem 'activemodel-serializers-xml', git: 'https://github.com/rails/activemodel-serializers-xml'
 #gem 'draper'
