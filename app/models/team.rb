@@ -130,7 +130,7 @@ class Team < ApplicationRecord
       entry=pht.photoable
       ret={url_original: pht.photo.url(:original),url_medium: pht.photo.url(:medium), description: pht.caption}
     else
-      ret={url_medium: '/assets/thumb/ec_logo_col.png', description: ''}
+      ret={url_medium: '/system/thumb/ec_logo_col.png', description: ''}
     end
     ret
   end
