@@ -13,7 +13,7 @@ $( document ).ready(function() {
         }).addTo(map_charges);
 
         var myIcon = L.icon({
-            iconUrl: '../assets/control_point_black.png',
+            iconUrl: '/system/control_point_black.png',
             iconSize: [18, 18],
             iconAnchor: [0, 0],
             popupAnchor: [-3, -76]
