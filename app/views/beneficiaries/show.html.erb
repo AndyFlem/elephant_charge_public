@@ -5,16 +5,16 @@
         <h3  style="display:inline-block;"><%= @ben.name %></h3>
         <div class="ben-links">
           <% unless @ben.facebook.blank? %>
-              <a data-toggle="tooltip" data-placement="top" title="Facebook Page" target="_blank" href="<%= @ben.facebook %>"><img style="margin-left:10px;" src="<%= image_path('icons/grey/facebook')%>"></a>
+              <a data-toggle="tooltip" data-placement="top" title="Facebook Page" target="_blank" href="<%= @ben.facebook %>"><img style="margin-left:10px;" src="<%= image_path('icons/grey/facebook.png')%>"></a>
           <% end %>
           <% unless @ben.website.blank? %>
-              <a data-toggle="tooltip" data-placement="top" title="Website" target="_blank" href="<%= @ben.website %>"><img style="margin-left:10px;" src="<%= image_path('icons/grey/link')%>"></a>
+              <a data-toggle="tooltip" data-placement="top" title="Website" target="_blank" href="<%= @ben.website %>"><img style="margin-left:10px;" src="<%= image_path('icons/grey/link.png')%>"></a>
           <% end %>
         </div>
       </div>
       <div class="card-block">
         <div class="col-lg-4 ben-map">
-          <div class="ben-map-img"><img style="width:100%;" src="<%= image_path('maps/' + @ben.geography)%>"/></div>
+          <div class="ben-map-img"><img style="width:100%;" src="<%= image_path('maps/' + @ben.geography + '.png')%>"/></div>
           <div class="ben-map-text"><%=@ben.geography_description%></div>
         </div>
         <div class="col-lg-8 ">
