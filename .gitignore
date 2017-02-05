@@ -23,4 +23,5 @@
 /public/system/sponsors/*
 
 /config/database.yml
+/config/secrets.yml
 /.idea
