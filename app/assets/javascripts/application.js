@@ -53,12 +53,3 @@ showModal=function (el) {
     });
     $downloadingImage.attr("src", $(el).data('image'));
 }
-
-$('#imageModal').on('show.bs.modal', function (e) {
-    // do something...
-    console.log(e)
-})
-$('#imageModal').on('shown.bs.modal', function (e) {
-    // do something...
-    console.log(e)
-})

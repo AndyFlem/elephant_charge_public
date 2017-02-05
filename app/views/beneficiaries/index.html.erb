@@ -7,10 +7,10 @@
             <a href="<%= beneficiary_path(ben)%>"><h5 style="display:inline-block;"><%= ben.name %></h5></a>
             <div class="ben-links">
               <% unless ben.facebook.blank? %>
-                  <a data-toggle="tooltip" data-placement="top" title="Facebook Page" target="_blank" href="<%= ben.facebook %>"><img style="margin-left:10px;" src="<%= image_url('icons/grey/facebook')%>"></a>
+                  <a data-toggle="tooltip" data-placement="top" title="Facebook Page" target="_blank" href="<%= ben.facebook %>"><img style="margin-left:10px;" src="<%= image_path('icons/grey/facebook')%>"></a>
               <% end %>
               <% unless ben.website.blank? %>
-                  <a data-toggle="tooltip" data-placement="top" title="Website" target="_blank" href="<%= ben.website %>"><img style="margin-left:10px;" src="<%= image_url('icons/grey/link')%>"></a>
+                  <a data-toggle="tooltip" data-placement="top" title="Website" target="_blank" href="<%= ben.website %>"><img style="margin-left:10px;" src="<%= image_path('icons/grey/link')%>"></a>
               <% end %>
             </div>
           </div>

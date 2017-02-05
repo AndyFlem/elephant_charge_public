@@ -21,7 +21,7 @@ $( document ).ready(function() {
 
         $.getJSON(window.location.pathname,{format: 'json'}, function (data) {
             for (i=0; i<data.length;i++){
-                console.dir(data[i])
+                //console.dir(data[i])
                 if(data[i].lat && data[i].lon) {
                     var marker = L.marker([data[i].lat, data[i].lon],{icon: myIcon}).addTo(map_charges);
                     var tooltip= L.tooltip({
