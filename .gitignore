@@ -17,7 +17,10 @@
 .byebug_history
 
 #Ignore images
-/public/system/*
+/public/system/beneficiaries/*
+/public/system/charges/*
+/public/system/photos/*
+/public/system/sponsors/*
 
 
 /config/database.yml
