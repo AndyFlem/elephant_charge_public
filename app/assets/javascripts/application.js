@@ -43,12 +43,12 @@ $(function () {
 
 showModal=function (el) {
     var $image = $('#modalImageElement');
-    $image.attr("src", "assets/clear.gif");
+    $image.attr("src", "/system/clear.gif");
+    $('#modalTitle').text($(el).data('description'))
 
     $('#imageModal').modal();
     var $downloadingImage = $("<img>");
     $downloadingImage.load(function(){
-        $('#modalTitle').text($(el).data('description'))
         $image.attr("src", $(this).attr("src"));
     });
     $downloadingImage.attr("src", $(el).data('image'));
