@@ -63,6 +63,10 @@ def format_position2(pos)
   ret
 end
 
+
 def current_controller
   Rails.application.routes.recognize_path(request.env['PATH_INFO'])[:controller]
+end
+def current_action
+  Rails.application.routes.recognize_path(request.env['PATH_INFO'])[:action]
 end

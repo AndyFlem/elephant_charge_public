@@ -2,6 +2,14 @@ $font-size-root:13px;
 $brand-primary: #df5409; //#cebc63;
 $brand-inverse: #cebc63;
 
+@font-face {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Montserrat Regular'), local('Montserrat-Regular'), url(montserrat.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215;
+}
+
 @import "bootstrap";
 
 @import "beneficiaries";
@@ -9,6 +17,7 @@ $brand-inverse: #cebc63;
 @import "teams";
 @import "entries";
 @import "leaflet";
+
 
 @include media-breakpoint-up(md) {
     .container {
@@ -23,21 +32,38 @@ $brand-inverse: #cebc63;
   }
 }
 
-
   .navbar {
     background-color: #444444;
     margin-bottom: 20px;
   }
+@include media-breakpoint-down(sm) {
+  .navbar {
+    margin-bottom: 10px;
+  }
+}
+
+  .dropdown-menu {
+    background-color: #444444;
+  }
+  .dropdown-item {
+    color:rgba(255, 255, 255, 0.8);
+    font-size: 1.2em;
+  }
+.dropdown-item:hover {
+  color:rgba(255, 255, 255, 0.95);
+  background-color: #444444;
+}
 
   .brand{
     color: $brand-primary;
     float: left;
-    font-size: 1.6em;
+    font-size: 1.9em;
     padding-left: 5px;
     padding-top: 0px;
     font-weight: bold;
     line-height: 1.2em;
   }
+
   .head-logo
   {
     float:left;
@@ -145,3 +171,53 @@ $brand-inverse: #cebc63;
   .high-column a {
     //color: white;
   }
+
+
+.carousel-caption {
+  background-color: rgba(0, 0, 0, 0.7);
+  top: 10px;
+  bottom: inherit;
+  left: 10px;
+  width: 60%;
+  text-align: left;
+  padding: 20px;
+  font-size:1.3rem;
+}
+@include media-breakpoint-down(sm) {
+  .carousel-caption {
+    font-size:1rem;
+    padding:10px;
+    width:90%;
+  }
+  .carousel-caption h3 {
+    font-size:1.3rem;
+  }
+}
+
+.countdown {
+  border-style: solid;
+  border-color: #df5409;
+  line-height: 1.2rem;
+  font-size: 1rem;
+  margin-bottom: 12px;
+  border-radius: 6px;
+  padding: 5px;
+  font-weight: bold;
+  text-align: center;
+  font-family: 'Montserrat', sans-serif;
+  background-color: white;
+
+}
+.countdown-float {
+  line-height: 1.5rem;
+  font-size: 1.2rem;
+  width: 30%;
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  z-index: 1;
+}
+
+.carousel-img {
+  min-width:700px;
+}

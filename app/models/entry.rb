@@ -69,7 +69,7 @@ class Entry < ApplicationRecord
     end
 
     res.sort{|x,y| x[0]<=> y[0]}.collect do |p|
-        ("<div style='" + (p[0]<2 ? "color:#df5409;" : "") + "'>" + p[1] + "</div>").html_safe
+        ("<div style='" + (p[0]<2 ? "" : "") + "'>" + p[1] + "</div>").html_safe
       end
   end
 

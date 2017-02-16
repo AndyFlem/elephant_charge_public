@@ -2,6 +2,14 @@
 Rails.application.routes.draw do
   root 'application#index'
 
+  #flat pages
+  get 'about', to: 'application#about'
+  get 'enter', to: 'application#enter'
+  get 'media', to: 'application#media'
+
+  get 'contact', to: 'application#contact'
+
+
   #standard index routes
   get 'teams', to: 'teams#index'
   get 'charges', to: 'charges#index'

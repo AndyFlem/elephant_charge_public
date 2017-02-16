@@ -1,52 +1,102 @@
 <nav class="navbar navbar-dark">
 
   <!-- Larger  -->
-  <div class="hidden-sm-down float-xs-left ">
-    <table>
-      <tr>
-        <td><%= image_tag('eclogo-lg2.png') %></td>
-      </tr>
-      <tr>
-        <td><div class="tagline">Dust, sweat & gears</div></td>
-      </tr>
-    </table>
-  </div>
-  <div style="overflow: hidden;height:145px;" class="hidden-sm-down">
-    <img src="<%= image_path('banners/b' + (rand(20)+1).to_s + '.jpg') %>">
-  </div>
+  <div class="hidden-sm-down" style="text-align: right;
+      color: #df5409;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: bold;
+      font-size: 1.5rem;
+      line-height: 1.4rem;
+      position: absolute;
+      top: 105px;
+      right: 18px;
+      background: #444444;
+      padding: 3px;">10 Years<br/>2008 - 2017</div>
+  <% if current_controller=='application' %>
+      <div class="hidden-sm-down float-xs-left ">
+        <table>
+          <tr>
+            <td><img style="height:150px;" src="<%= image_path('eclogo150.png')%>"/></td>
+          </tr>
+          <tr>
+            <td><div class="tagline">Dust, sweat & gears</div></td>
+          </tr>
+        </table>
+      </div>
+      <div style="overflow: hidden;height:145px;" class="hidden-sm-down">
+        <img style="float:right;" src="<%= image_path('banners/track.png') %>">
+        <div style="position: absolute;
+            font-size: 6rem;
+            top: 0px;
+            margin-left: 40px;
+            margin-top: 20px;
+            color: #df5409;
+            line-height: 5rem;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: bold;">
+          ELEPHANT CHARGE
+        </div>
+      </div>
+  <% else %>
+      <div class="hidden-sm-down float-xs-left ">
+        <table>
+          <tr>
+            <td><%= image_tag('eclogo-lg2.png') %></td>
+          </tr>
+          <tr>
+            <td><div class="tagline">Dust, sweat & gears</div></td>
+          </tr>
+        </table>
+      </div>
+      <div style="overflow: hidden;height:145px;" class="hidden-sm-down">
+        <img src="<%= image_path('banners/b' + (rand(20)+1).to_s + '.jpg') %>">
+      </div>
+  <% end %>
 
   <!-- Smaller  -->
   <div class="hidden-md-up ">
     <div class="head-logo"><%= image_tag('eclogo-sm.png') %></div>
     <div class="brand">Elephant<br/>Charge
       <div class="tagline-sm">Dust, sweat & gears</div>
+      <div style="font-size: 1rem;line-height: 1.1rem;">10 Years 2008 - 2017</div>
     </div>
   </div>
+
   <button class="navbar-toggler hidden-md-up float-xs-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"></button>
 
   <!-- Common  -->
   <div class="collapse navbar-toggleable-sm head-navbar float-xs-right" id="navbarResponsive">
     <ul class="nav navbar-nav">
       <li class="nav-item">
-        <a class="nav-link <%= current_controller=='application' ? 'active' : '' %>" href="/">About</a>
+        <a class="nav-link <%= (current_controller=='application' && current_action=='index' ) ? 'active' : '' %>" href="/">Home</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link <%= (current_controller=='application' && current_action=='about' ) ? 'active' : '' %>" href="/about">About</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link <%= (current_controller=='application' && current_action=='enter' ) ? 'active' : '' %>" href="/enter">Enter</a>
       </li>
       <li class="nav-item">
         <a class="nav-link <%= current_controller=='teams' ? 'active' : '' %>" href="/teams">Teams</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link <%= current_controller=='beneficiaries' ? 'active' : '' %>" href="/beneficiaries">Conservation</a>
+        <a class="nav-link <%= current_controller=='beneficiaries' ? 'active' : '' %>" href="/beneficiaries">Charities</a>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle <%= current_controller=='charges' ? 'active' : '' %>" href="/charges" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Results</a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+          <a class="dropdown-item <%= current_controller=='charges' ? 'active' : '' %>" href="/charges">Charges</a>
+          <a class="dropdown-item <%= current_controller=='cars' ? 'active' : '' %>" href="/cars">Cars</a>
+        </div>
+
       </li>
       <li class="nav-item">
-        <a class="nav-link <%= current_controller=='charges' ? 'active' : '' %>" href="/charges">Charges</a>
+        <a class="nav-link <%= (current_controller=='application' && current_action=='media' ) ? 'active' : '' %>" href="/media">Media</a>
       </li>
+
+
       <li class="nav-item">
-        <a class="nav-link <%= current_controller=='cars' ? 'active' : '' %>" href="/cars">Cars</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link <%= current_controller=='info' ? 'active' : '' %>" href="#">Info</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link <%= current_controller=='contact' ? 'active' : '' %>" href="#">Contact</a>
+        <a class="nav-link <%= (current_controller=='application' && current_action=='contact' ) ? 'active' : '' %>" href="/contact">Contact</a>
       </li>
     </ul>
 
