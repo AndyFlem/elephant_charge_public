@@ -3,15 +3,14 @@ class ApplicationController < ActionController::Base
 
   def index
     @sponsors=Sponsor.all.where('logo_file_name IS NOT NULL')
-    @charges=Charge.all
+    @charges=Charge.past
     @teams=Team.all
-
     @raised=@charges.reduce(0) {|a,b| a+b.raised_dollars }
-
-
     @grants=Grant.all
     @beneficiaries=Beneficiary.all
 
+    @current_entries=Entry.current
+    @current_charge=Charge.current.first
   end
 
   def about
@@ -26,7 +25,15 @@ class ApplicationController < ActionController::Base
 
   end
 
-  def media
+  def sponsor
+
+  end
+
+  def support
+
+  end
+
+  def press
 
   end
 end

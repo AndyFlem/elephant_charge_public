@@ -1,0 +1,23 @@
+<div class="card">
+  <a href="<%= team_path team %>">
+    <div class="card-header">
+      <h5><%= team.long_name %></h5>
+    </div>
+  </a>
+  <div class="card-block" style="padding:5px;">
+    <% photo=team.photo_random_landscape() %>
+    <div class="image-container">
+      <a onclick="showModal(this)" data-image="<%= photo[:url_original]%>" data-description="<%= photo[:description]%>">
+        <%= image_tag photo[:url_medium],:class=>'rounded' %>
+      </a>
+    </div>
+  </div>
+  <div class="card-block" style="text-align: center;padding-top:0px;">
+    <% if team.new_entry? %>
+      A new team for the <b><%= team.first_charge.name%></b> captained by <b><%= team.captain%></b>
+    <% else %>
+      Entered <%= team.entries_complete.count>1 ? '<b>'.html_safe + team.entries_complete.count.to_s + '</b>'.html_safe + ' charges since ':' in ' %><b><%= team.first_charge.ref%></b>
+      raising <b>$<%= number_with_precision(team.raised_dollars, precision: 0, delimiter: ',') %></b>
+    <% end %>
+  </div>
+</div>

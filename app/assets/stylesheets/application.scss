@@ -1,6 +1,9 @@
-$font-size-root:13px;
+$font-size-base: 0.8rem;
 $brand-primary: #df5409; //#cebc63;
-$brand-inverse: #cebc63;
+
+$dark: #444444;
+$brand-inverse: $dark;
+$light: #eeeeee;
 
 @font-face {
   font-family: 'Montserrat';
@@ -11,20 +14,25 @@ $brand-inverse: #cebc63;
 }
 
 @import "bootstrap";
+@import "leaflet";
+
+@import "header";
+@import "footer";
+@import "home";
 
 @import "beneficiaries";
 @import "charges";
 @import "teams";
 @import "entries";
-@import "leaflet";
 
 
 @include media-breakpoint-up(md) {
-    .container {
-      width: 1240px;
-      max-width: 100%;
-    }
+  .container {
+    width: 1240px;
+    max-width: 100%;
   }
+}
+
 @media (min-width: 2000px) {
   .container {
     width: 1840px;
@@ -32,192 +40,30 @@ $brand-inverse: #cebc63;
   }
 }
 
-  .navbar {
-    background-color: #444444;
-    margin-bottom: 20px;
-  }
-@include media-breakpoint-down(sm) {
-  .navbar {
-    margin-bottom: 10px;
-  }
-}
-
-  .dropdown-menu {
-    background-color: #444444;
-  }
-  .dropdown-item {
-    color:rgba(255, 255, 255, 0.8);
-    font-size: 1.2em;
-  }
-.dropdown-item:hover {
-  color:rgba(255, 255, 255, 0.95);
-  background-color: #444444;
-}
-
-  .brand{
-    color: $brand-primary;
-    float: left;
-    font-size: 1.9em;
-    padding-left: 5px;
-    padding-top: 0px;
-    font-weight: bold;
-    line-height: 1.2em;
-  }
-
-  .head-logo
-  {
-    float:left;
-  }
-
-  .head-navbar{
-    text-align: right;
-    line-height: 15px;
-    padding-right: 10px;
-  }
-  .navbar-nav .nav-item + .nav-item {
-    margin-left: 2rem;
-  }
-  @include media-breakpoint-up(md) {
-    .head-navbar  {
-      position: absolute;
-      bottom:0px;
-      right:0px;
-      padding-right: 20px;
-      text-align: left;
-      //line-height: 21px;
-    }
-  }
-  .navbar-dark .navbar-nav .nav-link {
-    font-size: 1.2em;
-    color:rgba(255, 255, 255, 0.8);
-  }
-  .navbar-dark .navbar-nav .nav-link:hover {
-    color:rgba(255, 255, 255, 0.95);
-  }
-
-  .navbar-dark .navbar-nav .nav-link.active {
-    color:$brand-primary;
-  }
-  .tagline{
-    color: white;
-    font-size: 0.9em;
-    padding-left: 5px;
-    line-height: 1em;
-  }
-  .tagline-sm{
-    color: white;
-    font-size:0.6em;
-  }
-
-  .collapse-toggler {
-    position: absolute;
-    right: 15px;
-    bottom:10px;
-  }
-
-  .map_tooltip{
-    padding: 1px;
-    font-size: 0.675rem;
-    font-weight: bold;
-  }
-
-
-  .footer{
-    font-size: 0.9rem;
-    color: white;
-  }
-  .contact{
-    width: 170px;
-    float: left;
-    margin-left: 20px;
-    margin-bottom: 10px;
-  }
-  .contact-head{
-    padding-bottom: 2px;
-    border-bottom-color: #EEEEEE;
-    border-bottom-width: 1px;
-    border-bottom-style: solid;
-  }
-  .contact-item a{
-    color:white;
-  }
-  .copyright{
-    padding-top:10px;
-    float:left;
-    width:100%;
-  }
-  .image-container img {
-    margin:auto;
-    display:block;
-    max-width: 100%;
-  }
-
-  .card-block {
-    padding:10px;
-  }
-
-  .modal-dialog {
-    max-width: 800px;
-  }
-
-
-  .high-column{
-    background-color: #f5f5f5;
-    color: white;
-    font-weight: bold;
-    border-radius: 6px;
-    margin-right: 3px;
-  }
-  .high-column a {
-    //color: white;
-  }
-
-
-.carousel-caption {
-  background-color: rgba(0, 0, 0, 0.7);
-  top: 10px;
-  bottom: inherit;
-  left: 10px;
-  width: 60%;
-  text-align: left;
-  padding: 20px;
-  font-size:1.3rem;
-}
-@include media-breakpoint-down(sm) {
-  .carousel-caption {
-    font-size:1rem;
-    padding:10px;
-    width:90%;
-  }
-  .carousel-caption h3 {
-    font-size:1.3rem;
-  }
-}
-
-.countdown {
-  border-style: solid;
-  border-color: #df5409;
-  line-height: 1.2rem;
-  font-size: 1rem;
-  margin-bottom: 12px;
-  border-radius: 6px;
-  padding: 5px;
+.map_tooltip {
+  padding: 1px;
+  font-size: 0.675rem;
   font-weight: bold;
-  text-align: center;
-  font-family: 'Montserrat', sans-serif;
-  background-color: white;
-
-}
-.countdown-float {
-  line-height: 1.5rem;
-  font-size: 1.2rem;
-  width: 30%;
-  position: absolute;
-  right: 10px;
-  top: 10px;
-  z-index: 1;
 }
 
-.carousel-img {
-  min-width:700px;
+.image-container img {
+  margin: auto;
+  display: block;
+  max-width: 100%;
+}
+
+.card-block {
+  padding: 10px;
+}
+
+.card-header {
+  padding: 0.5rem 0.5rem 0rem 0.5rem;
+}
+
+.card-header h5 {
+  font-size: 1.1rem;
+}
+
+.modal-dialog {
+  max-width: 800px;
 }

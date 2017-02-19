@@ -8,7 +8,7 @@ class TeamsController < ApplicationController
     if @team.nil?
       render 'teamnotfound'
     else
-      @entries=@team.entries.joins(:charge).order('charges.charge_date desc')
+      @entries=@team.entries.joins(:charge).where("charges.state_ref='RESULT'").order('charges.charge_date desc')
       @best_leg=@team.best_leg
       @honours=@team.honours
     end

@@ -1,7 +1,7 @@
 class ChargesController < ApplicationController
 
   def index
-    @charges=Charge.all.order(ref: :desc)
+    @charges=Charge.past.order(ref: :desc)
 
     respond_to do |format|
       format.html {
@@ -22,7 +22,7 @@ class ChargesController < ApplicationController
 
   def show
     @charge=Charge.find_by_ref(params[:id])
-    if @charge.nil?
+    if @charge.nil? || @charge.state_ref!='RESULT'
       render 'chargenotfound'
     else
       @entries_net=@charge.entries.where('dist_net IS NOT NULL and is_bikes=false').order(position_net_distance: :asc)

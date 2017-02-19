@@ -3,25 +3,7 @@
 <div class="row">
   <% @teams.each_with_index do |team,i| %>
       <div class="col-xs-12 col-sm-6 col-md-3 ">
-        <div class="card">
-          <a href="<%= team_path team %>">
-            <div class="card-header">
-              <h5><%= team.long_name %></h5>
-            </div>
-          </a>
-          <div class="card-block" >
-            <% photo=team.photo_random_landscape() %>
-            <div class="image-container">
-              <a onclick="showModal(this)" data-image="<%= photo[:url_original]%>" data-description="<%= photo[:description]%>">
-                <%= image_tag photo[:url_medium],:class=>'rounded' %>
-              </a>
-            </div>
-          </div>
-          <div class="card-block" >
-            Entered <%= team.entries.count>1 ? '<b>'.html_safe + team.entries.count.to_s + '</b>'.html_safe + ' charges since ':' in ' %><b><%= team.first_charge.ref%></b>
-            raising <b>$<%= number_with_precision(team.raised_dollars, precision: 0, delimiter: ',') %></b>.
-          </div>
-        </div>
+        <%= render :partial => '/teams/teamcard', :locals => {:team=> team}  %>
       </div>
       <% if (i+1)%4==0 %>
         </div>

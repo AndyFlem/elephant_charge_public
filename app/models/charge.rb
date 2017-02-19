@@ -20,10 +20,12 @@ class Charge < ApplicationRecord
   has_many :grants
   has_many :beneficiaries, through: :grants
 
+  scope :past,-> {where("state_ref='RESULT'")}
+  scope :current,-> {where("state_ref!='RESULT'")}
+
   has_attached_file :map,
                     styles: { medium: "300x300", thumb: "100x100" },
                     default_url: "/system/:style/missing.png"
-
 
   def long_name
     self.name + (self.location=='' ? '' : ' - ' + self.location)

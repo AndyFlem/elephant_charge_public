@@ -1,0 +1,51 @@
+.countdown {
+  border-style: solid;
+  border-color: #df5409;
+  line-height: 1.2rem;
+  font-size: 1rem;
+  margin-bottom: 12px;
+  border-radius: 6px;
+  padding: 5px;
+  font-weight: bold;
+  text-align: center;
+  font-family: 'Montserrat', sans-serif;
+  background-color: white;
+
+}
+
+.countdown-float {
+  line-height: 1.5rem;
+  font-size: 1.2rem;
+  width: 30%;
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  z-index: 1;
+}
+
+
+.carousel-caption {
+  background-color: rgba(0, 0, 0, 0.7);
+  top: 10px;
+  bottom: inherit;
+  left: 10px;
+  width: 60%;
+  text-align: left;
+  padding: 20px;
+  font-size: 1.3rem;
+}
+
+@include media-breakpoint-down(sm) {
+  .carousel-caption {
+    font-size: 1rem;
+    padding: 10px;
+    width: 90%;
+  }
+  .carousel-caption h3 {
+    font-size: 1.3rem;
+  }
+}
+
+.carousel-img {
+  min-width: 700px;
+}

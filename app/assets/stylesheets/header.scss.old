@@ -1,0 +1,139 @@
+
+.navbar {
+  background-color: #444444;
+  margin-bottom: 20px;
+}
+
+@include media-breakpoint-down(sm) {
+  .navbar {
+    margin-bottom: 10px;
+  }
+}
+
+.dropdown-menu {
+  background-color: #444444;
+}
+
+.dropdown-item {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 1.2em;
+}
+
+.dropdown-item:hover {
+  color: rgba(255, 255, 255, 0.95);
+  background-color: #444444;
+}
+
+.brand {
+  color: $brand-primary;
+  float: left;
+  font-size: 1.9em;
+  padding-left: 5px;
+  padding-top: 0px;
+  font-weight: bold;
+  line-height: 1.2em;
+}
+
+.head-logo {
+  float: left;
+}
+
+.head-navbar {
+  text-align: right;
+  line-height: 15px;
+  padding-right: 10px;
+}
+
+.navbar-nav .nav-item + .nav-item {
+  margin-left: 2rem;
+}
+
+@include media-breakpoint-up(md) {
+  .head-navbar {
+    position: absolute;
+    bottom: 0px;
+    right: 0px;
+    padding-right: 20px;
+    text-align: left;
+    //line-height: 21px;
+  }
+}
+
+.navbar-dark .navbar-nav .nav-link {
+  font-size: 1.2em;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.navbar-dark .navbar-nav .nav-link:hover {
+  color: rgba(255, 255, 255, 0.95);
+}
+
+.navbar-dark .navbar-nav .nav-link.active {
+  color: $brand-primary;
+}
+
+.dates-larger {
+  text-align: right;
+  color: #df5409;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: bold;
+  font-size: 1.3rem;
+  line-height: 1.4rem;
+  position: absolute;
+  top: 112px;
+  right: 12px;
+  background: #444444;
+  padding: 3px;
+}
+
+.banner-title {
+  position: absolute;
+  font-size: 6rem;
+  top: 15px;
+  margin-left: 40px;
+  color: #df5409;
+  line-height: 5rem;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: bold;
+}
+
+.banner-subtitle {
+  position: absolute;
+  font-size: 2.5rem;
+  top: 75px;
+  margin-left: 44px;
+  color: #ffffff;
+  line-height: 3rem;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: bold;
+}
+
+@include media-breakpoint-down(md) {
+  .banner-title {
+    font-size: 4rem;
+    top: 12px;
+  }
+  .banner-subtitle {
+    font-size: 1.8rem;
+    top: 61px;
+  }
+}
+
+.tagline {
+  color: white;
+  font-size: 0.9em;
+  padding-left: 5px;
+  line-height: 1em;
+}
+
+.tagline-sm {
+  color: white;
+  font-size: 0.6em;
+}
+
+.collapse-toggler {
+  position: absolute;
+  right: 15px;
+  bottom: 10px;
+}
+

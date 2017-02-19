@@ -4,6 +4,19 @@ class Team < ApplicationRecord
   has_many :photos, through: :entries
   has_many :cars, through: :entries
 
+  def entries_complete
+    self.entries.includes(:charge).references(:charge).where("charges.state_ref='RESULT'")
+  end
+
+
+  def new_entry?
+    if self.charges.count>1
+      false
+    else
+      self.charges.first.state_ref!='RESULT'
+    end
+  end
+
   def honours
     ret=[]
 

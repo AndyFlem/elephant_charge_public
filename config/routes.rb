@@ -5,10 +5,11 @@ Rails.application.routes.draw do
   #flat pages
   get 'about', to: 'application#about'
   get 'enter', to: 'application#enter'
-  get 'media', to: 'application#media'
-
+  get 'sponsor', to: 'application#sponsor'
+  get 'support', to: 'application#support'
+  get 'press', to: 'application#press'
   get 'contact', to: 'application#contact'
-
+  get 'photos', to: 'photos#index'
 
   #standard index routes
   get 'teams', to: 'teams#index'

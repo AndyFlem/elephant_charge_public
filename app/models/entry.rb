@@ -12,6 +12,8 @@ class Entry < ApplicationRecord
   has_many :entry_legs
   has_many :photos, as: :photoable
 
+  scope :past,-> {includes(:charge).where("charges.state_ref='RESULT'")}
+  scope :current,-> {references(:charge).includes(:charge).where("charges.state_ref!='RESULT'")}
 
 
   def result_summary(limit=3)
@@ -83,13 +85,6 @@ class Entry < ApplicationRecord
 
   def photo_random_landscape()
     self.photos.order("RANDOM()").limit(1).first
-    #if pht
-    #  entry=pht.photoable
-    #  ret={url_original: pht.photo.url(:original),url_medium: pht.photo.url(:medium), description: entry.description}
-    #else
-    #  ret={url_medium: '/assets/thumb/ec_logo_col.png', description: ''}
-    #end
-    #ret
   end
 
   def start_time
