@@ -1,7 +1,7 @@
-$font-size-base: 0.8rem;
+$font-size-base: 0.9rem;
 $brand-primary: #df5409; //#cebc63;
 
-$dark: #444444;
+$dark: #555555;
 $brand-inverse: $dark;
 $light: #eeeeee;
 
@@ -15,6 +15,8 @@ $light: #eeeeee;
 
 @import "bootstrap";
 @import "leaflet";
+@import "unslider";
+@import "unslider-dots";
 
 @import "header";
 @import "footer";
@@ -25,20 +27,6 @@ $light: #eeeeee;
 @import "teams";
 @import "entries";
 
-
-@include media-breakpoint-up(md) {
-  .container {
-    width: 1240px;
-    max-width: 100%;
-  }
-}
-
-@media (min-width: 2000px) {
-  .container {
-    width: 1840px;
-    max-width: 100%;
-  }
-}
 
 .map_tooltip {
   padding: 1px;
@@ -51,7 +39,9 @@ $light: #eeeeee;
   display: block;
   max-width: 100%;
 }
-
+.card {
+  margin-bottom: 10px;
+}
 .card-block {
   padding: 10px;
 }
@@ -60,10 +50,19 @@ $light: #eeeeee;
   padding: 0.5rem 0.5rem 0rem 0.5rem;
 }
 
-.card-header h5 {
-  font-size: 1.1rem;
+.modal-header h5 {
+  padding-left:10px;
+}
+@include media-breakpoint-down(xs) {
+  .modal-header h5 {
+    font-size:1rem;
+  }
 }
 
 .modal-dialog {
   max-width: 800px;
+}
+
+.modal-body img {
+  width:100%
 }

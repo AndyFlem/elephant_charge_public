@@ -17,6 +17,8 @@
 
 //= require leaflet
 
+//= require unslider-min
+
 //= require_tree .
 
 $( document ).ready(function() {
@@ -28,6 +30,18 @@ $( document ).ready(function() {
             js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.8";
             fjs.parentNode.insertBefore(js, fjs);
         }(document, 'script', 'facebook-jssdk'));
+    }
+    if ($("#banner").length) {
+
+
+        $('.banner').unslider({
+            autoplay:true,
+            arrows: false,
+            infinite: true,
+            fluid: true,
+            dots: true,
+            delay:10000
+        });
     }
 })
 

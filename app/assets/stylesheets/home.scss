@@ -1,51 +1,154 @@
 .countdown {
-  border-style: solid;
-  border-color: #df5409;
-  line-height: 1.2rem;
-  font-size: 1rem;
-  margin-bottom: 12px;
+  margin-bottom: 5px;
   border-radius: 6px;
   padding: 5px;
   font-weight: bold;
   text-align: center;
   font-family: 'Montserrat', sans-serif;
   background-color: white;
-
+  border-style: solid;
+  border-color: #df5409;
+}
+.countdown div:first-child {
+  width:20%
+}
+.countdown div:last-child {
+  width:80%
 }
 
-.countdown-float {
-  line-height: 1.5rem;
-  font-size: 1.2rem;
+.countdown-sm {
+  font-size: 1rem;
+  line-height: 1.1rem;
+  margin-top:-5px;
+}
+@include media-breakpoint-down(xs) {
+  .countdown-sm {
+    font-size: 0.8rem;
+    line-height: 1rem;
+  }
+}
+
+.countdown-lg {
+  font-size: 1.1rem;
+  line-height: 1.2rem;
   width: 30%;
   position: absolute;
   right: 10px;
   top: 10px;
   z-index: 1;
+
 }
 
-
-.carousel-caption {
+.car-caption {
   background-color: rgba(0, 0, 0, 0.7);
+  color:$light;
   top: 10px;
   bottom: inherit;
   left: 10px;
   width: 60%;
   text-align: left;
   padding: 20px;
-  font-size: 1.3rem;
+  font-size: 1.2rem;
+  line-height: 1.2rem;
+  position: absolute;
 }
 
 @include media-breakpoint-down(sm) {
-  .carousel-caption {
+  .car-caption {
     font-size: 1rem;
+    line-height: 1rem;
     padding: 10px;
     width: 90%;
   }
-  .carousel-caption h3 {
+  .car-caption h3 {
     font-size: 1.3rem;
   }
 }
+@include media-breakpoint-down(xs) {
+  .car-caption {
+    font-size: 0.8rem;
+    line-height: 0.8rem;
+    padding: 5px;
+    width: 100%;
 
-.carousel-img {
-  min-width: 700px;
+    top: 0px;
+    left: 0px;
+  }
+  .car-caption h3 {
+    font-size: 1rem;
+  }
+
+}
+
+.car-container{
+  position:relative;
+}
+
+.banner {
+  position: relative;
+  overflow: auto;
+  max-width: 2000px;
+  margin:auto;
+}
+.banner li {
+  list-style: none;
+  background-size:contain !important;
+  background-repeat: no-repeat !important;
+}
+
+.banner img {
+  width: 100%;
+  max-width: 2000px;
+  margin:auto;
+}
+@include media-breakpoint-down(md) {
+  .banner img {
+    width: 120%;
+  }
+}
+
+@include media-breakpoint-down(sm) {
+  .banner img {
+    width: 130%;
+  }
+}
+@include media-breakpoint-down(xs) {
+  .banner img {
+    width: 150%;
+  }
+}
+
+.unslider {
+  position: relative;
+}
+
+.unslider-nav {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 5%;
+}
+
+
+.unslider-nav ol li {
+  width: 15px;
+  height: 15px;
+  margin: 0 4px;
+
+  border: 2px solid #fff;
+  border-radius: 13px;
+
+  cursor: pointer;
+  opacity: .4;
+}
+@include media-breakpoint-down(sm) {
+  .unslider-nav ol li {
+    width: 8px;
+    height: 8px;
+    margin: 0 2px;
+  }
+}
+.unslider-nav ol li.unslider-active {
+  background: #fff;
+  opacity: 1;
 }

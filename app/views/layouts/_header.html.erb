@@ -1,18 +1,33 @@
 <div class="hidden-sm-down" id="track">
-  <img src="/track.png">
+  <img src="<%= image_path('furniture/track3.png')%>">
 </div>
-<div class="row header-row">
-  <div class="col logo-container">
-          <div class="logo"></div>
-          <!--<img style="height:150px;" src="<%= image_path('eclogo150.png')%>"/>-->
+<div class="hidden-sm-down" id="dates-larger">10 Years<br/>2008 - 2017</div>
+
+<div class="header-row">
+  <div class="logo-container">
+    <a href="/"><div class="logo"></div></a>
           <div class="tagline">Dust, sweat & gears</div>
   </div>
-  <div class="col">
-    <div class="banner-title">
-      ELEPHANT CHARGE
-    </div>
-    <div class="banner-subtitle" style="">
-      Fundraising for wildlife conservation in Zambia
+  <div class="banner-navbar-container">
+    <div class="banner-container">
+      <% if current_controller=='application' && current_action=='index' %>
+          <div class="banner-title">
+            ELEPHANT CHARGE
+          </div>
+          <div class="banner-subtitle" style="">
+            Fundraising for wildlife conservation in Zambia
+          </div>
+      <% else %>
+          <div class="hidden-md-up banner-title">
+            ELEPHANT CHARGE
+          </div>
+          <div class="hidden-md-up banner-subtitle" style="">
+            Fundraising for wildlife conservation in Zambia
+          </div>
+          <div class="hidden-sm-down banner-img">
+            <img src="<%= image_path('banners/b' + (rand(20)+1).to_s + '.jpg') %>">
+          </div>
+      <% end %>
     </div>
     <nav class="navbar navbar-toggleable-sm navbar-inverse bg-inverse">
       <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -22,16 +37,38 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
           <li class="nav-item active">
-            <a class="nav-link" href="#">Home</a>
+            <a class="nav-link" href="/">Home</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              About
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+              <a class="dropdown-item" href="/about">About the Elephant Charge</a>
+              <a class="dropdown-item" href="/sponsors">Sponsors</a>
+              <a class="dropdown-item" href="/beneficiaries">Charities</a>
+            </div>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Results
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+              <a class="dropdown-item" href="/charges">Charges</a>
+              <a class="dropdown-item" href="/teams">Teams</a>
+            </div>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Media
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+              <a class="dropdown-item" href="/photos">Photos</a>
+              <a class="dropdown-item" href="/media">Media</a>
+            </div>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">About</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Results</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Media</a>
+            <a class="nav-link" href="/contact">Contact</a>
           </li>
         </ul>
         <form class="form-inline my-2 my-lg-0">

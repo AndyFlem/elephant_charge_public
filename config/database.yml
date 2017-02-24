@@ -86,7 +86,7 @@ test:
 #
 production:
   <<: *default
-  database: elephant_charge
+  database: elephant_charge_development
   username: elephant_charge
   password: <%= ENV['ELEPHANTCHARGE_DATABASE_PASSWORD'] %>
   host: 127.0.0.1

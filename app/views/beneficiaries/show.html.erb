@@ -1,8 +1,11 @@
+<div class="container-fluid">
+
+
 <div class="row">
   <div class="col-lg-8 ">
     <div class="card">
       <div class="card-header">
-        <h3  style="display:inline-block;"><%= @ben.name %></h3>
+        <h5  style="display:inline-block;"><%= @ben.name %></h5>
         <div class="ben-links">
           <% unless @ben.facebook.blank? %>
               <a data-toggle="tooltip" data-placement="top" title="Facebook Page" target="_blank" href="<%= @ben.facebook %>"><img style="margin-left:10px;" src="<%= image_path('icons/grey/facebook.png')%>"></a>
@@ -13,11 +16,12 @@
         </div>
       </div>
       <div class="card-block">
-        <div class="col-lg-4 ben-map">
-          <div class="ben-map-img"><img style="width:100%;" src="<%= image_path('maps/' + @ben.geography + '.png')%>"/></div>
+        <div class="row">
+        <div class="col-sm-4 ben-map">
+          <img src="<%= image_path('maps/' + @ben.geography + '.png')%>"/>
           <div class="ben-map-text"><%=@ben.geography_description%></div>
         </div>
-        <div class="col-lg-8 ">
+        <div class="col-sm-8 ">
           <p>
           <img style="float:right;" src="<%= @ben.logo(:thumb)%>"/>
           <%= bold{ @ben.name }%> <%= @ben.description %>
@@ -33,14 +37,17 @@
           </ul>
           </p>
         </div>
-
+        </div>
       </div>
     </div>
     </div>
     <div class="col-lg-4 ">
+      <% unless ben.facebook.blank? %>
       <div id="fb-page" class="fb-page" data-href="<%= @ben.facebook %>" data-tabs="timeline" data-width="400" data-height="600" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true">
+        <% end %>
       </div>
     </div>
 </div>
 
 
+</div>

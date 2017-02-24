@@ -1,36 +1,91 @@
-<div class="col-sm-12 countdown hidden-md-up" style="min-height: 85px;">
-  <div style="float:left;width:20%">
-    <img style="width:80%" src="<%= image_path('fuchs.png') %>"/>
-  </div>
-  <div style="width:80%;padding-top: 13px;float:right;">
-    Support the <%= @current_charge.name %> on <span style="color: #df5409;">14 October 2017</span>
-    <%= (DateTime.parse('2017-10-17')-DateTime.now).to_i %> days to go
+<div class="container-fluid">
 
+  <div class="row">
+    <div class="col countdown countdown-sm hidden-md-up d-flex align-items-center">
+
+      <div>
+        <img style="width:100%" src="<%= image_path('logo/fuchs.png') %>"/>
+      </div>
+      <div>
+        Support the <%= @current_charge.name %> on <span style="color: #df5409;">14 October 2017</span>
+        <%= (DateTime.parse('2017-10-17')-DateTime.now).to_i %> days to go
+      </div>
+    </div>
   </div>
 </div>
 
+<div id="banner" class="banner">
+  <div class="countdown countdown-lg hidden-sm-down d-flex align-items-center">
+    <div>
+      <img style="width:100%" src="<%= image_path('logo/fuchs.png') %>"/>
+    </div>
+    <div>
+      Support the <%= @current_charge.name %> on <span style="color: #df5409;">14 October 2017</span><br/>
+      <%= (DateTime.parse('2017-10-17')-DateTime.now).to_i %> days to go
+    </div>
+  </div>
 
-
-<div class="col-sm-12">
-  <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel" style="margin:auto;width:100%;">
-    <ol class="carousel-indicators">
-      <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-      <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-      <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-    </ol>
-    <div class="carousel-inner" role="listbox">
-      <div class="countdown countdown-float hidden-sm-down">
-        <div style="float:left;width:20%">
-          <img style="width:100%" src="<%= image_path('fuchs.png') %>"/>
-        </div>
-        <div style="width:80%;float:right;">
-          Support the <%= @current_charge.name %> on <span style="color: #df5409;">14 October 2017</span><br/>
-          <%= (DateTime.parse('2017-10-17')-DateTime.now).to_i %> days to go
-
+  <ul>
+    <li>
+      <div class="car-container">
+        <img src="<%= image_path('banners/slide4.jpg') %>"/>
+        <div class="car-caption">
+          <h3>Elephant Charge</h3>
+          The <b>Elephant Charge</b> is an annual 4x4 event held in <b>Zambia</b> to raise money for conservation.
+          Teams compete against each other and the Zambian bush to complete a gruelling course in the shortest
+          distance.
         </div>
       </div>
+    </li>
+    <li>
+      <div class="car-container">
+        <img src="<%= image_path('banners/slide5.jpg') %>"/>
+        <div class="car-caption">
+          <h3>Raising money for conservation</h3>
+          The Elephant Charge is Zambia's biggest conservation fundraising event.
+          Since <b>2008</b>, the Elephant Charge has raised
+          <%= bold { '$' + number_with_precision(@raised, precision: 0, delimiter: ',') } %> for conservation in
+          Zambia.
+        </div>
+      </div>
+    </li>
+    <li>
+      <div class="car-container">
+        <img src="<%= image_path('banners/slide6.jpg') %>"/>
+        <div class="car-caption">
+          <h3>Conserving Zambia</h3>
+          Since 2008, <b><%= @teams.count %></b> Elephant Charge teams have supported
+          <b><%= @grants.count %></b> grants provided to <b><%= @beneficiaries.count %></b> charities working
+          across
+          Zambia
+          to preserve our wildlife and environment through conservation and education.
+        </div>
+      </div>
+    </li>
+
+  </ul>
+</div>
+
+<!--
+  <div id="car_slides" class="carousel slide" data-ride="carousel" style="margin:auto;width:94%;max-width:1500px">
+    <div class="countdown countdown-lg hidden-sm-down d-flex align-items-center">
+      <div>
+        <img style="width:100%" src="<%= image_path('logo/fuchs.png') %>"/>
+      </div>
+      <div>
+        Support the <%= @current_charge.name %> on <span style="color: #df5409;">14 October 2017</span><br/>
+        <%= (DateTime.parse('2017-10-17')-DateTime.now).to_i %> days to go
+      </div>
+    </div>
+    <ol class="carousel-indicators">
+      <li data-target="#car_slides" data-slide-to="0" class="active"></li>
+      <li data-target="#car_slides" data-slide-to="1"></li>
+      <li data-target="#car_slides" data-slide-to="2"></li>
+    </ol>
+    <div class="carousel-inner" role="listbox">
       <div class="carousel-item active">
-        <img class="d-block img-fluid carousel-img" src="<%= image_path('banners/b1.jpg') %>" alt="First slide">
+
+        <img class="d-block img-fluid carousel-img"  src="<%= image_path('banners/b1.jpg') %>" alt="First slide">
         <div class="carousel-caption d-none d-md-block">
           <h3>Elephant Charge</h3>
           The <b>Elephant Charge</b> is an annual 4x4 event held in <b>Zambia</b> to raise money for conservation.
@@ -39,7 +94,7 @@
         </div>
       </div>
       <div class="carousel-item">
-        <img class="d-block img-fluid carousel-img" src="<%= image_path('banners/b2.jpg') %>" alt="Second slide">
+        <img class="d-block img-fluid carousel-img"  src="<%= image_path('banners/b2.jpg') %>" alt="Second slide">
         <div class="carousel-caption d-none d-md-block">
           <h3>Raising money for conservation</h3>
           The Elephant Charge is Zambia's biggest conservation fundraising event.
@@ -69,9 +124,9 @@
       <span class="sr-only">Next</span>
     </a>
   </div>
-</div>
-
-<div class="col-sm-12">
+-->
+<!--
+<div class="col">
   <div id="carouselTeams" class="carousel slide" data-ride="carousel">
     <div class="carousel-inner" role="listbox">
       <div class="carousel-item active">
@@ -83,7 +138,7 @@
                 </div>
                 <div class="carousel-item">
             <% end %>
-          <% end %>
+<% end %>
         </div>
       </div>
     </div>
@@ -97,3 +152,4 @@
     </a>
   </div>
 </div>
+-->

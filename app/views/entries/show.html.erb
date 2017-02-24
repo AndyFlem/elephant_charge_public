@@ -2,10 +2,13 @@
 
 <%= render 'photos/photomodal' %>
 
+<div class="container-fluid">
+  <div class="row">
+
 <div class="col-lg-8">
   <div class="card">
     <div class="card-header">
-      <h3><a href="<%= team_path(@team)%>">Car <%= @entry.car_no%> - <%= @team.long_name %></a> - <a href="<%= charge_path(@charge)%>"><%= @charge.name %></a></h3>
+      <h5><a href="<%= team_path(@team)%>">Car <%= @entry.car_no%> - <%= @team.long_name %></a> - <a href="<%= charge_path(@charge)%>"><%= @charge.name %></a></h5>
     </div>
     <div class="card-block">
       <div class="col-md-4">
@@ -76,5 +79,7 @@
         <canvas id="chartElevation" width="400" height="200" data-min-elev="<%=@min_elev%>" data-max-elev="<%=@max_elev%>"></canvas>
       </div>
     </div>
+  </div>
+</div>
   </div>
 </div>
