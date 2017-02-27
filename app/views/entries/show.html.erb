@@ -5,81 +5,90 @@
 <div class="container-fluid">
   <div class="row">
 
-<div class="col-lg-8">
-  <div class="card">
-    <div class="card-header">
-      <h5><a href="<%= team_path(@team)%>">Car <%= @entry.car_no%> - <%= @team.long_name %></a> - <a href="<%= charge_path(@charge)%>"><%= @charge.name %></a></h5>
-    </div>
-    <div class="card-block">
-      <div class="col-md-4">
-        <a onclick="showModal(this)" data-image="<%= image_url(@photo.photo(:original))%>" data-description="<%= @photo.caption%>">
-          <%= image_tag @photo.photo(:medium) %>
-        </a>
+    <div class="col-lg-8">
+      <div class="card">
+        <div class="card-header">
+          <h5><a href="<%= team_path(@team) %>"><b><%= @entry.car_no %></b> <%= @team.long_name %></a> -
+            <a href="<%= charge_path(@charge) %>"><%= @charge.name %></a></h5>
+        </div>
+        <div class="card-block">
+          <div class="container-fluid">
+            <div class="row">
+
+              <div class="col-md-4">
+                <a onclick="showModal(this)" data-image="<%= image_url(@photo.photo(:original)) %>" data-description="<%= @photo.caption %>">
+                  <img class="rounded mx-auto d-block" src="<%= image_path @photo.photo(:medium) %>">
+                </a>
+              </div>
+              <div class="col-md-8">
+                Entered their <%= bold { format_position2(@entry.team.charges.count) } %> charge in
+                a <%= @entry.car.description %> and completed
+                <%= @entry.result_description=='Complete' ? ' all ' : '' %><%= @entry.result_guards %> checkpoints in a
+                competition distance of
+                <%= bold { number_with_precision(@entry.dist_competition/1000.0, precision: 2) +'km' } %> raising
+                <%= bold { '$' + number_with_precision(@entry.raised_dollars, precision: 0, delimiter: ',') } %> for
+                conservation in Zambia.
+
+                <ul style="padding-left: 15px;margin-top:10px;">
+                  <% @results.each do |result| %>
+                      <li><%= result %></li>
+                  <% end %>
+                </ul>
+
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
-      <div class="col-md-8">
-        Entered their <%= bold{ format_position2(@entry.team.charges.count)} %> charge in a <%= @entry.car.description %> and completed
-        <%= @entry.result_description=='Complete' ? ' all ' : '' %><%= @entry.result_guards %> checkpoints in a competition distance of
-        <%= bold{number_with_precision(@entry.dist_competition/1000.0,precision:2) +'km'}%> raising
-        <%= bold{'$' + number_with_precision(@entry.raised_dollars,precision:0,delimiter: ',')} %> for conservation in Zambia.
 
-        <ul style="padding-left: 15px;margin-top:10px;">
-          <% @results.each do |result| %>
-              <li><%=result%></li>
-          <% end %>
-        </ul>
+      <table class="table table-sm">
+        <% @entry_legs.each_with_index do |el, i| %>
+            <tr>
 
-      </div>
+              <td class="high-column">
+                <a href="javascript:void(0)" class="map-selector" data-entry-leg-id="<%= el.id %>">
+                  <%= i+1 %> <i><%= el.guard_from.name %></i> <%= small_caps { 'to' } %> <i><%= el.guard_to.name %></i>
+                </a>
+              </td>
+              <td>
+                <%= format_position(el.position) %> <%= small_caps { 'of' } %> <%= el.leg.entries.count %>
+              </td>
+              <td>
+                <%= bold { format_meters(el.distance_m) } %> <%= small_caps { 'in' } %> <%= format_seconds(el.elapsed_s) %>
+                <%= small_caps { 'at' } %> <%= number_with_precision(el.speed, precision: 1) %>kmh
+              </td>
+              <td>
+                <%= number_with_precision(el.multiple, precision: 2) %><%= small_caps { 'x leg of' } %> <%= format_meters(el.leg.distance_m) %>
+              </td>
+            </tr>
+        <% end %>
+      </table>
     </div>
-  </div>
-
-<table class="table table-sm">
-  <% @entry_legs.each_with_index do |el,i| %>
-    <tr>
-
-      <td class="high-column">
-        <a href="javascript:void(0)" class="map-selector" data-entry-leg-id="<%= el.id%>">
-          <%= i+1 %> <i><%= el.guard_from.name %></i> <%= small_caps {'to'} %> <i><%= el.guard_to.name %></i>
-        </a>
-      </td>
-      <td>
-        <%= format_position(el.position) %> <%= small_caps {'of'} %> <%= el.leg.entries.count %>
-      </td>
-      <td>
-        <%= bold {format_meters(el.distance_m)}  %> <%= small_caps {'in'} %> <%= format_seconds(el.elapsed_s) %>
-        <%= small_caps {'at'} %> <%= number_with_precision(el.speed,precision:1) %>kmh
-      </td>
-      <td>
-        <%= number_with_precision(el.multiple,precision:2) %><%= small_caps {'x leg of'}%> <%= format_meters(el.leg.distance_m)  %>
-      </td>
-    </tr>
-  <% end %>
-</table>
-</div>
 
 
-<!-- map -->
-<div class="col-lg-4">
-  <div class="col-xs-12 col-sm-12 col-md-6 col-lg-12">
-    <div class="card">
-      <div class="card-block">
-        <div id='map-entry'
-             data-center-lat="<%= @charge.map_center_latitude %>"
-             data-center-lon="<%= @charge.map_center_longitude %>"
-             data-scale="<%= @charge.map_scale %>"
-             data-charge="<%= @charge.ref %>"
-             data-entry="<%= @entry.id %>"
-        >
+    <!-- map -->
+    <div class="col-lg-4">
+      <div class="col-xs-12 col-sm-12 col-md-6 col-lg-12">
+        <div class="card">
+          <div class="card-block">
+            <div id='map-entry'
+                 data-center-lat="<%= @charge.map_center_latitude %>"
+                 data-center-lon="<%= @charge.map_center_longitude %>"
+                 data-scale="<%= @charge.map_scale %>"
+                 data-charge="<%= @charge.ref %>"
+                 data-entry="<%= @entry.id %>"
+            >
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-xs-12 col-sm-12 col-md-6 col-lg-12">
+        <div class="card">
+          <div class="card-block">
+            <canvas id="chartElevation" width="400" height="200" data-min-elev="<%= @min_elev %>" data-max-elev="<%= @max_elev %>"></canvas>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-  <div class="col-xs-12 col-sm-12 col-md-6 col-lg-12">
-    <div class="card">
-      <div class="card-block">
-        <canvas id="chartElevation" width="400" height="200" data-min-elev="<%=@min_elev%>" data-max-elev="<%=@max_elev%>"></canvas>
-      </div>
-    </div>
-  </div>
-</div>
   </div>
 </div>
