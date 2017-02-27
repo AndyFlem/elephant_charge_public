@@ -11,6 +11,8 @@ class Sponsor < ApplicationRecord
   validates_attachment_content_type :logo, content_type: /\Aimage\/.*\z/
 
 
+  scope :current,-> {joins(:charges).where("charges.state_ref!='RESULT'").order("RANDOM()")}
+
 
 
 end

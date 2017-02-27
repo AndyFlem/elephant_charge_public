@@ -27,6 +27,8 @@ Rails.application.routes.draw do
 
   #charge by year
   get ':id', constraints: {id: /\d{4}/}, to: 'charges#show'
+  #team list
+  get ':id/teams', constraints: {id: /\d{4}/}, to: 'entries#index'
 
   #team by name (ref)
   get ':ref', to: 'teams#show'
@@ -41,6 +43,7 @@ Rails.application.routes.draw do
   #charge by year
   get 'charges/:id', to: 'charges#show'
   get 'charge/:id', to: 'charges#show'
+
 
   #beneficiary by name (ref)
   get 'beneficiaries/:id', to: 'beneficiaries#show'

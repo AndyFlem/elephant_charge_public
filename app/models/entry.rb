@@ -13,7 +13,7 @@ class Entry < ApplicationRecord
   has_many :photos, as: :photoable
 
   scope :past,-> {includes(:charge).where("charges.state_ref='RESULT'")}
-  scope :current,-> {references(:charge).includes(:charge).where("charges.state_ref!='RESULT'")}
+  scope :current,-> {references(:charge).includes(:charge).where("charges.state_ref!='RESULT'").order("RANDOM()")}
 
 
   def result_summary(limit=3)

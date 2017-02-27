@@ -11,6 +11,10 @@ class ApplicationController < ActionController::Base
 
     @current_entries=Entry.current
     @current_charge=Charge.current.first
+    @current_cpsponsors=Sponsor.current
+    @current_sponsors_nm=ChargeSponsor.current.naming
+    @current_sponsors_mj=ChargeSponsor.current.major
+    @current_sponsors_st=ChargeSponsor.current.standard
   end
 
   def about

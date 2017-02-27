@@ -89,6 +89,7 @@
   overflow: auto;
   max-width: 2000px;
   margin:auto;
+  margin-bottom: 10px;
 }
 .banner li {
   list-style: none;
@@ -151,4 +152,29 @@
 .unslider-nav ol li.unslider-active {
   background: #fff;
   opacity: 1;
+}
+.ruled
+{
+  border-top-style: solid;
+
+  border-color: $brand-primary;
+  padding-top: 15px;
+  padding-bottom: 5px;
+}
+.home-text{
+  font-size: 1rem;
+  line-height: 1rem;
+  margin-bottom: 10px;
+  text-align: center;
+}
+.home-text img {
+  display:block;
+  width:50px;
+  margin:auto;
+}
+@include media-breakpoint-down(xs) {
+  .home-text {
+    font-size: 0.8rem;
+    line-height: 0.8rem;
+  }
 }

@@ -14,6 +14,10 @@ end
 def charge_path(charge)
   '/' + charge.ref
 end
+def charge_entries_path(charge)
+  '/' + charge.ref + '/teams'
+end
+
 def team_path(team)
   '/' + team.ref
 end

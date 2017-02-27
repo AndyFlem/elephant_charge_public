@@ -1,7 +1,18 @@
+<%
+ if entry_team.is_a?(Entry)
+  team=entry_team.team
+ else
+   team=entry_team
+ end
+%>
 <div class="card">
   <a href="<%= team_path team %>">
     <div class="card-header">
-      <h6><%= team.long_name %></h6>
+      <h6>
+        <% if entry_team.is_a?(Entry) %>
+          <b><%= entry_team.car_no%> </b>
+        <% end %>
+        <%= team.long_name %></h6>
     </div>
   </a>
   <div class="card-block" style="padding:5px;">

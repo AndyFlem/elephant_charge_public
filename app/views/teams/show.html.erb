@@ -2,89 +2,95 @@
 
 <div class="container-fluid">
   <div class="row">
-<div class="col-md-8">
-  <div class="card">
-    <div class="card-header">
-      <h5><%= @team.long_name %></h5>
-    </div>
-    <div class="card-block">
-      <p>
-        <b><%= @team.long_name %></b> have entered <b><%= @entries.count %></b> charge<%= @entries.count>1 ? 's' : '' %> since
-        <b><%= @entries.last.charge.ref %></b> raising
-        <b>$<%= number_with_precision(@team.raised_dollars, precision: 0, delimiter: ',') %></b> for conservation in Zambia.
-      </p>
-      <p>
-        The team's best leg was <%= render 'entry_legs/description', entry_leg: @best_leg %>
-      </p>
-      <% if @honours %>
-      <p>
-        <ul>
-          <% @honours.each do |h| %>
-            <li><%= h.html_safe %></li>
+    <div class="col-md-8">
+      <div class="card">
+        <div class="card-header">
+          <h5><%= @team.long_name %></h5>
+        </div>
+        <div class="card-block">
+          <p>
+            <b><%= @team.long_name %></b> have entered <b><%= @entries.count %></b>
+            charge<%= @entries.count>1 ? 's' : '' %> since
+            <b><%= @entries.last.charge.ref %></b> raising
+            <b>$<%= number_with_precision(@team.raised_dollars, precision: 0, delimiter: ',') %></b> for conservation in
+            Zambia.
+          </p>
+          <p>
+            The team's best leg was <%= render 'entry_legs/description', entry_leg: @best_leg %>
+          </p>
+          <% if @honours %>
+              <p>
+              <ul>
+                <% @honours.each do |h| %>
+                    <li><%= h.html_safe %></li>
+                <% end %>
+              </ul>
+              </p>
           <% end %>
-        </ul>
-      </p>
+        </div>
+      </div>
+
+      <% @entries.each do |entry| %>
+          <div class="card">
+            <div class="card-header">
+              <h5><a href="<%= entry_path(entry) %>"><%= entry.charge.long_name %></a></h5>
+              <b><%= entry.charge.entries.count %></b> entires and
+              <b><%= entry.charge.entries.where(result_description: 'Complete').count %></b> finishers
+            </div>
+            <div class="card-block">
+              <div class="col-md-8">
+                Entered in a <%= entry.car.description %> as car <b>no <%= entry.car_no %></b>.
+                Raised <b>$<%= number_with_precision(entry.raised_dollars, precision: 0, delimiter: ',') %></b>,
+                <% if entry.result_description=='Complete' %>
+                    completed the course in a distance of
+                    <b><%= number_with_precision(entry.dist_competition/1000.0, precision: 0, delimiter: ',') %>km</b>
+                <% else %>
+                    completed <b><%= entry.result_guards %></b> checkpoint<%= entry.result_guards>1 ? 's' : '' %>
+                <% end %>
+                and were placed
+                <b><%= format_position(entry.position_distance.nil? ? entry.position_bikes : entry.position_distance) %></b>
+                overall.
+                <ul style="margin-top: 15px">
+                  <% entry.result_summary.each do |res| %>
+                      <li>
+                        <%= res %>
+                      </li>
+                  <% end %>
+                </ul>
+              </div>
+              <div class="col-md-4">
+                <%
+                  @photo=entry.photo_random_landscape()
+                  unless @photo.nil?
+                %>
+                    <a onclick="showModal(this)" data-image="<%= image_url(@photo.photo(:original)) %>" data-description="<%= @photo.caption %>">
+                      <img style="max-width:100%" src="<%= image_path @photo.photo(:medium) %>"/>
+                    </a>
+                <% end %>
+              </div>
+            </div>
+          </div>
       <% end %>
     </div>
-  </div>
 
-  <% @entries.each do |entry| %>
-    <div class="card">
-      <div class="card-header">
-        <h5><a href="<%= entry_path(entry) %>"><%= entry.charge.long_name %></a></h5>
-        <b><%= entry.charge.entries.count %></b> entires and <b><%= entry.charge.entries.where(result_description: 'Complete').count%></b> finishers
-      </div>
-      <div class="card-block">
-        <div class="col-md-8">
-          Entered in a <%= entry.car.description%> as car <b>no <%= entry.car_no %></b>.
-          Raised <b>$<%= number_with_precision(entry.raised_dollars, precision: 0, delimiter: ',') %></b>,
-          <% if entry.result_description=='Complete' %>
-            completed the course in a distance of <b><%= number_with_precision(entry.dist_competition/1000.0, precision: 0, delimiter: ',') %>km</b>
-          <% else %>
-            completed <b><%= entry.result_guards %></b> checkpoint<%= entry.result_guards>1 ? 's' : '' %>
-          <% end %>
-          and were placed <b><%= format_position(entry.position_distance.nil? ? entry.position_bikes  : entry.position_distance) %></b> overall.
-          <ul style="margin-top: 15px">
-          <% entry.result_summary.each do |res| %>
-            <li>
-              <%= res %>
-            </li>
-          <% end %>
-          </ul>
+    <div class="col-md-4">
+      <div class="card">
+        <div class="card-block">
+          The money raised by <b><%= @team.long_name %></b> has supported conservation in Zambia through the following
+          organisations and projects:
         </div>
-        <div class="col-md-4">
-          <%
-            @photo=entry.photo_random_landscape()
-            unless @photo.nil?
-          %>
-          <a onclick="showModal(this)" data-image="<%= image_url(@photo.photo(:original))%>" data-description="<%= @photo.caption%>">
-            <img style="max-width:100%" src="<%= image_path @photo.photo(:medium) %>"/>
-          </a>
-          <% end %>
-        </div>
-      </div>
-    </div>
-  <% end %>
-</div>
-
-<div class="col-md-4">
-  <div class="card">
-    <div class="card-block">
-      The money raised by <b><%= @team.long_name %></b> has supported conservation in Zambia through the following
-      organisations and projects:
-    </div>
-    <div class="card-block" style="padding-left:0px;padding-right:0px;">
-      <div class="col-lg-6">
-        <% @team.beneficiaries.each_with_index do |b, i| %>
-          <%= render 'beneficiaries/beneficiarythumb', obj: b %>
-          <% if (i+1)==@team.beneficiaries.count/2 %>
+        <div class="card-block" style="padding-left:0px;padding-right:0px;">
+          <div class="col-lg-6">
+            <% @team.beneficiaries.each_with_index do |b, i| %>
+                <%= render 'beneficiaries/beneficiarythumb', obj: b %>
+                <% if (i+1)==@team.beneficiaries.count/2 %>
+                    </div>
+                    <div class="col-lg-6">
+                <% end %>
+            <% end %>
             </div>
-            <div class="col-lg-6">
-          <%end%>
-        <% end %>
+            </div>
       </div>
     </div>
-  </div>
-</div>
   </div>
 </div>

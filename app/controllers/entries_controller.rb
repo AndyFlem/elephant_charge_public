@@ -6,6 +6,11 @@ class EntriesController < ApplicationController
     render json: @entries
   end
 
+  def index
+    @charge=Charge.find_by_ref(params[:id])
+    @entries=@charge.entries.order(:car_no)
+  end
+
   def json_show
     @entry=Entry.find(params[:entry_id])
     render json: @entry
