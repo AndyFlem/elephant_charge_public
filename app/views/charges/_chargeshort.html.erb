@@ -49,6 +49,18 @@
       </div>
   <% end %>
 </div>
+<div class="container-fluid">
+  <div class="row">
+    <% @cp_sponsors.each do |sp| %>
+    <div class="col-4 col-sm-2 col-md-2 col-lg-1" style="margin:auto;">
+      <a target="_blank" href="<%= sp.website%>">
+        <img class="img-fluid mx-auto d-block" src="<%= image_url(sp.logo(:thumb)) %>">
+      </a>
+    </div>
+    <% end %>
+  </div>
+</div>
+<!--
 <div style="font-size: 0px">
   <%
     width=100.0/@cp_sponsors.count
@@ -57,7 +69,6 @@
       <div style="width:<%= width%>%;display:inline-block;padding:5px;">
         <img  style="max-width: 100%" src="<%= image_url(sp.logo(:thumb)) %>"></img>
       </div>
-
-
   <% end %>
 </div>
+-->

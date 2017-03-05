@@ -17,11 +17,9 @@
   </a>
   <div class="card-block" style="padding:5px;">
     <% photo=team.photo_random_landscape() %>
-    <div class="image-container">
-      <a onclick="showModal(this)" data-image="<%= photo[:url_original]%>" data-description="<%= photo[:description]%>">
-        <img class="rounded mx-auto d-block" src="<%= image_path(photo[:url_medium])%>">
-      </a>
-    </div>
+
+    <%= render :partial => 'photos/photo', :locals => {:photo => team.photo_random_landscape()} %>
+
   </div>
   <div class="card-block" style="text-align: center;padding-top:0px;">
     <% if team.new_entry? %>

@@ -8,13 +8,14 @@
     <div class="col-lg-8">
       <div class="card">
         <div class="card-header">
-          <h5><a href="<%= team_path(@team) %>"><b><%= @entry.car_no %></b> <%= @team.long_name %></a> -
-            <a href="<%= charge_path(@charge) %>"><%= @charge.name %></a></h5>
+          <h5>
+            <a href="<%= team_path(@team) %>"><b><%= @entry.car_no %></b> <%= @team.long_name %></a> -
+            <a href="<%= charge_path(@charge) %>"><%= @charge.name %></a>
+          </h5>
         </div>
         <div class="card-block">
           <div class="container-fluid">
             <div class="row">
-
               <div class="col-md-4">
                 <a onclick="showModal(this)" data-image="<%= image_url(@photo.photo(:original)) %>" data-description="<%= @photo.caption %>">
                   <img class="rounded mx-auto d-block" src="<%= image_path @photo.photo(:medium) %>">
@@ -28,7 +29,6 @@
                 <%= bold { number_with_precision(@entry.dist_competition/1000.0, precision: 2) +'km' } %> raising
                 <%= bold { '$' + number_with_precision(@entry.raised_dollars, precision: 0, delimiter: ',') } %> for
                 conservation in Zambia.
-
                 <ul style="padding-left: 15px;margin-top:10px;">
                   <% @results.each do |result| %>
                       <li><%= result %></li>

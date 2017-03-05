@@ -67,3 +67,30 @@ $grid-gutter-width-base: 15px;
 .modal-body img {
   width:100%
 }
+
+
+#navleft{
+
+}
+#navright{
+
+}
+.navbutton {
+  z-index: 1;
+  background: rgba(255, 255, 255, 0.43);
+  border-style: none;
+  border-radius: 7px;
+
+}
+.navbutton span {
+  font-size: 2.5rem;
+  line-height: 3rem;
+  color: #3c3c3c;
+  cursor: pointer;
+}
+@include media-breakpoint-down(xs) {
+  .navbutton span{
+    font-size: 2rem;
+    line-height: 2rem;
+  }
+}

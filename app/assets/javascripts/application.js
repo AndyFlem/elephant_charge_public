@@ -43,6 +43,9 @@ $( document ).ready(function() {
             delay:10000
         });
     }
+    $('#navleft').click(function(){
+
+    })
 })
 
 

@@ -65,9 +65,7 @@
                       @photo=entry.photo_random_landscape()
                       unless @photo.nil?
                     %>
-                        <a onclick="showModal(this)" data-image="<%= image_url(@photo.photo(:original)) %>" data-description="<%= @photo.caption %>">
-                          <img class="rounded mx-auto d-block" style="max-width:100%" src="<%= image_path @photo.photo(:medium) %>"/>
-                        </a>
+                    <%= render :partial => 'photos/photo', :locals => {:photo => @photo} %>
                     <% end %>
                   </div>
                 </div>

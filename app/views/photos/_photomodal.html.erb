@@ -9,8 +9,16 @@
         </button>
         <h5 id="modalTitle"/>
       </div>
-      <div class="modal-body">
-        <img id="modalImageElement" src="/system/clear.gif" style="margin:auto;display:block;background: url('/system/loading.gif') 50% no-repeat;"/>
+      <div class="modal-body" style="display: flex">
+        <div style="margin: auto;">
+          <button class="navbutton" type="button" id="navleft"><span><</span></button>
+        </div>
+        <div style="flex: 1;flex-basis:auto;padding:10px">
+          <img class="rounded" id="modalImageElement" src="/system/clear.gif" style="margin:auto;display:block;background: url('/system/loading.gif') 50% no-repeat;"/>
+        </div>
+        <div style="margin: auto;">
+          <button class="navbutton" type="button" id="navright"><span>></span></button>
+        </div>
       </div>
     </div>
   </div>
