@@ -139,14 +139,6 @@ class Team < ApplicationRecord
 
   def photo_random_landscape()
     self.photos.where('aspect>1.3 and aspect<1.7').order("RANDOM()").limit(1).first
-    #pht=self.photos.where('aspect>1.3 and aspect<1.7').order("RANDOM()").limit(1).first
-    #if pht
-    #  entry=pht.photoable
-    #  ret={url_original: pht.photo.url(:original),url_medium: pht.photo.url(:medium), description: pht.caption}
-    #else
-    #  ret={url_medium: '/system/thumb/ec_logo_col.png', description: ''}
-    #end
-    #ret
   end
 
   def raised_dollars

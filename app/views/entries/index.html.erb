@@ -1,5 +1,24 @@
 <div class="container-fluid">
   <div class="row">
+    <div class="col-lg-8">
+      <div class="card">
+        <div class="card-header">
+          <h5  style="display:inline-block;"><%= @charge.long_name %></h5>
+          <div style="float:right;display: block;">
+            <a data-toggle="tooltip" data-placement="top" title="Results"  href="<%=  charge_path(@charge) %>"><img style="margin-left:10px;" src="<%= image_path('icons/grey/results.png')%>"></a>
+            <a data-toggle="tooltip" data-placement="top" title="Teams" href="<%= charge_entries_path(@charge)  %>"><img style="margin-left:10px;" src="<%= image_path('icons/color/car.png')%>"></a>
+
+            <a data-toggle="tooltip" data-placement="top" title="Download Google Earth Tracks"  href="<%= '/system/charges/kml/elephant_charge_' + @charge.ref + '.kml'  %>"><img style="margin-left:10px;" src="<%= image_path('icons/grey/googleearth.png')%>"></a>
+            <a data-toggle="tooltip" data-placement="top" title="Download Detailed Results" href="<%= '/system/charges/xlsx/ElephantCharge_' + @charge.ref + '.xlsx'  %>"><img style="margin-left:10px;" src="<%= image_path('icons/grey/excel.png')%>"></a>
+            <a data-toggle="tooltip" data-placement="top" title="Download The Charge Map" target="_blank" href="<%= @charge.map(:original) %>"><img style="margin-left:10px;" src="<%= image_path('icons/grey/map.png')%>"></a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+  </div>
+  <div class="row">
     <% @entries.each do |entry| %>
         <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 col-xl-2">
           <%= render :partial => '/teams/teamcard', :locals => {:entry_team=> entry}  %>

@@ -18,7 +18,7 @@
   <div class="card-block" style="padding:5px;">
     <% photo=team.photo_random_landscape() %>
 
-    <%= render :partial => 'photos/photo', :locals => {:photo => team.photo_random_landscape()} %>
+    <%= render :partial => 'photos/photo', :locals => {:photos => team.photos} %>
 
   </div>
   <div class="card-block" style="text-align: center;padding-top:0px;">

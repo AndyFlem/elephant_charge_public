@@ -5,7 +5,9 @@
   <% @charges.each do |charge| %>
       <div class="card">
         <div class="card-header">
-          <a href="<%= charge_path charge %>"><h5><%= charge.long_name %></h5></a>
+          <h5 style="display: inline-block;"><%= charge.long_name %></h5>
+          <span style="float: right;"><a href="">Teams</a></span>
+          <span style="float: right;padding-left: 10px;padding-right: 10px;"><a href="<%= charge_path(charge)%>">Results</a></span>
         </div>
         <div class="card-block">
           <%= render :partial => '/charges/chargeshort', :locals => {:charge => charge}  %>

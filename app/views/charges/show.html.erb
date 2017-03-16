@@ -1,238 +1,251 @@
-<div class="col-lg-8">
-  <div class="card">
-    <div class="card-header">
-      <h4  style="display:inline-block;"><%= @charge.long_name %></h4>
-      <div style="float:right;display: block;">
-        <a data-toggle="tooltip" data-placement="top" title="Download Google Earth Tracks"  href="<%= '/system/charges/kml/elephant_charge_' + @charge.ref + '.kml'  %>"><img style="margin-left:10px;" src="<%= image_path('icons/grey/googleearth.png')%>"></a>
-        <a data-toggle="tooltip" data-placement="top" title="Download Detailed Results" href="<%= '/system/charges/xlsx/ElephantCharge_' + @charge.ref + '.xlsx'  %>"><img style="margin-left:10px;" src="<%= image_path('icons/grey/excel.png')%>"></a>
-        <a data-toggle="tooltip" data-placement="top" title="Download The Charge Map" target="_blank" href="<%= @charge.map(:original) %>"><img style="margin-left:10px;" src="<%= image_path('icons/grey/map.png')%>"></a>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-lg-8">
+      <div class="card">
+        <div class="card-header">
+          <h5  style="display:inline-block;"><%= @charge.long_name %></h5>
+          <div style="float:right;display: block;">
+            <a data-toggle="tooltip" data-placement="top" title="Results"  href="<%=  charge_path(@charge) %>"><img style="margin-left:10px;" src="<%= image_path('icons/color/results.png')%>"></a>
+            <a data-toggle="tooltip" data-placement="top" title="Teams" href="<%=  charge_entries_path(@charge) %>"><img style="margin-left:10px;" src="<%= image_path('icons/grey/car.png')%>"></a>
+
+            <a data-toggle="tooltip" data-placement="top" title="Download Google Earth Tracks"  href="<%= '/system/charges/kml/elephant_charge_' + @charge.ref + '.kml'  %>"><img style="margin-left:10px;" src="<%= image_path('icons/grey/googleearth.png')%>"></a>
+            <a data-toggle="tooltip" data-placement="top" title="Download Detailed Results" href="<%= '/system/charges/xlsx/ElephantCharge_' + @charge.ref + '.xlsx'  %>"><img style="margin-left:10px;" src="<%= image_path('icons/grey/excel.png')%>"></a>
+            <a data-toggle="tooltip" data-placement="top" title="Download The Charge Map" target="_blank" href="<%= @charge.map(:original) %>"><img style="margin-left:10px;" src="<%= image_path('icons/grey/map.png')%>"></a>
+          </div>
+        </div>
+        <div class="card-block">
+          <%= render :partial => '/charges/chargeshort', :locals => {:charge => @charge}  %>
+        </div>
+        <div class="card-block">
+          <div class="container-fluid">
+            <div class="row">
+              <div class="col-lg-6">
+                <div class="card result-card">
+                  <!--
+                  <div class="card-header">
+                    <h5><a data-toggle="popover" data-placement="top" data-content="Viva"> <i>Country Choice Trophy</i><br/>Shortest Net Distance</a></h5>
+                  </div>
+                  -->
+                  <div class="card-header">
+                    <h6><i>Country Choice Trophy</i><br/>Shortest Net Distance</h6>
+                  </div>
+                  <div class="card-block">
+                    <%= render :layout => '/application/collapselist', :locals => {:show => 3, :list_id => 'net_distance', :items => @entries_net} do |item| %>
+                        <%= format_position(item.position_net_distance) %>
+                        <a href="<%= entry_path(item) %>" class="teamname"><%= item.team.long_name %></a> in
+                        <b><%= number_with_precision(item.dist_net/1000.0, precision: 2, delimiter: ',') %>km</b>
+                    <% end %>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-6">
+                <div class="card result-card">
+                  <div class="card-header">
+                    <h6><i>Sausage Tree Trophy</i><br/>Highest Sponsorship Raised</h6>
+                  </div>
+                  <div class="card-block">
+                    <%= render :layout => '/application/collapselist', :locals => {:show => 3, :list_id => 'raised', :items => @entries_raised} do |item| %>
+                        <%= format_position(item.position_raised) %>
+                        <a href="<%= entry_path(item) %>" class="teamname"><%= item.team.long_name %></a> with
+                        <b>$<%= number_with_precision(item.raised_dollars, precision: 0, delimiter: ',') %></b>
+                    <% end %>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-6">
+                <div class="card result-card">
+                  <div class="card-header">
+                    <h6><i>Castle Fleming Trophy</i><br/>Shortest Overall Distance</h6>
+                  </div>
+                  <div class="card-block">
+                    <%= render :layout => '/application/collapselist', :locals => {:show => 3, :list_id => 'distance', :items => @entries_dist} do |item| %>
+                        <%= format_position(item.position_distance) %>
+                        <a href="<%= entry_path(item) %>" class="teamname"><%= item.team.long_name %></a>
+                        <% if item.result_description=='Complete' %>
+                            completed in
+                            <b><%= number_with_precision(item.dist_competition/1000.0, precision: 2, delimiter: ',') %>km</b>
+                        <% else %>
+                            <b><%= item.result_description %></b>
+                        <% end %>
+                    <% end %>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-6">
+                <div class="card result-card">
+                  <div class="card-header">
+                    <h6><i>Bowden Trophy</i><br/>Shortest Gauntlet Distance</h6>
+                  </div>
+                  <div class="card-block">
+                    <%= render :layout => '/application/collapselist', :locals => {:show => 3, :list_id => 'gauntlet', :items => @entries_gaunt} do |item| %>
+                        <%= format_position(item.position_gauntlet) %>
+                        <a href="<%= entry_path(item) %>" class="teamname"><%= item.team.long_name %></a> in
+                        <b><%= number_with_precision(item.dist_gauntlet/1000.0, precision: 2, delimiter: ',') %>km</b>
+                    <% end %>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-6">
+                <div class="card result-card">
+                  <div class="card-header">
+                    <h6><i>Sanctuary Trophy</i><br/>Shortest Distance on Tsetse Line 1</h6>
+                  </div>
+                  <div class="card-block">
+                    <%= render :layout => '/application/collapselist', :locals => {:show => 3, :list_id => 'tsetse1', :items => @entries_tsetse1} do |item| %>
+                        <%= format_position(item.position_tsetse1) %>
+                        <a href="<%= entry_path(item) %>" class="teamname"><%= item.team.long_name %></a> in
+                        <b><%= number_with_precision(item.dist_tsetse1/1000.0, precision: 2, delimiter: ',') %>km</b>
+                    <% end %>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-6">
+                <div class="card result-card">
+                  <div class="card-header">
+                    <h6><i>Khal Amazi Trophy</i><br/>Shortest Distance on Tsetse Line 2</h6>
+                  </div>
+                  <div class="card-block">
+                    <%= render :layout => '/application/collapselist', :locals => {:show => 3, :list_id => 'tsetse2', :items => @entries_tsetse2} do |item| %>
+                        <%= format_position(item.position_tsetse2) %>
+                        <a href="<%= entry_path(item) %>" class="teamname"><%= item.team.long_name %></a> in
+                        <b><%= number_with_precision(item.dist_tsetse2/1000.0, precision: 2, delimiter: ',') %>km</b>
+                    <% end %>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-6">
+                <% unless @entries_ladies.count==0 %>
+                    <div class="card result-card">
+                      <div class="card-header">
+                        <h6><i>Silky Cup</i><br/>Shortest Distance by a Ladies Team</h6>
+                      </div>
+                      <div class="card-block">
+                        <%= render :layout => '/application/collapselist', :locals => {:show => 3, :list_id => 'ladies', :items => @entries_ladies} do |item,i| %>
+                            <%= format_position(i+1) %>
+                            <a href="<%= entry_path(item) %>" class="teamname"><%= item.team.long_name %></a>
+                            <% if item.result_description=='Complete' %>
+                                completed in
+                                <b><%= number_with_precision(item.dist_competition/1000.0, precision: 2, delimiter: ',') %>
+                                  km</b>
+                            <% else %>
+                                <b><%= item.result_description %></b>
+                            <% end %>
+                        <% end %>
+                      </div>
+                    </div>
+                <% end %>
+              </div>
+              <div class="col-lg-6">
+                <% unless @entries_bikes.count==0 %>
+                    <div class="card result-card">
+                      <div class="card-header">
+                        <h6><i>Dean Cup</i><br/>Shortest Distance by a Bike Team</h6>
+                      </div>
+                      <div class="card-block">
+                        <%= render :layout => '/application/collapselist', :locals => {:show => 3, :list_id => 'bikes', :items => @entries_bikes} do |item,i| %>
+                            <%= format_position(i+1) %>
+                            <a href="<%= entry_path(item) %>" class="teamname"><%= item.team.long_name %></a>
+                            <% if item.result_description=='Complete' %>
+                                completed in
+                                <b><%= number_with_precision(item.dist_competition/1000.0, precision: 2, delimiter: ',') %>
+                                  km</b>
+                            <% else %>
+                                <b><%= item.result_description %></b>
+                            <% end %>
+                        <% end %>
+                      </div>
+                    </div>
+                <% end %>
+              </div>
+              <div class="col-lg-6">
+                <% unless @entries_net_bikes.count==0 %>
+                    <div class="card result-card">
+                      <div class="card-header">
+                        <h6>Shortest Net Distance by a Bike Team</h6>
+                      </div>
+                      <div class="card-block">
+                        <%= render :layout => '/application/collapselist', :locals => {:show => 3, :list_id => 'bikes', :items => @entries_net_bikes} do |item,i| %>
+                            <%= format_position(i+1) %>
+                            <a href="<%= entry_path(item) %>" class="teamname"><%= item.team.long_name %></a> in
+                            <b><%= number_with_precision(item.dist_net/1000.0, precision: 2, delimiter: ',') %>km</b>
+                        <% end %>
+                      </div>
+                    </div>
+                <% end %>
+              </div>
+              <div class="col-lg-6">
+                <% unless @entries_newcomer.count==0 %>
+                    <div class="card result-card">
+                      <div class="card-header">
+                        <h6><br/>Shortest Distance by a New Entry</h6>
+                      </div>
+                      <div class="card-block">
+                        <%= render :layout => '/application/collapselist', :locals => {:show => 3, :list_id => 'newcomer', :items => @entries_newcomer} do |item,i| %>
+                            <%= format_position(i+1) %>
+                            <a href="<%= entry_path(item) %>" class="teamname"><%= item.team.long_name %></a>
+                            <% if item.result_description=='Complete' %>
+                                completed in
+                                <b><%= number_with_precision(item.dist_competition/1000.0, precision: 2, delimiter: ',') %>
+                                  km</b>
+                            <% else %>
+                                <b><%= item.result_description %></b>
+                            <% end %>
+                        <% end %>
+                      </div>
+                    </div>
+                <% end %>
+              </div>
+              <div class="col-lg-6">
+                <% unless @charge.spirit_name.nil? or @charge.spirit_name=='' %>
+                    <div class="card result-card">
+                      <div class="card-header">
+                        <h6><i>Sausage Tree Trophy</i><br/>Spirit of the Charge</h6>
+                      </div>
+                      <div class="card-block">
+                        <p><span class="teamname"><%= @charge.spirit_name %></span> - <%= @charge.spirit_description %></p>
+                      </div>
+                    </div>
+                <% end %>
+              </div>
+              <div class="col-lg-6">
+                <% unless @charge.shafted_entry.nil? %>
+                    <div class="card result-card">
+                      <div class="card-header">
+                        <h6><br/>Properly Shafted Award</h6>
+                      </div>
+                      <div class="card-block">
+                        <p><a href="<%= entry_path(@charge.shafted_entry) %>" class="teamname"><%= @charge.shafted_entry.team.long_name %></a>
+                          - <%= @charge.shafted_description %></p>
+                      </div>
+                    </div>
+                <% end %>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
-    <div class="card-block">
-      <%= render :partial => '/charges/chargeshort', :locals => {:charge => @charge}  %>
-    </div>
-    <div class="card-block">
 
-
-      <div class="col-lg-6">
-        <div class="card result-card">
-          <!--
-          <div class="card-header">
-            <h5><a data-toggle="popover" data-placement="top" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus."> <i>Country Choice Trophy</i><br/>Shortest Net Distance</a></h5>
-          </div>
-          -->
-          <div class="card-block">
-            <%= render :layout => '/application/collapselist', :locals => {:show => 3, :list_id => 'net_distance', :items => @entries_net} do |item| %>
-                <%= format_position(item.position_net_distance) %>
-                <a href="<%= entry_path(item) %>" class="teamname"><%= item.team.long_name %></a> in
-                <b><%= number_with_precision(item.dist_net/1000.0, precision: 2, delimiter: ',') %>km</b>
-            <% end %>
+    <div class="col-lg-4">
+      <div class="card">
+        <div class="card-block">
+          The money raised by the teams for the <b><%= @charge.name %></b> supports conservation in <b>Zambia</b> through the following
+          organisations and projects:
+        </div>
+        <div class="card-block" style="padding-left:0px;padding-right:0px;">
+          <div class="container-fluid">
+            <div class="row">
+              <% @grants.each_with_index do |b, i| %>
+                <div class="col-md-6 ">
+                  <%= render 'beneficiaries/beneficiarythumb', obj: b %>
+                </div>
+              <% end %>
+            </div>
           </div>
         </div>
-      </div>
-      <div class="col-lg-6">
-        <div class="card result-card">
-          <div class="card-header">
-            <h5><i>Sausage Tree Trophy</i><br/>Highest Sponsorship Raised</h5>
-          </div>
-          <div class="card-block">
-            <%= render :layout => '/application/collapselist', :locals => {:show => 3, :list_id => 'raised', :items => @entries_raised} do |item| %>
-                <%= format_position(item.position_raised) %>
-                <a href="<%= entry_path(item) %>" class="teamname"><%= item.team.long_name %></a> with
-                <b>$<%= number_with_precision(item.raised_dollars, precision: 0, delimiter: ',') %></b>
-            <% end %>
-          </div>
-        </div>
-      </div>
-      <div class="col-lg-6">
-        <div class="card result-card">
-          <div class="card-header">
-            <h5><i>Castle Fleming Trophy</i><br/>Shortest Overall Distance</h5>
-          </div>
-          <div class="card-block">
-            <%= render :layout => '/application/collapselist', :locals => {:show => 3, :list_id => 'distance', :items => @entries_dist} do |item| %>
-                <%= format_position(item.position_distance) %>
-                <a href="<%= entry_path(item) %>" class="teamname"><%= item.team.long_name %></a>
-                <% if item.result_description=='Complete' %>
-                    completed in
-                    <b><%= number_with_precision(item.dist_competition/1000.0, precision: 2, delimiter: ',') %>km</b>
-                <% else %>
-                    <b><%= item.result_description %></b>
-                <% end %>
-            <% end %>
-          </div>
-        </div>
-      </div>
-      <div class="col-lg-6">
-        <div class="card result-card">
-          <div class="card-header">
-            <h5><i>Bowden Trophy</i><br/>Shortest Gauntlet Distance</h5>
-          </div>
-          <div class="card-block">
-            <%= render :layout => '/application/collapselist', :locals => {:show => 3, :list_id => 'gauntlet', :items => @entries_gaunt} do |item| %>
-                <%= format_position(item.position_gauntlet) %>
-                <a href="<%= entry_path(item) %>" class="teamname"><%= item.team.long_name %></a> in
-                <b><%= number_with_precision(item.dist_gauntlet/1000.0, precision: 2, delimiter: ',') %>km</b>
-            <% end %>
-          </div>
-        </div>
-      </div>
-      <div class="col-lg-6">
-        <div class="card result-card">
-          <div class="card-header">
-            <h5><i>Sanctuary Trophy</i><br/>Shortest Distance on Tsetse Line 1</h5>
-          </div>
-          <div class="card-block">
-            <%= render :layout => '/application/collapselist', :locals => {:show => 3, :list_id => 'tsetse1', :items => @entries_tsetse1} do |item| %>
-                <%= format_position(item.position_tsetse1) %>
-                <a href="<%= entry_path(item) %>" class="teamname"><%= item.team.long_name %></a> in
-                <b><%= number_with_precision(item.dist_tsetse1/1000.0, precision: 2, delimiter: ',') %>km</b>
-            <% end %>
-          </div>
-        </div>
-      </div>
-      <div class="col-lg-6">
-        <div class="card result-card">
-          <div class="card-header">
-            <h5><i>Khal Amazi Trophy</i><br/>Shortest Distance on Tsetse Line 2</h5>
-          </div>
-          <div class="card-block">
-            <%= render :layout => '/application/collapselist', :locals => {:show => 3, :list_id => 'tsetse2', :items => @entries_tsetse2} do |item| %>
-                <%= format_position(item.position_tsetse2) %>
-                <a href="<%= entry_path(item) %>" class="teamname"><%= item.team.long_name %></a> in
-                <b><%= number_with_precision(item.dist_tsetse2/1000.0, precision: 2, delimiter: ',') %>km</b>
-            <% end %>
-          </div>
-        </div>
-      </div>
-      <div class="col-lg-6">
-        <% unless @entries_ladies.count==0 %>
-            <div class="card result-card">
-              <div class="card-header">
-                <h5><i>Silky Cup</i><br/>Shortest Distance by a Ladies Team</h5>
-              </div>
-              <div class="card-block">
-                <%= render :layout => '/application/collapselist', :locals => {:show => 3, :list_id => 'ladies', :items => @entries_ladies} do |item,i| %>
-                    <%= format_position(i+1) %>
-                    <a href="<%= entry_path(item) %>" class="teamname"><%= item.team.long_name %></a>
-                    <% if item.result_description=='Complete' %>
-                        completed in
-                        <b><%= number_with_precision(item.dist_competition/1000.0, precision: 2, delimiter: ',') %>
-                          km</b>
-                    <% else %>
-                        <b><%= item.result_description %></b>
-                    <% end %>
-                <% end %>
-              </div>
-            </div>
-        <% end %>
-      </div>
-      <div class="col-lg-6">
-        <% unless @entries_bikes.count==0 %>
-            <div class="card result-card">
-              <div class="card-header">
-                <h5><i>Dean Cup</i><br/>Shortest Distance by a Bike Team</h5>
-              </div>
-              <div class="card-block">
-                <%= render :layout => '/application/collapselist', :locals => {:show => 3, :list_id => 'bikes', :items => @entries_bikes} do |item,i| %>
-                    <%= format_position(i+1) %>
-                    <a href="<%= entry_path(item) %>" class="teamname"><%= item.team.long_name %></a>
-                    <% if item.result_description=='Complete' %>
-                        completed in
-                        <b><%= number_with_precision(item.dist_competition/1000.0, precision: 2, delimiter: ',') %>
-                          km</b>
-                    <% else %>
-                        <b><%= item.result_description %></b>
-                    <% end %>
-                <% end %>
-              </div>
-            </div>
-        <% end %>
-      </div>
-      <div class="col-lg-6">
-        <% unless @entries_net_bikes.count==0 %>
-            <div class="card result-card">
-              <div class="card-header">
-                <h5>Shortest Net Distance by a Bike Team</h5>
-              </div>
-              <div class="card-block">
-                <%= render :layout => '/application/collapselist', :locals => {:show => 3, :list_id => 'bikes', :items => @entries_net_bikes} do |item,i| %>
-                    <%= format_position(i+1) %>
-                    <a href="<%= entry_path(item) %>" class="teamname"><%= item.team.long_name %></a> in
-                    <b><%= number_with_precision(item.dist_net/1000.0, precision: 2, delimiter: ',') %>km</b>
-                <% end %>
-              </div>
-            </div>
-        <% end %>
-      </div>
-      <div class="col-lg-6">
-        <% unless @entries_newcomer.count==0 %>
-            <div class="card result-card">
-              <div class="card-header">
-                <h5><br/>Shortest Distance by a New Entry</h5>
-              </div>
-              <div class="card-block">
-                <%= render :layout => '/application/collapselist', :locals => {:show => 3, :list_id => 'newcomer', :items => @entries_newcomer} do |item,i| %>
-                    <%= format_position(i+1) %>
-                    <a href="<%= entry_path(item) %>" class="teamname"><%= item.team.long_name %></a>
-                    <% if item.result_description=='Complete' %>
-                        completed in
-                        <b><%= number_with_precision(item.dist_competition/1000.0, precision: 2, delimiter: ',') %>
-                          km</b>
-                    <% else %>
-                        <b><%= item.result_description %></b>
-                    <% end %>
-                <% end %>
-              </div>
-            </div>
-        <% end %>
-      </div>
-      <div class="col-lg-6">
-        <% unless @charge.spirit_name.nil? or @charge.spirit_name=='' %>
-            <div class="card result-card">
-              <div class="card-header">
-                <h5><i>Sausage Tree Trophy</i><br/>Spirit of the Charge</h5>
-              </div>
-              <div class="card-block">
-                <p><span class="teamname"><%= @charge.spirit_name %></span> - <%= @charge.spirit_description %></p>
-              </div>
-            </div>
-        <% end %>
-      </div>
-      <div class="col-lg-6">
-        <% unless @charge.shafted_entry.nil? %>
-            <div class="card result-card">
-              <div class="card-header">
-                <h5><br/>Properly Shafted Award</h5>
-              </div>
-              <div class="card-block">
-                <p><a href="<%= entry_path(@charge.shafted_entry) %>" class="teamname"><%= @charge.shafted_entry.team.long_name %></a>
-                  - <%= @charge.shafted_description %></p>
-              </div>
-            </div>
-        <% end %>
       </div>
     </div>
   </div>
 </div>
 
-<div class="col-lg-4">
-  <div class="card">
-    <div class="card-block">
-      The money raised by the teams for the <b><%= @charge.name %></b> supports conservation in <b>Zambia</b> through the following
-      organisations and projects:
-    </div>
-    <div class="card-block" style="padding-left:0px;padding-right:0px;">
-      <div class="col-xs-6">
-        <% @grants.each_with_index do |b, i| %>
-          <%= render 'beneficiaries/beneficiarythumb', obj: b %>
-          <% if (i+1)==@grants.count/2 %>
-            </div>
-            <div class="col-xs-6">
-          <%end%>
-        <% end %>
-      </div>
-    </div>
 
-  </div>
-</div>

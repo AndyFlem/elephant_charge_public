@@ -8,23 +8,29 @@
           <h5><%= @team.long_name %></h5>
         </div>
         <div class="card-block">
-          <p>
-            <b><%= @team.long_name %></b> have entered <b><%= @entries.count %></b>
-            charge<%= @entries.count>1 ? 's' : '' %> since
-            <b><%= @entries.last.charge.ref %></b> raising
-            <b>$<%= number_with_precision(@team.raised_dollars, precision: 0, delimiter: ',') %></b> for conservation in
-            Zambia.
-          </p>
-          <p>
-            The team's best leg was <%= render 'entry_legs/description', entry_leg: @best_leg %>
-          </p>
-          <% if @honours %>
+          <% unless @team.new_entry? %>
+            <p>
+              <b><%= @team.long_name %></b> have entered <b><%= @entries.count %></b>
+              charge<%= @entries.count>1 ? 's' : '' %> since
+              <b><%= @entries.last.charge.ref %></b> raising
+              <b>$<%= number_with_precision(@team.raised_dollars, precision: 0, delimiter: ',') %></b> for conservation in
+              Zambia.
+            </p>
+            <p>
+              The team's best leg was <%= render 'entry_legs/description', entry_leg: @best_leg %>
+            </p>
+            <% if @honours %>
+                <p>
+                <ul>
+                  <% @honours.each do |h| %>
+                      <li><%= h.html_safe %></li>
+                  <% end %>
+                </ul>
+                </p>
+            <% end %>
+          <% else %>
               <p>
-              <ul>
-                <% @honours.each do |h| %>
-                    <li><%= h.html_safe %></li>
-                <% end %>
-              </ul>
+              A new team entered in the <b><%= @team.first_charge.name%></b> captained by <b><%= @team.captain%></b>
               </p>
           <% end %>
         </div>
@@ -61,12 +67,7 @@
                     </ul>
                   </div>
                   <div class="col-md-4">
-                    <%
-                      @photo=entry.photo_random_landscape()
-                      unless @photo.nil?
-                    %>
-                    <%= render :partial => 'photos/photo', :locals => {:photo => @photo} %>
-                    <% end %>
+                    <%= render :partial => 'photos/photo', :locals => {:photos => entry.photos} %>
                   </div>
                 </div>
               </div>
@@ -75,6 +76,7 @@
       <% end %>
     </div>
 
+    <% unless @team.new_entry? %>
     <div class="col-md-4">
       <div class="card">
         <div class="card-block">
@@ -89,12 +91,11 @@
                     <%= render 'beneficiaries/beneficiarythumb', obj: b %>
                   </div>
                 <% end %>
-
-
             </div>
           </div>
         </div>
       </div>
     </div>
+    <% end %>
   </div>
 </div>

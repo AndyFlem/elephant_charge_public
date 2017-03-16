@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Elephant Charge</title>
+  <style>
+    <%= Rails.application.assets.find_asset('application.scss').to_s %>
+  </style>
+</head>
+
+<body>
+
+<%= render 'layouts/header_pdf' %>
+
+
+<!--<div class="row">-->
+
+<%= yield %>
+
+<!--</div>-->
+
+<%= render 'layouts/footer' %>
+
+</body>
+</html>

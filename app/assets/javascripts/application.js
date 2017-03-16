@@ -21,6 +21,11 @@
 
 //= require_tree .
 
+var photo_no;
+var srcs;
+var aspects;
+var description;
+
 $( document ).ready(function() {
     if ($("#fb-page").length) {
         (function(d, s, id) {
@@ -43,30 +48,75 @@ $( document ).ready(function() {
             delay:10000
         });
     }
-    $('#navleft').click(function(){
-
+    $('#imageModal-left').click(function(){
+        photo_no-=1;
+        if (photo_no<0)
+        {
+            photo_no=srcs.length-1
+        }
+        src=srcs[photo_no]
+        aspect=aspects[photo_no]
+        $('#modalTitle').text((photo_no+1) + ' of ' + srcs.length + ' - ' + description);
+        setImage($('#modalImageElement'),src, aspect)
     })
+    $('#imageModal-right').click(function(){
+        photo_no+=1;
+        if (photo_no>(srcs.length-1))
+        {
+            photo_no=0
+        }
+        src=srcs[photo_no]
+        aspect=aspects[photo_no]
+        $('#modalTitle').text((photo_no+1) + ' of ' + srcs.length + ' - ' + description);
+        setImage($('#modalImageElement'), src, aspect)
+    })
+
 })
-
-
-
 
 $(function () {
     $('[data-toggle="tooltip"]').tooltip()
 })
+
 $(function () {
     $('[data-toggle="popover"]').popover()
 })
 
 showModal=function (el) {
-    var $image = $('#modalImageElement');
-    $image.attr("src", "/system/clear.gif");
-    $('#modalTitle').text($(el).data('description'))
 
     $('#imageModal').modal();
+
+    srcs=$(el).data('srcs')
+    aspects=$(el).data('aspects')
+    description=$(el).data('description')
+    photo_no=$(el).data('photo-no')
+    $('#modalTitle').text((photo_no+1) + ' of ' + srcs.length + ' - ' + description);
+    src=srcs[photo_no]
+    aspect=aspects[photo_no]
+    setImage($('#modalImageElement'),src,aspect)
+}
+
+setImage=function (image_elm,src,landscape){
+    image_elm.attr("src", "/system/clear.gif");
+    image_elm.css("height","451px");
+    console.log(landscape)
     var $downloadingImage = $("<img>");
     $downloadingImage.load(function(){
-        $image.attr("src", $(this).attr("src"));
+        setTimeout(function() {
+                if (landscape==1)
+                {
+                    image_elm.css("width","100%");
+                }
+                else
+                {
+                    image_elm.css("width","50%");
+
+                }
+                image_elm.css("height","inherit");
+                image_elm.attr("src",  $(this).attr("src"));
+        },1
+
+        )
+
     });
-    $downloadingImage.attr("src", $(el).data('image'));
+    $downloadingImage.attr("src", src);
 }

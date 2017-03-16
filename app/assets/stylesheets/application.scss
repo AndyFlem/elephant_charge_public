@@ -27,6 +27,7 @@ $grid-gutter-width-base: 15px;
 @import "charges";
 @import "teams";
 @import "entries";
+@import "photo";
 
 
 .map_tooltip {
@@ -51,46 +52,6 @@ $grid-gutter-width-base: 15px;
   padding: 0.5rem 0.5rem 0rem 0.5rem;
 }
 
-.modal-header h5 {
-  padding-left:10px;
-}
-@include media-breakpoint-down(xs) {
-  .modal-header h5 {
-    font-size:1rem;
-  }
-}
-
-.modal-dialog {
-  max-width: 800px;
-}
-
-.modal-body img {
-  width:100%
-}
 
 
-#navleft{
 
-}
-#navright{
-
-}
-.navbutton {
-  z-index: 1;
-  background: rgba(255, 255, 255, 0.43);
-  border-style: none;
-  border-radius: 7px;
-
-}
-.navbutton span {
-  font-size: 2.5rem;
-  line-height: 3rem;
-  color: #3c3c3c;
-  cursor: pointer;
-}
-@include media-breakpoint-down(xs) {
-  .navbutton span{
-    font-size: 2rem;
-    line-height: 2rem;
-  }
-}
