@@ -13,7 +13,7 @@
     data-description="<%= photos[0].caption %>"
     data-photo-no="<%= photo_no %>">
     <div class="photo-number" id="photos-count"><%= photos.count%></div>
-    <img src="<%= image_path(photos[photo_no].photo(:medium))%>" class="rounded mx-auto d-block" />
+    <img style="width:100%" src="<%= image_path(photos[photo_no].photo(:medium))%>" class="rounded mx-auto d-block" />
   </div>
   <% else %>
       <img src="<%= image_path('logo/eclogo_orange.png')%>" style=""  class="rounded mx-auto d-block" />

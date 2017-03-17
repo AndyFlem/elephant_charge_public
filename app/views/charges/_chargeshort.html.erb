@@ -4,7 +4,7 @@
   @shortnet=charge.entries.where('dist_net IS NOT NULL').order(position_net_distance: :asc)[0]
   @short=charge.entries.order(position_distance: :asc).first
   @name_sponsors=charge.charge_sponsors.naming
-  @centwidth=(100-(15*@name_sponsors.count)).to_s + "%"
+
 
   @major_sponsors=charge.charge_sponsors.major.order("RANDOM()").limit(6)
   @cp_sponsors=charge.sponsors.order("RANDOM()")
@@ -16,7 +16,7 @@
 
   <% if @name_sponsors.count>0 %>
       <div style="float:left;width:15%">
-        <img style="max-width:100%;" src="<%= image_url(@name_sponsors[0].sponsor.logo(:thumb)) %>"></img>
+        <img style="max-width:100%;" src="<%= image_url(@name_sponsors[0].sponsor.logo(:thumb)) %>">
       </div>
   <% end %>
   <div style="display: inline-block;width:<%= @centwidth %>">
@@ -52,23 +52,11 @@
 <div class="container-fluid">
   <div class="row">
     <% @cp_sponsors.each do |sp| %>
-    <div class="col-4 col-sm-2 col-md-2 col-lg-1" style="margin:auto;">
-      <a target="_blank" href="<%= sp.website%>">
-        <img class="img-fluid mx-auto d-block" src="<%= image_url(sp.logo(:thumb)) %>">
-      </a>
-    </div>
+      <div class="col-4 col-sm-2 col-md-2 col-lg-1" style="margin:auto;">
+        <a target="_blank" href="<%= sp.website%>">
+          <img class="img-fluid mx-auto d-block" src="<%= image_url(sp.logo(:thumb)) %>">
+        </a>
+      </div>
     <% end %>
   </div>
 </div>
-<!--
-<div style="font-size: 0px">
-  <%
-    width=100.0/@cp_sponsors.count
-    @cp_sponsors.each do |sp|
-  %>
-      <div style="width:<%= width%>%;display:inline-block;padding:5px;">
-        <img  style="max-width: 100%" src="<%= image_url(sp.logo(:thumb)) %>"></img>
-      </div>
-  <% end %>
-</div>
--->

@@ -4,10 +4,7 @@ class ChargesController < ApplicationController
     @charges=Charge.past.order(ref: :desc)
 
     respond_to do |format|
-      format.html {
-
-
-      }# index.html.erb
+      format.html {}# index.html.erb
       format.json {
         render json: @charges.collect {|p| {
             :id=>p.id,
@@ -22,8 +19,10 @@ class ChargesController < ApplicationController
 
   def show
     @charge=Charge.find_by_ref(params[:id])
-    if @charge.nil? || @charge.state_ref!='RESULT'
-      render 'chargenotfound'
+
+    if @charge.is_current?
+      @grants=Charge.past.order(:charge_date).last.grants.order("RANDOM()")
+      render 'show_current'
     else
       @entries_net=@charge.entries.where('dist_net IS NOT NULL and is_bikes=false').order(position_net_distance: :asc)
       @entries_net_bikes=@charge.entries.where('dist_net IS NOT NULL and is_bikes=true').order(position_net_bikes: :asc)
@@ -39,12 +38,13 @@ class ChargesController < ApplicationController
       @entries_newcomer=@charge.entries.where('is_newcomer=true').order(position_newcomer: :asc)
 
       @finishers=@charge.entries.where(result_description: 'Complete').count
-      @grants=@charge.grants.order("RANDOM()")
+
       @shortest=@charge.entries.where(result_description: "Complete").minimum(:dist_best)
 
-
+      @grants=@charge.grants.order("RANDOM()")
 
     end
+
   end
 
 end

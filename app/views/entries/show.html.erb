@@ -44,7 +44,6 @@
       <table class="table table-sm">
         <% @entry_legs.each_with_index do |el, i| %>
             <tr>
-
               <td class="high-column">
                 <a href="javascript:void(0)" class="map-selector" data-entry-leg-id="<%= el.id %>">
                   <%= i+1 %> <i><%= el.guard_from.name %></i> <%= small_caps { 'to' } %> <i><%= el.guard_to.name %></i>

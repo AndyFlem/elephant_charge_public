@@ -227,23 +227,7 @@
     </div>
 
     <div class="col-lg-4">
-      <div class="card">
-        <div class="card-block">
-          The money raised by the teams for the <b><%= @charge.name %></b> supports conservation in <b>Zambia</b> through the following
-          organisations and projects:
-        </div>
-        <div class="card-block" style="padding-left:0px;padding-right:0px;">
-          <div class="container-fluid">
-            <div class="row">
-              <% @grants.each_with_index do |b, i| %>
-                <div class="col-md-6 ">
-                  <%= render 'beneficiaries/beneficiarythumb', obj: b %>
-                </div>
-              <% end %>
-            </div>
-          </div>
-        </div>
-      </div>
+      <%= render :partial => '/charges/charge_beneficieries', :locals => {:charge => @charge, :grants=>@grants}  %>
     </div>
   </div>
 </div>

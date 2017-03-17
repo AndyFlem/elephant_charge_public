@@ -27,6 +27,11 @@ class Charge < ApplicationRecord
                     styles: { medium: "300x300", thumb: "100x100" },
                     default_url: "/system/:style/missing.png"
 
+
+  def is_current?
+    self.state_ref!='RESULT'
+  end
+
   def long_name
     self.name + (self.location=='' ? '' : ' - ' + self.location)
   end

@@ -1,20 +1,12 @@
-<%
- if entry_team.is_a?(Entry)
-  team=entry_team.team
- else
-   team=entry_team
- end
-%>
+
 <div class="card">
-  <a href="<%= team_path team %>">
+
     <div class="card-header">
-      <h6>
-        <% if entry_team.is_a?(Entry) %>
-          <b><%= entry_team.car_no%> </b>
-        <% end %>
-        <%= team.long_name %></h6>
+      <a href="<%= team_path team %>">
+      <h6><%= team.long_name %></h6>
+      </a>
     </div>
-  </a>
+
   <div class="card-block" style="padding:5px;">
     <% photo=team.photo_random_landscape() %>
 

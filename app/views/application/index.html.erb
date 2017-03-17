@@ -25,7 +25,7 @@
       </a>
     </div>
     <div>
-      Support the <%= @current_charge.name %> on <span style="color: #df5409;">14 October 2017</span><br/>
+      Support the <%= @current_charge.name %> on <span style="color: #df5409;"><%= @current_charge.charge_date.strftime('%e %B %Y') %>></span><br/>
       <%= (DateTime.parse('2017-10-17')-DateTime.now).to_i %> days to go
     </div>
   </div>
@@ -88,7 +88,7 @@
     </div>
     <% @current_entries.first(5).each_with_index do |entry, i| %>
         <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 col-xl-2">
-          <%= render :partial => '/teams/teamcard', :locals => {:entry_team => entry} %>
+          <%= render :partial => '/teams/teamcard', :locals => {:team => entry.team} %>
         </div>
     <% end %>
 

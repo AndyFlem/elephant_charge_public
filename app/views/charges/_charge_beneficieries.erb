@@ -1,0 +1,26 @@
+<div class="card">
+  <div class="card-block">
+    <% if charge.is_current? %>
+        The money raised by the teams for the <b><%= charge.name %></b> will support conservation in <b>Zambia</b> through grants to the following
+        organisations and projects:
+    <% else %>
+      The <b>$<%= number_with_precision(charge.raised_dollars, precision: 0, delimiter: ',') %></b> raised by the teams for the <b><%= charge.name %></b> supports conservation in <b>Zambia</b> through grants to the following
+      organisations and projects:
+    <% end %>
+  </div>
+  <div class="card-block" style="padding-left:0px;padding-right:0px;">
+    <div class="container-fluid">
+      <div class="row">
+        <% grants.each_with_index do |b, i| %>
+            <div class="col-md-6 ">
+              <%=
+
+                render 'beneficiaries/beneficiarythumb', obj: (charge.is_current? ? b.beneficiary : b)
+
+              %>
+            </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
