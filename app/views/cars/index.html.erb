@@ -20,7 +20,7 @@
                   <% cars=m.cars %>
                   <%= bold { cars.count.to_s } %> car<%= cars.count>1 ? 's' : '' %>
                   entered <%= bold { m.entries.count.to_s } %> time<%= m.entries.count>1 ? 's' : '' %>
-                  with <%= bold { teams.count.to_s } %> team<%= teams.count>1 ? 's' : '' %>.
+                  with <%= bold { teams.count.to_s } %> team<%= teams.count>1 ? 's' : '' %>
                   <ul style="padding-left: 15px;margin-top:10px;">
                     <% m.honours.each do |h| %>
                         <li><%= h.html_safe %></li>
