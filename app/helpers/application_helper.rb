@@ -1,4 +1,11 @@
 module ApplicationHelper
+  def title(text)
+    content_for :title, text
+  end
+end
+
+def clean_html html
+  ActionView::Base.full_sanitizer.sanitize(html).gsub("\n", "").gsub("\r", "").squeeze(" ")
 end
 
 def small_caps
@@ -14,12 +21,19 @@ end
 def charge_path(charge)
   '/' + charge.ref
 end
+def charge_photos_path(charge)
+  '/' + charge.ref + '/photos'
+end
+
 def charge_entries_path(charge)
   '/' + charge.ref + '/teams'
 end
 
 def team_path(team)
   '/' + team.ref
+end
+def team_photos_path(team)
+  '/' + team.ref + '/photos'
 end
 def beneficiary_path(beneficiary)
   '/beneficiary/' + beneficiary.short_name

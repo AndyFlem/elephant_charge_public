@@ -18,7 +18,8 @@ class ApplicationController < ActionController::Base
   end
 
   def about
-
+    @current_charge=Charge.current.first
+    @example_charge=Charge.find_by_ref('2016')
   end
 
   def contact

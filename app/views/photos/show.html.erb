@@ -1,0 +1,62 @@
+
+<%
+
+  if @photo.photoable.is_a?(Entry)
+    title(@photo.photoable.team.long_name)
+    content_for :metas,
+                (render :partial => 'layouts/metas', :locals => {
+                    :page_title => "#{@photo.photoable.team.name} in the #{@photo.photoable.charge.name}",
+                    :description => clean_html(render(:partial => 'entries/entry_description', :locals => {:entry => @photo.photoable})),
+                    :og_image_path => image_path(@photo.photo(:original))
+                })
+  else
+    title(@photo.photoable.long_name)
+    content_for :metas,
+                (render :partial => 'layouts/metas', :locals => {
+                    :page_title => "Elephant Charge",
+                    :description => @photo.photoable.long_name,
+                    :og_image_path => image_path(@photo.photo(:original))
+                })
+  end
+
+%>
+
+<div class="container-fluid">
+  <div class="row justify-content-center">
+    <div class="col-12">
+      <div class="card">
+        <div class="card-header">
+          <% if @photo.photoable.is_a?(Entry) %>
+
+              <h5 style="display:inline-block;">
+                <a href="<%= team_path(@photo.photoable.team) %>"><%= @photo.photoable.team.name %></a>
+                in the
+                <a href="<%= charge_path(@photo.photoable.charge) %>"><%= @photo.photoable.charge.long_name %></a>
+              </h5>
+
+              <div style="float:right;display: block;">
+                <a data-toggle="tooltip" data-placement="bottom" title="Photo Gallery" href="<%= team_photos_path(@photo.photoable.team) %>"><img style="margin-left:10px;" src="<%= image_path('icons/color/camera.png') %>"></a>
+              </div>
+              <div style="margin-bottom:5px;">
+                <div id="fb-like" class="fb-like" data-href="<%= request.original_url %>" data-layout="button" data-action="like">
+                </div>
+                <div class="fb-share-button" data-href="<%= request.original_url %>" data-layout="button">
+                </div>
+              </div>
+          <% else %>
+              <h5 style="display:inline-block;">
+                <a href="<%= charge_path(@photo.photoable) %>"><%= @photo.photoable.long_name %></a>
+              </h5>
+              <div style="float:right;display: block;">
+                <a data-toggle="tooltip" data-placement="bottom" title="Photo Gallery" href="<%= charge_photos_path(@photo.photoable) %>"><img style="margin-left:10px;" src="<%= image_path('icons/color/camera.png') %>"></a>
+              </div>
+          <% end %>
+        </div>
+        <div class="card-block">
+          <img class="rounded mx-auto d-block" src="<%= image_path(@photo.photo(:original)) %>">
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>

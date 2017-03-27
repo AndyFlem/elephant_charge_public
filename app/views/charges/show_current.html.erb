@@ -1,3 +1,16 @@
+<%
+  title('EC ' + @charge.ref)
+
+  desc="The #{@charge.long_name} will be held on #{@charge.charge_date.strftime('%e %B %Y')}. Teams will be competing against each other and the wild terrain to raise money for wildlife conservation in Zambia."
+
+  content_for :metas,
+              (render :partial => 'layouts/metas', :locals => {
+                  :page_title => @charge.long_name,
+                  :description => desc,
+                  :og_image_path => image_path('/logos/eclogo_orange.png')
+              })
+%>
+
 <div class="container-fluid">
   <div class="row">
     <div class="col-lg-8">
@@ -7,19 +20,22 @@
           <div style="float:right;display: block;">
             <a data-toggle="tooltip" data-placement="top" title="Results"  href="<%=  charge_path(@charge) %>"><img style="margin-left:10px;" src="<%= image_path('icons/color/results.png')%>"></a>
             <a data-toggle="tooltip" data-placement="top" title="Teams" href="<%=  charge_entries_path(@charge) %>"><img style="margin-left:10px;" src="<%= image_path('icons/grey/car.png')%>"></a>
-
+          </div>
+          <div style="margin-bottom:5px;">
+            <div id="fb-like" class="fb-like" data-href="<%= request.original_url%>" data-layout="button" data-action="like">
+            </div>
+            <div class="fb-share-button" data-href="<%= request.original_url%>" data-layout="button">
+            </div>
           </div>
         </div>
         <div class="card-block">
           <%
             @name_sponsors=@charge.charge_sponsors.naming
-            @major_sponsors=@charge.charge_sponsors.major.order("RANDOM()").limit(6)
-            @cp_sponsors=@charge.sponsors.order("RANDOM()")
           %>
           <div class="container-fluid">
             <div class="row">
               <% if @name_sponsors.count>0 %>
-              <div class="col-2">
+              <div class="col-2" style="padding:0px;">
                   <img style="max-width:100%;" src="<%= image_url(@name_sponsors[0].sponsor.logo(:thumb)) %>">
               </div>
               <% end %>
@@ -31,10 +47,9 @@
                   Support the <a href="<%= charge_entries_path(@charge)%>">teams</a>
                   or enter your own and take part in an extreme 4x4 event supporting wildlife conservation in Zambia.
                 </p>
-
               </div>
               <% if @name_sponsors.count>1 %>
-              <div class="col-2">
+              <div class="col-2" style="padding:0px;">
                   <img style="max-width:100%;" src="<%= image_url(@name_sponsors[1].sponsor.logo(:thumb)) %>">
               </div>
               <% end %>
@@ -43,20 +58,7 @@
         </div>
         <div class="card-block">
           <div class="container-fluid">
-            <div class="row">
-              <% @cp_sponsors.each do |sp| %>
-                  <div class="col-4 col-sm-2 col-md-2 col-lg-1" style="margin:auto;">
-                    <a target="_blank" href="<%= sp.website%>">
-                      <img class="img-fluid mx-auto d-block" src="<%= image_url(sp.logo(:thumb)) %>">
-                    </a>
-                  </div>
-              <% end %>
-            </div>
-          </div>
-        </div>
-        <div class="card-block">
-          <div class="container-fluid">
-
+            <%= render :partial => 'sponsors/charge_sponsors', :locals => {:charge => @charge} %>
           </div>
         </div>
       </div>

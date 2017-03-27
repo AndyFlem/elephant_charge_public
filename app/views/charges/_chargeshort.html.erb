@@ -4,59 +4,45 @@
   @shortnet=charge.entries.where('dist_net IS NOT NULL').order(position_net_distance: :asc)[0]
   @short=charge.entries.order(position_distance: :asc).first
   @name_sponsors=charge.charge_sponsors.naming
-
-
-  @major_sponsors=charge.charge_sponsors.major.order("RANDOM()").limit(6)
-  @cp_sponsors=charge.sponsors.order("RANDOM()")
 %>
 
 
-<div>
-
-
-  <% if @name_sponsors.count>0 %>
-      <div style="float:left;width:15%">
-        <img style="max-width:100%;" src="<%= image_url(@name_sponsors[0].sponsor.logo(:thumb)) %>">
-      </div>
-  <% end %>
-  <div style="display: inline-block;width:<%= @centwidth %>">
-    <p>
-      A total of <b>$<%= number_with_precision(charge.raised_dollars, precision: 0, delimiter: ',') %></b> was raised
-      for
-      <b><%= charge.grants.count %> conservation organisations</b> by
-      <b><%= charge.entries.count %> teams</b> including
-      <b>$<%= number_with_precision(@raised1.raised_dollars, precision: 0, delimiter: ',') %></b> raised by
-      <a href="<%= entry_path(@raised1) %>" class="teamname"><%= @raised1.team.long_name %></a> and
-      <b>$<%= number_with_precision(@raised2.raised_dollars, precision: 0, delimiter: ',') %></b> raised by
-      <a href="<%= entry_path(@raised2) %>" class="teamname"><%= @raised2.team.long_name %></a>.
-      The shortest net distance was
-      <b><%= number_with_precision(@shortnet.dist_net/1000.0, precision: 2, delimiter: ',') %>km</b> by
-      <a href="<%= entry_path(@shortnet) %>" class="teamname"><%= @shortnet.team.long_name %></a>.
-    </p>
-    <p>
-      <b><%= charge.entries.where(result_description: 'Complete').count.to_s %> teams</b> completed the course with
-      <a href="<%= entry_path(@short) %>" class="teamname"><%= @short.team.long_name %></a>
-      finishing in the shortest distance of
-      <b><%= number_with_precision(@short.dist_competition/1000.0, precision: 2, delimiter: ',') %>km</b>.
-      The shortest possible straight line distance for completing the course was
-      <b><%= number_with_precision(charge.entries.where(result_description: "Complete").minimum(:dist_best)/1000.0, precision: 2, delimiter: ',') %>
-        km</b>.
-    </p>
-  </div>
-  <% if @name_sponsors.count>1 %>
-      <div style="float:right;width:15%">
-        <img style="max-width:100%;" src="<%= image_url(@name_sponsors[1].sponsor.logo(:thumb)) %>">
-      </div>
-  <% end %>
-</div>
 <div class="container-fluid">
   <div class="row">
-    <% @cp_sponsors.each do |sp| %>
-      <div class="col-4 col-sm-2 col-md-2 col-lg-1" style="margin:auto;">
-        <a target="_blank" href="<%= sp.website%>">
-          <img class="img-fluid mx-auto d-block" src="<%= image_url(sp.logo(:thumb)) %>">
-        </a>
-      </div>
+    <% if @name_sponsors.count>0 %>
+        <div class="col-2" style="padding:0px;">
+          <img style="max-width:100%;" src="<%= image_url(@name_sponsors[0].sponsor.logo(:thumb)) %>">
+        </div>
+    <% end %>
+    <div class="col">
+      <p>
+        <b>$<%= number_with_precision(charge.raised_dollars, precision: 0, delimiter: ',') %></b> was raised
+        for
+        <b><%= charge.grants.count %> conservation organisations</b> by
+        <b><%= charge.entries.count %> teams</b> including
+        <b>$<%= number_with_precision(@raised1.raised_dollars, precision: 0, delimiter: ',') %></b> raised by
+        <a href="<%= entry_path(@raised1) %>" class="teamname"><%= @raised1.team.long_name %></a> and
+        <b>$<%= number_with_precision(@raised2.raised_dollars, precision: 0, delimiter: ',') %></b> raised by
+        <a href="<%= entry_path(@raised2) %>" class="teamname"><%= @raised2.team.long_name %></a>.
+        The shortest net distance was
+        <b><%= number_with_precision(@shortnet.dist_net/1000.0, precision: 2, delimiter: ',') %>km</b> by
+        <a href="<%= entry_path(@shortnet) %>" class="teamname"><%= @shortnet.team.long_name %></a>.
+      </p>
+      <p>
+        <b><%= charge.entries.where(result_description: 'Complete').count.to_s %> teams</b> completed the course with
+        <a href="<%= entry_path(@short) %>" class="teamname"><%= @short.team.long_name %></a>
+        finishing in the shortest distance of
+        <b><%= number_with_precision(@short.dist_competition/1000.0, precision: 2, delimiter: ',') %>km</b>.
+        The shortest possible straight line distance for completing the course was
+        <b><%= number_with_precision(charge.entries.where(result_description: "Complete").minimum(:dist_best)/1000.0, precision: 2, delimiter: ',') %>
+          km</b>.
+      </p>
+    </div>
+    <% if @name_sponsors.count>1 %>
+        <div class="col-2" style="padding:0px;">
+          <img style="max-width:100%;" src="<%= image_url(@name_sponsors[1].sponsor.logo(:thumb)) %>">
+        </div>
     <% end %>
   </div>
+  <%= render :partial => 'sponsors/charge_sponsors', :locals => {:charge => charge} %>
 </div>

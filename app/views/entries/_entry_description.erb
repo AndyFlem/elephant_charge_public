@@ -1,0 +1,12 @@
+Raised <%= bold { '$' + number_with_precision(entry.raised_dollars, precision: 0, delimiter: ',') } %> in their <%= bold { format_position2(entry.entry_no) } %> charge.
+
+<% if entry.result_description=='Complete'%>
+    <b>Finished</b> the course in
+<% else %>
+    Completed <%= entry.result_guards %> of <%= entry.charge.guards.count+1 %> checkpoints for
+<% end %>
+<% if entry.is_bikes %>
+    <%= bold { format_position2(entry.position_bikes) }%> place.
+<% else %>
+    <%= bold { format_position2(entry.position_distance) }%> place.
+<% end %>

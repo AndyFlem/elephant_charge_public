@@ -1,18 +1,16 @@
 
 <div class="card">
 
-    <div class="card-header">
-      <a href="<%= team_path team %>">
-      <h6><%= team.long_name %></h6>
-      </a>
-    </div>
+  <div class="card-header">
+    <a href="<%= team_path team %>"><h6><%= team.long_name %></h6></a>
+  </div>
 
   <div class="card-block" style="padding:5px;">
-    <% photo=team.photo_random_landscape() %>
-
-    <%= render :partial => 'photos/photo', :locals => {:photos => team.photos} %>
-
+    <a href="<%= team_path team %>">
+    <%= render :partial => 'photos/photo', :locals => {:photo => team.photo_random_landscape} %>
+    </a>
   </div>
+
   <div class="card-block" style="text-align: center;padding-top:0px;">
     <% if team.new_entry? %>
       A new team for the <b><%= team.first_charge.name%></b> captained by <b><%= team.captain%></b>

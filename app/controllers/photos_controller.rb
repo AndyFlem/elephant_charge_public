@@ -4,4 +4,8 @@ class PhotosController < ApplicationController
     @charges=Charge.past
   end
 
+  def show
+    @photo=Photo.find((params[:id]))
+  end
+
 end

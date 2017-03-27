@@ -1,6 +1,6 @@
 <script src="/Chart.min.js"></script>
 
-<%= render 'photos/photomodal' %>
+<% title('EC ' + @charge.ref + ' ' + @team.long_name) %>
 
 <div class="container-fluid">
   <div class="row">
@@ -17,9 +17,7 @@
           <div class="container-fluid">
             <div class="row">
               <div class="col-md-4">
-                <a onclick="showModal(this)" data-image="<%= image_url(@photo.photo(:original)) %>" data-description="<%= @photo.caption %>">
-                  <img class="rounded mx-auto d-block" src="<%= image_path @photo.photo(:medium) %>">
-                </a>
+                <%= render :partial => 'photos/photo', :locals => {:photo => @entry.photo_random_landscape} %>
               </div>
               <div class="col-md-8">
                 Entered their <%= bold { format_position2(@entry.team.charges.count) } %> charge in

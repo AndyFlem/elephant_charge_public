@@ -42,9 +42,12 @@ class ChargesController < ApplicationController
       @shortest=@charge.entries.where(result_description: "Complete").minimum(:dist_best)
 
       @grants=@charge.grants.order("RANDOM()")
-
     end
+  end
 
+  def photos
+    @charge=Charge.find_by_ref(params[:id])
+    @entries=@charge.entries
   end
 
 end

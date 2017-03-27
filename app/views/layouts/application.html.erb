@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Elephant Charge</title>
-  <meta name="description" content="Elephant Charge is an annual 4x4 event held in Zambia to raise money for wildlife conservation.">
+  <title><%= if content_for?(:title) then yield(:title) + ' | ' end %>Elephant Charge</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
 
@@ -14,6 +13,20 @@
   <link rel="shortcut icon" href="/favicon.ico?v=xQoRar3KEd">
   <meta name="theme-color" content="#ffffff">
 
+  <meta name="keywords" content="Elephant Charge, Zambia, 4x4, Conservation, Wildlife, Africa, Charity, Fundraising">
+
+  <meta property="og:url" content="<%= request.original_url%>">
+  <meta property="og:site_name" content="Elephant Charge">
+  <meta property="og:type" content="website">
+
+  <% if content_for?(:metas) %>
+      <%= yield(:metas) %>
+  <% else %>
+      <meta name="description" content="Elephant Charge is an annual 4x4 event held in Zambia to raise money for wildlife conservation. Over the past 10 years the Elephant Charge has raised $650,000 for 17 Zambian conservation organisations.">
+      <meta property="og:title" content="Elephant Charge">
+      <meta property="og:description" content="Elephant Charge is an annual 4x4 event held in Zambia to raise money for wildlife conservation. Over the past 10 years the Elephant Charge has raised $650,000 for 17 Zambian conservation organisations.">
+      <meta property="og:image" content="<%= URI.join(root_url, image_path('logo/eclogo_orange.png'))%>">
+  <% end %>
 
 
   <%= csrf_meta_tags %>

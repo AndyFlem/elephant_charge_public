@@ -4,12 +4,7 @@ Rails.application.routes.draw do
 
   #flat pages
   get 'about', to: 'application#about'
-  get 'enter', to: 'application#enter'
-  get 'sponsor', to: 'application#sponsor'
-  get 'support', to: 'application#support'
-  get 'press', to: 'application#press'
   get 'contact', to: 'application#contact'
-  get 'photos', to: 'photos#index'
 
   #standard index routes
   get 'teams', to: 'teams#index'
@@ -17,6 +12,9 @@ Rails.application.routes.draw do
   get 'sponsors', to: 'sponsors#index'
   get 'beneficiaries', to: 'beneficiaries#index'
   get 'cars', to: 'cars#index'
+
+  #photos
+  get 'photo/:id', to: 'photos#show'
 
   #JSON STUFF
   get ':id/guards',constraints: {id: /\d{4}/}, to: 'guards#json_index'
@@ -27,11 +25,17 @@ Rails.application.routes.draw do
 
   #charge by year
   get ':id', constraints: {id: /\d{4}/}, to: 'charges#show'
-  #team list
+
+  #charge team list
   get ':id/teams', constraints: {id: /\d{4}/}, to: 'entries#index'
+
+  #charge photos
+  get ':id/photos', constraints: {id: /\d{4}/}, to: 'charges#photos'
+
 
   #team by name (ref)
   get ':ref', to: 'teams#show'
+  get ':ref/photos', to: 'teams#photos'
 
   #entry by year and team
   get ':id/:ref',constraints: {id: /\d{4}/}, to: 'entries#show'

@@ -10,7 +10,7 @@
         </a>
       </div>
       <div>
-        Support the <%= @current_charge.name %> on <span style="color: #df5409;">14 October 2017</span>
+        Support the <%= @current_charge.name %> on <span style="color: #df5409;"><%= @current_charge.charge_date.strftime('%e %B %Y') %></span>
         <%= (DateTime.parse('2017-10-17')-DateTime.now).to_i %> days to go
       </div>
     </div>
@@ -25,7 +25,7 @@
       </a>
     </div>
     <div>
-      Support the <%= @current_charge.name %> on <span style="color: #df5409;"><%= @current_charge.charge_date.strftime('%e %B %Y') %>></span><br/>
+      Support the <%= @current_charge.name %> on <span style="color: #df5409;"><%= @current_charge.charge_date.strftime('%e %B %Y') %></span><br/>
       <%= (DateTime.parse('2017-10-17')-DateTime.now).to_i %> days to go
     </div>
   </div>
@@ -33,10 +33,10 @@
   <ul>
     <li>
       <div class="car-container">
-        <img src="<%= image_path('banners/slide4.jpg') %>"/>
+        <img src="<%= image_path('slides/slide4.jpg') %>"/>
         <div class="car-caption">
           <h3>Elephant Charge</h3>
-          The <b>Elephant Charge</b> is an annual 4x4 event held in <b>Zambia</b> to raise money for conservation.
+          The <b>Elephant Charge</b> is an annual 4x4 event held in <b>Zambia</b> to raise money for conservation through education.
           Teams compete against each other and the Zambian bush to complete a gruelling course in the shortest
           distance.
         </div>
@@ -44,9 +44,9 @@
     </li>
     <li>
       <div class="car-container">
-        <img src="<%= image_path('banners/slide5.jpg') %>"/>
+        <img src="<%= image_path('slides/slide7.jpg') %>"/>
         <div class="car-caption">
-          <h3>Raising money for conservation</h3>
+          <h3>Conservation through education</h3>
           The Elephant Charge is Zambia's biggest conservation fundraising event.
           Since <b>2008</b>, the Elephant Charge has raised
           <%= bold { '$' + number_with_precision(@raised, precision: 0, delimiter: ',') } %> for conservation in
@@ -56,7 +56,7 @@
     </li>
     <li>
       <div class="car-container">
-        <img src="<%= image_path('banners/slide6.jpg') %>"/>
+        <img src="<%= image_path('slides/slide6.jpg') %>"/>
         <div class="car-caption">
           <h3>Conserving Zambia</h3>
           Since 2008, <b><%= @teams.count %></b> Elephant Charge teams have supported
@@ -106,28 +106,9 @@
     </div>
 
     <div style="text-align: center;" class="col-xs-12 col-sm-8 col-md-9 col-lg-10">
-
-      <% @current_sponsors_nm.each_with_index do |sponsor, i| %>
-          <a target="_blank" href="<%= sponsor.sponsor.website%>">
-            <img width="80px" src="<%= image_url(sponsor.sponsor.logo(:thumb)) %>">
-          </a>
-      <% end %>
-
-      <% @current_cpsponsors.each_with_index do |sponsor, i| %>
-          <a target="_blank" href="<%= sponsor.website%>">
-          <img width="80px" src="<%= image_url(sponsor.logo(:thumb)) %>">
-          </a>
-      <% end %>
-      <% @current_sponsors_mj.each_with_index do |sponsor, i| %>
-          <a target="_blank" href="<%= sponsor.sponsor.website%>">
-            <img width="80px" src="<%= image_url(sponsor.sponsor.logo(:thumb)) %>">
-          </a>
-      <% end %>
-      <% @current_sponsors_st.each_with_index do |sponsor, i| %>
-          <a target="_blank" href="<%= sponsor.sponsor.website%>">
-            <img width="80px" src="<%= image_url(sponsor.sponsor.logo(:thumb)) %>">
-          </a>
-      <% end %>
+      <div class="container-fluid">
+        <%= render :partial => 'sponsors/charge_sponsors', :locals => {:charge => @current_charge} %>
+      </div>
     </div>
 
   </div>

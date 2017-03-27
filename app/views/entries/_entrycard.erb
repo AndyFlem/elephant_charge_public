@@ -8,17 +8,12 @@
     </div>
 
   <div class="card-block" style="padding:5px;">
-    <%= render :partial => 'photos/photo', :locals => {:photos => entry.photos} %>
+    <a href="<%= entry_path entry %>">
+    <%= render :partial => 'photos/photo', :locals => {:photo => entry.photo_random_landscape} %>
+    </a>
   </div>
   <div class="card-block" style="text-align: center;padding-top:0px;">
+    <%= render :partial => 'entries/entry_description', :locals => {:entry => entry} %>
 
-    <% if entry.first_for_team? %>
-      A new team for the <b><%= entry.charge.name%></b>
-      <% unless entry.captain.empty? %>
-         captained by <b><%= entry.captain %></b>
-      <% end %>
-    <% else %>
-
-    <% end %>
   </div>
 </div>

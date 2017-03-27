@@ -1,3 +1,5 @@
+<% title(@ben.name) %>
+
 <div class="container-fluid">
 
 <div class="row">
@@ -25,14 +27,23 @@
           <img style="float:right;" src="<%= @ben.logo(:thumb)%>"/>
           <%= bold{ @ben.name }%> <%= @ben.description %>
           </p>
+          <% unless @ben.description.blank? %>
+          <p>
+            <%= bold{ @ben.name }%> has used funds provided by the Elephant Charge <%= @ben.grant_description_default%>
+          </p>
+          <% end %>
           <p>
             <%= bold{ @ben.name }%> has been provided <%= bold {@grants.count.to_s} %> grant<%= @grants.count>1 ? 's':''%> by the Elephant Charge totalling
             <%= bold{ '$' + number_with_precision(@ben.grant_dollars, precision: 0, delimiter: ',') }%>.
           <ul>
             <% @grants.each do |grant| %>
-              <li><%= bold{ '$' + number_with_precision(grant.grant_dollars, precision: 0, delimiter: ',') }%> -
-                <a href="<%= charge_path(grant.charge)%>"><%= grant.charge.long_name%></li></a>
+              <li style="<%= grant.description.blank? ? '' : 'padding-bottom:10px;' %>"><%= bold{ '$' + number_with_precision(grant.grant_dollars, precision: 0, delimiter: ',') }%> -
+                <a href="<%= charge_path(grant.charge)%>"><%= grant.charge.name%></a>
+                <% unless grant.description.blank? %>
+                  - used <%= grant.description %>
+                <% end %>
             <% end %>
+            </li>
           </ul>
           </p>
         </div>

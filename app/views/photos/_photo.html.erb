@@ -2,20 +2,11 @@
 
 
 <div style="display:flex;">
-  <% if photos.count>0 %>
-      <% photo_no=Random.rand(0...photos.count) %>
-
-  <div
-    style="margin:auto; cursor: pointer;"
-    onclick="showModal(this)"
-    data-srcs='<%= JSON.generate(photos.map{|pht| pht.photo(:original)}) %>'
-    data-aspects='<%= JSON.generate(photos.map{|pht| pht.aspect>1 ? 1 : 0}) %>'
-    data-description="<%= photos[0].caption %>"
-    data-photo-no="<%= photo_no %>">
-    <div class="photo-number" id="photos-count"><%= photos.count%></div>
-    <img style="width:100%" src="<%= image_path(photos[photo_no].photo(:medium))%>" class="rounded mx-auto d-block" />
+  <% if photo %>
+  <div style="margin:auto;">
+    <img style="width:100%" src="<%= image_path(photo.photo(:medium))%>" class="rounded mx-auto d-block" />
   </div>
   <% else %>
-      <img src="<%= image_path('logo/eclogo_orange.png')%>" style=""  class="rounded mx-auto d-block" />
+      <img src="<%= image_path('logo/eclogo_orange.png')%>" style="max-width:80px;width:40%;height:40%"  class="rounded mx-auto d-block" />
   <% end %>
 </div>

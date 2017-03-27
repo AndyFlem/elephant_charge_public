@@ -4,8 +4,17 @@ class Team < ApplicationRecord
   has_many :photos, through: :entries
   has_many :cars, through: :entries
 
+  has_attached_file :badge,
+                    styles: { original: "600x600",medium: "200x200", thumb: "100x100" },
+                    default_url: "/system/eclogo_orange.png"
+  validates_attachment_content_type :badge, content_type: /\Aimage\/.*\z/
+
   def entries_complete
     self.entries.includes(:charge).references(:charge).where("charges.state_ref='RESULT'")
+  end
+
+  def entries_incomplete
+    self.entries.includes(:charge).references(:charge).where("charges.state_ref!='RESULT'")
   end
 
 

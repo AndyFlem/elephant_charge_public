@@ -1,5 +1,5 @@
 
-the <%= entry_leg.leg.charge.name %> when they charged from
+the <a href="<%= charge_path(entry_leg.leg.charge)%>"><%= entry_leg.leg.charge.name %></a> when they charged from
 <em><%= entry_leg.checkin1.name %></em> to
 <em><%= entry_leg.checkin2.name %></em> in
 <%= number_with_precision(entry_leg.distance_m/1000.0, precision: 2, delimiter: ',') %>km,

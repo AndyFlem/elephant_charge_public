@@ -1,0 +1,32 @@
+<%
+  @major_sponsors=charge.charge_sponsors.major.order("RANDOM()").limit(6)
+  @standard_sponsors=charge.charge_sponsors.standard.order("RANDOM()")
+  @cp_sponsors=charge.sponsors.order("RANDOM()")
+%>
+<div class="row">
+  <% @major_sponsors.each do |sp| %>
+      <div class="col-4 col-sm-2 col-md-2 col-lg-2" style="margin:auto;padding:0px;">
+        <a target="_blank" href="<%= sp.sponsor.website%>">
+          <img class="img-fluid mx-auto d-block" src="<%= image_url(sp.sponsor.logo(:thumb)) %>">
+        </a>
+      </div>
+  <% end %>
+</div>
+<div class="row">
+  <% @cp_sponsors.each do |sp| %>
+      <div class="col-4 col-sm-2 col-md-2 col-lg-1" style="margin:auto;padding:0px;">
+        <a target="_blank" href="<%= sp.website%>">
+          <img class="img-fluid mx-auto d-block" src="<%= image_url(sp.logo(:thumb)) %>">
+        </a>
+      </div>
+  <% end %>
+</div>
+<div class="row">
+  <% @standard_sponsors.each do |sp| %>
+      <div class="col-4 col-sm-2 col-md-2 col-lg-2" style="margin:auto;padding:0px;">
+        <a target="_blank" href="<%= sp.sponsor.website%>">
+          <img class="img-fluid mx-auto d-block" src="<%= image_url(sp.sponsor.logo(:thumb)) %>">
+        </a>
+      </div>
+  <% end %>
+</div>

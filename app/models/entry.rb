@@ -15,10 +15,14 @@ class Entry < ApplicationRecord
   scope :past,-> {includes(:charge).where("charges.state_ref='RESULT'")}
   scope :current,-> {references(:charge).includes(:charge).where("charges.state_ref!='RESULT'").order("RANDOM()")}
 
+
   def first_for_team?
       self.charge==self.team.charges.order(:charge_date).first
   end
 
+  def is_current?
+    self.charge.state_ref!='RESULT'
+  end
 
   def result_summary(limit=3)
     res=[]
