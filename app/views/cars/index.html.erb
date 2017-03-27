@@ -1,40 +1,37 @@
-<%= render 'photos/photomodal' %>
-
-<div class="row">
-  <div class="col-md-6 ">
-  <% @makes.each_with_index do |m, i| %>
-      <div class="card">
-        <div class="card-header">
-          <h5 style="display:inline-block;"><%= m.name %></h5>
-        </div>
-        <div class="card-block">
-          <div class="col-md-3">
-
-            <% photo=m.photos.order("RANDOM()").first %>
-            <div class="image-container">
-              <a onclick="showModal(this)" data-image="<%= image_url(photo.photo(:original))%>" data-description="<%= photo.caption%>">
-                <%= image_tag photo.photo(:medium) %>
-              </a>
-            </div>
+<div class="container-fluid">
+  <div class="row">
+    <% @makes.each_with_index do |m, i| %>
+      <div class="col-md-6 ">
+        <div class="card">
+          <div class="card-header">
+            <h6 style="display:inline-block;"><%= m.name %></h6>
           </div>
-          <div class="col-md-9">
-            <% teams=m.teams.distinct %>
-            <% cars=m.cars %>
-            <%= bold {cars.count.to_s} %> car<%=cars.count>1 ? 's':'' %>
-            entered <%= bold {m.entries.count.to_s} %> time<%=m.entries.count>1 ? 's':'' %>
-            with <%= bold{teams.count.to_s} %> team<%=teams.count>1 ? 's':'' %>.
-            <ul style="padding-left: 15px;margin-top:10px;">
-              <% m.honours.each do |h| %>
-                  <li><%= h.html_safe %></li>
-              <% end %>
-            </ul>
+          <div class="card-block">
+            <div class="container-fluid">
+              <div class="row">
+                <div class="col-md-3">
+                  <% photo=m.photos.order("RANDOM()").first %>
+                  <div class="image-container">
+                    <img class="rounded mx-auto d-block" src="<%= image_path photo.photo(:medium)%>"/>
+                  </div>
+                </div>
+                <div class="col-md-9">
+                  <% teams=m.teams.distinct %>
+                  <% cars=m.cars %>
+                  <%= bold { cars.count.to_s } %> car<%= cars.count>1 ? 's' : '' %>
+                  entered <%= bold { m.entries.count.to_s } %> time<%= m.entries.count>1 ? 's' : '' %>
+                  with <%= bold { teams.count.to_s } %> team<%= teams.count>1 ? 's' : '' %>.
+                  <ul style="padding-left: 15px;margin-top:10px;">
+                    <% m.honours.each do |h| %>
+                        <li><%= h.html_safe %></li>
+                    <% end %>
+                  </ul>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
-        <% if (i+1)==@makes.count/2 %>
-            </div>
-            <div class="col-md-6">
-        <%end%>
-  <% end %>
+    <% end %>
   </div>
 </div>

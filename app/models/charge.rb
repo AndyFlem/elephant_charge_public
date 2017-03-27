@@ -36,6 +36,43 @@ class Charge < ApplicationRecord
     self.name + (self.location=='' ? '' : ' - ' + self.location)
   end
 
+  def award_winner ref
+    case ref
+      when :net_distance
+        self.entries.where('position_net_distance=1').first
+      when :raised
+        self.entries.where('position_raised=1').first
+      when :distance
+        self.entries.where('position_distance=1').first
+      when :gauntlet
+        self.entries.where('position_gauntlet=1').first
+      when :tsetse1
+        self.entries.where('position_tsetse1=1').first
+      when :tsetse2
+        self.entries.where('position_tsetse2=1').first
+      when :ladies
+        self.entries.where('position_ladies=1').first
+      when :bikes
+        self.entries.where('position_bikes=1').first
+      else
+        nil
+    end
+  end
+
+  def self.awards_list
+    {
+        :net_distance=>['Country Choice Trophy','Shortest Net Distance'],
+        :raised=>['Sausage Tree Trophy','Highest Sponsorship Raised'],
+        :distance=>['Castle Fleming Trophy','Shortest Overall Distance'],
+        :gauntlet=>['Bowden Trophy','Shortest Gauntlet Distance'],
+        :tsetse1=>['Sanctuary Trophy','Shortest Distance on Tsetse Line 1'],
+        :tsetse2=>['Khal Amazi Trophy','Shortest Distance on Tsetse Line 2'],
+        :ladies=>['Silky Cup','Shortest Distance by a Ladies Team'],
+        :bikes=>['Dean Cup','Shortest Distance by a Bike Team'],
+        :spirit=>['Rhino Charge Trophy','Spirit of the Charge']
+    }
+  end
+
   def self.awards ref
     case ref
       when :net_distance

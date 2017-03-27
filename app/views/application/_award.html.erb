@@ -1,0 +1,31 @@
+<%
+  charges=Charge.past.order(ref: :desc)
+%>
+<div class="card">
+  <div class="card-header">
+    <h6><i><%= award[1][0] %></i> - <%= award[1][1] %></h6>
+  </div>
+  <div class="card-block">
+    <ul class="">
+      <% charges.each do |charge| %>
+          <%
+            if award[0]==:spirit
+              if charge.spirit_entry_id.blank?
+                winner=charge.spirit_name
+              else
+                ent=Entry.find_by_id(charge.spirit_entry_id)
+                winner=("<a href='" + entry_path(ent) + "'>" + ent.team.name + "</a>").html_safe
+              end
+            else
+              ent=charge.award_winner(award[0])
+              winner=ent.nil? ? '' : ("<a href='" + entry_path(ent) + "'>" + ent.team.name + "</a>").html_safe
+            end
+          %>
+          <li>
+            <span><b><%= charge.ref %></b></span>
+            <span><i><%= winner %></i></span>
+          </li>
+      <% end %>
+    </ul>
+  </div>
+</div>

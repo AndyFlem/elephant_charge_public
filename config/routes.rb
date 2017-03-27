@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   #flat pages
   get 'about', to: 'application#about'
   get 'contact', to: 'application#contact'
+  get 'awards', to: 'application#awards'
 
   #standard index routes
   get 'teams', to: 'teams#index'

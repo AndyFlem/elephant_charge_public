@@ -26,19 +26,7 @@ class ApplicationController < ActionController::Base
 
   end
 
-  def enter
-
-  end
-
-  def sponsor
-
-  end
-
-  def support
-
-  end
-
-  def press
-
+  def awards
+    @awards=Charge.awards_list
   end
 end
