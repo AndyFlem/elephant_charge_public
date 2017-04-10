@@ -40,7 +40,7 @@
               <li style="<%= grant.description.blank? ? '' : 'padding-bottom:10px;' %>"><%= bold{ '$' + number_with_precision(grant.grant_dollars, precision: 0, delimiter: ',') }%> -
                 <a href="<%= charge_path(grant.charge)%>"><%= grant.charge.name%></a>
                 <% unless grant.description.blank? %>
-                  - used <%= grant.description %>
+                  - <%= grant.description %>
                 <% end %>
             <% end %>
             </li>
