@@ -4,7 +4,7 @@ class TeamsController < ApplicationController
   end
 
   def show
-    @team=Team.find_by_ref(params[:ref])
+    @team=Team.find_by_ref(params[:ref].downcase)
     @entries=@team.entries.joins(:charge).where("charges.state_ref='RESULT'").order('charges.charge_date desc')
     @best_leg=@team.best_leg
     @honours=@team.honours
@@ -12,7 +12,7 @@ class TeamsController < ApplicationController
   end
 
   def photos
-    @team=Team.find_by_ref(params[:ref])
+    @team=Team.find_by_ref(params[:ref].downcase)
     @entries=@team.entries.joins(:charge).where("charges.state_ref='RESULT'").order('charges.charge_date desc')
   end
 

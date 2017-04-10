@@ -27,7 +27,7 @@
           <img style="float:right;" src="<%= @ben.logo(:thumb)%>"/>
           <%= bold{ @ben.name }%> <%= @ben.description %>
           </p>
-          <% unless @ben.description.blank? %>
+          <% unless @ben.grant_description_default.blank? %>
           <p>
             <%= bold{ @ben.name }%> has used funds provided by the Elephant Charge <%= @ben.grant_description_default%>
           </p>

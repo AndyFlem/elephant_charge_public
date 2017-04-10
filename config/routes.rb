@@ -13,7 +13,7 @@ Rails.application.routes.draw do
   #standard index routes
   get 'teams', to: 'teams#index'
   get 'charges', to: 'charges#index'
-  get 'sponsors', to: 'sponsors#index'
+  #get 'sponsors', to: 'sponsors#index'
   get 'beneficiaries', to: 'beneficiaries#index'
   get 'cars', to: 'cars#index'
 
