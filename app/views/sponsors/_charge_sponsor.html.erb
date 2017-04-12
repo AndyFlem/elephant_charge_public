@@ -1,0 +1,18 @@
+<%
+  if sponsor.class==ChargeSponsor
+    sp=sponsor.sponsor
+  else
+    sp=sponsor
+  end
+
+%>
+
+<div class="col-4 col-sm-2 col-md-2 col-lg-1" style="margin:auto;padding:0px;">
+  <% unless sp.website.blank? %>
+    <a target="_blank" href="<%= sp.website%>">
+  <% end %>
+    <img class="img-fluid mx-auto d-block" src="<%= image_url(sp.logo(:thumb)) %>">
+  <% unless sp.website.blank? %>
+    </a>
+  <% end %>
+</div>

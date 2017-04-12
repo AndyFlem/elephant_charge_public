@@ -8,10 +8,13 @@
     <div class="col-lg-8">
       <div class="card">
         <div class="card-header">
-          <h5>
-            <a href="<%= team_path(@team) %>"><b><%= @entry.car_no %></b> <%= @team.long_name %></a> -
-            <a href="<%= charge_path(@charge) %>"><%= @charge.name %></a>
+          <h5 style="display:inline-block;">
+            <a href="<%= team_path(@team) %>"><%= @team.long_name %></a> in the <a href="<%= charge_path(@charge) %>"><%= @charge.name %></a>
           </h5>
+          <div style="float:right;display: block;">
+            <a data-toggle="tooltip" data-placement="bottom" title="Results" href="<%= entry_path(@entry) %>"><img style="margin-left:10px;" src="<%= image_path('icons/color/results.png')%>"></a>
+            <a data-toggle="tooltip" data-placement="bottom" title="Photo Gallery" href="<%= entry_photos_path(@entry) %>"><img style="margin-left:10px;" src="<%= image_path('icons/grey/camera.png')%>"></a>
+          </div>
         </div>
         <div class="card-block">
           <div class="container-fluid">

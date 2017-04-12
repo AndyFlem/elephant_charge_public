@@ -1,0 +1,30 @@
+<% title('EC ' + @charge.ref + ' ' + @team.long_name) %>
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="col">
+      <div class="card">
+        <div class="card-header">
+          <h5 style="display:inline-block;">
+            <a href="<%= team_path(@team) %>"><%= @team.long_name %></a> in the <a href="<%= charge_path(@charge) %>"><%= @charge.name %></a>
+          </h5>
+          <div style="float:right;display: block;">
+            <a data-toggle="tooltip" data-placement="bottom" title="Results" href="<%= entry_path(@entry) %>"><img style="margin-left:10px;" src="<%= image_path('icons/grey/results.png')%>"></a>
+            <a data-toggle="tooltip" data-placement="bottom" title="Photo Gallery" href="<%= entry_photos_path(@entry) %>"><img style="margin-left:10px;" src="<%= image_path('icons/color/camera.png')%>"></a>
+          </div>
+        </div>
+        <div class="card-block">
+          <div class="container-fluid">
+            <div class="row">
+              <% @entry.photos.each do |photo| %>
+                  <div style="padding:5px; " class="col-xs-12 col-sm-6 col-md-4 col-lg-3 col-xl-2">
+                    <a href="/photo/<%=photo.id%>?return=<%= entry_photos_path(@entry) %>"><img style="max-width:100%;" class="rounded mx-auto d-block" src="<%= image_path(photo.photo(:medium))%>"></a>
+                  </div>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

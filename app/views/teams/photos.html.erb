@@ -12,29 +12,33 @@
           </div>
         </div>
         <div class="card-block">
-          <% @entries.each do |entry| %>
-          <div class="container-fluid">
-            <div class="row">
-              <div class="col">
-                <div class="card">
-                  <div class="card-header">
-                    <a href="<%= charge_path(entry.charge)%>"><h6><%= entry.charge.long_name %></h6></a>
-                  </div>
-                  <div class="card-block">
-                    <div class="container-fluid">
-                      <div class="row">
-                        <% entry.photos.each do |photo| %>
-                        <div style="padding:5px; " class="col-xs-12 col-sm-6 col-md-4 col-lg-3 col-xl-2">
-                          <a href="/photo/<%=photo.id%>"><img style="max-width:100%;" class="rounded mx-auto d-block" src="<%= image_path(photo.photo(:medium))%>"></a>
+          <% if @entries.count>0 %>
+            <% @entries.each do |entry| %>
+            <div class="container-fluid">
+              <div class="row">
+                <div class="col">
+                  <div class="card">
+                    <div class="card-header">
+                      <a href="<%= charge_path(entry.charge)%>"><h6><%= entry.charge.long_name %></h6></a>
+                    </div>
+                    <div class="card-block">
+                      <div class="container-fluid">
+                        <div class="row">
+                          <% entry.photos.each do |photo| %>
+                          <div style="padding:5px; " class="col-xs-12 col-sm-6 col-md-4 col-lg-3 col-xl-2">
+                            <a href="/photo/<%=photo.id%>?return=<%= team_photos_path(@team) %>"><img style="max-width:100%;" class="rounded mx-auto d-block" src="<%= image_path(photo.photo(:medium))%>"></a>
+                          </div>
+                          <% end %>
                         </div>
-                        <% end %>
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
-          </div>
+            <% end %>
+          <% else %>
+            No photos for this team yet.
           <% end %>
         </div>
       </div>

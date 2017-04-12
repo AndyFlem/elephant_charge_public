@@ -2,31 +2,49 @@
 <div class="container-fluid">
 
   <div class="row">
-    <div class="col countdown countdown-sm hidden-md-up d-flex align-items-center">
+    <div class="col floater-sm hidden-md-up">
+      <div class="countdown d-flex align-items-center">
+        <div>
+          <a target="_blank" href="http://www.fuchsoil.co.za/">
+            <img style="width:100%" src="<%= image_path('logo/fuchs.png') %>"/>
+          </a>
+        </div>
 
-      <div>
-        <a target="_blank" href="http://www.fuchsoil.co.za/">
-          <img style="width:100%" src="<%= image_path('logo/fuchs.png') %>"/>
-        </a>
+        <div>
+          <a href="<%= charge_path(@current_charge)%>">
+            The <%= @current_charge.name %> will be held on <%= @current_charge.charge_date.strftime('%e %B %Y') %><br/>
+            - <%= (DateTime.parse('2017-10-17')-DateTime.now).to_i %> days to go -
+          </a>
+        </div>
       </div>
-      <div>
-        Support the <%= @current_charge.name %> on <span style="color: #df5409;"><%= @current_charge.charge_date.strftime('%e %B %Y') %></span>
-        <%= (DateTime.parse('2017-10-17')-DateTime.now).to_i %> days to go
+      <div class="countdown d-flex align-items-center">
+        <a href="<%= charge_entries_path(@current_charge)%>">
+          Support conservation by making a paypal donation directly on the team pages
+        </a>
       </div>
     </div>
   </div>
 </div>
 
 <div id="banner" class="banner">
-  <div class="countdown countdown-lg hidden-sm-down d-flex align-items-center">
-    <div>
-      <a target="_blank" href="http://www.fuchsoil.co.za/">
-        <img style="width:100%" src="<%= image_path('logo/fuchs.png') %>"/>
-      </a>
+  <div class="floater-lg hidden-sm-down ">
+    <div class="countdown d-flex align-items-center">
+      <div>
+        <a target="_blank" href="http://www.fuchsoil.co.za/">
+          <img style="width:100%" src="<%= image_path('logo/fuchs.png') %>"/>
+        </a>
+      </div>
+      <div>
+        <a href="<%= charge_path(@current_charge)%>">
+          The <%= @current_charge.name %> will be held on <%= @current_charge.charge_date.strftime('%e %B %Y') %><br/>
+          - <%= (DateTime.parse('2017-10-17')-DateTime.now).to_i %> days to go -
+        </a>
+      </div>
     </div>
-    <div>
-      Support the <%= @current_charge.name %> on <span style="color: #df5409;"><%= @current_charge.charge_date.strftime('%e %B %Y') %></span><br/>
-      <%= (DateTime.parse('2017-10-17')-DateTime.now).to_i %> days to go
+    <div class="countdown  d-flex align-items-center">
+      <a href="<%= charge_entries_path(@current_charge)%>">
+        Support conservation by making a paypal donation directly on the team pages
+      </a>
     </div>
   </div>
 
@@ -96,7 +114,7 @@
 
   <div class="row ruled">
     <div class="col home-text">
-      <img src="<%=image_path('logo/eclogo_orange.png')%>">
+      <img style="width:100px;" src="<%= image_path('logo/fuchs.png') %>"/>
       <div>
         <p>
           The <a href="<%= charge_path(@current_charge)%>"><%= @current_charge.name %></a> relies on the sponsors who support Zambia's largest conservation
@@ -117,9 +135,9 @@
       <img src="<%=image_path('logo/eclogo_orange.png')%>">
       <div>
         <p>
-          The Elephant Charge teams have supported <b><%= @beneficiaries.count %></b> conservation organisations and projects since 2008 with
-          grants totalling <%= bold { '$' + number_with_precision(@raised, precision: 0, delimiter: ',') } %>.
-          The money raised by the teams for the <b><%= @current_charge.name %></b> will support conservation in <b>Zambia</b> through grants to the following
+          The Elephant Charge teams have supported <a href="/beneficiaries"><%= @beneficiaries.count %> conservation organisations</a> and projects since 2008 with
+          grants totalling <%= bold{'$' + number_with_precision(@raised, precision: 0, delimiter: ',')}  %>.
+          The money raised by the <a href="<%= charge_entries_path(@current_charge)%>">teams</a> for the <a href="<%= charge_path(@current_charge)%>"><%= @current_charge.name %></a> will support conservation in <b>Zambia</b> through grants to the following
           organisations and projects:
         </p>
       </div>

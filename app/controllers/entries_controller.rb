@@ -36,4 +36,11 @@ class EntriesController < ApplicationController
     @max_elev=(@charge.elevation_max/100*100)+100
     @results=@entry.result_summary(1000)
   end
+  def photos
+    @charge=Charge.find_by_ref(params[:id])
+    @team=Team.find_by_ref(params[:ref])
+
+    @entry=Entry.joins(:charge,:team).where("charges.ref=? and teams.ref=?",@charge.ref,@team.ref).first
+
+  end
 end

@@ -18,6 +18,10 @@ end
 def entry_path(entry)
   '/' + entry.charge.ref + '/' + entry.team.ref
 end
+def entry_photos_path(entry)
+  '/' + entry.charge.ref + '/' + entry.team.ref + '/photos'
+end
+
 def charge_path(charge)
   '/' + charge.ref
 end

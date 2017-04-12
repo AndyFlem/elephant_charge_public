@@ -28,6 +28,12 @@
         </div>
         <div class="card-block">
           <div class="container-fluid">
+            <% if @charge.is_current? %>
+              <div class="row" style="margin-bottom: 10px;">
+                <%= bold{@entries.count.to_s}%>&nbsp;teams have already entered the&nbsp;<%= bold{@charge.name} %>. Click on a team
+                to make a donation through&nbsp;<b>paypal</b>&nbsp;and support conservation in Zambia.
+              </div>
+            <% end %>
             <div class="row">
               <% @entries.each do |entry| %>
                   <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4 col-xl-3">

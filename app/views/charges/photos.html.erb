@@ -17,7 +17,7 @@
             <div class="row">
               <% @charge.photos.each do |photo| %>
                   <div style="padding:5px; " class="col-xs-12 col-sm-6 col-md-4 col-lg-3 col-xl-2">
-                    <a href="/photo/<%=photo.id%>"><img style="max-width:100%;" class="rounded mx-auto d-block" src="<%= image_path(photo.photo(:medium))%>"></a>
+                    <a href="/photo/<%=photo.id%>?return=<%= charge_photos_path(@charge) %>"><img style="max-width:100%;" class="rounded mx-auto d-block" src="<%= image_path(photo.photo(:medium))%>"></a>
                   </div>
               <% end %>
             </div>

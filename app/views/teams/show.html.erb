@@ -1,10 +1,22 @@
 <% title(@team.long_name) %>
 
 <%
-  content_for :metas,
+  description=''
+
+  if @team.entries_incomplete.count>0
+    description+=@team.long_name + ' are entered in the ' + @current_charge.long_name + '. '
+  end
+
+  if @entries.count>0
+    description+= @team.long_name + ' have entered ' +  @entries.count.to_s + ' Elephant Charge' + (@entries.count>1 ? 's' : '') + ' since '
+    description+= @entries.last.charge.ref + ' raising '
+    description+= '$' + number_with_precision(@team.raised_dollars, precision: 0, delimiter: ',') + ' for conservation in Zambia.'
+  end
+
+content_for :metas,
               (render :partial => 'layouts/metas', :locals => {
-                  :page_title => 'Elephant Charge - ' + @team.long_name,
-                  :description => @team.long_name,
+                  :page_title => 'Elephant Charge - ' + @team.long_name + ' Team',
+                  :description => description,
                   :og_image_path => image_path(@team.badge(:original))
               })
 %>
