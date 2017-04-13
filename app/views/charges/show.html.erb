@@ -10,7 +10,7 @@
                (render :partial => 'layouts/metas', :locals => {
                    :page_title => @charge.long_name,
                    :description => desc,
-                   :og_image_path => image_path('/logos/eclogo_orange.png')
+                   :og_image_path => image_path('/logos/eclogo_orange.png').split("?")[0]
                })
 %>
 

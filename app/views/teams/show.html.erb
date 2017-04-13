@@ -17,7 +17,7 @@ content_for :metas,
               (render :partial => 'layouts/metas', :locals => {
                   :page_title => 'Elephant Charge - ' + @team.long_name + ' Team',
                   :description => description,
-                  :og_image_path => image_path(@team.badge(:original))
+                  :og_image_path => image_path(@team.badge(:original)).split("?")[0]
               })
 %>
 
@@ -74,7 +74,17 @@ content_for :metas,
                     <p>
                       <b><%= @team.long_name %></b> have entered <b><%= @entries.count %></b>
                       charge<%= @entries.count>1 ? 's' : '' %> since
-                      <b><%= @entries.last.charge.ref %></b> raising
+                      <b><%= @entries.last.charge.ref %></b>
+                      <% if @team.finish_count>0 %>
+                      , completing the course
+                          <% if @team.finish_count>1 %>
+                              <b><%= @team.finish_count%></b> times
+                          <% else %>
+                           once
+                          <% end %>
+                          and
+                      <% end %>
+                       raising
                       <b>$<%= number_with_precision(@team.raised_dollars, precision: 0, delimiter: ',') %></b> for conservation in
                       Zambia.
                     </p>

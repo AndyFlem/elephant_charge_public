@@ -7,7 +7,7 @@
                 (render :partial => 'layouts/metas', :locals => {
                     :page_title => "#{@photo.photoable.team.name} in the #{@photo.photoable.charge.name}",
                     :description => clean_html(render(:partial => 'entries/entry_description', :locals => {:entry => @photo.photoable})),
-                    :og_image_path => image_path(@photo.photo(:original))
+                    :og_image_path => image_path(@photo.photo(:original)).split("?")[0]
                 })
   else
     title(@photo.photoable.long_name)
@@ -15,7 +15,7 @@
                 (render :partial => 'layouts/metas', :locals => {
                     :page_title => "Elephant Charge",
                     :description => @photo.photoable.long_name,
-                    :og_image_path => image_path(@photo.photo(:original))
+                    :og_image_path => image_path(@photo.photo(:original)).split("?")[0]
                 })
   end
 
@@ -35,7 +35,11 @@
               </h5>
 
               <div style="float:right;display: block;">
-                <a data-toggle="tooltip" data-placement="bottom" title="Photo Gallery" href="<%= params[:return] %>"><img style="margin-left:10px;" src="<%= image_path('icons/color/camera.png') %>"></a>
+                <% if params[:return].blank? %>
+                  <a href="<%= entry_photos_path(@photo.photoable) %>"><b>Back</b></a>
+                <% else %>
+                  <a href="<%= params[:return] %>"><b>Back</b></a>
+                <% end %>
               </div>
               <div style="margin-bottom:5px;">
                 <div id="fb-like" class="fb-like" data-href="<%= request.original_url %>" data-layout="button" data-action="like">
@@ -48,7 +52,11 @@
                 <a href="<%= charge_path(@photo.photoable) %>"><%= @photo.photoable.long_name %></a>
               </h5>
               <div style="float:right;display: block;">
-                <a data-toggle="tooltip" data-placement="bottom" title="Photo Gallery" href="<%= charge_photos_path(@photo.photoable) %>"><img style="margin-left:10px;" src="<%= image_path('icons/color/camera.png') %>"></a>
+                <% if params[:return].blank? %>
+                    <a href="<%= charge_photos_path(@photo.photoable) %>"><b>Back</b></a>
+                <% else %>
+                    <a href="<%= params[:return] %>"><b>Back</b></a>
+                <% end %>
               </div>
           <% end %>
         </div>
