@@ -5,7 +5,7 @@ class BeneficiariesController < ApplicationController
   end
 
   def show
-    @ben=Beneficiary.where(short_name: params[:id].downcase).first
+    @ben=Beneficiary.where(short_name: params[:id].downcase).first  or not_found
     @grants=@ben.grants.joins(:charge).order("charges.charge_date DESC")
   end
 end

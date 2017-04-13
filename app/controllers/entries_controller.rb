@@ -7,7 +7,7 @@ class EntriesController < ApplicationController
   end
 
   def index
-    @charge=Charge.find_by_ref(params[:id])
+    @charge=Charge.find_by_ref(params[:id]) or not_found
     @entries=@charge.entries.order(:car_no)
     if @charge.is_current?
       @grants=Charge.past.order(:charge_date).last.grants.order("RANDOM()")
@@ -22,8 +22,8 @@ class EntriesController < ApplicationController
   end
 
   def show
-    @charge=Charge.find_by_ref(params[:id])
-    @team=Team.find_by_ref(params[:ref])
+    @charge=Charge.find_by_ref(params[:id])  or not_found
+    @team=Team.find_by_ref(params[:ref]) or not_found
 
     @entry=Entry.joins(:charge,:team).where("charges.ref=? and teams.ref=?",@charge.ref,@team.ref).first
 

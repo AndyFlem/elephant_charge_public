@@ -18,7 +18,7 @@ class ChargesController < ApplicationController
   end
 
   def show
-    @charge=Charge.find_by_ref(params[:id])
+    @charge=Charge.find_by_ref(params[:id]) or not_found
 
     if @charge.is_current?
       @grants=Charge.past.order(:charge_date).last.grants.order("RANDOM()")
@@ -46,7 +46,7 @@ class ChargesController < ApplicationController
   end
 
   def photos
-    @charge=Charge.find_by_ref(params[:id])
+    @charge=Charge.find_by_ref(params[:id]) or not_found
     @entries=@charge.entries
   end
 

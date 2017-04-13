@@ -4,6 +4,10 @@ module ApplicationHelper
   end
 end
 
+def not_found
+  raise ActionController::RoutingError.new('Not Found')
+end
+
 def clean_html html
   ActionView::Base.full_sanitizer.sanitize(html).gsub("\n", "").gsub("\r", "").squeeze(" ")
 end
