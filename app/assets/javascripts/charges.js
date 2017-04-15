@@ -29,6 +29,11 @@ $( document ).ready(function() {
                     })
                     tooltip.setTooltipContent(data[i].ref);
 
+                    //marker.on('click',function(event) {
+                    //    var clickedMarker = event.layer;
+                    //    console.dir(event);
+                    //})
+
                     marker.bindTooltip(data[i].ref,{
                         offset:L.point(8,7),
                         direction: 'top',

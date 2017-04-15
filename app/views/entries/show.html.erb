@@ -23,7 +23,7 @@
                 <%= render :partial => 'photos/photo', :locals => {:photo => @entry.photo_random_landscape} %>
               </div>
               <div class="col-md-8">
-                Entered their <%= bold { format_position2(@entry.team.charges.count) } %> charge in
+                Entered their <%= bold { format_position2(@entry.entry_no) } %> charge in
                 a <%= @entry.car.description %> and completed
                 <%= @entry.result_description=='Complete' ? ' all ' : '' %><%= @entry.result_guards %> checkpoints in a
                 competition distance of
