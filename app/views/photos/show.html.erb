@@ -61,7 +61,7 @@
           <% end %>
         </div>
         <div class="card-block">
-          <img class="rounded mx-auto d-block" src="<%= image_path(@photo.photo(:original)) %>">
+          <img class="rounded mx-auto d-block" src="<%= image_path(@photo.photo(:original)) %>" alt="<%= @photo.caption%>">
         </div>
       </div>
 

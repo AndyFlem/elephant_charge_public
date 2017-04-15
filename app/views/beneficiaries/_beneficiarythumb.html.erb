@@ -11,7 +11,7 @@
     <div class="beneficiary-label"><a href="<%= beneficiary_path(beneficiary) %>"><%= beneficiary.name %></div></a>
   </div>
   <div class="card-block beneficiary-logo">
-    <a href="<%= beneficiary_path(beneficiary) %>"><%= image_tag beneficiary.logo(:thumb)%></a>
+    <a href="<%= beneficiary_path(beneficiary) %>"><img src="<%= image_path beneficiary.logo(:thumb)%>" alt="<%= beneficiary.name%>" title="<%= beneficiary.name%>"></a>
   </div>
   <% if obj.class==Grant %>
     <div class="card-header beneficiary-header">

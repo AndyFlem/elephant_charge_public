@@ -4,9 +4,9 @@
 <div style="display:flex;">
   <% if photo %>
   <div style="margin:auto;">
-    <img style="width:100%" src="<%= image_path(photo.photo(:medium))%>" class="rounded mx-auto d-block" />
+    <img style="width:100%" src="<%= image_path(photo.photo(:medium))%>" alt="<%= photo.caption%>" class="rounded mx-auto d-block" />
   </div>
   <% else %>
-      <img src="<%= image_path('logo/eclogo_orange.png')%>" style="max-width:80px;width:40%;height:40%"  class="rounded mx-auto d-block" />
+      <img src="<%= image_path('logo/eclogo_orange.png')%>" alt="Elephant Charge Logo" style="max-width:80px;width:40%;height:40%"  class="rounded mx-auto d-block" />
   <% end %>
 </div>
