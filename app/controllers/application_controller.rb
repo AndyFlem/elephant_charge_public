@@ -30,4 +30,11 @@ class ApplicationController < ActionController::Base
   def awards
     @awards=Charge.awards_list
   end
+
+  def sitemap
+    @charges = Charge.all.order(:ref)
+    @teams = Team.all
+    @beneficiaries=Beneficiary.all
+    @entries=Entry.all
+  end
 end
