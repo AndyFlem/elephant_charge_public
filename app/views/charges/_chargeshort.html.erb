@@ -11,7 +11,7 @@
   <div class="row">
     <% if @name_sponsors.count>0 %>
         <div class="col-2" style="padding:0px;">
-          <img style="max-width:100%;" src="<%= image_url(@name_sponsors[0].sponsor.logo(:thumb)) %>">
+          <img style="max-width:100%;" src="<%= image_path(@name_sponsors[0].sponsor.logo(:thumb)) %>">
         </div>
     <% end %>
     <div class="col">
@@ -40,7 +40,7 @@
     </div>
     <% if @name_sponsors.count>1 %>
         <div class="col-2" style="padding:0px;">
-          <img style="max-width:100%;" src="<%= image_url(@name_sponsors[1].sponsor.logo(:thumb)) %>">
+          <img style="max-width:100%;" src="<%= image_path(@name_sponsors[1].sponsor.logo(:thumb)) %>">
         </div>
     <% end %>
   </div>
