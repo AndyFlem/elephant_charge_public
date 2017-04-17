@@ -13,6 +13,9 @@ Rails.application.routes.draw do
   #awards
   get 'awards', to: 'application#awards'
 
+  #newsletters
+  get 'newsletters', to: 'campaigns#index'
+
   #standard index routes
   get 'teams', to: 'teams#index'
   get 'charges', to: 'charges#index'
