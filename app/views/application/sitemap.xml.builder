@@ -47,8 +47,10 @@ xml.urlset(xmlns: "http://www.sitemaps.org/schemas/sitemap/0.9") do
     end
   end
   @entries.each do |entry|
-    xml.url do
-      xml.loc("https://www.elephantcharge.org/" + entry.charge.ref + '/' + entry.team.ref )
+    unless entry.is_current?
+      xml.url do
+        xml.loc("https://www.elephantcharge.org/" + entry.charge.ref + '/' + entry.team.ref )
+      end
     end
   end
 end
