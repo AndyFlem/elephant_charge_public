@@ -5,6 +5,8 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
+gem 'sunspot_rails'
+gem 'sunspot_solr'
 
 gem 'pdfkit'
 gem 'render_anywhere'

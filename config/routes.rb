@@ -5,6 +5,9 @@ Rails.application.routes.draw do
   get 'sitemap.xml', :to => 'application#sitemap', :defaults => {:format => 'xml'}
 
 
+  #search
+  get 'search', to: 'search#search'
+
   #flat pages
   get 'about', to: 'application#about'
   get 'contact', to: 'application#contact'

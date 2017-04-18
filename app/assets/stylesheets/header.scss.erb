@@ -42,6 +42,11 @@
   font-size: 1rem;
   color:#dddddd !important;
 }
+@include media-breakpoint-down(md) {
+  .navbar a {
+    font-size:0.8rem;
+  }
+}
 .show > .dropdown-menu {
   background-color: $dark;
 }
@@ -164,4 +169,18 @@
 }
 .banner-img img {
   width:100%
+}
+
+.search-txt {
+  padding: 4px;
+  width: 160px !important;
+  margin-left: 3px;
+}
+
+.search-btn {
+  line-height: 1rem;
+  padding: 4px;
+  background: $light;
+  font-size: 0.8rem;
+  color: $dark;
 }

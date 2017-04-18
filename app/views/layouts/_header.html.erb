@@ -36,7 +36,7 @@
 
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
-          <li class="nav-item active">
+          <li class="nav-item">
             <a class="nav-link" href="/">Home</a>
           </li>
           <li class="nav-item dropdown">
@@ -49,8 +49,8 @@
               <a class="dropdown-item" href="/rules">Charge Rules</a>
             </div>
           </li>
-          <li class="nav-item active">
-            <a class="nav-link" href="/2017/teams">Teams EC17</a>
+          <li class="nav-item">
+            <a class="nav-link" href="/2017/teams">EC17</a>
           </li>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -75,24 +75,29 @@
           </li>
           -->
           <li class="nav-item">
-            <a class="nav-link" href="/newsletters">Newsletters</a>
+            <a class="nav-link" href="/newsletters">News</a>
           </li>
 
           <li class="nav-item">
             <a class="nav-link" href="/contact">Contact</a>
           </li>
         </ul>
-        <div class="my-2 my-lg-0">
+        <div class="">
           <a href="http://facebook.com/ElephantCharge" target="_blank"><img src="<%= image_path('icons/color/facebook.png') %>"></a>
           <a href="http://twitter.com/elephantcharge1" target="_blank"><img src="<%= image_path('icons/color/twitter.png') %>"></a>
           <a href="http://instagram.com/elephant.charge.zambia" target="_blank"><img src="<%= image_path('icons/color/instagram.png') %>"></a>
         </div>
-        <!--
-        <form class="form-inline my-2 my-lg-0">
-          <input id="search_field" class="form-control mr-sm-2" type="text" placeholder="Search">
-          <button id="search_button" class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-        </form>
-        -->
+
+
+        <%= form_tag("/search", method: "get", class: "form-inline") do %>
+            <%= text_field_tag(:q,nil,placeholder:"search",class: "form-control search-txt") %>
+            <%=
+              button_tag(type: 'submit',class: "btn search-btn") do
+                  content_tag(:i,nil,class:["fa","fa-search"],"aria-hidden": 'true')
+              end
+            %>
+        <% end %>
+
       </div>
     </nav>
   </div>

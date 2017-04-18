@@ -28,6 +28,20 @@ class Charge < ApplicationRecord
                     default_url: "/system/:style/missing.png"
 
 
+  searchable do
+    text :name
+    text :location
+    date :charge_date
+
+    text :guard_sponsors do
+      sponsors.map { |sponsor| sponsor.name }
+    end
+    text :charge_sponsors do
+      charge_sponsors.map { |sponsor| sponsor.sponsor.name }
+    end
+
+  end
+
   def is_current?
     self.state_ref!='RESULT'
   end

@@ -9,6 +9,13 @@ class Team < ApplicationRecord
                     default_url: "/system/eclogo_orange.png"
   validates_attachment_content_type :badge, content_type: /\Aimage\/.*\z/
 
+
+  searchable do
+    text :name
+    text :captain
+    text :ref
+  end
+
   def finish_count
     self.entries.where("result_description='Complete'").count
   end

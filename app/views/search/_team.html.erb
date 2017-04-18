@@ -1,0 +1,13 @@
+<span>Team: <a href="<%= team_path(team)%>"><%= team.name%></a></span>
+<span>
+  Entries:
+  <% team.entries.order(:entry_no).each do |entry| %>
+      <% if entry.is_current? %>
+    <a href="<%= team_path(entry.team)%>">
+      <% else %>
+    <a href="<%= entry_path(entry)%>">
+      <% end %>
+
+      <%= entry.charge.ref %></a>&nbsp;
+  <% end %>
+</span>
