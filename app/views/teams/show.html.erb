@@ -53,8 +53,8 @@ content_for :metas,
                   </div>
                   <% if @team.paypal_button %>
                       <div class="col-sm-3 col-md-2" style="display: inherit;margin-top:auto;margin-bottom:5px;">
-                        <div class="mx-auto d-block" data-toggle="tooltip" data-placement="bottom" title="Support the team and wildlife conservation in Zambia" >
-                          <%= @team.paypal_button.html_safe%>
+                        <div class="mx-auto d-block" data-toggle="tooltip" data-team-id="<%= @team.id %>" data-placement="bottom" title="Support the team and wildlife conservation in Zambia" >
+                          <%= @team.paypal_button.sub!("form","form id='paypal_form'").html_safe%>
                         </div>
                       </div>
                   <% end %>
