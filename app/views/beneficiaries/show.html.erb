@@ -1,5 +1,7 @@
 <% title(@ben.name) %>
 
+<% breadcrumb [["beneficiaries","Beneficiaries"],[beneficiary_path(@ben).sub!('/',''),@ben.name]] %>
+
 <div class="container-fluid">
 
 <div class="row">
@@ -19,12 +21,12 @@
       <div class="card-block">
         <div class="row">
         <div class="col-sm-4 ben-map">
-          <img src="<%= image_path('maps/' + @ben.geography + '.png')%>"/>
+          <img alt="<%= @ben.name%> Map" src="<%= image_path('maps/' + @ben.geography + '.png')%>"/>
           <div class="ben-map-text"><%=@ben.geography_description%></div>
         </div>
         <div class="col-sm-8 ">
           <p>
-          <img style="float:right;" src="<%= @ben.logo(:thumb)%>"/>
+          <img  alt="<%= @ben.name%> Logo" style="float:right;" src="<%= @ben.logo(:thumb)%>"/>
           <%= bold{ @ben.name }%> <%= @ben.description %>
           </p>
           <% unless @ben.grant_description_default.blank? %>

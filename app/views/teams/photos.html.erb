@@ -1,5 +1,7 @@
 <% title(@team.long_name) %>
 
+<% breadcrumb [["teams","Teams"],[team_path(@team).sub!('/',''),@team.name],[team_photos_path(@team).sub!('/',''),'Photos']] %>
+
 <div class="container-fluid">
   <div class="row">
     <div class="col">

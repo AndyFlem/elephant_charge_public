@@ -11,6 +11,8 @@
               })
 %>
 
+<% breadcrumb [["charges","Charges"],[charge_path(@charge).sub!('/',''),'Elephant Charge ' + @charge.ref]] %>
+
 <div class="container-fluid">
   <div class="row">
     <div class="col-lg-8">

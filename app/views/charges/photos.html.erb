@@ -1,5 +1,7 @@
 <% title(@charge.long_name) %>
 
+<% breadcrumb [["charges","Charges"],[charge_path(@charge).sub!('/',''),'Elephant Charge ' + @charge.ref],[charge_photos_path(@charge).sub!('/',''),'Photos']] %>
+
 <div class="container-fluid">
   <div class="row">
     <div class="col">

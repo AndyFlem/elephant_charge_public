@@ -2,6 +2,21 @@ module ApplicationHelper
   def title(text)
     content_for :title, text
   end
+
+  def breadcrumb(items)
+    ret="["
+    items.each_with_index do |item,i|
+      ret+="{'@type': 'ListItem', 'position': " + (i+1).to_s + ", 'item': {"
+      ret+="'@id': '" + root_url + item[0] + "',"
+      ret+="'name': '" + item[1] + "'}}"
+      if i<items.count-1
+        ret+=','
+      end
+    end
+    ret+=']'
+    ret.gsub!("'",'"')
+    content_for :breadcrumb, ret.html_safe
+  end
 end
 
 def not_found

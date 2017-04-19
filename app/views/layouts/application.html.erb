@@ -28,6 +28,16 @@
     }
   </script>
   <title><%= if content_for?(:title) then yield(:title) + ' | ' end %>Elephant Charge</title>
+  <% if content_for?(:breadcrumb) then %>
+      <script type="application/ld+json">
+        {
+          "@context": "http://schema.org",
+          "@type": "BreadcrumbList",
+            "itemListElement":
+          <%= yield(:breadcrumb) %>
+        }
+      </script>
+  <% end %>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
   <meta name="msvalidate.01" content="922E3A5FA3E15D373BF6BF69EF4C1F52" />

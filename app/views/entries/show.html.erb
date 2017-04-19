@@ -2,6 +2,8 @@
 
 <% title('EC ' + @charge.ref + ' ' + @team.long_name) %>
 
+<% breadcrumb [["charges","Charges"],[charge_path(@charge).sub!('/',''),'Elephant Charge ' + @charge.ref],[charge_entries_path(@charge).sub!('/',''),'Teams'],[entry_path(@entry).sub!('/',''),@team.name]] %>
+
 <div class="container-fluid">
   <div class="row">
 

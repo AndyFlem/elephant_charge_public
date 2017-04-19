@@ -1,5 +1,7 @@
 <% title(@team.long_name) %>
 
+<% breadcrumb [["teams","Teams"],[team_path(@team).sub!('/',''),@team.name]] %>
+
 <%
   description=''
 
