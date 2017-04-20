@@ -428,6 +428,43 @@ ALTER SEQUENCE beneficeries_id_seq OWNED BY beneficiaries.id;
 
 
 --
+-- Name: campaigns; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE campaigns (
+    id integer NOT NULL,
+    mailchimp_id character varying,
+    web_id character varying,
+    send_time timestamp without time zone,
+    archive_url character varying,
+    long_archive_url character varying,
+    subject_line character varying,
+    title character varying,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+--
+-- Name: campaigns_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE campaigns_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: campaigns_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE campaigns_id_seq OWNED BY campaigns.id;
+
+
+--
 -- Name: cars; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -1197,6 +1234,13 @@ ALTER TABLE ONLY beneficiaries ALTER COLUMN id SET DEFAULT nextval('beneficeries
 -- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
+ALTER TABLE ONLY campaigns ALTER COLUMN id SET DEFAULT nextval('campaigns_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
+--
+
 ALTER TABLE ONLY cars ALTER COLUMN id SET DEFAULT nextval('cars_id_seq'::regclass);
 
 
@@ -1332,6 +1376,14 @@ ALTER TABLE ONLY teams ALTER COLUMN id SET DEFAULT nextval('teams_id_seq'::regcl
 
 ALTER TABLE ONLY ar_internal_metadata
     ADD CONSTRAINT ar_internal_metadata_pkey PRIMARY KEY (key);
+
+
+--
+-- Name: campaigns_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY campaigns
+    ADD CONSTRAINT campaigns_pkey PRIMARY KEY (id);
 
 
 --
@@ -1835,7 +1887,7 @@ ALTER TABLE ONLY entries
 
 SET search_path TO "$user", public;
 
-INSERT INTO schema_migrations (version) VALUES
+INSERT INTO "schema_migrations" (version) VALUES
 ('20161003193839'),
 ('20161003195041'),
 ('20161004045039'),
@@ -1854,6 +1906,7 @@ INSERT INTO schema_migrations (version) VALUES
 ('20161011222354'),
 ('20161012080600'),
 ('20161106200834'),
-('20161106201642');
+('20161106201642'),
+('20170416185534');
 
 

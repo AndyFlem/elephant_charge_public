@@ -21,7 +21,7 @@
 <div class="container-fluid">
 
 <div class="row">
-  <div class="col-lg-8 ">
+  <div class="col-xs-12 col-sm-12 col-md-8 col-lg-9">
     <div class="card">
       <div class="card-header">
         <h5  style="display:inline-block;"><%= @ben.name %></h5>
@@ -75,9 +75,9 @@
       </div>
     </div>
     </div>
-    <div class="col-lg-4 ">
+    <div class="col-xs-12 col-sm-12 col-md-4 col-lg-3">
       <% unless @ben.facebook.blank? %>
-      <div id="fb-page" class="fb-page" data-href="<%= @ben.facebook %>" data-tabs="timeline" data-width="400" data-height="600" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true">
+      <div id="fb-page" class="fb-page" data-href="<%= @ben.facebook %>" data-tabs="timeline" data-width="500" data-height="600" data-small-header="true" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="false">
         <% end %>
       </div>
     </div>
