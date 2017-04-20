@@ -2,6 +2,22 @@
 
 <% breadcrumb [["beneficiaries","Beneficiaries"],[beneficiary_path(@ben).sub!('/',''),@ben.name]] %>
 
+<%
+  description=@ben.name + ' ' + @ben.description
+  unless @ben.grant_description_default.blank?
+    description+=@ben.name + ' has used funds provided by the Elephant Charge ' + @ben.grant_description_default + '.'
+  end
+  description+=@ben.name + ' has been provided ' + @grants.count.to_s + ' grant' + (@grants.count>1 ? 's':'') +' by the Elephant Charge totalling '
+  description+= '$' + number_with_precision(@ben.grant_dollars, precision: 0, delimiter: ',') + '.'
+
+  content_for :metas,
+              (render :partial => 'layouts/metas', :locals => {
+                  :page_title => 'Elephant Charge - ' + @ben.name,
+                  :description => description,
+                  :og_image_path => image_path(@ben.logo(:original)).split("?")[0]
+              })
+%>
+
 <div class="container-fluid">
 
 <div class="row">
@@ -16,6 +32,12 @@
           <% unless @ben.website.blank? %>
               <a data-toggle="tooltip" data-placement="top" title="Website" target="_blank" href="<%= @ben.website %>"><img style="margin-left:10px;" src="<%= image_path('icons/grey/link.png')%>"></a>
           <% end %>
+        </div>
+        <div style="margin-bottom:5px;">
+          <div id="fb-like" class="fb-like" data-href="<%= request.original_url%>" data-layout="button" data-action="like">
+          </div>
+          <div class="fb-share-button" data-href="<%= request.original_url%>" data-layout="button">
+          </div>
         </div>
       </div>
       <div class="card-block">
