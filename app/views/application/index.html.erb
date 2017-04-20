@@ -11,10 +11,8 @@
         </div>
 
         <div>
-          <a href="<%= charge_path(@current_charge)%>">
-            The <%= @current_charge.name %> will be held on <%= @current_charge.charge_date.strftime('%e %B %Y') %><br/>
+            The <%= @current_charge.name %> will be held on <%= @current_charge.charge_date.strftime('%e %B') %>.<br/>
             - <%= (DateTime.parse('2017-10-17')-DateTime.now).to_i %> days to go -
-          </a>
         </div>
       </div>
       <div class="countdown d-flex align-items-center">
@@ -35,10 +33,8 @@
         </a>
       </div>
       <div>
-        <a href="<%= charge_path(@current_charge)%>">
-          The <%= @current_charge.name %> will be held on <%= @current_charge.charge_date.strftime('%e %B %Y') %><br/>
+          The <%= @current_charge.name %> will be held on <%= @current_charge.charge_date.strftime('%e %B') %>.<br/>
           - <%= (DateTime.parse('2017-10-17')-DateTime.now).to_i %> days to go -
-        </a>
       </div>
     </div>
     <div class="countdown  d-flex align-items-center">
