@@ -6,9 +6,17 @@
   </div>
 
   <div class="card-block" style="padding:5px;">
-    <a href="<%= team_path team %>">
-    <%= render :partial => 'photos/photo', :locals => {:photo => team.photo_random_landscape} %>
-    </a>
+    <%
+      photo=team.photo_random_landscape
+      p=render :partial => 'photos/photo', :locals => {:photo => photo}
+    %>
+    <%=
+      if photo
+        link_to p,photo_path(photo) + '?return=' + request.path
+      else
+        p
+      end
+    %>
   </div>
 
   <div class="card-block" style="text-align: center;padding-top:0px;">

@@ -150,7 +150,18 @@
                     </ul>
                   </div>
                   <div class="col-md-4">
-                    <%= render :partial => 'photos/photo', :locals => {:photo => entry.photo_random_landscape} %>
+                    <%
+                      photo=entry.photo_random_landscape
+                      p=render :partial => 'photos/photo', :locals => {:photo => photo}
+                    %>
+                    <%=
+                      if photo
+                        link_to p,photo_path(photo) + '?return=' + request.path
+                      else
+                        p
+                      end
+                    %>
+
                   </div>
                 </div>
               </div>

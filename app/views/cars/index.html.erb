@@ -15,8 +15,17 @@
               <div class="row">
                 <div class="col-md-3">
                   <% photo=m.photos.order("RANDOM()").first %>
+                  <%
+                    p=render :partial => 'photos/photo', :locals => {:photo => photo}
+                  %>
                   <div class="image-container">
-                    <img class="rounded mx-auto d-block" src="<%= image_path photo.photo(:medium)%>"/>
+                    <%=
+                      if photo
+                        link_to p,photo_path(photo) + '?return=' + request.path
+                      else
+                        p
+                      end
+                    %>
                   </div>
                 </div>
                 <div class="col-md-9">

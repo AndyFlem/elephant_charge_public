@@ -34,6 +34,10 @@ def bold
   ("<b>" + yield + "</b>").html_safe
 end
 
+def photo_path(photo)
+  '/photo/' + photo.id.to_s
+end
+
 def entry_path(entry)
   '/' + entry.charge.ref + '/' + entry.team.ref
 end
