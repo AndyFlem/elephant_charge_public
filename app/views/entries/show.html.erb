@@ -48,8 +48,10 @@
         <% @entry_legs.each_with_index do |el, i| %>
             <tr>
               <td class="high-column">
-                <a href="javascript:void(0)" class="map-selector" data-entry-leg-id="<%= el.id %>">
-                  <%= i+1 %> <i><%= el.guard_from.name %></i> <%= small_caps { 'to' } %> <i><%= el.guard_to.name %></i>
+                <a class="map-selector" data-entry-leg-id="<%= el.id %>" data-toggle="collapse" href="#el_<%= el.id %>" aria-expanded="false" aria-controls="el_<%= el.id %>">
+                  <b><%= el.guard_from.name %></b> <%= small_caps { 'to' } %> <b><%= el.guard_to.name %></b>
+                  <%= small_caps {el.leg.is_gauntlet ? ' - Gauntlet' : ''}%>
+                  <%= small_caps {el.leg.is_tsetse ? ' - Tsetse Line' : ''}%>
                 </a>
               </td>
               <td>
@@ -57,10 +59,33 @@
               </td>
               <td>
                 <%= bold { format_meters(el.distance_m) } %> <%= small_caps { 'in' } %> <%= format_seconds(el.elapsed_s) %>
-                <%= small_caps { 'at' } %> <%= number_with_precision(el.speed, precision: 1) %>kmh
+
               </td>
-              <td>
-                <%= number_with_precision(el.multiple, precision: 2) %><%= small_caps { 'x leg of' } %> <%= format_meters(el.leg.distance_m) %>
+            </tr>
+            <tr>
+              <td class="collapse" colspan="3" id="el_<%= el.id %>">
+                <div style="display: inline-block; margin-left:15px;">
+                  <%= small_caps { 'Leg no: ' }%><%= i+1 %><br>
+                  <%= number_with_precision(el.multiple, precision: 2) %> <%= small_caps { 'times the leg distance of' } %> <%= format_meters(el.leg.distance_m) %><br>
+                  <%= small_caps { 'at an average ' } %> <%= number_with_precision(el.speed, precision: 1) %>kmh<br>
+                  <%= small_caps { 'over ' } %> <%= format_seconds(el.elapsed_s) %><br>
+                  <%= number_with_precision(el.elevation_min, precision: 0, delimiter: ',') %>m <%= small_caps { 'minimum elevation' } %><br>
+                  <%= number_with_precision(el.elevation_max, precision: 0, delimiter: ',') %>m <%= small_caps { 'maximum elevation' } %>
+                </div>
+                <div style="display: inline-block; margin-left:75px;">
+                  <% el.leg.entry_legs.order(distance_m: :asc).take(6).each_with_index do |ent_leg,i| %>
+                    <%= small_caps{format_position2(i+1)}%>
+
+                    <%=
+                      if ent_leg.entry.id==@entry.id
+                        bold {ent_leg.entry.name}
+                      else
+                        ent_leg.entry.name
+                      end
+                    %>
+                    <%= format_meters(ent_leg.distance_m) %><br>
+                  <% end %>
+                </div>
               </td>
             </tr>
         <% end %>

@@ -100,11 +100,11 @@ $( document ).ready(function() {
 
             $(this).click(function(){
                 $(".high-column").each(function(){
-                    $(this).css("background-color", "#f5f5f5")
+                    $(this).css("background-color", "white")
                     $(this).children("a").css("color", "#df5409")
                 })
-                $(this).parent().css( "background-color", "#df5409" );
-                $(this).css( "color", "white" );
+                $(this).parent().css( "background-color", "#f5f5f5" );
+                $(this).css( "color", "#df5409" );
                 layer=tracks[$(this).data('entry-leg-id')]
                 map_entry .fitBounds(layer.getBounds(), {padding: [20,20]});
 

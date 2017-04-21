@@ -64,7 +64,7 @@ end
 
 def format_meters(m)
   if m>1000
-    number_with_precision(m/1000.0,precision:1,delimeter:',') + "km"
+    number_with_precision(m/1000.0,precision:2,delimeter:',') + "km"
   else
     number_with_precision(m,precision:0,delimeter:',') + "m"
   end
