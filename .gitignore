@@ -17,7 +17,8 @@
 .byebug_history
 
 #Ignore images
-/public/system/photos/
+/public/system/photos/*
+/public/assets/*
 
 /.idea/
 .env
