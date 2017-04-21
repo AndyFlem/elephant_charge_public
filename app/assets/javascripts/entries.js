@@ -24,7 +24,8 @@ $( document ).ready(function() {
         var yellowLine={"color": "yellow", "weight": 2, "opacity": 1};
         var blackLine={"color": "white", "weight": 1, "opacity": 1};
 
-        $.getJSON('http://' + window.location.host + '/' + map_entry_div.data("charge") + '/guards',{format: 'json'}, function (data) {
+        var full = location.protocol+'//'+location.hostname+(location.port ? ':'+location.port: '');
+        $.getJSON(full + '/' + map_entry_div.data("charge") + '/guards',{format: 'json'}, function (data) {
             for (i=0; i<data.length;i++){
 
                 if(data[i].lat && data[i].lon) {
@@ -47,7 +48,8 @@ $( document ).ready(function() {
         var tracks={};
         var legs={};
         var entry_legs={};
-        $.getJSON('http://' + window.location.host + '/entry_legs/' + map_entry_div.data("entry"),{format: 'json'}, function (data) {
+        var full = location.protocol+'//'+location.hostname+(location.port ? ':'+location.port: '');
+        $.getJSON(full + '/entry_legs/' + map_entry_div.data("entry"),{format: 'json'}, function (data) {
             //console.dir(data)
             for (i=0; i<data.length;i++){
                 legs[data[i].entry_leg_id]=data[i];
@@ -118,7 +120,8 @@ $( document ).ready(function() {
                 chartInstance.options.scales.xAxes[0].scaleLabel.labelString=leg.checkin1.guard.sponsor.display_name + ' to ' + leg.checkin2.guard.sponsor.display_name
                 chartInstance.update();
 
-                $.getJSON('http://' + window.location.host + '/leg/' + leg.leg.leg_id,{format: 'json'}, function (data) {
+                var full = location.protocol+'//'+location.hostname+(location.port ? ':'+location.port: '');
+                $.getJSON(full + '/leg/' + leg.leg.leg_id,{format: 'json'}, function (data) {
                     for (var key in entry_legs) {
                         if (entry_legs.hasOwnProperty(key)) {
                             map_entry.removeLayer(entry_legs[key]);
