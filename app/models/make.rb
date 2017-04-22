@@ -40,7 +40,7 @@ end
 
 def honour entries,award,desc
   ret="Winner of the " + (award.nil? ? '' : ('<i>' + Charge.awards(award) + '</i>' + " for the ")) +  Charge.awards_desc(award) + " " + (entries.count>1 ? '<b>' + entries.count.to_s + ' times' + '</b>': '')
-  ret+=" (" + entries.map {|e| "<a href='/" + e.charge.ref + "/" + e.team.ref +  "'>" + e.charge.ref + "</a>"}.sort.join(', ') + ")"
+  ret+=" (" + entries.map {|e| "<a href='/" + e.charge.ref + "/" + e.team.ref +  "'>" + e.charge.ref + " " + e.team.name + "</a>"}.sort.join(', ') + ")"
   ret.html_safe
 end
 end

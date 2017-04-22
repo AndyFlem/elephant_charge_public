@@ -68,6 +68,10 @@ class Charge < ApplicationRecord
         self.entries.where('position_ladies=1').first
       when :bikes
         self.entries.where('position_bikes=1').first
+      when :new
+        self.entries.where('position_newcomer=1').first
+      when :international
+        self.entries.where('position_international=1').first
       else
         nil
     end
@@ -82,8 +86,11 @@ class Charge < ApplicationRecord
         :tsetse1=>['Sanctuary Trophy','Shortest Distance on Tsetse Line 1'],
         :tsetse2=>['Khal Amazi Trophy','Shortest Distance on Tsetse Line 2'],
         :ladies=>['Silky Cup','Shortest Distance by a Ladies Team'],
+        :new=>['','Shortest Distance New Team'],
+        :international=>['','Shortest Distance International Team'],
         :bikes=>['Dean Cup','Shortest Distance by a Bike Team'],
         :spirit=>['Rhino Charge Trophy','Spirit of the Charge']
+
     }
   end
 

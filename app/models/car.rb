@@ -23,5 +23,31 @@ class Car < ApplicationRecord
     end
     des
   end
+  def description2
+    des=''
+    if !self.colour.blank?
+      des+=self.colour + ' '
+    end
+    if !self.year.blank?
+      des+=self.year.to_s + ' '
+    end
+    if !self.car_model.blank?
+      des+=self.car_model + ' '
+    end
+    des
+  end
+  def description3
+    des=''
+    if !self.year.blank?
+      des+=self.year.to_s + ' '
+    end
+    if !self.make.blank?
+      des+=self.make.name + ' '
+    end
+    if !self.car_model.blank?
+      des+=self.car_model + ' '
+    end
+    des
+  end
 
 end

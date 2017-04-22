@@ -25,7 +25,10 @@ Rails.application.routes.draw do
   get 'charges', to: 'charges#index'
   #get 'sponsors', to: 'sponsors#index'
   get 'beneficiaries', to: 'beneficiaries#index'
+
+  #cars
   get 'cars', to: 'cars#index'
+  get 'car/:ref', to: 'cars#show'
 
   #photos
   get 'photo/:id', to: 'photos#show'

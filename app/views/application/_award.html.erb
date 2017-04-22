@@ -3,7 +3,7 @@
 %>
 <div class="card">
   <div class="card-header">
-    <h6><i><%= award[1][0] %></i> - <%= award[1][1] %></h6>
+    <h6><i><%= award[1][0] + (award[1][0].blank? ? '' : ' -')%></i> <%= award[1][1] %></h6>
   </div>
   <div class="card-block">
     <ul class="">
@@ -18,7 +18,11 @@
               end
             else
               ent=charge.award_winner(award[0])
-              winner=ent.nil? ? '' : ("<a href='" + entry_path(ent) + "'>" + ent.team.name + "</a>").html_safe
+              winner=ent.nil? ? '' : ("<a href='" + entry_path(ent) + "'>" + ent.team.name + "</a>")
+              if ent and (award[0]==:distance or award[0]==:gauntlet or award[0]==:tsetse1 or award[0]==:tsetse1 or award[0]==:ladies)
+              winner+=" " + small_caps{ent.car.description3}
+              end
+              winner=winner.html_safe
             end
           %>
           <li>

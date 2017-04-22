@@ -1,0 +1,98 @@
+<% title(@make.name)
+  teams=@make.teams.distinct
+  cars=@make.cars
+
+  desc=cars.count.to_s + ' ' + @make.name + ' ' + "car" + (cars.count>1 ? 's' : '')
+  desc+=" have entered the Elephant Charge " + @make.entries.count.to_s
+  desc+=" time" + (@make.entries.count>1 ? 's' : '')
+  desc+=" with " +  teams.count.to_s + " team" + (teams.count>1 ? 's' : '')
+
+   content_for :metas,
+               (render :partial => 'layouts/metas', :locals => {
+                   :page_title =>  @make.name + ' | Elephant Charge',
+                   :description => desc,
+                   :og_image_path => URI.join(root_url, image_path('banners/b' + (rand(20)+1).to_s + '.jpg'))
+               })
+
+%>
+
+<% breadcrumb [["cars", "Cars"], [("/car/" + @make.ref).sub!('/',''), @make.name]] %>
+
+<div class="container-fluid">
+  <div class="row">
+
+    <div class="col-md-10 ">
+      <div class="card">
+        <div class="card-header">
+          <div>
+          <h5 style="display:inline-block;"><%= @make.name %></h5>
+          </div>
+          <div>
+            <div style="margin-bottom:5px;display:inline-block;">
+              <div id="fb-like" class="fb-like" data-href="<%= request.original_url %>" data-layout="button" data-action="like">
+              </div>
+              <div class="fb-share-button" data-href="<%= request.original_url %>" data-layout="button">
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="card-block">
+          <div class="container-fluid">
+            <div class="row">
+              <div class="col">
+                <%= bold { cars.count.to_s } %> <%= @make.name %> car<%= cars.count>1 ? 's' : '' %>
+                have entered the Elephant Charge <%= bold { @make.entries.count.to_s } %>
+                time<%= @make.entries.count>1 ? 's' : '' %>
+                with <%= bold { teams.count.to_s } %> team<%= teams.count>1 ? 's' : '' %>
+                <ul style="padding-left: 15px;margin-top:10px;">
+                  <% @make.honours.each do |h| %>
+                      <li><%= h.html_safe %></li>
+                  <% end %>
+                </ul>
+              </div>
+            </div>
+            <div class="row">
+
+              <% @make.cars.each do |car| %>
+                  <div class="col-3">
+                    <div class="card">
+                      <div class="card-header">
+                        <%= car.description2 %>
+                      </div>
+                      <div class="card-block">
+                        <%
+                          ents=car.entries.references(:charge).includes(:charge).order("team_id,charges.ref")
+                          rec={}
+                          ents.each do |e|
+                            l=link_to(e.team.name,team_path(e.team))
+                            unless rec[l]
+                              rec.merge! l => []
+                            end
+                            rec[l]<<link_to(e.charge.ref,entry_path(e))
+                          end
+                          photo=car.photos.order("RANDOM()").first
+                          p=render :partial => 'photos/photo', :locals => {:photo => photo}
+                        %>
+                        <div class="image-container">
+                          <%= photo ? (link_to p, photo_path(photo) + '?return=' + request.path) : p %>
+                        </div>
+                        <ul style="list-style: none;margin-top:10px;padding:5px;">
+                          <% rec.each do |entry| %>
+                              <li>
+                                <b><%= entry[0].html_safe %></b> <%= entry[1].join(', ').html_safe %>
+                              </li>
+                          <% end %>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+              <% end %>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>

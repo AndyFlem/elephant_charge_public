@@ -8,14 +8,13 @@
       <div class="col-md-6 ">
         <div class="card">
           <div class="card-header">
-            <h6 style="display:inline-block;"><%= m.name %></h6>
+            <h6 style="display:inline-block;"><a href="/car/<%= m.ref%>"><%= m.name %></a></h6>
           </div>
           <div class="card-block">
             <div class="container-fluid">
               <div class="row">
                 <div class="col-md-3">
-                  <% photo=m.photos.order("RANDOM()").first %>
-                  <%
+                  <% photo=m.photos.order("RANDOM()").first
                     p=render :partial => 'photos/photo', :locals => {:photo => photo}
                   %>
                   <div class="image-container">
