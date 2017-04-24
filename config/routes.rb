@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   get 'contact', to: 'application#contact'
   get 'rules', to: 'application#rules'
   get 'privacy', to: 'application#privacy'
+  get 'getinvolved', to: 'application#getinvolved'
 
   #awards
   get 'awards', to: 'application#awards'

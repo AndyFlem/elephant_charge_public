@@ -21,7 +21,7 @@
 
 %>
 
-<div class="container-fluid">
+<div class="container-fluid" data-views="<%= @photo.views%>">
   <div class="row justify-content-center">
     <div class="col-12">
       <div class="card">
@@ -61,7 +61,7 @@
           <% end %>
         </div>
         <div class="card-block">
-          <img class="rounded mx-auto d-block" src="<%= image_path(@photo.photo(:original)) %>" alt="<%= @photo.caption%>">
+          <img style="max-width: 100%" class="rounded mx-auto d-block" src="<%= image_path(@photo.photo(:original)) %>" alt="<%= @photo.caption%>">
         </div>
       </div>
 

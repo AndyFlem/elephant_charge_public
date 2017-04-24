@@ -27,6 +27,10 @@ class ApplicationController < ActionController::Base
 
   end
 
+  def getinvolved
+
+  end
+
   def awards
     @awards=Charge.awards_list
   end
@@ -36,5 +40,6 @@ class ApplicationController < ActionController::Base
     @teams = Team.all
     @beneficiaries=Beneficiary.all
     @entries=Entry.all
+    @makes=Make.all
   end
 end
