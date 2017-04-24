@@ -1,0 +1,7 @@
+<% @photos.each do |photo| %>
+  <div style="margin-bottom: 4px;">
+    <%= photo.views %>
+    <a href="<%= photo_path(photo) %>"><img src="<%= photo.photo(:thumb)%>"></a>
+    <%= photo.id %> - <%= photo.caption %>
+  </div>
+<% end %>

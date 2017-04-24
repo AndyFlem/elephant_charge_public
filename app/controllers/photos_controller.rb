@@ -10,4 +10,7 @@ class PhotosController < ApplicationController
     @photo.save!
   end
 
+  def views
+    @photos=Photo.where("views>0").order(:views)
+  end
 end
