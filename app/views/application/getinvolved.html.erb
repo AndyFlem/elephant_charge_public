@@ -30,27 +30,34 @@
           <div class="container-fluid">
             <div class="row justify-content-center">
               <div class="col-xs-12 col-sm-2">
-                    <a target="_blank" href="http://www.fuchsoil.co.za/">
-                      <img class="mx-auto d-block" style="width:90px;margin-bottom: 10px;" src="<%= image_path('logo/fuchs.png') %>"/>
-                    </a>
+
+                <img class="mx-auto d-block" style="width:90px;margin-bottom: 10px;margin-top:10px;" src="<%= image_path('logo/eclogo_orange.png') %>"/>
+
               </div>
               <div class="col-xs-12 col-sm-10">
-                There are many ways to get involved in the Elephant Charge and support conservation in Zambia
-                through our fantastic <a href="/beneficiaries">beneficiary organisations</a>.
+                <p>
+                  <a href="/about">The Elephant Charge</a> is an annual event which challenges teams of cars and motorbikes to
+                  complete a gruelling course through the Zambian bush. The Charge is held to raise money for conservation
+                  in Zambia, focussed on <b>conservation through education</b>, and in the
+                  <a href="/charges">ten years</a> since in began, the event has raised over <b>$640,000</b> which has
+                  been distributed to <a href="/beneficiaries">conservation organisations</a> working across the country.
+                </p>
+                <p>
+                There are many ways to get involved in the <b>Elephant Charge</b> and support conservation in Zambia.
                 <ul>
                   <li><a href="#enter">Enter your team or join an existing team</a></li>
                   <li><a href="#sponsor">Sponsor a team or the Elephant Charge event</a></li>
                   <li><a href="#help">Help out at the event</a></li>
                   <li><a href="#help">Bring your skills to the organising committee</a></li>
                 </ul>
-
+                </p>
               </div>
             </div>
           </div>
           <div class="card">
             <div id="enter" class="card-header"><h6>Enter a Team</h6></div>
             <div class="card-block">
-              <img style="padding:5px;" align="right" src="<%=Photo.find_by_id(1556).photo(:medium)%>">
+              <img style="margin:5px;max-width:100%" class="rounded mx-auto d-block" align="right" src="<%=Photo.find_by_id(1556).photo(:medium)%>">
               <p>Enter a team for the Fuchs Elephant Charge 2017, help raise money for conservation and
                 have a incredible weekend of off-road excitement in the Zambian bush.</p>
               <p>
@@ -82,7 +89,7 @@
           <div class="card">
             <div id="sponsor" class="card-header"><h6>Sponsor</h6></div>
             <div class="card-block">
-              <img style="padding:5px;" align="left" src="<%=Photo.find_by_id(1502).photo(:medium)%>">
+              <img style="margin:5px;max-width:100%" class="rounded mx-auto d-block"  align="left" src="<%=Photo.find_by_id(1502).photo(:medium)%>">
               <p>Your company can get amazing exposure and support Zambia's most important conservation fundraising event
               by becoming a sponsor of an Elephant Charge <a href="/2017/teams">team</a> or of the event itself.</p>
               <p>Sponsorship for teams and for the event is welcomed in-kind as well as in the form of cash and
