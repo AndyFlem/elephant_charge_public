@@ -28,7 +28,7 @@ class ApplicationController < ActionController::Base
   end
 
   def getinvolved
-
+    @current_charge=Charge.current.first
   end
 
   def awards
