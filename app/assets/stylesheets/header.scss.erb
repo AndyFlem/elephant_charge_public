@@ -36,12 +36,18 @@
 .navbar-toggler-right{
   top:0px;
 }
+.nav-item {
+  padding-left:0px;
+  padding-right:30px;
+}
 .navbar a {
   padding-top:0px;
   padding-bottom:0px;
-  font-size: 1rem;
+  font-size: 0.9rem;
   color:#dddddd !important;
+
 }
+
 @include media-breakpoint-down(md) {
   .navbar a {
     font-size:0.8rem;
@@ -183,4 +189,15 @@
   background: $light;
   font-size: 0.8rem;
   color: $dark;
+}
+
+@include media-breakpoint-down(md) {
+  .social {
+    padding-top:10px;
+  }
+}
+@include media-breakpoint-down(md) {
+  .search-form{
+    padding-top:10px;
+  }
 }

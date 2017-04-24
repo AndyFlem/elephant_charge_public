@@ -87,6 +87,7 @@
   <link href="//cdn-images.mailchimp.com/embedcode/classic-10_7.css" rel="stylesheet" type="text/css">
   <script src="https://use.fontawesome.com/e965e33498.js"></script>
 
+  <% if Rails.env.production? %>
   <!-- Facebook Pixel Code -->
   <script>
     !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
@@ -104,7 +105,7 @@
   /></noscript>
   <!-- DO NOT MODIFY -->
   <!-- End Facebook Pixel Code -->
-
+  <% end %>
 
 </head>
 
