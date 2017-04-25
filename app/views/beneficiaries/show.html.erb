@@ -3,7 +3,7 @@
 <% breadcrumb [["beneficiaries","Beneficiaries"],[beneficiary_path(@ben).sub!('/',''),@ben.name]] %>
 
 <%
-  description=@ben.name + ' ' + @ben.description
+  description=@ben.name + ' ' + @ben.description + ". "
   unless @ben.grant_description_default.blank?
     description+=@ben.name + ' has used funds provided by the Elephant Charge ' + @ben.grant_description_default + '.'
   end
