@@ -2,12 +2,29 @@
 
 <% breadcrumb [["about","About"]] %>
 
+<%
+  description="The Elephant Charge is an annual event which challenges teams of cars and motorbikes to complete a gruelling course through the Zambian bush. The Charge is held to raise money for conservation in Zambia."
+
+  content_for :metas,
+              (render :partial => 'layouts/metas', :locals => {
+                  :page_title => 'Elephant Charge - About',
+                  :description => description,
+                  :og_image_path => URI.join(root_url, image_path('banners/b' + (rand(20)+1).to_s + '.jpg'))
+              })
+%>
+
 <div class="container-fluid">
   <div class="row">
     <div class="col-md-9">
       <div class="card">
         <div class="card-header">
-          <h5>About the Elephant Charge</h5>
+          <h5 style="display:inline-block;">About the Elephant Charge</h5>
+          <div style="margin-bottom:5px;">
+            <div id="fb-like" class="fb-like" data-href="<%= request.original_url %>" data-layout="button" data-action="like">
+            </div>
+            <div class="fb-share-button" data-href="<%= request.original_url %>" data-layout="button">
+            </div>
+          </div>
         </div>
         <div class="card-block">
           <div class="container-fluid">
