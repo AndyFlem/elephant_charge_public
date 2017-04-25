@@ -11,7 +11,7 @@
   description+= '$' + number_with_precision(@entry.raised_dollars, precision: 0, delimiter: ',') + ' for conservation in Zambia.'
   content_for :metas,
               (render :partial => 'layouts/metas', :locals => {
-                  :page_title => team_path(@team) + 'in the ' + @charge.name,
+                  :page_title => @team.long_name + ' in the ' + @charge.name,
                   :description => description,
                   :og_image_path => URI.join(root_url, @entry.photo_random_landscape.photo(:original))
               })
