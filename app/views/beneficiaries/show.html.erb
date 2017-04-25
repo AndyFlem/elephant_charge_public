@@ -12,9 +12,9 @@
 
   content_for :metas,
               (render :partial => 'layouts/metas', :locals => {
-                  :page_title => 'Elephant Charge - ' + @ben.name,
+                  :page_title => 'Elephant Charge Supports ' + @ben.name,
                   :description => description,
-                  :og_image_path => image_path(@ben.logo(:original)).split("?")[0]
+                  :og_image_path => URI.join(root_url, image_path('share_images/' + (rand(9)+1).to_s + '.jpg'))
               })
 %>
 
