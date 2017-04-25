@@ -88,7 +88,7 @@
   <link href="//cdn-images.mailchimp.com/embedcode/classic-10_7.css" rel="stylesheet" type="text/css">
   <script src="https://use.fontawesome.com/e965e33498.js"></script>
 
-  <% if Rails.env.production? %>
+
       <script>
         window.fbAsyncInit = function() {
           FB.init({
@@ -96,7 +96,9 @@
             xfbml      : true,
             version    : 'v2.8'
           });
+          <% if Rails.env.production? %>
           FB.AppEvents.logPageView();
+          <% end %>
         };
 
         (function(d, s, id){
@@ -107,7 +109,7 @@
           fjs.parentNode.insertBefore(js, fjs);
         }(document, 'script', 'facebook-jssdk'));
       </script>
-  <% end %>
+
 
 </head>
 

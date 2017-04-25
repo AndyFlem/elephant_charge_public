@@ -21,6 +21,7 @@ class ApplicationController < ActionController::Base
   def about
     @current_charge=Charge.current.first
     @example_charge=Charge.find_by_ref('2016')
+    @team=Entry.current.order("RANDOM()").first.team
   end
 
   def contact
@@ -29,6 +30,7 @@ class ApplicationController < ActionController::Base
 
   def getinvolved
     @current_charge=Charge.current.first
+
   end
 
   def awards
