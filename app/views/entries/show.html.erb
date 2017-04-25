@@ -3,6 +3,19 @@
 <% title('EC ' + @charge.ref + ' ' + @team.long_name) %>
 
 <% breadcrumb [["charges","Charges"],[charge_path(@charge).sub!('/',''),'Elephant Charge ' + @charge.ref],[charge_entries_path(@charge).sub!('/',''),'Teams'],[entry_path(@entry).sub!('/',''),@team.name]] %>
+<%
+  description= @team.long_name + ' entered their ' + format_position3(@entry.entry_no)  + ' charge in '
+  description+= 'a ' + @entry.car.description + ' and completed '
+  description+= (@entry.result_description=='Complete' ? ' all ' : '') +  @entry.result_guards.to_s + ' checkpoints in a competition distance of '
+  description+= number_with_precision(@entry.dist_competition/1000.0, precision: 2) +'km raising '
+  description+= '$' + number_with_precision(@entry.raised_dollars, precision: 0, delimiter: ',') + ' for conservation in Zambia.'
+  content_for :metas,
+              (render :partial => 'layouts/metas', :locals => {
+                  :page_title => team_path(@team) + 'in the ' + @charge.name,
+                  :description => description,
+                  :og_image_path => URI.join(root_url, @entry.photo_random_landscape.photo(:original))
+              })
+%>
 
 <div class="container-fluid">
   <div class="row">
@@ -16,6 +29,12 @@
           <div style="float:right;display: block;">
             <a data-toggle="tooltip" data-placement="bottom" title="Results" href="<%= entry_path(@entry) %>"><img style="margin-left:10px;" src="<%= image_path('icons/color/results.png')%>"></a>
             <a data-toggle="tooltip" data-placement="bottom" title="Photo Gallery" href="<%= entry_photos_path(@entry) %>"><img style="margin-left:10px;" src="<%= image_path('icons/grey/camera.png')%>"></a>
+          </div>
+          <div style="margin-bottom:5px;">
+            <div id="fb-like" class="fb-like" data-href="<%= request.original_url%>" data-layout="button" data-action="like">
+            </div>
+            <div class="fb-share-button" data-href="<%= request.original_url%>" data-layout="button">
+            </div>
           </div>
         </div>
         <div class="card-block">

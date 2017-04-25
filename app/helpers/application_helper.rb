@@ -107,6 +107,13 @@ def format_position2(pos)
   ret=(pos.to_s + '<sup>th</sup>').html_safe if pos>3
   ret
 end
+def format_position3(pos)
+  ret='1st'.html_safe if pos==1
+  ret='2nd'.html_safe if pos==2
+  ret='3rd'.html_safe if pos==3
+  ret=(pos.to_s + 'th').html_safe if pos>3
+  ret
+end
 
 
 def current_controller
