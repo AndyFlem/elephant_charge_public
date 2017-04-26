@@ -25,7 +25,7 @@
 
 <div class="container-fluid">
   <div class="row">
-    <div class="col-xs-12 col-sm-12 col-md-8 col-lg-9">
+    <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8">
       <div class="card">
         <div class="card-header">
           <h5 style="display:inline-block;"><%= @team.long_name %></h5>
@@ -168,14 +168,21 @@
     </div>
 
     <% unless @team.new_entry? or !@team.facebook.blank? %>
-        <div class="col-xs-12 col-sm-12 col-md-4 col-lg-3">
+        <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+          <div class="card">
+          <div class="fb-comments" data-width="100%" data-href="<%= request.original_url %>" data-numposts="5"></div>
+          </div>
           <%= render :partial => 'teams/beneficiaries', :locals => {:team=> @team,:wide=>false} %>
         </div>
     <% end %>
     <% unless @team.facebook.blank? %>
-        <div class="col-xs-12 col-sm-12 col-md-4 col-lg-3">
-          <div id="fb-page" class="fb-page" data-href="<%= @team.facebook %>" data-tabs="timeline" data-width="500" data-height="550" data-small-header="true" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="false">
+        <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+          <div class="card">
+            <div class="fb-comments" data-width="100%" data-href="<%= request.original_url %>" data-numposts="5"></div>
           </div>
+          <div id="fb-page" class="fb-page" data-href="<%= @team.facebook %>" data-tabs="timeline" data-width="550" data-height="550" data-small-header="true" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="false">
+          </div>
+
         </div>
     <% end %>
   </div>
@@ -186,4 +193,9 @@
       </div>
     </div>
   <% end %>
+  <div class="row ">
+    <div class="col">
+
+    </div>
+  </div>
 </div>
