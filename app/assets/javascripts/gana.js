@@ -7,7 +7,7 @@ $( document ).ready(function() {
 
         $( "#paypal_form" ).submit(function( event ) {
 
-            ga('send', 'event', 'Paypal', 'click', 'Team',$(this).parent().data('team-id'));
+            ga('send', 'event', 'Paypal', 'click', $(this).parent().data('team-ref'),$(this).parent().data('team-id'));
             //event.preventDefault();
         });
     }
