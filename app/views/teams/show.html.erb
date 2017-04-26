@@ -34,10 +34,7 @@
             <a data-toggle="tooltip" data-placement="bottom" title="Photo Gallery" href="<%= team_photos_path(@team) %>"><img style="margin-left:10px;" src="<%= image_path('icons/grey/camera.png') %>"></a>
           </div>
           <div style="margin-bottom:5px;">
-            <div id="fb-like" class="fb-like" data-href="<%= request.original_url %>" data-layout="button" data-action="like">
-            </div>
-            <div class="fb-share-button" data-href="<%= request.original_url %>" data-layout="button">
-            </div>
+            <%= render :partial => 'application/fbbuttons' %>
           </div>
 
         </div>

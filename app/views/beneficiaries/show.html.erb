@@ -34,10 +34,7 @@
           <% end %>
         </div>
         <div style="margin-bottom:5px;">
-          <div id="fb-like" class="fb-like" data-href="<%= request.original_url%>" data-layout="button" data-action="like">
-          </div>
-          <div class="fb-share-button" data-href="<%= request.original_url%>" data-layout="button">
-          </div>
+          <%= render :partial => 'application/fbbuttons' %>
         </div>
       </div>
       <div class="card-block">
