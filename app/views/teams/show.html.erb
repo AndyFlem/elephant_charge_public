@@ -119,8 +119,6 @@
           <div class="card">
             <div class="card-header">
               <h6><a href="<%= entry_path(entry) %>"><%= entry.charge.long_name %></a></h6>
-              <b><%= entry.charge.entries.count %></b> entires and
-              <b><%= entry.charge.entries.where(result_description: 'Complete').count %></b> finishers
             </div>
             <div class="card-block">
               <div class="container-fluid">
@@ -136,7 +134,7 @@
                         completed <b><%= entry.result_guards %></b> checkpoint<%= entry.result_guards>1 ? 's' : '' %>
                     <% end %>
                     and were placed
-                    <b><%= format_position(entry.position_distance.nil? ? entry.position_bikes : entry.position_distance) %></b>
+                    <b><%= format_position(entry.position_distance.nil? ? entry.position_bikes : entry.position_distance) %></b> out of <b><%= entry.charge.entries.count %></b> entires 
                     overall.
                     <ul style="margin-top: 15px">
                       <% entry.result_summary.each do |res| %>

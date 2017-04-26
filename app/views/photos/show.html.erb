@@ -22,15 +22,14 @@
 
 <div class="container-fluid" data-views="<%= @photo.views %>">
   <div class="row justify-content-center">
-    <div class="col-12">
+    <div class="col-md-12 col-lg-11 col-xl-8">
       <div class="card">
         <div class="card-header">
           <% if @photo.photoable.is_a?(Entry) %>
 
               <h5 style="display:inline-block;">
-                <a href="<%= team_path(@photo.photoable.team) %>"><%= @photo.photoable.team.name %></a>
-                in the
-                <a href="<%= charge_path(@photo.photoable.charge) %>"><%= @photo.photoable.charge.long_name %></a>
+                <a href="<%= entry_path(@photo.photoable) %>"><%= @photo.photoable.team.name %>
+                in the <%= @photo.photoable.charge.long_name %></a>
               </h5>
 
               <div style="float:right;display: block;">
@@ -41,10 +40,7 @@
                 <% end %>
               </div>
               <div style="margin-bottom:5px;">
-                <div id="fb-like" class="fb-like" data-href="<%= request.original_url %>" data-layout="button" data-action="like">
-                </div>
-                <div class="fb-share-button" data-href="<%= request.original_url %>" data-layout="button">
-                </div>
+                <%= render :partial => 'application/fbbuttons' %>
               </div>
           <% else %>
               <h5 style="display:inline-block;">
@@ -64,24 +60,21 @@
         </div>
         <div class="card-block">
           <div class="container-fluid">
-            <% if @photo.photoable.is_a?(Entry) %>
-                <div class="row justify-content-center" style="padding-top:5px;padding-bottom:5px;">
-                  <div class="col-md-auto">
-                    <%= render(:partial => 'entries/entry_description', :locals => {:entry => @photo.photoable}) %>
+            <div class="row justify-content-center" style="padding-top:5px;padding-bottom:5px;">
+              <% if @photo.photoable.is_a?(Entry) %>
+                  <div class="col-md-2" style="margin-left:20px;margin-right:20px;margin-bottom:10px;">
+                    <div class="card" style="padding-top:15px;padding-left:15px;padding-right:15px;padding-bottom:25px;">
+                      <span><a href="<%= team_path(@photo.photoable.team) %>"><%= @photo.photoable.team.name %></a><br><%= render(:partial => 'entries/entry_description', :locals => {:entry => @photo.photoable}) %></span>
+                    </div>
                   </div>
-                </div>
-            <% end %>
-            <div class="row justify-content-center">
+              <% end %>
               <div class="col-md-auto">
                 <img style="max-width: 100%" class="rounded" src="<%= image_path(@photo.photo(:original)) %>" alt="<%= @photo.caption %>">
               </div>
             </div>
           </div>
-
-
         </div>
       </div>
-
     </div>
   </div>
 </div>
