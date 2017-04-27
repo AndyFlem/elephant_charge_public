@@ -1,26 +1,38 @@
-<table class="table table-sm">
+<div class="card-header">
+  <form>
+    <div class="form-group">
+      <%=
+        select_tag('team_ref',options_for_select(entry_list.map {|e| [e.team.name,e.team.ref]},team.ref),class: 'form-control team-select',id:'teamselect_' + position)
+      %>
+    </div>
+  </form>
+  <%= entries.count %> Charges
+</div>
+<div class="card-block">
+  <table class="table table-sm">
   <tr>
-    <td>Charges</td><td align="right" style="padding-right: 20px;"><%= entries.count %></td>
-  </tr>
-  <tr>
-    <td colspan="2">Honours</td>
-  </tr>
-  <tr>
-
-    <td colspan="2">
-      <% if honours %>
-          <ul style="font-size: 0.8rem;">
-            <% honours.each do |h| %>
-                <li><%= h.html_safe %></li>
-            <% end %>
-          </ul>
+    <td>
+      <% if team.badge.exists? %>
+          <img style="max-width:100%;" class="rounded mx-auto d-block" src="<%= image_path(team.badge(:medium)) %>">
+      <% else %>
+          <img style="max-width:80%;" class="rounded" src="<%= image_path('logo/eclogo_orange.png') %>">
       <% end %>
     </td>
   </tr>
-  <tr></tr>
+
+  <% if honours %>
+        <% honours.each do |h| %>
+            <tr>
+              <td style="font-size: 0.8rem;">
+                <i class="fa fa-trophy" aria-hidden="true" style="padding-right:5px;"></i><%= h.html_safe %>
+            </td>
+            </tr>
+        <% end %>
+  <% end %>
+
   <% entries.each do |entry| %>
       <tr>
-        <td colspan="2" style="font-size: 0.8rem;">
+        <td style="font-size: 0.8rem;">
           <a href="<%= entry_path(entry)%>"><%= entry.charge.ref %></a>
           Raised <b>$<%= number_with_precision(entry.raised_dollars, precision: 0, delimiter: ',') %></b>,
           <% if entry.result_description=='Complete' %>
@@ -34,17 +46,5 @@
       </tr>
   <% end %>
 
-  <tr>
-    <td></td><td></td>
-  </tr>
-  <tr>
-    <td></td><td></td>
-  </tr>
-  <tr>
-    <td></td><td></td>
-  </tr>
-
-  <tr>
-    <td></td><td></td>
-  </tr>
 </table>
+</div>

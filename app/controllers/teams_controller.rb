@@ -23,5 +23,6 @@ class TeamsController < ApplicationController
     @entries2=@team2.entries.joins(:charge).where("charges.state_ref='RESULT'").order('charges.charge_date desc')
     @honours1=@team1.honours
     @honours2=@team2.honours
+    @current_charge=Charge.current.first
   end
 end

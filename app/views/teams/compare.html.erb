@@ -2,21 +2,14 @@
   <div class="row justify-content-center">
     <div class="col-md-4">
       <div class="card">
-        <div class="card-header"><h6><%= @team1.name%></h6></div>
-        <div class="card-block">
-          <%= render 'teams/comparetable', {team: @team1,entries:@entries1,honours:@honours1} %>
-        </div>
+          <%= render 'teams/comparetable', {team: @team1,entries:@entries1,honours:@honours1,entry_list:@current_charge.entries,position: '1'} %>
       </div>
 
     </div>
     <div class="col-md-4">
       <div class="card">
-        <div class="card-header"><h6><%= @team2.name%></h6></div>
-        <div class="card-block">
-          <%= render 'teams/comparetable', {team: @team2,entries:@entries2,honours:@honours2} %>
-        </div>
+          <%= render 'teams/comparetable', {team: @team2,entries:@entries2,honours:@honours2,entry_list:@current_charge.entries,position: '2'} %>
       </div>
-
     </div>
   </div>
 </div>
