@@ -1,0 +1,51 @@
+<script>
+  ga('set', 'contentGroup1', 'PhotoGroup');
+</script>
+
+<%
+
+    title(photo.photoable.long_name)
+    content_for :metas,
+                (render :partial => 'layouts/metas', :locals => {
+                    :page_title => "Elephant Charge",
+                    :description => photo.photoable.long_name,
+                    :og_image_path => image_path(photo.photo(:original)).split("?")[0]
+                })
+
+%>
+
+<div class="container-fluid" data-views="<%= photo.views %>">
+  <div class="row justify-content-center">
+    <div class="col-md-12 col-lg-11 col-xl-8">
+      <div class="card">
+        <div class="card-header">
+
+              <h5 style="display:inline-block;">
+                <a href="<%= charge_path(photo.photoable) %>"><%= photo.photoable.long_name %></a>
+              </h5>
+              <div style="float:right;display: block;">
+                <% if params[:return].blank? %>
+                    <a href="<%= charge_photos_path(photo.photoable) %>"><b>Back</b></a>
+                <% else %>
+                    <a href="<%= params[:return] %>"><b>Back</b></a>
+                <% end %>
+              </div>
+              <div style="margin-bottom:5px;">
+                <%= render :partial => 'application/fbbuttons' %>
+              </div>
+        </div>
+        <div class="card-block">
+
+          <div class="container-fluid">
+            <div class="row justify-content-center" style="padding-top:5px;padding-bottom:5px;">
+
+              <div class="col-md-auto">
+                <img style="max-width: 100%" class="rounded" src="<%= image_path(photo.photo(:original)) %>" alt="<%= photo.caption %>">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -4,113 +4,118 @@
 <div class="hidden-sm-down" id="dates-larger"><a href="/charges">10 Years<br/>2008 - 2017</a></div>
 
 <div class="header-row">
-  <div class="logo-container">
-    <a href="/"><div class="logo"></div></a>
-          <div class="tagline">Dust, sweat & gears</div>
-  </div>
-  <div class="banner-navbar-container">
-    <div class="banner-container">
-      <% if current_controller=='application' && current_action=='index' %>
-          <div class="banner-title">
-            ELEPHANT CHARGE
-          </div>
-          <div class="banner-subtitle" style="">
-            Fundraising for wildlife conservation in Zambia
-          </div>
-      <% else %>
-          <div class="hidden-md-up banner-title">
-            ELEPHANT CHARGE
-          </div>
-          <div class="hidden-md-up banner-subtitle" style="">
-            Fundraising for wildlife conservation in Zambia
-          </div>
-          <div class="hidden-sm-down banner-img">
-            <img src="<%= image_path('banners/b' + (rand(20)+1).to_s + '.jpg') %>">
-          </div>
-      <% end %>
+
+    <div class="logo-container">
+      <a href="/"><div class="logo"></div></a>
+      <div class="tagline">Dust, sweat & gears</div>
     </div>
-    <nav class="navbar navbar-toggleable-md navbar-inverse bg-inverse">
-      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mr-auto">
-          <li class="nav-item">
-            <a class="nav-link" href="/">Home</a>
-          </li>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              About
-            </a>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-              <a class="dropdown-item" href="/about">About the Elephant Charge</a>
-              <a class="dropdown-item" href="/beneficiaries">Beneficiaries</a>
-              <a class="dropdown-item" href="/rules">Charge Rules</a>
+    <div class="banner-navbar-container">
+      <div class="banner-container">
+        <% if current_controller=='application' && current_action=='index' %>
+            <div class="banner-title">
+              ELEPHANT CHARGE
             </div>
-          </li>
-
-
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              EC 2017
-            </a>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-              <a class="dropdown-item" href="/2017/teams">Teams</a>
-              <a class="dropdown-item" href="/compare/mudhogs/khalamazi">Compare the Teams</a>
-              <a class="dropdown-item" href="/getinvolved">Get Involved</a>
+            <div class="banner-subtitle" style="">
+              Fundraising for wildlife conservation in Zambia
             </div>
-          </li>
-
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              Results
-            </a>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-              <a class="dropdown-item" href="/2016">2016 Results</a>
-              <a class="dropdown-item" href="/charges">Previous Charges</a>
-              <a class="dropdown-item" href="/teams">All Teams</a>
-              <a class="dropdown-item" href="/awards">Awards</a>
-              <a class="dropdown-item" href="/cars">Cars</a>
+        <% else %>
+            <div class="hidden-md-up banner-title">
+              ELEPHANT CHARGE
             </div>
-          </li>
-          <!--
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              Media
-            </a>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-              <a class="dropdown-item" href="/photos">Photos</a>
-              <a class="dropdown-item" href="/media">Media</a>
+            <div class="hidden-md-up banner-subtitle" style="">
+              Fundraising for wildlife conservation in Zambia
             </div>
-          </li>
-          -->
-          <li class="nav-item">
-            <a class="nav-link" href="/newsletters">News</a>
-          </li>
-
-          <li class="nav-item">
-            <a class="nav-link" href="/contact">Contact</a>
-          </li>
-        </ul>
-        <div class="social">
-          <a href="http://facebook.com/ElephantCharge" target="_blank"><img src="<%= image_path('icons/color/facebook.png') %>"></a>
-          <a href="http://twitter.com/elephantcharge1" target="_blank"><img src="<%= image_path('icons/color/twitter.png') %>"></a>
-          <a href="http://instagram.com/elephant.charge.zambia" target="_blank"><img src="<%= image_path('icons/color/instagram.png') %>"></a>
-        </div>
-
-
-        <%= form_tag("/search", method: "get", class: "form-inline search-form") do %>
-            <%= text_field_tag(:q,nil,placeholder:"search",class: "form-control search-txt") %>
-            <%=
-              button_tag(type: 'submit',class: "btn search-btn") do
-                  content_tag(:i,nil,class:["fa","fa-search"],"aria-hidden": 'true')
-              end
-            %>
+            <div class="hidden-sm-down banner-img">
+              <img src="<%= image_path('banners/b' + (rand(20)+1).to_s + '.jpg') %>">
+            </div>
         <% end %>
-
       </div>
-    </nav>
-  </div>
+      <nav class="navbar navbar-toggleable-md navbar-inverse bg-inverse">
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="/">Home</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                About
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                <a class="dropdown-item" href="/about">About the Elephant Charge</a>
+                <a class="dropdown-item" href="/beneficiaries">Beneficiaries</a>
+                <a class="dropdown-item" href="/rules">Charge Rules</a>
+              </div>
+            </li>
+
+
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                EC 2017
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                <a class="dropdown-item" href="/2017/teams">Teams</a>
+                <a class="dropdown-item" href="/compare/mudhogs/khalamazi">Compare the Teams</a>
+                <a class="dropdown-item" href="/getinvolved">Get Involved</a>
+              </div>
+            </li>
+
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Results
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                <a class="dropdown-item" href="/2016">2016 Results</a>
+                <a class="dropdown-item" href="/charges">Previous Charges</a>
+                <a class="dropdown-item" href="/teams">All Teams</a>
+                <a class="dropdown-item" href="/awards">Awards</a>
+                <a class="dropdown-item" href="/cars">Cars</a>
+              </div>
+            </li>
+            <!--
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Media
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                <a class="dropdown-item" href="/photos">Photos</a>
+                <a class="dropdown-item" href="/media">Media</a>
+              </div>
+            </li>
+            -->
+            <li class="nav-item">
+              <a class="nav-link" href="/newsletters">News</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link" href="/contact">Contact</a>
+            </li>
+          </ul>
+          <div class="social">
+            <a href="http://facebook.com/ElephantCharge" target="_blank"><img src="<%= image_path('icons/color/facebook.png') %>"></a>
+            <a href="http://twitter.com/elephantcharge1" target="_blank"><img src="<%= image_path('icons/color/twitter.png') %>"></a>
+            <a href="http://instagram.com/elephant.charge.zambia" target="_blank"><img src="<%= image_path('icons/color/instagram.png') %>"></a>
+          </div>
+
+
+          <%= form_tag("/search", method: "get", class: "form-inline search-form") do %>
+              <%= text_field_tag(:q,nil,placeholder:"search",class: "form-control search-txt") %>
+              <%=
+                button_tag(type: 'submit',class: "btn search-btn") do
+                  content_tag(:i,nil,class:["fa","fa-search"],"aria-hidden": 'true')
+                end
+              %>
+          <% end %>
+
+        </div>
+      </nav>
+    </div>
+
+
+
 </div>
+
 

@@ -1,0 +1,75 @@
+<script>
+  ga('set', 'contentGroup1', 'PhotoGroup');
+</script>
+
+<%
+
+  title(@photo.photoable.team.long_name)
+  content_for :metas,
+              (render :partial => 'layouts/metas', :locals => {
+                  :page_title => "#{photo.photoable.team.name} in the #{photo.photoable.charge.name}",
+                  :description => clean_html(render(:partial => 'entries/entry_description', :locals => {:entry => photo.photoable})),
+                  :og_image_path => image_path(photo.photo(:original)).split("?")[0]
+              })
+%>
+
+<div class="container-fluid" data-views="<%= photo.views %>">
+  <div class="row justify-content-center">
+    <div class="col-md-12 col-lg-11 col-xl-8">
+      <div class="card">
+        <div class="card-header">
+          <h5 style="display:inline-block;">
+            <a href="<%= entry_path(photo.photoable) %>"><%= photo.photoable.team.name %>
+              in the <%= photo.photoable.charge.long_name %></a>
+          </h5>
+
+          <div style="float:right;display: block;">
+            <% if params[:return].blank? %>
+                <a href="<%= entry_photos_path(photo.photoable) %>"><b>Back</b></a>
+            <% else %>
+                <a href="<%= params[:return] %>"><b>Back</b></a>
+            <% end %>
+          </div>
+          <div style="margin-bottom:5px;">
+            <%= render :partial => 'application/fbbuttons' %>
+          </div>
+
+        </div>
+        <div class="card-block">
+          <div class="container-fluid">
+          <%
+            team=@photo.photoable.team
+          %>
+          <% if team.entries_incomplete.count>0 and team.paypal_button %>
+              <div class="row highlight" style="padding-bottom: 0px;">
+                <div class="col " style="text-align: center;font-size: 0.8rem;">
+                  Support <%= team.name %> by making a donation through PayPal
+                </div>
+                <div class="col-sm-3 col-md-2" style="display: inherit;margin-top:auto;margin-bottom:5px;">
+                  <div class="mx-auto d-block" data-toggle="tooltip" data-team-ref="<%= team.ref %>" data-team-id="<%= team.id %>" data-placement="bottom" title="Support the team and wildlife conservation in Zambia">
+                    <%= team.paypal_button.sub!("form", "form id='paypal_form'").html_safe %>
+                  </div>
+                </div>
+
+              </div>
+          <% end %>
+
+
+            <div class="row justify-content-center" style="padding-top:5px;padding-bottom:5px;">
+
+              <div class="col-md-2 flex-last" style="margin-left:20px;margin-right:20px;margin-bottom:10px;">
+                <div class="card" style="padding-top:15px;padding-left:15px;padding-right:15px;padding-bottom:25px;">
+                  <span><a href="<%= team_path(photo.photoable.team) %>"><%= photo.photoable.team.name %></a><br><%= render(:partial => 'entries/entry_description', :locals => {:entry => photo.photoable}) %></span>
+                </div>
+              </div>
+
+              <div class="col-md-auto">
+                <img style="max-width: 100%" class="rounded" src="<%= image_path(photo.photo(:original)) %>" alt="<%= photo.caption %>">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

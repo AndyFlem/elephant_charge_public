@@ -3,18 +3,7 @@
 
   <div class="row">
     <div class="col floater-sm hidden-md-up">
-      <div class="countdown d-flex align-items-center">
-        <div>
-          <a target="_blank" href="http://www.fuchsoil.co.za/">
-            <img style="width:100%" src="<%= image_path('logo/fuchs.png') %>"/>
-          </a>
-        </div>
 
-        <div>
-            The <%= @current_charge.name %> will be held on <%= @current_charge.charge_date.strftime('%e %B') %>.<br/>
-            - <%= (DateTime.parse('2017-10-17')-DateTime.now).to_i %> days to go -
-        </div>
-      </div>
       <div class="countdown d-flex align-items-center">
         <a href="<%= charge_entries_path(@current_charge)%>">
           Support conservation by making a paypal donation directly on the team pages
@@ -95,7 +84,7 @@
 <div class="container-fluid">
   <div class="row ruled">
     <div class="col home-text">
-      <img src="<%=image_path('logo/eclogo_orange.png')%>">
+      <img class="hidden-xs-down" src="<%=image_path('logo/eclogo_orange.png')%>">
       <div>
         <p>
         <b><%=@current_entries.count%></b> teams have already entered the <a href="<%= charge_path(@current_charge)%>"><%= @current_charge.name %></a>.
@@ -134,7 +123,7 @@
 
   <div class="row ruled">
     <div class="col home-text">
-      <img src="<%=image_path('logo/eclogo_orange.png')%>">
+      <img  class="hidden-xs-down" src="<%=image_path('logo/eclogo_orange.png')%>">
       <div>
         <p>
           The Elephant Charge teams have supported <a href="/beneficiaries"><%= @beneficiaries.count %> conservation organisations</a> and projects since 2008 with
