@@ -16,4 +16,12 @@ class TeamsController < ApplicationController
     @entries=@team.entries.joins(:charge).where("charges.state_ref='RESULT'").order('charges.charge_date desc')
   end
 
+  def compare
+    @team1=Team.find_by_ref(params[:teamone].downcase) or not_found
+    @team2=Team.find_by_ref(params[:teamtwo].downcase) or not_found
+    @entries1=@team1.entries.joins(:charge).where("charges.state_ref='RESULT'").order('charges.charge_date desc')
+    @entries2=@team2.entries.joins(:charge).where("charges.state_ref='RESULT'").order('charges.charge_date desc')
+    @honours1=@team1.honours
+    @honours2=@team2.honours
+  end
 end

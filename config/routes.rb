@@ -55,6 +55,8 @@ Rails.application.routes.draw do
   #team by name (ref)
   get ':ref', to: 'teams#show'
   get ':ref/photos', to: 'teams#photos'
+  #team compare
+  get 'compare/:teamone/:teamtwo', to: 'teams#compare'
 
   #entry by year and team
   get ':id/:ref',constraints: {id: /\d{4}/}, to: 'entries#show'
