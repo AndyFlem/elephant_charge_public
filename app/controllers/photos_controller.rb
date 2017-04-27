@@ -11,6 +11,6 @@ class PhotosController < ApplicationController
   end
 
   def views
-    @photos=Photo.where("views>2").order(views: :desc)
+    @photos=Photo.where("views>4").order(views: :desc)
   end
 end

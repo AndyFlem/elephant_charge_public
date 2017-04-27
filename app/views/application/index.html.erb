@@ -1,4 +1,4 @@
-<%= render 'photos/photomodal' %>
+
 <div class="container-fluid">
 
   <div class="row">
@@ -47,6 +47,7 @@
   <ul>
     <li>
       <div class="car-container">
+        <a href="/about">
         <img src="<%= image_path('slides/slide4.jpg') %>"/>
         <div class="car-caption">
           <h3>Elephant Charge</h3>
@@ -54,10 +55,12 @@
           Teams compete against each other and the Zambian bush to complete a gruelling course in the shortest
           distance.
         </div>
+        </a>
       </div>
     </li>
     <li>
       <div class="car-container">
+        <a href="/beneficiaries">
         <img src="<%= image_path('slides/slide7.jpg') %>"/>
         <div class="car-caption">
           <h3>Conservation through education</h3>
@@ -66,10 +69,12 @@
           <%= bold { '$' + number_with_precision(@raised, precision: 0, delimiter: ',') } %> for conservation in
           Zambia.
         </div>
+        </a>
       </div>
     </li>
     <li>
       <div class="car-container">
+        <a href="/beneficiaries">
         <img src="<%= image_path('slides/slide6.jpg') %>"/>
         <div class="car-caption">
           <h3>Conserving Zambia</h3>
@@ -79,6 +84,7 @@
           Zambia
           to preserve our wildlife and environment through conservation and education.
         </div>
+        </a>
       </div>
     </li>
 
@@ -92,7 +98,7 @@
       <img src="<%=image_path('logo/eclogo_orange.png')%>">
       <div>
         <p>
-        <b><%=@current_entries.count%></b> teams have already entered the <%= @current_charge.name %>.
+        <b><%=@current_entries.count%></b> teams have already entered the <a href="<%= charge_path(@current_charge)%>"><%= @current_charge.name %></a>.
         </p>
         <p>
         Support the <a href="<%= charge_entries_path(@current_charge)%>">teams</a>
