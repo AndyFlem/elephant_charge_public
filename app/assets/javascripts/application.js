@@ -24,8 +24,6 @@
 $( document ).ready(function() {
 
     if ($("#banner").length) {
-
-
         $('.banner').unslider({
             autoplay:true,
             arrows: false,
@@ -35,7 +33,6 @@ $( document ).ready(function() {
             delay:10000
         });
     }
-
 })
 
 $(function () {

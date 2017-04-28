@@ -1,6 +1,6 @@
 <% title('About') %>
 
-<% breadcrumb [["about","About"]] %>
+<% breadcrumb [["about", "About"]] %>
 
 <%
   description="The Elephant Charge is an annual event which challenges teams of cars and motorbikes to complete a gruelling course through the Zambian bush. The Charge is held to raise money for conservation in Zambia."
@@ -26,17 +26,72 @@
         <div class="card-block">
           <div class="container-fluid">
             <div class="row">
-              <div style="" class="col-sm-4 col-lg-3">
-                <img class="rounded mx-auto d-block" style="max-width:100%" src="<%= image_path(Photo.find(1332).photo(:medium)) %>">
+              <div style="" class="col-md-12 col-lg-6">
+                <div id="about-slider" class="about-slider">
+                  <ul>
+                    <li>
+                      <img  src="<%= image_path('about/1.jpg') %>"/>
+                    </li>
+                    <li>
+                      <img  src="<%= image_path('about/2.jpg') %>"/>
+                    </li>
+                    <li>
+                      <img  src="<%= image_path('about/3.jpg') %>"/>
+                    </li>
+                    <li>
+                      <img  src="<%= image_path('about/4.jpg') %>"/>
+                    </li>
+                    <li>
+                      <img  src="<%= image_path('about/5.jpg') %>"/>
+                    </li>
+                    <li>
+                      <img  src="<%= image_path('about/6.jpg') %>"/>
+                    </li>
+                    <li>
+                      <img  src="<%= image_path('about/7.jpg') %>"/>
+                    </li>
+                    <li>
+                      <img  src="<%= image_path('about/8.jpg') %>"/>
+                    </li>
+                    <li>
+                      <img  src="<%= image_path('about/9.jpg') %>"/>
+                    </li>
+                    <li>
+                      <img  src="<%= image_path('about/10.jpg') %>"/>
+                    </li>
+                    <li>
+                      <img  src="<%= image_path('about/11.jpg') %>"/>
+                    </li>
+                    <li>
+                      <img  src="<%= image_path('about/12.jpg') %>"/>
+                    </li>
+                    <li>
+                      <img  src="<%= image_path('about/13.jpg') %>"/>
+                    </li>
+                    <li>
+                      <img  src="<%= image_path('about/14.jpg') %>"/>
+                    </li>
+
+                  </ul>
+                </div>
+
+
+
+
+
+
               </div>
-              <div class="col">
+              <div class="col-md-12 col-lg-6">
                 <p>
                   <b>The Elephant Charge</b> is an annual event which challenges teams of cars and motorbikes to
-                  complete a gruelling course through the Zambian bush. The Charge is held to raise money for conservation
+                  complete a gruelling course through the Zambian bush. The Charge is held to raise money for
+                  conservation
                   in Zambia, focussed on <b>conservation through education</b>, and in the
                   <a href="/charges">ten years</a> since in began, the event has raised over <b>$640,000</b> which has
-                  been distributed to <a href="/beneficiaries">conservation organisations</a> working across the country.
-                  The event is held at a different location each year over the the course of a weekend in September or October.
+                  been distributed to <a href="/beneficiaries">conservation organisations</a> working across the
+                  country.
+                  The event is held at a different location each year over the the course of a weekend in September or
+                  October.
                 </p>
                 <p>
                   <a href="/getinvolved"><b>Find out how to get involved with the <%= @current_charge.name %>
@@ -82,12 +137,15 @@
                 <p>
                   The teams that enter the Elephant Charge make a pledge to the conservation charities and every
                   single dollar that the teams raise is passed directly to the Zambian beneficiary charities as grants.
-                  The money needed to put on the Elephant Charge competition itself is raised by the organising committee and
+                  The money needed to put on the Elephant Charge competition itself is raised by the organising
+                  committee and
                   comes from charge sponsors and a small entry fee paid by each team.
                 </p>
                 <p>
-                  The beneficiaries make grant applications each year and are selected based on the programs and projects
-                  thats they propose which are best placed to deliver on the Elephant Charge mission of conservation through eduction in Zambia.
+                  The beneficiaries make grant applications each year and are selected based on the programs and
+                  projects
+                  thats they propose which are best placed to deliver on the Elephant Charge mission of conservation
+                  through eduction in Zambia.
                   The beneficiaries prepare reports on how the funds have been spent through the year so that the
                   Elephant Charge and the teams can be sure on how the money raised is spent.
                 </p>
@@ -99,7 +157,6 @@
           </div>
 
 
-
         </div>
       </div>
     </div>
@@ -107,7 +164,8 @@
       <div class="card">
         <div class="card-block">
           <p>
-            <b>The Elephant Charge</b> is proud to have been inspired by the <a target="_blank" href="http://www.rhinocharge.co.ke/">Rhino Charge</a> in Kenya.
+            <b>The Elephant Charge</b> is proud to have been inspired by the
+            <a target="_blank" href="http://www.rhinocharge.co.ke/">Rhino Charge</a> in Kenya.
           </p>
           <p>
             The Rhino Charge has
@@ -242,7 +300,6 @@
         </div>
       </div>
     </div>
-
 
 
   </div>
