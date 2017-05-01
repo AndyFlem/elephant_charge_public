@@ -93,20 +93,15 @@
                   The event is held at a different location each year over the the course of a weekend in September or
                   October.
                 </p>
-                <p>
-                  <a href="/getinvolved"><b>Find out how to get involved with the <%= @current_charge.name %>
+                <p align="center">
+                  <a href="/getinvolved" onClick="ga('send', 'event', 'Link', 'About', 'GetInvolved');"><b>Find out how to get involved with the <%= @current_charge.name %>
                     on <%= @current_charge.charge_date.strftime('%e %B %Y') %></b></a>
                 </p>
-                <p>
-                  On the day of the Charge, the winning team is the one that completes a course of ten checkpoints in
-                  the <b>shortest
-                  distance possible</b> within the allowed 8 hours. Given
-                  <a target="_blank" href="<%= @example_charge.map(:original) %>">a map</a> and with skill and
-                  determination,
-                  each team must find their own route between the checkpoints through
-                  valleys, over ridges, across rivers and up escarpments in a trial of
-                  <b>driving, navigating and endurance</b>.
+                <p align="center">
+                  <a href="/newsletters" onClick="ga('send', 'event', 'Link', 'About', 'Newsletters');"><b>Sign up for our newsletter to get all the latest news on the charge, the teams,
+                  beneficiaries and upcoming events.</b></a>
                 </p>
+
               </div>
             </div>
           </div>
@@ -124,7 +119,36 @@
       </div>
     </div>
 
+    <div class="col-md-9">
+      <div class="card">
+        <div class="card-header">
+          <h6>The Charge</h6>
+        </div>
+        <div class="card-block">
+          <div class="container-fluid">
+            <div class="row">
+              <div class="col">
+                <p>
+                  On the day of the Charge, the winning team is the one that completes a course of ten checkpoints in
+                  the <b>shortest
+                  distance possible</b> within the allowed 8 hours. Given
+                  <a target="_blank" href="<%= @example_charge.map(:original) %>">a map</a> and with skill and
+                  determination,
+                  each team must find their own route between the checkpoints through
+                  valleys, over ridges, across rivers and up escarpments in a trial of
+                  <b>driving, navigating and endurance</b>.
+                </p>
+              </div>
+              <div style="" class="col-sm-4 col-lg-3">
+                <img class="rounded mx-auto d-block" style="max-width:100%" src="<%= image_path(Photo.find(1364).photo(:medium)) %>">
+              </div>
+            </div>
+          </div>
 
+
+        </div>
+      </div>
+    </div>
     <div class="col-md-9">
       <div class="card">
         <div class="card-header">

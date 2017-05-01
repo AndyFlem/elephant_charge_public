@@ -4,7 +4,7 @@
 
 <div class="container-fluid">
   <div class="row">
-    <div class="col-sm-6">
+    <div class="col-sm-6 col-md-4">
       <div class="card">
 
         <!-- Begin MailChimp Signup Form -->
@@ -44,8 +44,10 @@
 
       </div>
     </div>
-
-    <div class="col-sm-6">
+    <div class="col-sm-6 col-md-4">
+      <a class="twitter-timeline" href="https://twitter.com/ElephantCharge1">Tweets by Elephant Charge</a> <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+    </div>
+    <div class="col-sm-12 col-md-4">
       <div class="card">
         <div style="margin-bottom:5px;" class="card-header">
           <h5>Previous Newsletters</h5>
@@ -54,11 +56,11 @@
           <% @years.each_with_index do |year,i| %>
               <div class="card">
                 <div class="card-header">
-                  <a class="collapsed" data-toggle="collapse" href="#yr<%= year[0] %>" aria-expanded="false" aria-controls="yr<%= year[0] %>">
+                  <a class="collapsed" data-toggle="collapse"  aria-expanded="false" aria-controls="yr<%= year[0] %>">
                     <h6><%= year[0]%></h6>
                   </a>
                 </div>
-                <div class="card-body <%= i==0 ? '' : 'collapse' %>" id="yr<%= year[0]%>">
+                <div class="card-body " id="yr<%= year[0]%>">
                   <ul>
                     <% year[1].each do |camp| %>
                         <li>
@@ -74,6 +76,7 @@
         </div>
       </div>
     </div>
+
   </div>
 
 </div>
