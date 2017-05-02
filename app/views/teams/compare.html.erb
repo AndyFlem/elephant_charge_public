@@ -1,5 +1,11 @@
 <div class="container-fluid">
   <div class="row justify-content-center">
+    <div class="col-md-8" style="margin:10px;">
+      <b>Pick two teams from the selections below to see how they compare.</b>
+    </div>
+  </div>
+  <div class="row justify-content-center">
+
     <div class="col-md-4">
       <div class="card">
           <%= render 'teams/comparetable', {team: @team1,entries:@entries1,honours:@honours1,entry_list:@current_charge.entries,position: '1'} %>

@@ -14,6 +14,7 @@ Rails.application.routes.draw do
   get 'rules', to: 'application#rules'
   get 'privacy', to: 'application#privacy'
   get 'getinvolved', to: 'application#getinvolved'
+  get 'compare', to: 'teams#compare'
 
   #awards
   get 'awards', to: 'application#awards'
@@ -57,6 +58,7 @@ Rails.application.routes.draw do
   get ':ref/photos', to: 'teams#photos'
   #team compare
   get 'compare/:teamone/:teamtwo', to: 'teams#compare'
+
 
   #entry by year and team
   get ':id/:ref',constraints: {id: /\d{4}/}, to: 'entries#show'

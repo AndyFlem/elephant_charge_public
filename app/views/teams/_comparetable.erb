@@ -12,11 +12,17 @@
   <table class="table table-sm">
   <tr>
     <td>
-      <% if team.badge.exists? %>
-          <img style="max-width:100%;" class="rounded mx-auto d-block" src="<%= image_path(team.badge(:medium)) %>">
-      <% else %>
-          <img style="max-width:80%;" class="rounded" src="<%= image_path('logo/eclogo_orange.png') %>">
-      <% end %>
+      <%
+        photo=team.photo_random_landscape
+        p=render :partial => 'photos/photo', :locals => {:photo => photo}
+      %>
+      <%=
+        if photo
+          link_to p,photo_path(photo) + '?return=' + request.path
+        else
+          p
+        end
+      %>
     </td>
   </tr>
 
