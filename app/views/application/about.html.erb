@@ -16,314 +16,327 @@
 <div class="container-fluid">
   <div class="row">
     <div class="col-md-9">
-      <div class="card">
-        <div class="card-header">
-          <h5 style="display:inline-block;">About the Elephant Charge</h5>
-          <div style="margin-bottom:5px;">
-            <%= render :partial => 'application/fbbuttons' %>
+      <div class="col-md-12">
+        <div class="card">
+          <div class="card-header">
+            <h5 style="display:inline-block;">About the Elephant Charge</h5>
+            <div style="margin-bottom:5px;">
+              <%= render :partial => 'application/fbbuttons' %>
+            </div>
           </div>
-        </div>
-        <div class="card-block">
-          <div class="container-fluid">
-            <div class="row">
-              <div style="" class="col-md-12 col-lg-6">
-                <div id="about-slider" class="about-slider">
-                  <ul>
-                    <li>
-                      <img  src="<%= image_path('about/1.jpg') %>"/>
-                    </li>
-                    <li>
-                      <img  src="<%= image_path('about/2.jpg') %>"/>
-                    </li>
-                    <li>
-                      <img  src="<%= image_path('about/3.jpg') %>"/>
-                    </li>
-                    <li>
-                      <img  src="<%= image_path('about/4.jpg') %>"/>
-                    </li>
-                    <li>
-                      <img  src="<%= image_path('about/5.jpg') %>"/>
-                    </li>
-                    <li>
-                      <img  src="<%= image_path('about/6.jpg') %>"/>
-                    </li>
-                    <li>
-                      <img  src="<%= image_path('about/7.jpg') %>"/>
-                    </li>
-                    <li>
-                      <img  src="<%= image_path('about/8.jpg') %>"/>
-                    </li>
-                    <li>
-                      <img  src="<%= image_path('about/9.jpg') %>"/>
-                    </li>
-                    <li>
-                      <img  src="<%= image_path('about/10.jpg') %>"/>
-                    </li>
-                    <li>
-                      <img  src="<%= image_path('about/11.jpg') %>"/>
-                    </li>
-                    <li>
-                      <img  src="<%= image_path('about/12.jpg') %>"/>
-                    </li>
-                    <li>
-                      <img  src="<%= image_path('about/13.jpg') %>"/>
-                    </li>
-                    <li>
-                      <img  src="<%= image_path('about/14.jpg') %>"/>
-                    </li>
-
-                  </ul>
+          <div class="card-block">
+            <div class="container-fluid">
+              <div class="row">
+                <div style="" class="col-md-12 col-lg-6">
+                  <div id="about-slider" class="about-slider">
+                    <ul>
+                      <li>
+                        <img  src="<%= image_path('about/1.jpg') %>"/>
+                      </li>
+                      <li>
+                        <img  src="<%= image_path('about/2.jpg') %>"/>
+                      </li>
+                      <li>
+                        <img  src="<%= image_path('about/3.jpg') %>"/>
+                      </li>
+                      <li>
+                        <img  src="<%= image_path('about/4.jpg') %>"/>
+                      </li>
+                      <li>
+                        <img  src="<%= image_path('about/5.jpg') %>"/>
+                      </li>
+                      <li>
+                        <img  src="<%= image_path('about/6.jpg') %>"/>
+                      </li>
+                      <li>
+                        <img  src="<%= image_path('about/7.jpg') %>"/>
+                      </li>
+                      <li>
+                        <img  src="<%= image_path('about/8.jpg') %>"/>
+                      </li>
+                      <li>
+                        <img  src="<%= image_path('about/9.jpg') %>"/>
+                      </li>
+                      <li>
+                        <img  src="<%= image_path('about/10.jpg') %>"/>
+                      </li>
+                      <li>
+                        <img  src="<%= image_path('about/11.jpg') %>"/>
+                      </li>
+                      <li>
+                        <img  src="<%= image_path('about/12.jpg') %>"/>
+                      </li>
+                      <li>
+                        <img  src="<%= image_path('about/13.jpg') %>"/>
+                      </li>
+                      <li>
+                        <img  src="<%= image_path('about/14.jpg') %>"/>
+                      </li>
+                    </ul>
+                  </div>
                 </div>
+                <div class="col-md-12 col-lg-6">
+                  <p>
+                    <b>The Elephant Charge</b> is an annual event which challenges teams of cars and motorbikes to
+                    complete a gruelling course through the Zambian bush. The Charge is held to raise money for
+                    conservation
+                    in Zambia, focussed on <b>conservation through education</b>, and in the
+                    <a href="/charges">ten years</a> since in began, the event has raised over <b>$640,000</b> which has
+                    been distributed to <a href="/beneficiaries">conservation organisations</a> working across the
+                    country.
+                    The event is held at a different location each year over the the course of a weekend in September or
+                    October.
+                  </p>
+                  <p align="center">
+                    <a href="/getinvolved" onClick="ga('send', 'event', 'Link', 'About', 'GetInvolved');"><b>Find out how to get involved with the <%= @current_charge.name %>
+                      on <%= @current_charge.charge_date.strftime('%e %B %Y') %></b></a>
+                  </p>
+                  <p align="center">
+                    <a href="/newsletters" onClick="ga('send', 'event', 'Link', 'About', 'Newsletters');"><b>Sign up for our newsletter to get all the latest news on the charge, the teams,
+                      beneficiaries and upcoming events.</b></a>
+                  </p>
 
-
-
-
-
-
-              </div>
-              <div class="col-md-12 col-lg-6">
-                <p>
-                  <b>The Elephant Charge</b> is an annual event which challenges teams of cars and motorbikes to
-                  complete a gruelling course through the Zambian bush. The Charge is held to raise money for
-                  conservation
-                  in Zambia, focussed on <b>conservation through education</b>, and in the
-                  <a href="/charges">ten years</a> since in began, the event has raised over <b>$640,000</b> which has
-                  been distributed to <a href="/beneficiaries">conservation organisations</a> working across the
-                  country.
-                  The event is held at a different location each year over the the course of a weekend in September or
-                  October.
-                </p>
-                <p align="center">
-                  <a href="/getinvolved" onClick="ga('send', 'event', 'Link', 'About', 'GetInvolved');"><b>Find out how to get involved with the <%= @current_charge.name %>
-                    on <%= @current_charge.charge_date.strftime('%e %B %Y') %></b></a>
-                </p>
-                <p align="center">
-                  <a href="/newsletters" onClick="ga('send', 'event', 'Link', 'About', 'Newsletters');"><b>Sign up for our newsletter to get all the latest news on the charge, the teams,
-                  beneficiaries and upcoming events.</b></a>
-                </p>
-
+                </div>
               </div>
             </div>
           </div>
         </div>
       </div>
+
+
+      <div class="col-md-12">
+        <div class="card">
+          <div class="card-header">
+            <h6>The Charge</h6>
+          </div>
+          <div class="card-block">
+            <div class="container-fluid">
+              <div class="row">
+                <div class="col">
+                  <p>
+                    On the day of the Charge, the winning team is the one that completes a course of ten checkpoints in
+                    the <b>shortest
+                    distance possible</b> within the allowed 8 hours. Given
+                    <a target="_blank" href="<%= @example_charge.map(:original) %>">a map</a> and with skill and
+                    determination,
+                    each team must find their own route between the checkpoints through
+                    valleys, over ridges, across rivers and up escarpments in a trial of
+                    <b>driving, navigating and endurance</b>.
+                  </p>
+                </div>
+                <div style="" class="col-sm-4 col-lg-3">
+                  <img class="rounded mx-auto d-block" style="max-width:100%" src="<%= image_path(Photo.find(1364).photo(:medium)) %>">
+                </div>
+              </div>
+            </div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="col-md-12">
+        <div class="card">
+          <div class="card-header">
+            <h6>Fundraising</h6>
+          </div>
+          <div class="card-block">
+            <div class="container-fluid">
+              <div class="row">
+                <div class="col">
+                  <p>
+                    The teams that enter the Elephant Charge make a pledge to the conservation charities and every
+                    single dollar that the teams raise is passed directly to the Zambian beneficiary charities as grants.
+                    The money needed to put on the Elephant Charge competition itself is raised by the organising
+                    committee and
+                    comes from charge sponsors and a small entry fee paid by each team.
+                  </p>
+                  <p>
+                    The beneficiaries make grant applications each year and are selected based on the programs and
+                    projects
+                    thats they propose which are best placed to deliver on the Elephant Charge mission of conservation
+                    through eduction in Zambia.
+                    The beneficiaries prepare reports on how the funds have been spent through the year so that the
+                    Elephant Charge and the teams can be sure on how the money raised is spent.
+                  </p>
+                </div>
+                <div style="" class="col-sm-4 col-lg-3">
+                  <img class="rounded mx-auto d-block" style="max-width:100%" src="<%= image_path("furniture/slcs_1_sm.jpg") %>">
+                </div>
+              </div>
+            </div>
+
+
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-12">
+        <div class="card">
+          <div class="card-header">
+            <h6>The Teams</h6>
+          </div>
+          <div class="card-block">
+            <div class="container-fluid">
+              <div class="row">
+                <div style="" class="col-sm-4 col-lg-3">
+                  <img class="rounded mx-auto d-block" style="max-width:100%;margin-bottom:10px;" src="<%= image_path(Photo.find(383).photo(:medium)) %>">
+                  <img class="rounded mx-auto d-block" style="max-width:100%" src="<%= image_path(Photo.find(1969).photo(:medium)) %>">
+                </div>
+                <div class="col">
+                  <p>
+                    Elephant Charge accepts entries in one of two classess: car or motorbike. Car teams
+                    consist of a vehicle with between two and six passengers, while motorbike teams comprise
+                    of three to four bikes and riders.
+                  </p>
+                  <p>
+                    Each team must designate a navigator who is issued with maps and checkpoint cards
+                    before the race. Each team hopes that their navigator knows which way up to hold
+                    the map, their left from their right, and how to switch on the GPS.
+                  </p>
+
+                  <p>
+                    Car teams designate a driver who is responsible for all the driving during the charge - and all of the
+                    blame afterwards.
+                    The rest of the team are runners. The runners scout through the bush for the shortest
+                    route that can be taken but which gets the team to the finish in one piece.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-12">
+        <div class="card">
+          <div class="card-header">
+            <h6>The Charge</h6>
+          </div>
+          <div class="card-block">
+            <div class="container-fluid">
+              <div class="row">
+                <div class="col">
+                  <p>
+                    The exact location of the Elephant Charge is a carefully guarded secret until the
+                    day before the competition when directions to the charge site are released. The Teams meet
+                    at the site for sign-in and vehicle scrutineering on the day before the race andare given
+                    directions to get to their camp sites.
+                  </p>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col">
+                  <p>
+                    Maps are issued to the teams on the evening before the race. The maps show the location
+                    and GPS coordinates of each of the ten checkpoints. Each team is also given - by
+                    random draw - a starting checkpoint.
+                  </p>
+
+                  <p>
+                    Teams study their maps the evening before the race and pick their intended route,
+                    aiming for the shortest possible distance across the course while avoiding the chasms,
+                    peaks and their own short-comings. During the race, the teams must visit each of the
+                    ten checkpoints before returning to their starting checkpoint. Each team can visit the
+                    checkpoints in any order and any direction they like.
+                  </p>
+                  <p>
+                    The Elephant Charge is about covering the
+                    terrain in the shortest possible distance and there are no prizes for speed. However,
+                    the race does have a time limit and each team must return to their starting checkpoint
+                    by 3pm on race day, having completed the course, to be considered for the honours.
+                  </p>
+                </div>
+                <div style="" class="col-sm-4 col-lg-3">
+                  <img class="rounded mx-auto d-block" style="max-width:100%" src="<%= image_path(Photo.find(1427).photo(:medium)) %>">
+                </div>
+              </div>
+              <div class="row">
+                <div class="col">
+
+
+                  <p>
+                    There are bush roads cut to each of the checkpoints and these are marked on the
+                    competitors maps. These roads never give the shortest distance but teams can use
+                    them if they are running short of time or are having trouble convincing their car to carry on.
+                  </p>
+                </div>
+              </div>
+              <div class="row">
+                <div style="" class="col-sm-4 col-lg-3">
+                  <img class="rounded mx-auto d-block" style="max-width:100%" src="<%= image_path("furniture/clz_1_sm.jpg") %>">
+                </div>
+                <div class="col">
+                  <p>
+                    Three of the checkpoints on the course are designated as the Gauntlet. These checkpoints
+                    are close together and include some extreme terrain. The Gauntlet allows the spectators
+                    to get close to the action and the teams to show off their abilities.
+                  </p>
+
+                  <p>
+                    When the final results are calculated, each team's distance through the Gauntlet
+                    checkpoints is multiplied by three. This means it is especially important that teams
+                    aim for the shortest distance possible through the Gauntlet as it has a greater
+                    impact on their overall result.
+                  </p>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col">
+                  <p>
+                    There are two Tsetse Lines on the couse which teams can decide to attempt. Each
+                    Tsetse Line is between two checkpoints where the shortest distance would be extremely
+                    challenging. There is a special prize for the shortest distance achieved on each
+                    Tsetse Line.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
     </div>
     <div class="col-md-3">
-      <div class="card">
-        <div class="card-header">
-          <h6>Elephant Charge 2017 Team Focus</h6>
-        </div>
-        <div class="card-block">
-          <%= render :partial => '/teams/teamcard', :locals => {:team => @team} %>
-        </div>
-      </div>
-    </div>
-
-    <div class="col-md-9">
-      <div class="card">
-        <div class="card-header">
-          <h6>The Charge</h6>
-        </div>
-        <div class="card-block">
-          <div class="container-fluid">
-            <div class="row">
-              <div class="col">
-                <p>
-                  On the day of the Charge, the winning team is the one that completes a course of ten checkpoints in
-                  the <b>shortest
-                  distance possible</b> within the allowed 8 hours. Given
-                  <a target="_blank" href="<%= @example_charge.map(:original) %>">a map</a> and with skill and
-                  determination,
-                  each team must find their own route between the checkpoints through
-                  valleys, over ridges, across rivers and up escarpments in a trial of
-                  <b>driving, navigating and endurance</b>.
-                </p>
-              </div>
-              <div style="" class="col-sm-4 col-lg-3">
-                <img class="rounded mx-auto d-block" style="max-width:100%" src="<%= image_path(Photo.find(1364).photo(:medium)) %>">
-              </div>
-            </div>
+      <div class="col-md-12">
+        <div class="card">
+          <div class="card-header">
+            <h6>Elephant Charge 2017 Team Focus</h6>
           </div>
-
-
-        </div>
-      </div>
-    </div>
-    <div class="col-md-9">
-      <div class="card">
-        <div class="card-header">
-          <h6>Fundraising</h6>
-        </div>
-        <div class="card-block">
-          <div class="container-fluid">
-            <div class="row">
-              <div class="col">
-                <p>
-                  The teams that enter the Elephant Charge make a pledge to the conservation charities and every
-                  single dollar that the teams raise is passed directly to the Zambian beneficiary charities as grants.
-                  The money needed to put on the Elephant Charge competition itself is raised by the organising
-                  committee and
-                  comes from charge sponsors and a small entry fee paid by each team.
-                </p>
-                <p>
-                  The beneficiaries make grant applications each year and are selected based on the programs and
-                  projects
-                  thats they propose which are best placed to deliver on the Elephant Charge mission of conservation
-                  through eduction in Zambia.
-                  The beneficiaries prepare reports on how the funds have been spent through the year so that the
-                  Elephant Charge and the teams can be sure on how the money raised is spent.
-                </p>
-              </div>
-              <div style="" class="col-sm-4 col-lg-3">
-                <img class="rounded mx-auto d-block" style="max-width:100%" src="<%= image_path("furniture/slcs_1_sm.jpg") %>">
-              </div>
-            </div>
+          <div class="card-block">
+            <%= render :partial => '/teams/teamcard', :locals => {:team => @team} %>
           </div>
-
-
         </div>
       </div>
-    </div>
-    <div class="col-md-3">
-      <div class="card">
-        <div class="card-block">
-          <p>
-            <b>The Elephant Charge</b> is proud to have been inspired by the
-            <a target="_blank" href="http://www.rhinocharge.co.ke/">Rhino Charge</a> in Kenya.
-          </p>
-          <p>
-            The Rhino Charge has
-            raised millions of dollars for the <a target="_blank" href="http://www.rhinoark.org">
-            Rhino Ark Foundation</a> and the Aberdares National Park since its launch in
-            1989.
-          </p>
-          <a target="_blank" href="http://www.rhinocharge.co.ke/"><img style="margin:auto; display:block;" width="130px;" src="<%= image_path('furniture/rhinocharge.jpg') %>"></a>
-        </div>
+      <div class ="col-md-12">
+        <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+        <!-- ResponsiveUnit -->
+        <ins class="adsbygoogle"
+             style="display:block"
+             data-ad-client="ca-pub-7536864280513725"
+             data-ad-slot="5554367498"
+             data-ad-format="auto"></ins>
+        <script>
+          (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
       </div>
-    </div>
-    <div class="col-md-9">
-      <div class="card">
-        <div class="card-header">
-          <h6>The Teams</h6>
-        </div>
-        <div class="card-block">
-          <div class="container-fluid">
-            <div class="row">
-              <div style="" class="col-sm-4 col-lg-3">
-                <img class="rounded mx-auto d-block" style="max-width:100%;margin-bottom:10px;" src="<%= image_path(Photo.find(383).photo(:medium)) %>">
-                <img class="rounded mx-auto d-block" style="max-width:100%" src="<%= image_path(Photo.find(1969).photo(:medium)) %>">
-              </div>
-              <div class="col">
-                <p>
-                  Elephant Charge accepts entries in one of two classess: car or motorbike. Car teams
-                  consist of a vehicle with between two and six passengers, while motorbike teams comprise
-                  of three to four bikes and riders.
-                </p>
-                <p>
-                  Each team must designate a navigator who is issued with maps and checkpoint cards
-                  before the race. Each team hopes that their navigator knows which way up to hold
-                  the map, their left from their right, and how to switch on the GPS.
-                </p>
-
-                <p>
-                  Car teams designate a driver who is responsible for all the driving during the charge - and all of the
-                  blame afterwards.
-                  The rest of the team are runners. The runners scout through the bush for the shortest
-                  route that can be taken but which gets the team to the finish in one piece.
-                </p>
-              </div>
-            </div>
+      <div class="col-md-12">
+        <div class="card">
+          <div class="card-block">
+            <p>
+              <b>The Elephant Charge</b> is proud to have been inspired by the
+              <a target="_blank" href="http://www.rhinocharge.co.ke/">Rhino Charge</a> in Kenya.
+            </p>
+            <p>
+              The Rhino Charge has
+              raised millions of dollars for the <a target="_blank" href="http://www.rhinoark.org">
+              Rhino Ark Foundation</a> and the Aberdares National Park since its launch in
+              1989.
+            </p>
+            <a target="_blank" href="http://www.rhinocharge.co.ke/"><img style="margin:auto; display:block;" width="130px;" src="<%= image_path('furniture/rhinocharge.jpg') %>"></a>
           </div>
         </div>
       </div>
     </div>
-    <div class="col-md-9">
-      <div class="card">
-        <div class="card-header">
-          <h6>The Charge</h6>
-        </div>
-        <div class="card-block">
-          <div class="container-fluid">
-            <div class="row">
-              <div class="col">
-                <p>
-                  The exact location of the Elephant Charge is a carefully guarded secret until the
-                  day before the competition when directions to the charge site are released. The Teams meet
-                  at the site for sign-in and vehicle scrutineering on the day before the race andare given
-                  directions to get to their camp sites.
-                </p>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col">
-                <p>
-                  Maps are issued to the teams on the evening before the race. The maps show the location
-                  and GPS coordinates of each of the ten checkpoints. Each team is also given - by
-                  random draw - a starting checkpoint.
-                </p>
 
-                <p>
-                  Teams study their maps the evening before the race and pick their intended route,
-                  aiming for the shortest possible distance across the course while avoiding the chasms,
-                  peaks and their own short-comings. During the race, the teams must visit each of the
-                  ten checkpoints before returning to their starting checkpoint. Each team can visit the
-                  checkpoints in any order and any direction they like.
-                </p>
-                <p>
-                  The Elephant Charge is about covering the
-                  terrain in the shortest possible distance and there are no prizes for speed. However,
-                  the race does have a time limit and each team must return to their starting checkpoint
-                  by 3pm on race day, having completed the course, to be considered for the honours.
-                </p>
-              </div>
-              <div style="" class="col-sm-4 col-lg-3">
-                <img class="rounded mx-auto d-block" style="max-width:100%" src="<%= image_path(Photo.find(1427).photo(:medium)) %>">
-              </div>
-            </div>
-            <div class="row">
-              <div class="col">
-
-
-                <p>
-                  There are bush roads cut to each of the checkpoints and these are marked on the
-                  competitors maps. These roads never give the shortest distance but teams can use
-                  them if they are running short of time or are having trouble convincing their car to carry on.
-                </p>
-              </div>
-            </div>
-            <div class="row">
-              <div style="" class="col-sm-4 col-lg-3">
-                <img class="rounded mx-auto d-block" style="max-width:100%" src="<%= image_path("furniture/clz_1_sm.jpg") %>">
-              </div>
-              <div class="col">
-                <p>
-                  Three of the checkpoints on the course are designated as the Gauntlet. These checkpoints
-                  are close together and include some extreme terrain. The Gauntlet allows the spectators
-                  to get close to the action and the teams to show off their abilities.
-                </p>
-
-                <p>
-                  When the final results are calculated, each team's distance through the Gauntlet
-                  checkpoints is multiplied by three. This means it is especially important that teams
-                  aim for the shortest distance possible through the Gauntlet as it has a greater
-                  impact on their overall result.
-                </p>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col">
-                <p>
-                  There are two Tsetse Lines on the couse which teams can decide to attempt. Each
-                  Tsetse Line is between two checkpoints where the shortest distance would be extremely
-                  challenging. There is a special prize for the shortest distance achieved on each
-                  Tsetse Line.
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
 
 
   </div>
