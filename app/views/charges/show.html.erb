@@ -60,7 +60,7 @@
                     <div class="container-fluid">
                       <div class="row">
                         <div class="col-sm-8">
-                          <%= render :layout => '/application/collapselist', :locals => {:show => 3, :list_id => 'net_distance', :items => @entries_net} do |item| %>
+                          <%= render :layout => '/application/collapselist', :locals => {:show => 5, :list_id => 'net_distance', :items => @entries_net} do |item| %>
                               <%= format_position(item.position_net_distance) %>
                               <a href="<%= entry_path(item) %>" class="teamname"><%= item.team.long_name %></a> in
                               <b><%= number_with_precision(item.dist_net/1000.0, precision: 2, delimiter: ',') %>km</b>
@@ -86,14 +86,14 @@
                   <div class="card-block">
                     <div class="container-fluid">
                       <div class="row">
-                        <div class="col-sm-8">
-                          <%= render :layout => '/application/collapselist', :locals => {:show => 3, :list_id => 'raised', :items => @entries_raised} do |item| %>
+                        <div class="col-sm-8" style="padding-left:0px;padding-right:0px;">
+                          <%= render :layout => '/application/collapselist', :locals => {:show => 5, :list_id => 'raised', :items => @entries_raised} do |item| %>
                               <%= format_position(item.position_raised) %>
                               <a href="<%= entry_path(item) %>" class="teamname"><%= item.team.long_name %></a> with
                               <b>$<%= number_with_precision(item.raised_dollars, precision: 0, delimiter: ',') %></b>
                           <% end %>
                         </div>
-                        <div class="col-sm">
+                        <div class="col-sm" style="padding-left:0px;padding-right:0px;">
                           <%
                             photo=@entries_raised[0].photo_random_landscape
                             p=render :partial => 'photos/photo', :locals => {:photo => photo}
@@ -114,11 +114,10 @@
                     <div class="container-fluid">
                       <div class="row">
                         <div class="col-sm-8">
-                          <%= render :layout => '/application/collapselist', :locals => {:show => 3, :list_id => 'distance', :items => @entries_dist} do |item| %>
+                          <%= render :layout => '/application/collapselist', :locals => {:show => 5, :list_id => 'distance', :items => @entries_dist} do |item| %>
                               <%= format_position(item.position_distance) %>
                               <a href="<%= entry_path(item) %>" class="teamname"><%= item.team.long_name %></a>
                               <% if item.result_description=='Complete' %>
-                                  completed in
                                   <b><%= number_with_precision(item.dist_competition/1000.0, precision: 2, delimiter: ',') %>
                                     km</b>
                               <% else %>
@@ -147,7 +146,7 @@
                     <div class="container-fluid">
                       <div class="row">
                         <div class="col-sm-8">
-                          <%= render :layout => '/application/collapselist', :locals => {:show => 3, :list_id => 'gauntlet', :items => @entries_gaunt} do |item| %>
+                          <%= render :layout => '/application/collapselist', :locals => {:show => 5, :list_id => 'gauntlet', :items => @entries_gaunt} do |item| %>
                               <%= format_position(item.position_gauntlet) %>
                               <a href="<%= entry_path(item) %>" class="teamname"><%= item.team.long_name %></a> in
                               <b><%= number_with_precision(item.dist_gauntlet/1000.0, precision: 2, delimiter: ',') %>
@@ -172,11 +171,26 @@
                     <h6><i>Sanctuary Trophy</i><br/>Shortest Distance on Tsetse Line 1</h6>
                   </div>
                   <div class="card-block">
-                    <%= render :layout => '/application/collapselist', :locals => {:show => 3, :list_id => 'tsetse1', :items => @entries_tsetse1} do |item| %>
-                        <%= format_position(item.position_tsetse1) %>
-                        <a href="<%= entry_path(item) %>" class="teamname"><%= item.team.long_name %></a> in
-                        <b><%= number_with_precision(item.dist_tsetse1/1000.0, precision: 2, delimiter: ',') %>km</b>
-                    <% end %>
+                    <div class="container-fluid">
+                      <div class="row">
+                        <div class="col-sm-8">
+                          <%= render :layout => '/application/collapselist', :locals => {:show => 5, :list_id => 'tsetse1', :items => @entries_tsetse1} do |item| %>
+                              <%= format_position(item.position_tsetse1) %>
+                              <a href="<%= entry_path(item) %>" class="teamname"><%= item.team.long_name %></a> in
+                              <b><%= number_with_precision(item.dist_tsetse1/1000.0, precision: 2, delimiter: ',') %>
+                                km</b>
+                          <% end %>
+                        </div>
+                        <div class="col-sm">
+                          <%
+                            photo=@entries_tsetse1[0].photo_random_landscape
+                            p=render :partial => 'photos/photo', :locals => {:photo => photo}
+                          %>
+                          <%= photo ? (link_to p, photo_path(photo) + '?return=' + request.path) : p %>
+                        </div>
+                      </div>
+                    </div>
+
                   </div>
                 </div>
               </div>
@@ -186,11 +200,27 @@
                     <h6><i>Khal Amazi Trophy</i><br/>Shortest Distance on Tsetse Line 2</h6>
                   </div>
                   <div class="card-block">
-                    <%= render :layout => '/application/collapselist', :locals => {:show => 3, :list_id => 'tsetse2', :items => @entries_tsetse2} do |item| %>
-                        <%= format_position(item.position_tsetse2) %>
-                        <a href="<%= entry_path(item) %>" class="teamname"><%= item.team.long_name %></a> in
-                        <b><%= number_with_precision(item.dist_tsetse2/1000.0, precision: 2, delimiter: ',') %>km</b>
-                    <% end %>
+                    <div class="container-fluid">
+                      <div class="row">
+                        <div class="col-sm-8">
+
+                          <%= render :layout => '/application/collapselist', :locals => {:show => 5, :list_id => 'tsetse2', :items => @entries_tsetse2} do |item| %>
+                              <%= format_position(item.position_tsetse2) %>
+                              <a href="<%= entry_path(item) %>" class="teamname"><%= item.team.long_name %></a> in
+                              <b><%= number_with_precision(item.dist_tsetse2/1000.0, precision: 2, delimiter: ',') %>
+                                km</b>
+                          <% end %>
+                        </div>
+                        <div class="col-sm">
+                          <%
+                            photo=@entries_tsetse2[0].photo_random_landscape
+                            p=render :partial => 'photos/photo', :locals => {:photo => photo}
+                          %>
+                          <%= photo ? (link_to p, photo_path(photo) + '?return=' + request.path) : p %>
+                        </div>
+                      </div>
+                    </div>
+
                   </div>
                 </div>
               </div>
@@ -201,17 +231,32 @@
                         <h6><i>Silky Cup</i><br/>Shortest Distance by a Ladies Team</h6>
                       </div>
                       <div class="card-block">
-                        <%= render :layout => '/application/collapselist', :locals => {:show => 3, :list_id => 'ladies', :items => @entries_ladies} do |item, i| %>
-                            <%= format_position(i+1) %>
-                            <a href="<%= entry_path(item) %>" class="teamname"><%= item.team.long_name %></a>
-                            <% if item.result_description=='Complete' %>
-                                completed in
-                                <b><%= number_with_precision(item.dist_competition/1000.0, precision: 2, delimiter: ',') %>
-                                  km</b>
-                            <% else %>
-                                <b><%= item.result_description %></b>
-                            <% end %>
-                        <% end %>
+                        <div class="container-fluid">
+                          <div class="row">
+                            <div class="col-sm-8">
+
+                              <%= render :layout => '/application/collapselist', :locals => {:show => 5, :list_id => 'ladies', :items => @entries_ladies} do |item, i| %>
+                                  <%= format_position(i+1) %>
+                                  <a href="<%= entry_path(item) %>" class="teamname"><%= item.team.long_name %></a>
+                                  <% if item.result_description=='Complete' %>
+                                      completed in
+                                      <b><%= number_with_precision(item.dist_competition/1000.0, precision: 2, delimiter: ',') %>
+                                        km</b>
+                                  <% else %>
+                                      <b><%= item.result_description %></b>
+                                  <% end %>
+                              <% end %>
+                            </div>
+                            <div class="col-sm">
+                              <%
+                                photo=@entries_ladies[0].photo_random_landscape
+                                p=render :partial => 'photos/photo', :locals => {:photo => photo}
+                              %>
+                              <%= photo ? (link_to p, photo_path(photo) + '?return=' + request.path) : p %>
+                            </div>
+                          </div>
+                        </div>
+
                       </div>
                     </div>
                   </div>
@@ -223,17 +268,32 @@
                         <h6><i>Dean Cup</i><br/>Shortest Distance by a Bike Team</h6>
                       </div>
                       <div class="card-block">
-                        <%= render :layout => '/application/collapselist', :locals => {:show => 3, :list_id => 'bikes', :items => @entries_bikes} do |item, i| %>
-                            <%= format_position(i+1) %>
-                            <a href="<%= entry_path(item) %>" class="teamname"><%= item.team.long_name %></a>
-                            <% if item.result_description=='Complete' %>
-                                completed in
-                                <b><%= number_with_precision(item.dist_competition/1000.0, precision: 2, delimiter: ',') %>
-                                  km</b>
-                            <% else %>
-                                <b><%= item.result_description %></b>
-                            <% end %>
-                        <% end %>
+                        <div class="container-fluid">
+                          <div class="row">
+                            <div class="col-sm-8">
+
+                              <%= render :layout => '/application/collapselist', :locals => {:show => 5, :list_id => 'bikes', :items => @entries_bikes} do |item, i| %>
+                                  <%= format_position(i+1) %>
+                                  <a href="<%= entry_path(item) %>" class="teamname"><%= item.team.long_name %></a>
+                                  <% if item.result_description=='Complete' %>
+                                      completed in
+                                      <b><%= number_with_precision(item.dist_competition/1000.0, precision: 2, delimiter: ',') %>
+                                        km</b>
+                                  <% else %>
+                                      <b><%= item.result_description %></b>
+                                  <% end %>
+                              <% end %>
+                            </div>
+                            <div class="col-sm">
+                              <%
+                                photo=@entries_bikes[0].photo_random_landscape
+                                p=render :partial => 'photos/photo', :locals => {:photo => photo}
+                              %>
+                              <%= photo ? (link_to p, photo_path(photo) + '?return=' + request.path) : p %>
+                            </div>
+                          </div>
+                        </div>
+
                       </div>
                     </div>
                   </div>
@@ -245,11 +305,27 @@
                         <h6>Shortest Net Distance by a Bike Team</h6>
                       </div>
                       <div class="card-block">
-                        <%= render :layout => '/application/collapselist', :locals => {:show => 3, :list_id => 'bikes', :items => @entries_net_bikes} do |item, i| %>
-                            <%= format_position(i+1) %>
-                            <a href="<%= entry_path(item) %>" class="teamname"><%= item.team.long_name %></a> in
-                            <b><%= number_with_precision(item.dist_net/1000.0, precision: 2, delimiter: ',') %>km</b>
-                        <% end %>
+                        <div class="container-fluid">
+                          <div class="row">
+                            <div class="col-sm-8">
+
+                              <%= render :layout => '/application/collapselist', :locals => {:show => 5, :list_id => 'bikes', :items => @entries_net_bikes} do |item, i| %>
+                                  <%= format_position(i+1) %>
+                                  <a href="<%= entry_path(item) %>" class="teamname"><%= item.team.long_name %></a> in
+                                  <b><%= number_with_precision(item.dist_net/1000.0, precision: 2, delimiter: ',') %>
+                                    km</b>
+                              <% end %>
+                            </div>
+                            <div class="col-sm">
+                              <%
+                                photo=@entries_net_bikes[0].photo_random_landscape
+                                p=render :partial => 'photos/photo', :locals => {:photo => photo}
+                              %>
+                              <%= photo ? (link_to p, photo_path(photo) + '?return=' + request.path) : p %>
+                            </div>
+                          </div>
+                        </div>
+
                       </div>
                     </div>
                   </div>
@@ -261,17 +337,30 @@
                         <h6><br/>Shortest Distance by a New Entry</h6>
                       </div>
                       <div class="card-block">
-                        <%= render :layout => '/application/collapselist', :locals => {:show => 3, :list_id => 'newcomer', :items => @entries_newcomer} do |item, i| %>
-                            <%= format_position(i+1) %>
-                            <a href="<%= entry_path(item) %>" class="teamname"><%= item.team.long_name %></a>
-                            <% if item.result_description=='Complete' %>
-                                completed in
-                                <b><%= number_with_precision(item.dist_competition/1000.0, precision: 2, delimiter: ',') %>
-                                  km</b>
-                            <% else %>
-                                <b><%= item.result_description %></b>
-                            <% end %>
-                        <% end %>
+                        <div class="container-fluid">
+                          <div class="row">
+                            <div class="col-sm-8">
+                              <%= render :layout => '/application/collapselist', :locals => {:show => 5, :list_id => 'newcomer', :items => @entries_newcomer} do |item, i| %>
+                                  <%= format_position(i+1) %>
+                                  <a href="<%= entry_path(item) %>" class="teamname"><%= item.team.long_name %></a>
+                                  <% if item.result_description=='Complete' %>
+                                      completed in
+                                      <b><%= number_with_precision(item.dist_competition/1000.0, precision: 2, delimiter: ',') %>
+                                        km</b>
+                                  <% else %>
+                                      <b><%= item.result_description %></b>
+                                  <% end %>
+                              <% end %>
+                            </div>
+                            <div class="col-sm">
+                              <%
+                                photo=@entries_newcomer[0].photo_random_landscape
+                                p=render :partial => 'photos/photo', :locals => {:photo => photo}
+                              %>
+                              <%= photo ? (link_to p, photo_path(photo) + '?return=' + request.path) : p %>
+                            </div>
+                          </div>
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -283,7 +372,8 @@
                         <h6><i>Rhino Charge Trophy</i><br/>Spirit of the Charge</h6>
                       </div>
                       <div class="card-block">
-                        <p><span class="teamname"><%= @charge.spirit_name %></span> - <%= @charge.spirit_description %>
+                        <p><span class="teamname"><%= @charge.spirit_name %></span>
+                          - <%= @charge.spirit_description %>
                         </p>
                       </div>
                     </div>

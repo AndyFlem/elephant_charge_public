@@ -92,7 +92,9 @@ class Entry < ApplicationRecord
   end
 
   def photo_random_landscape()
-    self.photos.order("RANDOM()").limit(1).first
+    Entry.uncached do
+      self.photos.order("RANDOM()").limit(1).first
+    end
   end
 
   def start_time
