@@ -158,7 +158,11 @@ class Team < ApplicationRecord
   end
 
   def photo_random_landscape()
-    self.photos.where('aspect>1.3 and aspect<1.7').order("RANDOM()").limit(1).first
+    p=self.photos.where('aspect>1.3 and aspect<1.7').order("RANDOM()").limit(1).first
+    unless p
+      p=self.photos.order("RANDOM()").limit(1).first
+    end
+    p
   end
 
   def raised_dollars
