@@ -10,7 +10,7 @@
   description+=@ben.name + ' has been provided ' + @grants.count.to_s + ' grant' + (@grants.count>1 ? 's':'') +' by the Elephant Charge totalling '
   description+= '$' + number_with_precision(@ben.grant_dollars, precision: 0, delimiter: ',') + '.'
 
-  img=if @ben.ref='zcp'
+  img=if @ben.short_name=='zcp'
     URI.join(root_url, image_path('share_images/6.jpg'))
   else
     URI.join(root_url, image_path('share_images/' + (rand(9)+1).to_s + '.jpg'))
