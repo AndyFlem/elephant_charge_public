@@ -105,7 +105,9 @@
     <% if Rails.env.production? %>
     FB.AppEvents.logPageView();
     <% end %>
+    console.log('oooh')
     FB.Event.subscribe('edge.create', function(url,obj) {
+      console.log('Like!' + url)
       ga('send', 'social', 'facebook', 'like', url);
 
     });
