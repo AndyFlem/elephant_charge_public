@@ -1,0 +1,39 @@
+.top-row {
+  padding:1px;
+  background-color: $brand-primary;
+}
+.search-txt{
+  padding: 2.5px;
+  width: 170px !important;
+}
+.search-btn{
+  height: 22px;
+  width: 35px;
+  padding-top: 2px;
+  padding-bottom: 3px;
+  padding-left: 10px;
+  color: $dark;
+  border-color: $light;
+}
+
+.nav-item {
+  padding-left:0px;
+  padding-right:30px;
+}
+.navbar a {
+  padding-top:0px;
+  padding-bottom:0px;
+  font-size: 1rem;
+  color: #fafafa !important;
+  font-weight: bold;
+
+}
+
+.show > .dropdown-menu {
+  background-color: $dark;
+}
+.navbar a:hover, .navbar a:focus {
+  color: #fafafa !important;
+  text-decoration: none;
+  background-color: $dark;
+}
