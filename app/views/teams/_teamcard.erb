@@ -12,7 +12,7 @@
     %>
     <%=
       if photo
-        link_to p,photo_path(photo) + '?return=' + request.path
+        link_to p,team_path(team)
       else
         p
       end

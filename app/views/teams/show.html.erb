@@ -57,6 +57,11 @@
                       </div>
                   <% end %>
                 </div>
+                <% unless @team.teamtext.blank? %>
+                <div class="row highlight" style="font-size: 0.8rem;">
+                  <%= raw @team.teamtext%>
+                </div>
+                <% end %>
             <% end %>
 
             <div class="row">
