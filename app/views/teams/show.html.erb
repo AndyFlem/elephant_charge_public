@@ -57,14 +57,14 @@
                       </div>
                   <% end %>
                 </div>
-                <% unless @team.teamtext.blank? %>
+                <% if lookup_context.template_exists?(@team.ref, "team_snippets", true) %>
                 <div class="row highlight" style="font-size: 0.8rem;">
 
-                  <% if lookup_context.template_exists?(@team.ref, "team_snippets", true) %>
+
                   <%= render '/team_snippets/' + @team.ref%>
-                  <% end %>
+
                 </div>
-                <% end %>
+                  <% end %>
             <% end %>
 
             <div class="row">
