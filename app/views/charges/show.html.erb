@@ -115,7 +115,10 @@
                       <div class="row">
                         <div class="col-sm-8">
                           <%= render :layout => '/application/collapselist', :locals => {:show => 5, :list_id => 'distance', :items => @entries_dist} do |item| %>
-                              <%= format_position(item.position_distance) %>
+                              <%= if item.position_distance
+                                    format_position(item.position_distance)
+                                  end
+                              %>
                               <a href="<%= entry_path(item) %>" class="teamname"><%= item.team.long_name %></a>
                               <% if item.result_description=='Complete' %>
                                   <b><%= number_with_precision(item.dist_competition/1000.0, precision: 2, delimiter: ',') %>

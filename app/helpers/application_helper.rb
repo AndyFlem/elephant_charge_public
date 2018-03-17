@@ -93,9 +93,14 @@ def format_hours(hrs)
 end
 
 def format_position(pos)
-  ret=format_position2(pos)
-  if pos<4
-    ret='<b>' + ret + '</b>'
+  if pos
+    ret=format_position2(pos)
+    if pos<4
+      ret='<b>' + ret + '</b>'
+    end
+
+  else
+    ret=''
   end
   ret.html_safe
 end
