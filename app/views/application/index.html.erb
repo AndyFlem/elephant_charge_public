@@ -23,7 +23,7 @@
       </div>
       <div>
           The <%= @current_charge.name %> will be held on <%= @current_charge.charge_date.strftime('%e %B') %>.<br/>
-          - <%= (DateTime.parse('2017-10-17')-DateTime.now).to_i %> days to go -
+          - <%= (@current_charge.charge_date-DateTime.now).to_i %> days to go -
       </div>
     </div>
     <div class="countdown  d-flex align-items-center">
