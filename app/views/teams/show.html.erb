@@ -49,10 +49,13 @@
                   <div class="col" style="text-align: center;">
                     <b><%= @team.long_name %> </b> are entered in the
                     <a href="<%= charge_path(@current_charge) %>"><%= @current_charge.name %></a>
+                    <!--
                     <% if @team.paypal_button %>
                         <br/><span style="font-size: small">Support the team and conservation in Zambia by making a donation through PayPal</span>
                     <% end %>
+                    -->
                   </div>
+                  <!--
                   <% unless @team.paypal_button.blank? %>
                       <div class="col-sm-3 col-md-2" style="display: inherit;margin-top:auto;margin-bottom:5px;">
                         <div class="mx-auto d-block" data-toggle="tooltip" data-team-ref="<%= @team.ref %>" data-team-id="<%= @team.id %>" data-placement="bottom" title="Support the team and wildlife conservation in Zambia">
@@ -60,6 +63,7 @@
                         </div>
                       </div>
                   <% end %>
+                  -->
                 </div>
                 <% if lookup_context.template_exists?(@team.ref, "team_snippets", true) %>
                 <div class="row highlight" style="font-size: 0.8rem;">
