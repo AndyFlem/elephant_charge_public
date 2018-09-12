@@ -93,7 +93,7 @@ class Entry < ApplicationRecord
 
   def photo_random_landscape()
     Entry.uncached do
-      self.photos.order("RANDOM()").limit(1).first
+      pht=self.photos.order("RANDOM()").limit(1).first
     end
   end
 
