@@ -40,21 +40,7 @@
           <%
             team=@photo.photoable.team
           %>
-            <!--
-          <% if team.entries_incomplete.count>0 and team.paypal_button %>
-              <div class="row highlight" style="padding-bottom: 0px;">
-                <div class="col " style="text-align: center;font-size: 0.8rem;">
-                  Support <%= team.name %> by making a donation through PayPal
-                </div>
-                <div class="col-sm-3 col-md-2" style="display: inherit;margin-top:auto;margin-bottom:5px;">
-                  <div class="mx-auto d-block" data-toggle="tooltip" data-team-ref="<%= team.ref %>" data-team-id="<%= team.id %>" data-placement="bottom" title="Support the team and wildlife conservation in Zambia">
-                    <%= team.paypal_button.sub!("form", "form id='paypal_form'").html_safe %>
-                  </div>
-                </div>
 
-              </div>
-          <% end %>
-            -->
 
             <div class="row justify-content-center" style="padding-top:5px;padding-bottom:5px;">
 
