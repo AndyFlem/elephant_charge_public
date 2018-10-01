@@ -18,8 +18,12 @@
       <p>
         <b>$<%= number_with_precision(charge.raised_dollars, precision: 0, delimiter: ',') %></b> was raised
         for
-        <b><%= charge.grants.count %> conservation organisations</b> by
-        <b><%= charge.entries.count %> teams</b> including
+        <% if charge.grants.count >0 %>
+        <b><%= charge.grants.count %> conservation organisations</b>
+        <% else %>
+        conservation
+        <% end %>
+        by&nbsp;<b><%= charge.entries.count %> teams</b> including
         <b>$<%= number_with_precision(@raised1.raised_dollars, precision: 0, delimiter: ',') %></b> raised by
         <a href="<%= entry_path(@raised1) %>" class="teamname"><%= @raised1.team.long_name %></a> and
         <b>$<%= number_with_precision(@raised2.raised_dollars, precision: 0, delimiter: ',') %></b> raised by

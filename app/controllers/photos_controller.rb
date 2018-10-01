@@ -1,7 +1,7 @@
 class PhotosController < ApplicationController
 
   def index
-    @charges=Charge.past
+    @charges=Charge.past.order(ref: :desc)
   end
 
   def show
@@ -11,6 +11,6 @@ class PhotosController < ApplicationController
   end
 
   def views
-    @photos=Photo.where("views>4").order(views: :desc)
+    @photos=Photo.where("views>20").order(views: :desc)
   end
 end

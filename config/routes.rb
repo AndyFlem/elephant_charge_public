@@ -35,6 +35,7 @@ Rails.application.routes.draw do
   #photos
   get 'photo/:id', to: 'photos#show'
   get 'admin/photo_views', to: 'photos#views'
+  get 'photos', to: 'photos#index'
 
   #JSON STUFF
   get ':id/guards',constraints: {id: /\d{4}/}, to: 'guards#json_index'
