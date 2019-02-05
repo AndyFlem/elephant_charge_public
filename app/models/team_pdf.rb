@@ -5,7 +5,7 @@ class TeamPdf
 
   def initialize(team)
     @team = team
-    @entries=@team.entries.joins(:charge).where("charges.state_ref='RESULT'").order('charges.charge_date desc')
+    @entries=@team.entries.joins(:charge).where("charges.has_result=true").order('charges.charge_date desc')
     @best_leg=@team.best_leg
     @honours=@team.honours
   end

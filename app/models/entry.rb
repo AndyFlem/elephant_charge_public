@@ -12,8 +12,8 @@ class Entry < ApplicationRecord
   has_many :entry_legs
   has_many :photos, as: :photoable
 
-  scope :past,-> {includes(:charge).where("charges.state_ref='RESULT'")}
-  scope :current,-> {references(:charge).includes(:charge).where("charges.state_ref!='RESULT'").order("RANDOM()")}
+  scope :past,-> {includes(:charge).where("charges.has_result=true")}
+  scope :current,-> {references(:charge).includes(:charge).where("charges.has_result=true").order("RANDOM()")}
 
 
   def first_for_team?
@@ -21,7 +21,7 @@ class Entry < ApplicationRecord
   end
 
   def is_current?
-    self.charge.state_ref!='RESULT'
+    self.charge.has_result
   end
 
   def result_summary(limit=3)

@@ -20,8 +20,8 @@ class Charge < ApplicationRecord
   has_many :grants
   has_many :beneficiaries, through: :grants
 
-  scope :past,-> {where("state_ref='RESULT'")}
-  scope :current,-> {where("state_ref!='RESULT'")}
+  scope :past,-> {where("has_result=true")}
+  scope :current,-> {where("has_result=false")}
 
   has_attached_file :map,
                     styles: { medium: "300x300", thumb: "100x100" },
@@ -43,7 +43,7 @@ class Charge < ApplicationRecord
   end
 
   def is_current?
-    self.state_ref!='RESULT'
+    !self.has_result
   end
 
   def long_name
@@ -141,16 +141,5 @@ class Charge < ApplicationRecord
     self.charge_date + self.end_time.seconds_since_midnight.seconds
   end
 
-  def state_description
-    if self.state_ref=="NOT_SETUP"
-      "Not setup"
-    end
-    if self.state_ref=="READY"
-      "Ready to process result"
-    end
-    if self.state_ref=="RESULT"
-      "Result ready"
-    end
-  end
 
 end

@@ -6,8 +6,8 @@ class ChargeSponsor < ApplicationRecord
   scope :major, -> { where("type_ref='MAJOR'") }
   scope :standard, -> { where("type_ref='STANDARD'") }
 
-  scope :past,-> {includes(:charge).where("charges.state_ref='RESULT'")}
-  scope :current,-> {references(:charge).includes(:charge).where("charges.state_ref!='RESULT'").order("RANDOM()")}
+  scope :past,-> {includes(:charge).where("charges.has_result=true")}
+  scope :current,-> {references(:charge).includes(:charge).where("charges.has_result=false").order("RANDOM()")}
 
 
   def type_desc
