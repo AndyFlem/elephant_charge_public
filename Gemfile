@@ -14,7 +14,7 @@ gem 'wkhtmltopdf-binary'
 
 gem 'dotenv-rails'
 
-#gem 'unicorn'
+gem 'unicorn'
 
 gem 'rgeo-geojson'
 
