@@ -126,7 +126,7 @@
         <p>
           The Elephant Charge teams have supported <a href="/beneficiaries"><%= @beneficiaries.count %> conservation organisations</a> and projects since 2008 with
           grants totalling <%= bold{'$' + number_with_precision(@raised, precision: 0, delimiter: ',')}  %>.
-          The money raised by the <a href="<%= charge_entries_path(@current_charge)%>">teams</a> for the <a href="<%= charge_path(@current_charge)%>"><%= @current_charge.name %></a> will support conservation in <b>Zambia</b> through grants to the following
+          The money raised by the <a href="<%= charge_entries_path(@current_charge)%>">teams</a> during the last Elephant Charge supported conservation in <b>Zambia</b> through grants to the following
           organisations and projects:
         </p>
       </div>
