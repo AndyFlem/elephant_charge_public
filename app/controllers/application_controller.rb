@@ -15,8 +15,8 @@ class ApplicationController < ActionController::Base
     @current_sponsors_nm=ChargeSponsor.current.naming
     @current_sponsors_mj=ChargeSponsor.current.major
     @current_sponsors_st=ChargeSponsor.current.standard
-    @current_beneficiaries=Charge.past.order(:charge_date).last.grants.order("RANDOM()")
-    #@current_beneficiaries=Charge.find_by_ref('2017').grants.order("RANDOM()")
+    #@current_beneficiaries=Charge.past.order(:charge_date).last.grants.order("RANDOM()")
+    @current_beneficiaries=Charge.find_by_ref('2018').grants.order("RANDOM()")
   end
 
   def about
