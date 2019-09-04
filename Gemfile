@@ -25,7 +25,7 @@ gem "paperclip", "~> 5.0.0"
 gem 'friendly_id', :git => 'git://github.com/norman/friendly_id.git'
 
 gem 'bootstrap', '= 4.0.0.alpha6'
-source 'https://rails-assets.org' do
+source 'http://insecure.rails-assets.org' do
   gem 'rails-assets-tether', '>= 1.1.0'
 end
 gem 'activerecord-postgis-adapter'

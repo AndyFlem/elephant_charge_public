@@ -33,7 +33,7 @@ class Team < ApplicationRecord
     if self.charges.count>1
       false
     else
-      self.charges.first.has_result=false
+      self.charges.first.has_result==false
     end
   end
 
