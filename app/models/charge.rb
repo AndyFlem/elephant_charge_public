@@ -20,7 +20,7 @@ class Charge < ApplicationRecord
   has_many :grants
   has_many :beneficiaries, through: :grants
 
-  scope :past,-> {where("has_result=true")}
+  scope :past,-> {where("has_result=true").order(charge_date: :desc)}
   scope :current,-> {where("has_result=false")}
 
   has_attached_file :map,
@@ -82,7 +82,7 @@ class Charge < ApplicationRecord
         :net_distance=>['Country Choice Trophy','Shortest Net Distance'],
         :raised=>['Sausage Tree Trophy','Highest Sponsorship Raised'],
         :distance=>['Castle Fleming Trophy','Shortest Overall Distance'],
-        :gauntlet=>['Bowden Trophy','Shortest Gauntlet Distance'],
+        :gauntlet=>['Mark Terken Trophy','Shortest Gauntlet Distance'],
         :tsetse1=>['Sanctuary Trophy','Shortest Distance on Tsetse Line 1'],
         :tsetse2=>['Khal Amazi Trophy','Shortest Distance on Tsetse Line 2'],
         :ladies=>['Silky Cup','Shortest Distance by a Ladies Team'],

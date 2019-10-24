@@ -13,17 +13,32 @@
 -->
 <div id="banner" class="banner">
   <div class="floater-lg hidden-sm-down ">
+    <% if @current_charge.entries.count>=5 %>
+    <div class="countdown d-flex align-items-center">
+      <!--<div>
+        <a target="_blank" href="http://www.fuchsoil.co.za/">
+          <img style="width:100%" src="<%= image_path('logo/fuchs.png') %>"/>
+        </a>
+      </div>-->
+      <div>
+          The <%= @current_charge.name %> will be held on <%= @current_charge.charge_date.strftime('%e %B') %>.<br/>
+          - <%= (@current_charge.charge_date-DateTime.now).to_i %> days to go -
+      </div>
+    </div>
+    <% else%>
     <div class="countdown d-flex align-items-center">
       <div>
         <a target="_blank" href="http://www.fuchsoil.co.za/">
           <img style="width:100%" src="<%= image_path('logo/fuchs.png') %>"/>
         </a>
       </div>
-      <div>
-          The <%= @current_charge.name %> will be held on <%= @current_charge.charge_date.strftime('%e %B') %>.<br/>
-          - <%= (@current_charge.charge_date-DateTime.now).to_i %> days to go -
+      <div><a href="<%= charge_path(@previous_charge) %>">
+          The <%= @previous_charge.name %> was held on <%= @previous_charge.charge_date.strftime('%e %B') %>.
+          <%=@previous_charge.entries.count%> teams raised $<%=number_with_precision(@previous_charge.raised_dollars, precision: 0, delimiter: ',')%> for conservation.<br/>
+          Click here for the full results.</a>
       </div>
-    </div>
+    </div>    
+    <% end %>
     <!--<div class="countdown  d-flex align-items-center">
       <a href="<%= charge_entries_path(@current_charge)%>">
         Support conservation by making a paypal donation directly on the team pages
@@ -78,7 +93,7 @@
   </ul>
 </div>
 
-
+<% if @current_charge.entries.count>=5 %>
 <div class="container-fluid">
   <div class="row ruled">
     <div class="col home-text">
@@ -98,8 +113,15 @@
           <%= render :partial => '/teams/teamcard', :locals => {:team => entry.team} %>
         </div>
     <% end %>
-
   </div>
+  <% end %>
+
+  <% 
+  if @current_charge.entries.count<5 
+    @current_charge=@previous_charge
+  end if
+  %>
+
 
   <div class="row ruled">
     <div class="col home-text">
@@ -131,8 +153,6 @@
         </p>
       </div>
     </div>
-
-
     <div style="text-align: center;" class="col-xs-12 col-sm-8 col-md-9 col-lg-10">
       <div class="container-fluid">
         <div class="row">
@@ -144,6 +164,5 @@
         </div>
       </div>
     </div>
-
   </div>
 </div>
