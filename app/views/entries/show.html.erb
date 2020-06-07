@@ -7,8 +7,12 @@
   description= @team.long_name + ' entered their ' + format_position3(@entry.entry_no)  + ' charge in '
   description+= 'a ' + @entry.car.description + ' and completed '
   description+= (@entry.result_description=='Complete' ? ' all ' : '') +  @entry.result_guards.to_s + ' checkpoints in a competition distance of '
-  description+= number_with_precision(@entry.dist_competition/1000.0, precision: 2) +'km, '
-  description+= 'coming ' + format_position3(@entry.position_distance) + ' out of ' + @charge.entries.count.to_s + ' entries and raising '
+  description+= number_with_precision((@entry.dist_competition.nil? ? 0: @entry.dist_competition)/1000.0, precision: 2) +'km, '
+  if ! @entry.is_bikes
+    description+= 'coming ' + format_position3(@entry.position_distance) + ' out of ' + @charge.entries.count.to_s + ' entries and raising '
+  else
+    description+= 'coming ' + format_position3(@entry.position_bikes) + ' and raising '
+  end 
   description+= '$' + number_with_precision(@entry.raised_dollars, precision: 0, delimiter: ',') + ' for conservation in Zambia.'
 
   content_for :metas,
@@ -47,7 +51,7 @@
                 a <%= @entry.car.description %> and completed
                 <%= @entry.result_description=='Complete' ? ' all ' : '' %><%= @entry.result_guards %> checkpoints in a
                 competition distance of
-                <%= bold { number_with_precision(@entry.dist_competition/1000.0, precision: 2) +'km' } %> raising
+                <%= bold { number_with_precision((@entry.dist_competition.nil? ? 0: @entry.dist_competition)/1000.0, precision: 2) +'km' } %> raising
                 <%= bold { '$' + number_with_precision(@entry.raised_dollars, precision: 0, delimiter: ',') } %> for
                 conservation in Zambia.
                 <ul style="padding-left: 15px;margin-top:10px;">
