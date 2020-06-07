@@ -23,7 +23,9 @@ class ApplicationController < ActionController::Base
   def about
     @current_charge=Charge.current.first
     @example_charge=Charge.find_by_ref('2016')
-    @team=Entry.current.order("RANDOM()").first.team
+    if Entry.current.first
+      @team=Entry.current.order("RANDOM()").first.team
+    end
     @charges=Charge.past
     @raised=(((@charges.reduce(0) {|a,b| a+b.raised_dollars })/1000).floor)*1000
   end

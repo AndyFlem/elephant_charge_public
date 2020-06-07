@@ -297,6 +297,7 @@
     </div>
     <div class="col-md-3">
       <div class="col-md-12">
+      <% if @team %>
         <div class="card">
           <div class="card-header">
             <h6>Elephant Charge 2019 Team Focus</h6>
@@ -305,6 +306,7 @@
             <%= render :partial => '/teams/teamcard', :locals => {:team => @team} %>
           </div>
         </div>
+        <% end %>
       </div>
 
       <div class="col-md-12">
