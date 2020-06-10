@@ -15,11 +15,11 @@
   <div class="floater-lg hidden-sm-down ">
     <% if @current_charge.entries.count>=5 %>
     <div class="countdown d-flex align-items-center">
-      <!--<div>
+      <div>
         <a target="_blank" href="http://www.fuchsoil.co.za/">
           <img style="width:100%" src="<%= image_path('logo/fuchs.png') %>"/>
         </a>
-      </div>-->
+      </div>
       <div>
           The <%= @current_charge.name %> will be held on <%= @current_charge.charge_date.strftime('%e %B') %>.<br/>
           - <%= (@current_charge.charge_date-DateTime.now).to_i %> days to go -

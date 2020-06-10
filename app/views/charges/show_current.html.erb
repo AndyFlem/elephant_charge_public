@@ -19,10 +19,6 @@
       <div class="card">
         <div class="card-header">
           <h5  style="display:inline-block;"><%= @charge.long_name %></h5>
-          <div style="float:right;display: block;">
-            <a data-toggle="tooltip" data-placement="top" title="Results"  href="<%=  charge_path(@charge) %>"><img style="margin-left:10px;" src="<%= image_path('icons/color/results.png')%>"></a>
-            <a data-toggle="tooltip" data-placement="top" title="Teams" href="<%=  charge_entries_path(@charge) %>"><img style="margin-left:10px;" src="<%= image_path('icons/grey/car.png')%>"></a>
-          </div>
           <div style="margin-bottom:5px;">
             <div id="fb-like" class="fb-like" data-href="<%= request.original_url%>" data-layout="button" data-action="like">
             </div>
@@ -43,10 +39,10 @@
               <% end %>
               <div class="col">
                 <p>
-                  The <b><%= @charge.long_name %></b> will be held on <%= @charge.charge_date.strftime('%e %B %Y') %> and <a href="<%= charge_entries_path(@charge)%>"><%=@charge.entries.count%> teams</a> have already entered the charge.
+                  The <b><%= @charge.long_name %></b> will be held on <b><%= @charge.charge_date.strftime('%e %B %Y') %></b> and <b><%=@charge.entries.count%> teams</b> have already entered the charge.
                 </p>
                 <p>
-                  Support the <a href="<%= charge_entries_path(@charge)%>">teams</a>
+                  Support the teams
                   or <a href="/getinvolved">enter your own</a> and take part in an extreme 4x4 event supporting wildlife conservation in Zambia.
                 </p>
               </div>
@@ -63,6 +59,17 @@
             <%= render :partial => 'sponsors/charge_sponsors', :locals => {:charge => @charge} %>
           </div>
         </div>
+        <div class="card-block">
+          <div class="container-fluid">
+            <div class="row">
+              <% @entries.each do |entry| %>
+                <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4 col-xl-3">
+                    <%= render :partial => '/teams/teamcard', :locals => {:team => entry.team} %>
+                </div>
+              <% end %>
+            </div>
+          </div>
+        </div>        
       </div>
     </div>
 

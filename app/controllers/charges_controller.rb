@@ -21,7 +21,8 @@ class ChargesController < ApplicationController
     @charge=Charge.find_by_ref(params[:id]) or not_found
 
     if @charge.is_current?
-      @grants=Charge.past.order(:charge_date).last.grants.order("RANDOM()")
+      @grants=Charge.past.first.grants.order("RANDOM()")
+      @entries=@charge.entries
       render 'show_current'
     else
       @entries_net=@charge.entries.where('dist_net IS NOT NULL and is_bikes=false').order(position_net_distance: :asc)
