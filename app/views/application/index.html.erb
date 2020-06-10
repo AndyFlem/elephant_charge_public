@@ -136,7 +136,7 @@
 
     <div style="text-align: center;" class="col-xs-12 col-sm-8 col-md-9 col-lg-10">
       <div class="container-fluid">
-        <%= render :partial => 'sponsors/charge_sponsors', :locals => {:charge => @current_charge} %>
+        <%= render :partial => 'sponsors/charge_sponsors', :locals => {:charge => @sponsors_charge} %>
       </div>
     </div>
   </div>
@@ -148,7 +148,7 @@
         <p>
           The Elephant Charge teams have supported <a href="/beneficiaries"><%= @beneficiaries.count %> conservation organisations</a> and projects since 2008 with
           grants totalling <%= bold{'$' + number_with_precision(@raised, precision: 0, delimiter: ',')}  %>.
-          The money raised by the <a href="<%= charge_entries_path(@current_charge)%>">teams</a> during the last Elephant Charge supported conservation in <b>Zambia</b> through grants to the following
+          The money raised by the <a href="<%= charge_path(@current_charge)%>">teams</a> during the last Elephant Charge supported conservation in <b>Zambia</b> through grants to the following
           organisations and projects:
         </p>
       </div>
