@@ -1,0 +1,175 @@
+<% title('Fundraising Tips') %>
+
+<% breadcrumb [["fundraisingtips", "Fundraising Tips"]] %>
+
+<%
+  description="Fundraising tips for The Fuchs Elephant Charge 2020."
+
+  content_for :metas,
+              (render :partial => 'layouts/metas', :locals => {
+                  :page_title => 'Elephant Charge - 2020 Fundraising Tips',
+                  :description => description,
+                  :og_image_path => URI.join(root_url, image_path('banners/b' + (rand(20)+1).to_s + '.jpg'))
+              })
+%>
+
+<div class="container-fluid">
+  <div class="row justify-content-center">
+    <div class="col-sm-12 col-md-10">
+      <div class="card">
+        <div class="card-header">
+          <h4 style="display:inline-block;">Fuchs Elephant Charge 2020 Fundraising Tips</h4>
+          <div style="margin-bottom:5px;">
+            <%= render :partial => 'application/fbbuttons' %>
+          </div>
+        </div>
+
+        <div class="card-block">
+          <div class="container-fluid">
+            <div class="row justify-content-center">
+              <div class="col-xs-12 col-sm-2">
+
+                <img class="mx-auto d-block" style="width:90px;margin-bottom: 10px;margin-top:10px;" src="<%= image_path('logo/eclogo_orange.png') %>"/>
+
+              </div>
+              <div class="col-xs-12 col-sm-10">
+                <p><b>
+                  I don’t know if you’ve noticed but this year is not your average. 
+                  Our conservation beneficiaries are struggling to protect wildlife populations, habitats and their communities. 
+                  Since tourism has really been hit, most beneficiaries have lost a big chunk of their income, so please do everything you can to raise as much as possible for them this year. 
+                  To help we have come up with some ideas!
+                </b></p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div id="enter" class="card-header"><h5>Crowd funding campaigns</h5></div>
+        <div class="card-block">
+          <p>
+          Target friends and family who might have travelled to Zambia if it wasn’t for the pandemic and ask them to donate the amount, they would have spent on sun cream and bugspray – at the very least! For more information to include on your crowd funding site about the Elephant Charge and our beneficiaries see www.elephantcharge.org
+          </p>
+          <p>
+          Some examples of good crowd funding sites to use are:
+          </p>
+          <ul>
+            <li>Just Giving Crowd Funding: <a href="https://www.justgiving.com/crowdfunding" target="_blank">www.justgiving.com/crowdfunding</a></li>
+            <li>Go Get Funding: <a href="https://www.gogetfunding.com" target="_blank">www.gogetfunding.com</a></li>
+          </ul>
+        </div>
+      </div>
+      
+
+      <div class="card">
+        <div id="enter" class="card-header"><h5>Online Events</h5></div>
+        <div class="card-block">
+          <p>
+          During the pandemic, we have all, old and young had to embark on a steep learning curve to get on board with virtual meetings, webinars and symposiums. Use your newfound skills to set up Zoom calls that people have to pay for to join (or donate as much as they like) or produce super easy-to-use Facebook and Instagram live videos:
+          </p>
+          <ul  class="list-group">
+            <li class="list-group-item">
+              <b>Cookery classes</b> Whether you’re a Delia or a Jamie we all want to see you throw in a bit of basil and learn your culinary tips so invite us to a Zoom or Facebook/Instagram live and ask us to donate to your team in return for your secret family recipes (that you googled the night before).
+            </li>
+            <li class="list-group-item">
+              <b>Quiz nights</b> We’ve all done them, family, school friends, work colleagues, quiz nights (I can confirm the ultimate best round is “Who said this? Homer Simpson or Donald Trump”) organize a quiz night, find a fun prize for the winner then ask contestants to donate to your team to join in.
+            </li>
+            <li class="list-group-item">
+              <b>Karaoke session</b> From ABBA to Ed Sheeran it’s all possible on various online karaoke providers just ask your karaoke comrades to donate to your team to join. Some examples of online karaoke sites are:
+              <ul>
+                <li>
+                Lucky Voice: <a href="https://www.luckyvoicekaraoke.com/blog/how-to-host-virtual-karaoke-party-online/" target="_blank">www.luckyvoicekaraoke.com/blog/how-to-host-virtual-karaoke-party-online/</a>
+              </li>
+              <li>
+                Airconsole: <a href="https://www.airconsole.com/play/apps/karaoke" target="_blank">www.airconsole.com/play/apps/karaoke</a>
+              </li>
+              </ul>
+            </li>
+            <li class="list-group-item">
+              <b>Yoga classes</b> Calling all downward facing drivers! do you know a yoga instructor or are you one yourself? Ask them very kindly or organize an online yoga class (or perhaps even socially distanced in person) and donate the entrance fee to your team.
+            </li>
+            <li class="list-group-item">
+              <b>Stand-up comedy nights</b> Think you’re funny? test it out! Do a stand-up stint, either alone or with some mates, as a facebook/instagram live and ask your audience to donate to your team.
+            </li>
+            <li class="list-group-item">
+              <b>Live music broadcasts</b> Do you play the guitar, sing opera or maybe you’re just handy with a ukulele and have a mate who tings the triangle. How about asking supporters for requests and recording your own version for a donation of their discretion.
+            </li>
+          </ul>
+        </div>
+      </div>
+
+
+      <div class="card">
+        <div id="enter" class="card-header"><h5>Online Auctions</h5></div>
+        <div class="card-block">
+          <p>
+            Silent, online auctions have been successful for years! 
+            Ask your clever, rich and diligent friends to donate products, services, goods and auction them on sites 
+            such as <a href="https://www.32auctions.com" target="_blank">https://www.32auctions.com</a> to raise funds for your team.
+          </p>
+        </div>
+      </div>
+
+
+      <div class="card">
+        <div id="enter" class="card-header"><h5>Outside Events</h5></div>
+        <div class="card-block">
+          <p>In full adherence to restrictions on public gatherings and following all social distancing measures, some events are still possible if they are outside.</p>
+          <ul  class="list-group">
+            <li class="list-group-item">
+              <b>Movie nights</b>
+                Do you have a decent sized garden, a white sheet and a projector? Movie nights are always loved by all (although perhaps avoid Zombie and Pandemic at this time) and you could make popcorn and hot chocolates to increase your turnover further.
+            </li>
+            <li class="list-group-item">
+              <b>Guided bike rides</b>
+                There are so many bike geeks out there! Get them donating to your team by organizing a meet for a good route that you know and ask them to donate to your team for the privilege of joining you. Make a batch of smoothies to sell at the end.      
+            </li>
+            <li class="list-group-item">
+              <b>Guided walks</b>
+                Around a farm, dam, forest reserve – similar to the above what about a guided walk through a beautiful area that you might know. You could do it early in the morning, point out interesting facts along the way and then sell coffees and muffins at the end.        
+            </li>
+            <li class="list-group-item">
+              <b>Spa Day (can you tell that a girl wrote this?)</b>
+                Invite a small group of friends for facial, massages, pedicures, manicures and get your team to do the deeds! Ask for donations to your team. Sell appropriately priced champagne to go with the experience.         
+            </li>
+ 
+        </div>
+      </div>
+
+      <div class="card">
+        <div id="enter" class="card-header"><h5>Selling your goods and services</h5></div>
+        <div class="card-block">
+          <p>
+          Are you one of those amazingly lucky individuals who have a marketable skill? How about putting it towards a great cause and advertising your wares on social media?
+     </p>
+<ul>
+<li>
+Photos – post low res versions of your photos online and offer the high res versions for sale either by email or hard copy print.
+</li>
+<li>
+Paintings – post sketches, watercolours or other media online for sale and deliver the original to the highest bidder.
+</li>
+<li>
+Crafts – are you gifted in another way? can you knit, sew, sculpt, plant, grow? we are all creative, we just have to discover how!
+</li>
+<li>
+Bake Sales – ok alright so we can all just about make a batch of cookies at least? Well if you can’t then learn! And sell them to your work mates, or next door neighbours or random passersby in the street. 
+</li>
+</ul>
+     
+        </div>
+      </div>
+
+      <div class="card">
+        <div id="enter" class="card-header"><h5></h5></div>
+        <div class="card-block">
+        <p>Ok that’s it I’m out of ideas! Over to you guys.</p>
+          <p><b>For any more help or information you might need please contact: <a href="mailto:info@elephantcharge.org">info@elephantcharge.org</a></b></p>
+        </div>
+      </div>
+                                                                        
+    </div>
+  </div>
+</div>
+        

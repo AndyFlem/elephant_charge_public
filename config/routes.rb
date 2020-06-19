@@ -14,6 +14,8 @@ Rails.application.routes.draw do
   get 'rules', to: 'application#rules'
   get 'privacy', to: 'application#privacy'
   get 'getinvolved', to: 'application#getinvolved'
+  get 'fundraising', to: 'application#fundraising'
+  
   get 'compare', to: 'teams#compare'
 
   #awards

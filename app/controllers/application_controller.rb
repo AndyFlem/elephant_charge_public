@@ -45,6 +45,10 @@ class ApplicationController < ActionController::Base
 
   end
 
+  def fundraising
+
+  end
+
   def getinvolved
     @current_charge=Charge.current.first
   end
