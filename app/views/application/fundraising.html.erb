@@ -3,11 +3,11 @@
 <% breadcrumb [["fundraisingtips", "Fundraising Tips"]] %>
 
 <%
-  description="Fundraising tips for The Fuchs Elephant Charge 2021."
+  description="Fundraising tips for The Fuchs Elephant Charge 2022."
 
   content_for :metas,
               (render :partial => 'layouts/metas', :locals => {
-                  :page_title => 'Elephant Charge - 2021 Fundraising Tips',
+                  :page_title => 'Elephant Charge - 2022 Fundraising Tips',
                   :description => description,
                   :og_image_path => URI.join(root_url, image_path('banners/b' + (rand(20)+1).to_s + '.jpg'))
               })
@@ -18,7 +18,7 @@
     <div class="col-sm-12 col-md-10">
       <div class="card">
         <div class="card-header">
-          <h4 style="display:inline-block;">Fuchs Elephant Charge 2021 Fundraising Tips</h4>
+          <h4 style="display:inline-block;">Fuchs Elephant Charge 2022 Fundraising Tips</h4>
           <div style="margin-bottom:5px;">
             <%= render :partial => 'application/fbbuttons' %>
           </div>
